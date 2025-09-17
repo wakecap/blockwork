@@ -1,0 +1,11 @@
+# NPM Configuration Template
+# Copy this file to .npmrc and replace ${FONTAWESOME_TOKEN} with your actual token
+
+@fortawesome:registry=https://npm.fontawesome.com/
+//npm.fontawesome.com/:_authToken=${FONTAWESOME_TOKEN}
+
+# How to set up:
+# 1. Copy this file: cp .npmrc.example .npmrc
+# 2. Get your FontAwesome Pro token from https://fontawesome.com/account
+# 3. Replace ${FONTAWESOME_TOKEN} with your actual token
+# 4. Never commit .npmrc to version control (it's in .gitignore)
