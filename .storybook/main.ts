@@ -37,7 +37,7 @@ const config = {
   title: "Blockwork Design System",
   brandTitle: "Blockwork",
   brandUrl: "https://github.com/wakecap/blockwork",
-  brandImage: "./blockwork-logo.svg",
+  brandImage: "./blockwork logo-black.png",
   brandTarget: "_self",
   async viteFinal(config) {
     return mergeConfig(config, {

@@ -65,7 +65,7 @@ const preview = {
     theme: {
       brandTitle: 'Blockwork',
       brandUrl: 'https://github.com/wakecap/blockwork',
-      brandImage: './blockwork-logo.svg',
+      brandImage: './blockwork logo-black.png',
       brandTarget: '_self',
     },
   },

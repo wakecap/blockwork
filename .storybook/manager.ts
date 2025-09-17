@@ -8,7 +8,7 @@ const blockworkTheme = {
   // Brand configuration
   brandTitle: 'Blockwork Design System',
   brandUrl: 'https://github.com/wakecap/blockwork',
-  brandImage: './blockwork-logo.svg',
+  brandImage: './blockwork logo-black.png',
   brandTarget: '_self',
   
   // Color scheme
@@ -55,7 +55,7 @@ const blockworkTheme = {
   brand: {
     title: 'Blockwork',
     url: 'https://github.com/wakecap/blockwork',
-    image: './blockwork-logo.svg',
+    image: './blockwork logo-black.png',
     target: '_self',
   },
 };
