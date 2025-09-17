@@ -1,8 +1,5 @@
-import { mergeConfig } from 'vite';
-import path from 'path';
-import { fileURLToPath } from 'url';
-
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const { mergeConfig } = require('vite');
+const path = require('path');
 
 const config = {
   stories: [
@@ -44,4 +41,4 @@ const config = {
   },
 };
 
-export default config; 
+module.exports = config; 

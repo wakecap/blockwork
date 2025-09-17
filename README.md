@@ -4,15 +4,67 @@ A component library built with React, TypeScript, Tailwind CSS, and Storybook.
 
 ## 🚀 Getting Started
 
-1. Install dependencies:
-```bash
-npm install
-```
+### Prerequisites
 
-2. Start Storybook:
-```bash
-npm run storybook
-```
+This project uses FontAwesome Pro icons. You'll need a FontAwesome Pro license and token.
+
+1. **Set up FontAwesome Pro access:**
+   ```bash
+   # Copy the npm configuration template
+   cp .npmrc.example .npmrc
+   
+   # Edit .npmrc and replace ${FONTAWESOME_TOKEN} with your actual FontAwesome Pro token
+   # Get your token from: https://fontawesome.com/account
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+3. **Start Storybook:**
+   ```bash
+   npm run storybook
+   ```
+
+### 🔒 Security Note
+
+- Never commit `.npmrc` to version control (it's already in `.gitignore`)
+- Keep your FontAwesome Pro token secure and don't share it publicly
+- Use environment variables or secure secret management in CI/CD pipelines
+
+## 🚀 GitHub Actions Setup
+
+This project includes automated CI/CD workflows that require the FontAwesome Pro token.
+
+### Setting up GitHub Secrets
+
+1. **Go to your GitHub repository**
+2. **Navigate to Settings → Secrets and variables → Actions**
+3. **Add a new repository secret:**
+   - **Name:** `FONTAWESOME_TOKEN`
+   - **Value:** Your FontAwesome Pro token
+
+### Available Workflows
+
+- **CI Workflow** (`.github/workflows/ci.yml`):
+  - Runs tests on Node.js 18.x and 20.x
+  - Builds and deploys Storybook to GitHub Pages
+  - Triggers on push/PR to main/develop branches
+
+- **Security Workflow** (`.github/workflows/security.yml`):
+  - Vulnerability scanning with Trivy
+  - NPM audit for dependency vulnerabilities  
+  - Secret detection with TruffleHog
+  - Runs daily and on push/PR events
+
+### GitHub Pages Deployment
+
+The CI workflow automatically deploys Storybook to GitHub Pages when code is pushed to the `main` branch. Make sure to:
+
+1. Enable GitHub Pages in repository settings
+2. Set source to "Deploy from a branch"
+3. Select the `gh-pages` branch
 
 ## 📝 Creating New Components
 

@@ -16,6 +16,9 @@ storybook-static/
 .env.test.local
 .env.production.local
 
+# NPM configuration with sensitive tokens
+.npmrc
+
 # IDE and editor files
 .vscode/
 .idea/
