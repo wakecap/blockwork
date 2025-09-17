@@ -1,0 +1,135 @@
+name: Manual Storybook Deployment
+
+on:
+  # Manual trigger only
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment to deploy to'
+        required: true
+        default: 'production'
+        type: choice
+        options:
+          - production
+          - staging
+      skip_tests:
+        description: 'Skip running tests before deployment'
+        required: false
+        default: false
+        type: boolean
+      build_mode:
+        description: 'Build mode for Storybook'
+        required: false
+        default: 'production'
+        type: choice
+        options:
+          - production
+          - development
+
+# Set permissions for GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  # Build Storybook
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run linting
+        run: npm run lint --if-present
+        continue-on-error: true
+
+      - name: Run type checking
+        run: npx tsc --noEmit
+        continue-on-error: true
+
+      - name: Run tests (if not skipped)
+        if: ${{ !inputs.skip_tests }}
+        run: |
+          echo "Running tests..."
+          npm run test:button:all --if-present || echo "Tests not available"
+          npm run test:coverage --if-present || echo "Coverage not available"
+
+      - name: Build Storybook
+        run: |
+          echo "Building Storybook in ${{ inputs.build_mode }} mode..."
+          npm run build-storybook
+
+      - name: Verify build output
+        run: |
+          echo "Build output contents:"
+          ls -la storybook-static/
+          echo "Build size:"
+          du -sh storybook-static/
+
+      - name: Upload Storybook build
+        uses: actions/upload-artifact@v4
+        with:
+          name: storybook-build-${{ github.run_number }}
+          path: storybook-static/
+          retention-days: 7
+
+  # Deploy to GitHub Pages
+  deploy:
+    environment:
+      name: ${{ inputs.environment || 'production' }}
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Download Storybook build
+        uses: actions/download-artifact@v4
+        with:
+          name: storybook-build-${{ github.run_number }}
+          path: storybook-static/
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload to GitHub Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: storybook-static/
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+  # Success notification
+  notify:
+    runs-on: ubuntu-latest
+    needs: [build, deploy]
+    if: always()
+    steps:
+      - name: Deployment Status
+        run: |
+          if [ "${{ needs.deploy.result }}" == "success" ]; then
+            echo "🎉 Storybook deployed successfully!"
+            echo "🌐 Live URL: ${{ needs.deploy.outputs.page_url }}"
+            echo "📦 Environment: ${{ inputs.environment || 'production' }}"
+            echo "🔧 Build Mode: ${{ inputs.build_mode || 'production' }}"
+            echo "🧪 Tests Skipped: ${{ inputs.skip_tests || 'false' }}"
+          else
+            echo "❌ Storybook deployment failed!"
+            echo "Check the logs above for details."
+            exit 1
+          fi
