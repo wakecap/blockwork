@@ -43,6 +43,31 @@ const preview = {
         sourceState: 'shown',
       },
     },
+    // Custom branding and theming
+    backgrounds: {
+      default: 'light',
+      values: [
+        {
+          name: 'light',
+          value: '#ffffff',
+        },
+        {
+          name: 'dark',
+          value: '#171717',
+        },
+        {
+          name: 'neutral',
+          value: '#f5f5f5',
+        },
+      ],
+    },
+    // Custom theme configuration
+    theme: {
+      brandTitle: 'Blockwork',
+      brandUrl: 'https://github.com/wakecap/blockwork',
+      brandImage: './blockwork-logo.svg',
+      brandTarget: '_self',
+    },
   },
 };
 

@@ -2,4 +2,200 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap');
 @tailwind base;
 @tailwind components;
-@tailwind utilities; 
+@tailwind utilities;
+
+/* Blockwork Design System Custom Styling */
+.sb-show-main {
+  /* Custom background for the main content area */
+  background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
+}
+
+/* Custom styling for the sidebar */
+.sidebar-container {
+  background: #ffffff;
+  border-right: 1px solid #e5e5e5;
+}
+
+/* Custom header styling */
+.sb-bar {
+  background: #171717;
+  border-bottom: 2px solid #ea580c;
+}
+
+/* Custom brand logo styling */
+.sb-bar .sb-bar__brand {
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.sb-bar .sb-bar__brand:hover {
+  color: #ea580c;
+}
+
+/* Custom navigation styling */
+.sb-bar .sb-bar__nav {
+  background: #171717;
+}
+
+.sb-bar .sb-bar__nav a {
+  color: #ffffff;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.sb-bar .sb-bar__nav a:hover {
+  background: #ea580c;
+  color: #ffffff;
+}
+
+.sb-bar .sb-bar__nav a[aria-current="true"] {
+  background: #ea580c;
+  color: #ffffff;
+}
+
+/* Custom canvas styling */
+.sb-canvas {
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* Custom docs styling */
+.sb-docs {
+  background: #ffffff;
+}
+
+/* Custom controls styling */
+.sb-controls {
+  background: #fafafa;
+  border-top: 1px solid #e5e5e5;
+}
+
+/* Custom addon panels styling */
+.sb-addon-panel {
+  background: #ffffff;
+  border: 1px solid #e5e5e5;
+}
+
+/* Custom button styling in Storybook UI */
+.sb-bar button {
+  background: #ea580c;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.sb-bar button:hover {
+  background: #c2410c;
+  transform: translateY(-1px);
+}
+
+/* Custom search styling */
+.sb-bar .sb-bar__search input {
+  background: #ffffff;
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
+  color: #171717;
+}
+
+.sb-bar .sb-bar__search input:focus {
+  border-color: #ea580c;
+  box-shadow: 0 0 0 2px rgba(234, 88, 12, 0.2);
+}
+
+/* Custom scrollbar styling */
+.sb-sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sb-sidebar::-webkit-scrollbar-track {
+  background: #f5f5f5;
+}
+
+.sb-sidebar::-webkit-scrollbar-thumb {
+  background: #ea580c;
+  border-radius: 3px;
+}
+
+.sb-sidebar::-webkit-scrollbar-thumb:hover {
+  background: #c2410c;
+}
+
+/* Custom loading spinner */
+.sb-loading {
+  color: #ea580c;
+}
+
+/* Custom error styling */
+.sb-error {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #dc2626;
+}
+
+/* Custom success styling */
+.sb-success {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  color: #16a34a;
+}
+
+/* Custom warning styling */
+.sb-warning {
+  background: #fffbeb;
+  border: 1px solid #fed7aa;
+  color: #d97706;
+}
+
+/* Custom info styling */
+.sb-info {
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  color: #2563eb;
+}
+
+/* Custom theme toggle */
+.sb-theme-toggle {
+  background: #171717;
+  color: #ffffff;
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
+}
+
+.sb-theme-toggle:hover {
+  background: #ea580c;
+  border-color: #ea580c;
+}
+
+/* Custom responsive design */
+@media (max-width: 768px) {
+  .sb-bar .sb-bar__brand {
+    font-size: 16px;
+  }
+  
+  .sb-bar .sb-bar__nav a {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+}
+
+/* Custom focus styles for accessibility */
+.sb-bar *:focus {
+  outline: 2px solid #ea580c;
+  outline-offset: 2px;
+}
+
+/* Custom selection styling */
+::selection {
+  background: #ea580c;
+  color: #ffffff;
+}
+
+::-moz-selection {
+  background: #ea580c;
+  color: #ffffff;
+} 

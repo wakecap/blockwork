@@ -1,6 +1,6 @@
-# Wakecap Design System
+# Blockwork Design System
 
-A component library built with React, TypeScript, Tailwind CSS, and Storybook.
+A comprehensive design system built with React, TypeScript, Tailwind CSS, and Storybook. Features black primary colors, orange accents, and full RTL/Arabic support.
 
 ## 🚀 Getting Started
 

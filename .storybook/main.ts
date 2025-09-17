@@ -33,6 +33,12 @@ const config = {
   features: {
     storyStoreV7: true,
   },
+  // Custom branding configuration
+  title: "Blockwork Design System",
+  brandTitle: "Blockwork",
+  brandUrl: "https://github.com/wakecap/blockwork",
+  brandImage: "./blockwork-logo.svg",
+  brandTarget: "_self",
   async viteFinal(config) {
     return mergeConfig(config, {
       resolve: {
