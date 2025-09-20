@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { LanguageProvider } from '../../components/ui/language-provider';
 import { ColorPalette, TypographyScale, SpacingScale, ElevationScale, BorderRadiusScale, BreakpointScale, ZIndexScale, MotionTokens, OpacityScale } from '../foundations/DesignTokens';
 import { Button } from '../../components/ui/button';

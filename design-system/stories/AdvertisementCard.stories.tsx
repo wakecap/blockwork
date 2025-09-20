@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 import { AdvertisementCard } from '../components/AdvertisementCard';
 
 // Use the correct banner image path (case-sensitive)

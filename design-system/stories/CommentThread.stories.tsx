@@ -1,5 +1,5 @@
 import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { CommentThread, Comment } from '../components/CommentThread';
 
 const meta: Meta<typeof CommentThread> = {

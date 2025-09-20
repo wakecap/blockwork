@@ -1,5 +1,5 @@
 import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { OTPInput, PINInput, VerificationCode, PasswordOTP, useOTP } from '../components/OTPInput';
 
 const meta: Meta<typeof OTPInput> = {

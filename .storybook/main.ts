@@ -1,53 +1,43 @@
+import type { StorybookConfig } from '@storybook/react-vite';
 import { mergeConfig } from 'vite';
-import path from 'path';
+import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
+function getDirname(metaUrl: string) {
+  return dirname(fileURLToPath(metaUrl));
+}
 
-const config = {
+const config: StorybookConfig = {
   stories: [
     "../design-system/stories/**/*.stories.@(js|jsx|ts|tsx)",
     "../components/**/*.stories.@(js|jsx|ts|tsx)",
   ],
-  addons: [
-    "@storybook/addon-essentials",
-    "@storybook/addon-a11y",
-    "@storybook/addon-viewport",
-    "@storybook/addon-backgrounds",
-    "@storybook/addon-measure",
-    "@storybook/addon-outline",
-  ],
+
+  addons: ["@storybook/addon-a11y", '@storybook/addon-docs'],
+
   framework: {
     name: "@storybook/react-vite",
     options: {},
   },
-  docs: {
-    autodocs: true,
-  },
+
   core: {
     disableTelemetry: true,
   },
+
   typescript: {
     check: false,
   },
-  features: {
-    storyStoreV7: true,
-  },
-  // Custom branding configuration
-  title: "Blockwork Design System",
-  brandTitle: "Blockwork",
-  brandUrl: "https://github.com/wakecap/blockwork",
-  brandImage: "./blockwork logo-black.png",
-  brandTarget: "_self",
+
   async viteFinal(config) {
+    const __dirname = getDirname(import.meta.url);
     return mergeConfig(config, {
       resolve: {
         alias: {
-          '@': path.resolve(__dirname, '../'),
+          '@': join(__dirname, '../'),
         },
       },
     });
-  },
+  }
 };
 
 export default config; 

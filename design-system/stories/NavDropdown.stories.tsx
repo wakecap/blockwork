@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 import { NavDropdown, MenuSection, AdContent } from '../components/NavDropdown';
 import {
   faMap,

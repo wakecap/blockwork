@@ -1,5 +1,5 @@
 import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { HeroSection, ProductHero, LandingHero, MinimalHero } from '../components/HeroSection';
 
 const meta: Meta<typeof HeroSection> = {

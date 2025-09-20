@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Dropdown, DropdownOption } from '../components/Dropdown';
 import { faChevronDown, faSearch } from '@fortawesome/free-solid-svg-icons';
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { CommandPalette, GlobalCommandPalette, QuickActionsPalette, useCommandPalette } from '../components/CommandPalette';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faUser, faCog, faFile, faSearch, faPlus, faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';

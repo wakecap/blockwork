@@ -1,5 +1,5 @@
 import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { FileUpload, ImageUpload, DocumentUpload, VideoUpload, useFileUpload } from '../components/FileUpload';
 
 const meta: Meta<typeof FileUpload> = {

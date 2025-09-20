@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { IconShowcase, IconSizes, IconColors, Icon } from '../foundations/IconLibrary';
 import { faHeart, faUser, faCog, faSearch, faBell } from '@fortawesome/free-solid-svg-icons';
 

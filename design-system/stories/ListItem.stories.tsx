@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { ListItem, UserListItem, FileListItem, NotificationListItem, SelectableListItem } from '../components/ListItem';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faFile, faBell, faCheck, faTimes, faDownload, faTrash } from '@fortawesome/free-solid-svg-icons';

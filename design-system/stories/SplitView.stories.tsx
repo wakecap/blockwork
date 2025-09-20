@@ -1,5 +1,5 @@
 import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { SplitView, HorizontalSplit, ThreePanelSplit } from '../components/SplitView';
 
 const meta: Meta<typeof SplitView> = {

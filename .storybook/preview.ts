@@ -69,6 +69,8 @@ const preview = {
       brandTarget: '_self',
     },
   },
+
+  tags: ['autodocs']
 };
 
 export default preview; 

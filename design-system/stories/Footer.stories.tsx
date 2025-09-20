@@ -1,5 +1,5 @@
 import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Footer, SimpleFooter, BusinessFooter, MarketingFooter } from '../components/Footer';
 
 const meta: Meta<typeof Footer> = {

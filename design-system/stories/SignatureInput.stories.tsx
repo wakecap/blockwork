@@ -1,5 +1,5 @@
 import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { SignatureInput, DocumentSignature, CompactSignature } from '../components/SignatureInput';
 
 const meta: Meta<typeof SignatureInput> = {

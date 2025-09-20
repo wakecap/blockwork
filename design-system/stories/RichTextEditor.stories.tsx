@@ -1,5 +1,5 @@
 import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { RichTextEditor, WYSIWYGEditor, MarkdownEditor, SimpleEditor } from '../components/RichTextEditor';
 
 const meta: Meta<typeof RichTextEditor> = {

@@ -1,5 +1,5 @@
 import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { PricingTable, SimplePricingTable, GridPricingTable, SAASPricing } from '../components/PricingTable';
 
 const meta: Meta<typeof PricingTable> = {

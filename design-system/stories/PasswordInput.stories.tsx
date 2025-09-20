@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { PasswordInput } from '../components/PasswordInput';
 import { faLock } from '@fortawesome/free-solid-svg-icons';
 

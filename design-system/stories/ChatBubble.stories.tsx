@@ -1,5 +1,5 @@
 import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { ChatBubble, SentMessage, ReceivedMessage, SystemMessage } from '../components/ChatBubble';
 
 const meta: Meta<typeof ChatBubble> = {

@@ -1,5 +1,5 @@
 import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Calendar, DatePicker, DateRangePicker } from '../components/Calendar';
 
 const meta: Meta<typeof Calendar> = {

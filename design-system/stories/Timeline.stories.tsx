@@ -1,5 +1,5 @@
 import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Timeline, ActivityTimeline, ProjectTimeline, EventTimeline } from '../components/Timeline';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faClock, faExclamation, faInfo, faUser, faCog, faRocket } from '@fortawesome/free-solid-svg-icons';

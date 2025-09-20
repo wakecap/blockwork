@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { FontProvider } from '../components/FontProvider';
 import { Input } from '../components/Input';
 import { faSearch, faEye } from '@fortawesome/free-solid-svg-icons';

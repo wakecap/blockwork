@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { LanguageProvider } from './language-provider';
 import { RTLButton } from './rtl-button';
 import { RTLInput } from './rtl-input';
