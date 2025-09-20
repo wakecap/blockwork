@@ -23,5 +23,6 @@
     }
   },
   "include": ["src", "design-system"],
+  "exclude": ["**/*.test.tsx", "**/*.test.ts", "**/__tests__/**", "**/*.stories.tsx"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
