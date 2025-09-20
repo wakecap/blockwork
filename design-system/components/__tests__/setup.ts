@@ -1,102 +1,84 @@
+// Test setup file for design system components
 import '@testing-library/jest-dom';
-import { configure } from '@testing-library/react';
 
-// Configure testing library
-configure({
-  testIdAttribute: 'data-testid',
+// Re-export testing utilities for convenience
+export * from '@testing-library/react';
+export * from '@testing-library/user-event';
+export { default as userEvent } from '@testing-library/user-event';
+
+// Test utilities and helpers
+export const createMockProps = (overrides = {}) => ({
+  onClick: jest.fn(),
+  onMouseEnter: jest.fn(),
+  onMouseLeave: jest.fn(),
+  onFocus: jest.fn(),
+  onBlur: jest.fn(),
+  ...overrides,
 });
 
-// Mock FontAwesome for tests
-jest.mock('@fortawesome/react-fontawesome', () => ({
-  FontAwesomeIcon: ({ icon, className, ...props }: any) => (
-    <svg 
-      className={className} 
-      data-testid="fontawesome-icon"
-      {...props}
-    >
-      <title>{icon?.iconName || 'icon'}</title>
-    </svg>
-  ),
-}));
+// Common test wrapper components
+export const TestProviders = ({ children }: { children: React.ReactNode }) => {
+  return children;
+};
 
-// Mock FontProvider for tests
-jest.mock('../FontProvider', () => ({
-  FontProvider: ({ children }: { children: React.ReactNode }) => (
-    <div data-testid="font-provider">{children}</div>
-  ),
-  useLanguage: () => ({ language: 'en' }),
-}));
-
-// Mock performance API for tests
-Object.defineProperty(window, 'performance', {
-  value: {
-    now: jest.fn(() => Date.now()),
-  },
-  writable: true,
+// Mock data generators
+export const generateMockButtonProps = (variant = 'primary') => ({
+  variant,
+  size: 'md',
+  children: 'Test Button',
+  ...createMockProps(),
 });
 
-// Mock ResizeObserver for tests
-global.ResizeObserver = jest.fn().mockImplementation(() => ({
-  observe: jest.fn(),
-  unobserve: jest.fn(),
-  disconnect: jest.fn(),
-}));
+// Accessibility testing helpers
+export const expectToBeAccessible = async (element: HTMLElement) => {
+  expect(element).toBeInTheDocument();
+  expect(element).toBeVisible();
+  
+  // Check for basic accessibility attributes
+  if (element.tagName === 'BUTTON') {
+    expect(element).not.toHaveAttribute('aria-hidden', 'true');
+  }
+};
 
-// Mock IntersectionObserver for tests
-global.IntersectionObserver = jest.fn().mockImplementation(() => ({
-  observe: jest.fn(),
-  unobserve: jest.fn(),
-  disconnect: jest.fn(),
-}));
+// Performance testing helpers
+export const measureRenderTime = (renderFn: () => void): number => {
+  const start = performance.now();
+  renderFn();
+  const end = performance.now();
+  return end - start;
+};
 
-// Mock matchMedia for tests
-Object.defineProperty(window, 'matchMedia', {
-  writable: true,
-  value: jest.fn().mockImplementation(query => ({
-    matches: false,
-    media: query,
-    onchange: null,
-    addListener: jest.fn(),
-    removeListener: jest.fn(),
-    addEventListener: jest.fn(),
-    removeEventListener: jest.fn(),
-    dispatchEvent: jest.fn(),
-  })),
-});
+// Mock implementations for common scenarios
+export const mockIntersectionObserver = () => {
+  const mockIntersectionObserver = jest.fn();
+  mockIntersectionObserver.mockReturnValue({
+    observe: () => null,
+    unobserve: () => null,
+    disconnect: () => null
+  });
+  window.IntersectionObserver = mockIntersectionObserver;
+};
 
-// Mock scrollTo for tests
-Object.defineProperty(window, 'scrollTo', {
-  value: jest.fn(),
-  writable: true,
-});
+export const mockResizeObserver = () => {
+  const mockResizeObserver = jest.fn();
+  mockResizeObserver.mockReturnValue({
+    observe: () => null,
+    unobserve: () => null,
+    disconnect: () => null
+  });
+  window.ResizeObserver = mockResizeObserver;
+};
 
-// Mock getComputedStyle for tests
-Object.defineProperty(window, 'getComputedStyle', {
-  value: jest.fn(() => ({
-    getPropertyValue: jest.fn(() => ''),
-  })),
-  writable: true,
-});
-
-// Setup test environment
+// Setup common mocks
 beforeEach(() => {
   // Clear all mocks before each test
   jest.clearAllMocks();
   
-  // Reset performance mock
-  (performance.now as jest.Mock).mockReturnValue(Date.now());
+  // Reset DOM
+  document.body.innerHTML = '';
 });
 
 afterEach(() => {
-  // Clean up after each test
-  jest.clearAllTimers();
+  // Cleanup after each test
+  jest.restoreAllMocks();
 });
-
-// Global test utilities
-declare global {
-  namespace jest {
-    interface Matchers<R> {
-      toHaveNoViolations(): R;
-    }
-  }
-}

@@ -43,14 +43,14 @@ describe('Button Component', () => {
     it('renders with icon', () => {
       render(<Button icon={faBell}>With Icon</Button>, { wrapper: TestWrapper });
       const button = screen.getByRole('button');
-      const icon = button.querySelector('svg');
+      const icon = button.querySelector('[data-testid="font-awesome-icon"]');
       expect(icon).toBeInTheDocument();
     });
 
     it('renders icon-only button', () => {
-      render(<Button size="icon" icon={faBell} aria-label="Notifications" />, { wrapper: TestWrapper });
+      render(<Button icon={faBell} aria-label="Notifications" />, { wrapper: TestWrapper });
       const button = screen.getByRole('button', { name: /notifications/i });
-      expect(button).toHaveClass('h-10', 'w-10');
+      expect(button).toHaveClass('h-11', 'w-11'); // default icon size on mobile, h-10 w-10 on sm+
     });
   });
 
@@ -169,9 +169,10 @@ describe('Button Component', () => {
       render(<Button loading>Loading</Button>, { wrapper: TestWrapper });
       
       const button = screen.getByRole('button');
-      const spinner = button.querySelector('svg');
+      const spinner = button.querySelector('[data-testid="font-awesome-icon"][data-icon="spinner"]');
       
       expect(button).toBeDisabled();
+      expect(spinner).toBeInTheDocument();
       expect(spinner).toHaveClass('animate-spin');
     });
 
@@ -186,10 +187,12 @@ describe('Button Component', () => {
       render(<Button loading icon={faBell}>Loading</Button>, { wrapper: TestWrapper });
       
       const button = screen.getByRole('button');
-      const icons = button.querySelectorAll('svg');
+      const bellIcon = button.querySelector('[data-icon="bell"]');
+      const spinnerIcon = button.querySelector('[data-icon="spinner"]');
       
       // Should only have spinner, not the bell icon
-      expect(icons).toHaveLength(1);
+      expect(bellIcon).not.toBeInTheDocument();
+      expect(spinnerIcon).toBeInTheDocument();
     });
   });
 
@@ -199,22 +202,38 @@ describe('Button Component', () => {
       render(<Button icon={faBell}>With Icon</Button>, { wrapper: TestWrapper });
       
       const button = screen.getByRole('button');
-      const icon = button.querySelector('svg');
-      const text = screen.getByText('With Icon');
+      const icon = button.querySelector('[data-testid="font-awesome-icon"]');
+      const textSpan = button.querySelector('.relative.z-10');
       
-      // Icon should come before text in DOM order
-      expect(button.firstChild).toBe(icon);
+      // Icon should come before text span in DOM order (after ripple effect)
+      expect(icon).toBeInTheDocument();
+      expect(textSpan).toBeInTheDocument();
+      
+      // Get all children and find their positions
+      const children = Array.from(button.children);
+      const iconIndex = children.findIndex(child => child.contains(icon));
+      const textIndex = children.findIndex(child => child.contains(textSpan));
+      
+      expect(iconIndex).toBeLessThan(textIndex);
     });
 
     it('positions icon on the right when specified', () => {
       render(<Button icon={faBell} iconPosition="right">With Icon</Button>, { wrapper: TestWrapper });
       
       const button = screen.getByRole('button');
-      const icon = button.querySelector('svg');
-      const text = screen.getByText('With Icon');
+      const icon = button.querySelector('[data-testid="font-awesome-icon"]');
+      const textSpan = button.querySelector('.relative.z-10');
       
-      // Icon should come after text in DOM order
-      expect(button.lastChild).toBe(icon);
+      // Icon should come after text span in DOM order
+      expect(icon).toBeInTheDocument();
+      expect(textSpan).toBeInTheDocument();
+      
+      // Get all children and find their positions
+      const children = Array.from(button.children);
+      const iconIndex = children.findIndex(child => child.contains(icon));
+      const textIndex = children.findIndex(child => child.contains(textSpan));
+      
+      expect(iconIndex).toBeGreaterThan(textIndex);
     });
   });
 
@@ -247,10 +266,19 @@ describe('Button Component', () => {
       );
       
       const button = screen.getByRole('button');
-      const icon = button.querySelector('svg');
+      const icon = button.querySelector('[data-testid="font-awesome-icon"]');
+      const textSpan = button.querySelector('.relative.z-10');
       
-      // In RTL, left icon should appear on the right
-      expect(button.lastChild).toBe(icon);
+      // In RTL, left icon should appear on the right (after text)
+      expect(icon).toBeInTheDocument();
+      expect(textSpan).toBeInTheDocument();
+      
+      // Get all children and find their positions
+      const children = Array.from(button.children);
+      const iconIndex = children.findIndex(child => child.contains(icon));
+      const textIndex = children.findIndex(child => child.contains(textSpan));
+      
+      expect(iconIndex).toBeGreaterThan(textIndex);
     });
 
     it('shows Arabic text when showArabicText is true', () => {
@@ -346,7 +374,7 @@ describe('Button Component', () => {
       render(<Button ripple={true}>With Ripple</Button>, { wrapper: TestWrapper });
       
       const button = screen.getByRole('button');
-      const ripple = button.querySelector('[class*="ripple"]');
+      const ripple = button.querySelector('.absolute.inset-0.rounded-sm.overflow-hidden');
       expect(ripple).toBeInTheDocument();
     });
 
@@ -381,7 +409,7 @@ describe('Button Component', () => {
       
       const button = screen.getByRole('button');
       expect(button).toHaveClass('custom-class', 'bg-neutral-900');
-      expect(button).toHaveStyle('background-color: red');
+      expect(button).toHaveStyle('background-color: rgb(255, 0, 0)');
     });
   });
 

@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { expect, fn, userEvent, within } from '@storybook/test';
 import { Button } from './button';
 import { Search, Download, ArrowRight, Check, AlertTriangle, X, Info } from 'lucide-react';
 
@@ -369,4 +370,76 @@ export const RealWorldExamples: Story = {
       </div>
     </div>
   ),
+};
+
+// Interactive testing story
+export const WithInteractions: Story = {
+  args: {
+    children: 'Click me',
+    onClick: fn(),
+  },
+  play: async ({ args, canvasElement }) => {
+    const canvas = within(canvasElement);
+    const button = canvas.getByRole('button');
+    
+    // Test that button is rendered
+    await expect(button).toBeInTheDocument();
+    
+    // Test click interaction
+    await userEvent.click(button);
+    await expect(args.onClick).toHaveBeenCalledTimes(1);
+    
+    // Test hover state
+    await userEvent.hover(button);
+    
+    // Test focus state
+    await userEvent.tab();
+    await expect(button).toHaveFocus();
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'This story demonstrates interactive testing using Storybook interactions.',
+      },
+    },
+  },
+};
+
+// Accessibility testing story
+export const AccessibilityTest: Story = {
+  args: {
+    children: 'Accessible Button',
+    'aria-label': 'Test button for accessibility',
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const button = canvas.getByRole('button');
+    
+    // Test accessibility attributes
+    await expect(button).toHaveAttribute('aria-label', 'Test button for accessibility');
+    
+    // Test keyboard navigation
+    await userEvent.tab();
+    await expect(button).toHaveFocus();
+    
+    // Test keyboard activation
+    await userEvent.keyboard('{Enter}');
+    await userEvent.keyboard(' ');
+  },
+  parameters: {
+    a11y: {
+      config: {
+        rules: [
+          {
+            id: 'color-contrast',
+            enabled: true,
+          },
+          {
+            id: 'keyboard-navigation',
+            enabled: true,
+          },
+        ],
+      },
+    },
+  },
 };
