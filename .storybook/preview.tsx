@@ -1,8 +1,9 @@
 import React from 'react';
 import type { Preview } from "@storybook/react-vite";
+
 import '../.storybook/preview.css';
 import '../src/globals.css';
-import '../design-system/foundations/DesignTokens.tsx';
+import '../src/design-system/foundations/DesignTokens.tsx';
 
 const preview: Preview = {
   parameters: {

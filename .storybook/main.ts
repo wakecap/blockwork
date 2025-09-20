@@ -9,8 +9,8 @@ function getDirname(metaUrl: string) {
 
 const config: StorybookConfig = {
   stories: [
-    "../design-system/stories/**/*.stories.@(js|jsx|ts|tsx)",
-    "../components/**/*.stories.@(js|jsx|ts|tsx)",
+    "../src/design-system/stories/**/*.stories.@(js|jsx|ts|tsx)",
+    "../src/components/**/*.stories.@(js|jsx|ts|tsx)",
   ],
 
   addons: [

@@ -1,6 +1,6 @@
 import React from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
-import { cn } from '@/lib/utils';
+import { cn } from '@/src/utils/utils';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';

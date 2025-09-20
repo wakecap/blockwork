@@ -3,9 +3,6 @@ export default {
   darkMode: ["class"],
   content: [
     "./src/**/*.{js,jsx,ts,tsx}",
-    "./design-system/**/*.{js,jsx,ts,tsx}",
-    "./components/**/*.{js,jsx,ts,tsx}",
-    "./lib/**/*.{js,jsx,ts,tsx}",
     "./.storybook/**/*.{js,jsx,ts,tsx,mdx}",
   ],
   theme: {

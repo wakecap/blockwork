@@ -1,8 +1,7 @@
 import * as React from "react"
-import { cn } from "@/lib/utils"
-import { useLanguage } from "./language-provider"
+import { cn } from "@/src/utils/utils"
 
-export interface RTLInputProps
+export interface InputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string
   error?: string
@@ -17,7 +16,7 @@ export interface RTLInputProps
   showArabicText?: boolean
 }
 
-const RTLInput = React.forwardRef<HTMLInputElement, RTLInputProps>(
+const Input = React.forwardRef<HTMLInputElement, InputProps>(
   ({ 
     className, 
     type, 
@@ -33,9 +32,7 @@ const RTLInput = React.forwardRef<HTMLInputElement, RTLInputProps>(
     showArabicText = false,
     ...props 
   }, ref) => {
-    const { isRTL } = useLanguage();
-    
-    // Get text based on language preference
+    // Get text based on showArabicText
     const getLabelText = () => {
       if (showArabicText && arabicLabel) {
         return arabicLabel;
@@ -64,75 +61,49 @@ const RTLInput = React.forwardRef<HTMLInputElement, RTLInputProps>(
       return success;
     };
 
-    // Determine icon positions based on RTL
-    const leftIcon = isRTL ? iconRight : iconLeft;
-    const rightIcon = isRTL ? iconLeft : iconRight;
-    const leftIconClass = isRTL ? 'pr-9' : 'pl-9';
-    const rightIconClass = isRTL ? 'pl-9' : 'pr-9';
-
     return (
       <div className="w-full">
         {getLabelText() && (
-          <label className={cn(
-            "block mb-1 text-sm font-medium text-foreground",
-            isRTL && "text-right"
-          )}>
+          <label className="block mb-1 text-sm font-medium text-foreground">
             {getLabelText()}
           </label>
         )}
         <div className="relative flex items-center">
-          {leftIcon && (
-            <span className={cn(
-              "absolute text-muted-foreground z-10",
-              isRTL ? "right-3" : "left-3"
-            )}>
-              {leftIcon}
+          {iconLeft && (
+            <span className="absolute left-3 text-muted-foreground z-10">
+              {iconLeft}
             </span>
           )}
           <input
             type={type}
             className={cn(
               "flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
-              leftIcon && leftIconClass,
-              rightIcon && rightIconClass,
+              iconLeft && "pl-9",
+              iconRight && "pr-9",
               getErrorText() && "border-destructive focus-visible:ring-destructive",
               getSuccessText() && !getErrorText() && "border-green-500 focus-visible:ring-green-500",
-              isRTL && "text-right",
               className
             )}
             placeholder={getPlaceholderText()}
             ref={ref}
             {...props}
           />
-          {rightIcon && (
-            <span className={cn(
-              "absolute text-muted-foreground z-10",
-              isRTL ? "left-3" : "right-3"
-            )}>
-              {rightIcon}
+          {iconRight && (
+            <span className="absolute right-3 text-muted-foreground z-10">
+              {iconRight}
             </span>
           )}
         </div>
         {getErrorText() && (
-          <p className={cn(
-            "mt-1 text-xs text-destructive",
-            isRTL && "text-right"
-          )}>
-            {getErrorText()}
-          </p>
+          <p className="mt-1 text-xs text-destructive">{getErrorText()}</p>
         )}
         {getSuccessText() && !getErrorText() && (
-          <p className={cn(
-            "mt-1 text-xs text-green-600",
-            isRTL && "text-right"
-          )}>
-            {getSuccessText()}
-          </p>
+          <p className="mt-1 text-xs text-green-600">{getSuccessText()}</p>
         )}
       </div>
     )
   }
 )
-RTLInput.displayName = "RTLInput"
+Input.displayName = "Input"
 
-export { RTLInput }
+export { Input }
