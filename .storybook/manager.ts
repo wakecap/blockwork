@@ -1,5 +1,6 @@
 import { addons } from '@storybook/manager-api';
 import { create } from '@storybook/theming';
+import './addons/blockwork-branding';
 
 // Custom Blockwork theme for Storybook 9
 const blockworkTheme = create({
