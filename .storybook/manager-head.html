@@ -72,24 +72,49 @@
 // JavaScript to force logo display after page load
 document.addEventListener('DOMContentLoaded', function() {
   function forceLogo() {
-    const brandElements = document.querySelectorAll('.sb-bar .sb-bar__brand, [data-testid="sidebar-header"], .sb-bar > div:first-child');
-    brandElements.forEach(element => {
-      if (element) {
-        element.innerHTML = '<img src="/Logo-Vector.svg" alt="Blockwork" style="height: 32px; width: auto; max-width: 200px; object-fit: contain;">';
-        element.style.background = 'none';
-        element.style.textIndent = '0';
-        element.style.overflow = 'visible';
-      }
+    // Target all possible brand elements
+    const selectors = [
+      '.sb-bar .sb-bar__brand',
+      '[data-testid="sidebar-header"]',
+      '.sb-bar > div:first-child',
+      '.sb-bar > div:first-child > div',
+      '.sb-bar > div:first-child > div > div',
+      'header .sb-bar__brand',
+      'header [data-testid="sidebar-header"]',
+      'header > div:first-child'
+    ];
+    
+    selectors.forEach(selector => {
+      const elements = document.querySelectorAll(selector);
+      elements.forEach(element => {
+        if (element) {
+          element.innerHTML = '<img src="/Logo-Vector.svg" alt="Blockwork Design System" style="height: 32px; width: auto; max-width: 200px; object-fit: contain; display: block;">';
+          element.style.background = 'none';
+          element.style.textIndent = '0';
+          element.style.overflow = 'visible';
+          element.style.display = 'flex';
+          element.style.alignItems = 'center';
+          element.style.justifyContent = 'center';
+        }
+      });
     });
+    
+    // Also set the page title
+    document.title = 'Blockwork Design System - Storybook';
   }
   
-  // Run immediately and after a delay
+  // Run immediately and after delays
   forceLogo();
+  setTimeout(forceLogo, 500);
   setTimeout(forceLogo, 1000);
-  setTimeout(forceLogo, 3000);
+  setTimeout(forceLogo, 2000);
+  setTimeout(forceLogo, 5000);
   
   // Also run when Storybook updates
   const observer = new MutationObserver(forceLogo);
   observer.observe(document.body, { childList: true, subtree: true });
+  
+  // Run on window load
+  window.addEventListener('load', forceLogo);
 });
 </script>
