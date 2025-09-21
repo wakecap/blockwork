@@ -1,8 +1,7 @@
 import { addons } from '@storybook/manager-api';
-import { create } from '@storybook/theming';
 
 // Custom Blockwork theme for Storybook 9
-const blockworkTheme = create({
+const blockworkTheme = {
   base: 'light',
   
   // Brand configuration
@@ -55,7 +54,7 @@ const blockworkTheme = create({
   sidebarTextColor: '#171717',
   sidebarSelectedColor: '#ea580c',
   sidebarHoverColor: '#f0f0f0',
-});
+};
 
 addons.setConfig({
   theme: blockworkTheme,
