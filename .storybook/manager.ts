@@ -1,7 +1,7 @@
 import { addons } from '@storybook/manager-api';
-import { create } from '@storybook/theming';
+import { create, themes } from '@storybook/theming';
 
-// Custom Blockwork theme for Storybook 9
+// Custom Blockwork theme for Storybook 8.6.14
 const blockworkTheme = create({
   base: 'light',
   
@@ -72,3 +72,5 @@ addons.setConfig({
 
 // Debug: Log the theme configuration
 console.log('Blockwork theme loaded:', blockworkTheme);
+console.log('Theme brandTitle:', blockworkTheme.brandTitle);
+console.log('Theme brandImage:', blockworkTheme.brandImage);

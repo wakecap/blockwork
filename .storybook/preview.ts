@@ -1,6 +1,7 @@
 import './preview.css';
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-alpine.css';
+import { themes } from '@storybook/theming';
 
 const preview = {
   parameters: {
@@ -42,6 +43,7 @@ const preview = {
       canvas: {
         sourceState: 'shown',
       },
+      theme: themes.light,
     },
     // Custom branding and theming
     backgrounds: {
