@@ -1,15 +1,14 @@
 import { addons } from '@storybook/manager-api';
 import { create } from '@storybook/theming';
-import './addons/blockwork-branding';
 
 // Custom Blockwork theme for Storybook 9
 const blockworkTheme = create({
   base: 'light',
   
-  // Brand configuration - simplified for Storybook 9
-  brandTitle: '',
+  // Brand configuration
+  brandTitle: 'Blockwork Design System',
   brandUrl: 'https://github.com/wakecap/blockwork',
-  brandImage: '',
+  brandImage: '/Logo-Vector.svg',
   brandTarget: '_self',
   
   // Core colors
@@ -50,6 +49,12 @@ const blockworkTheme = create({
   
   // Layout
   borderRadius: 12,
+  
+  // Sidebar colors
+  sidebarBg: '#fafafa',
+  sidebarTextColor: '#171717',
+  sidebarSelectedColor: '#ea580c',
+  sidebarHoverColor: '#f0f0f0',
 });
 
 addons.setConfig({
