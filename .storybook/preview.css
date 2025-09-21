@@ -31,13 +31,28 @@
 
 /* Hide brand text and show only logo */
 .sb-bar .sb-bar__brand span,
-.sb-bar .sb-bar__brand a span {
+.sb-bar .sb-bar__brand a span,
+.sb-bar .sb-bar__brand .sb-bar__brand-text {
   display: none !important;
 }
 
 /* Style the brand image/logo */
 .sb-bar .sb-bar__brand img,
 .sb-bar .sb-bar__brand svg {
+  height: 32px !important;
+  width: auto !important;
+  max-width: 200px !important;
+  object-fit: contain !important;
+  display: block !important;
+}
+
+/* Additional overrides for Storybook 9 */
+[data-testid="sidebar-header"] span,
+[data-testid="sidebar-header"] .sb-bar__brand-text {
+  display: none !important;
+}
+
+[data-testid="sidebar-header"] img {
   height: 32px !important;
   width: auto !important;
   max-width: 200px !important;

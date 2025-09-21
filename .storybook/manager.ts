@@ -1,14 +1,14 @@
-import { addons } from 'storybook/manager-api';
-import { themes } from 'storybook/theming';
+import { addons } from '@storybook/manager-api';
+import { create } from '@storybook/theming';
 
-// Custom Blockwork theme
-const blockworkTheme = {
-  ...themes.light,
+// Custom Blockwork theme for Storybook 9
+const blockworkTheme = create({
+  base: 'light',
   
   // Brand configuration - Logo only, no text
   brandTitle: '',
   brandUrl: 'https://github.com/wakecap/blockwork',
-  brandImage: './blockwork-logo.png',
+  brandImage: '/blockwork-logo.png',
   brandTarget: '_self',
   
   // Color scheme
@@ -19,7 +19,7 @@ const blockworkTheme = {
   appBg: '#ffffff',
   appContentBg: '#ffffff',
   appBorderColor: '#e5e5e5',
-  appBorderRadius: 8,
+  appBorderRadius: 12,
   
   // Text colors
   textColor: '#171717',
@@ -35,7 +35,7 @@ const blockworkTheme = {
   inputBg: '#ffffff',
   inputBorder: '#e5e5e5',
   inputTextColor: '#171717',
-  inputBorderRadius: 4,
+  inputBorderRadius: 12,
   
   // Button colors
   buttonBg: '#ea580c',
@@ -44,21 +44,34 @@ const blockworkTheme = {
   booleanSelectedBg: '#ea580c',
   
   // Typography
-  fontBase: '"Figtree", system-ui, -apple-system, sans-serif',
-  fontCode: '"SF Mono", Consolas, monospace',
+  fontBase: '"Figtree", "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif',
+  fontCode: '"JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace',
   
   // Layout
-  base: 'light',
-  borderRadius: 8,
+  borderRadius: 12,
   
-  // Custom properties - Logo only
-  brand: {
-    title: '',
-    url: 'https://github.com/wakecap/blockwork',
-    image: './blockwork-logo.png',
-    target: '_self',
-  },
-};
+  // Additional Storybook 9 properties
+  colorAddonSupport: '#ea580c',
+  colorAddonSupportHover: '#c2410c',
+  colorAddonSupportText: '#ffffff',
+  colorAddonSupportIcon: '#ffffff',
+  
+  // Sidebar colors
+  sidebarBg: '#ffffff',
+  sidebarTextColor: '#171717',
+  sidebarSelectedColor: '#ea580c',
+  sidebarHoverColor: '#f5f5f5',
+  
+  // Canvas colors
+  canvasBg: '#ffffff',
+  canvasToolbarBg: '#f8f9fa',
+  
+  // Toolbar colors
+  toolbarBg: '#171717',
+  toolbarTextColor: '#ffffff',
+  toolbarSelectedColor: '#ea580c',
+  toolbarHoverColor: '#404040',
+});
 
 addons.setConfig({
   theme: blockworkTheme,
