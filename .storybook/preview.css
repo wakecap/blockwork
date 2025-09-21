@@ -507,6 +507,26 @@
   background: #fafafa !important;
 }
 
+/* Force sidebar background with higher specificity */
+.sb-bar + div,
+.sb-bar + div *,
+.sb-bar ~ div,
+.sb-bar ~ div *,
+.sb-bar + div > div,
+.sb-bar + div > div *,
+.sb-bar ~ div > div,
+.sb-bar ~ div > div * {
+  background: #fafafa !important;
+}
+
+/* Additional Storybook sidebar targeting */
+.sb-sidebar,
+.sb-sidebar > div,
+.sb-sidebar > div > div,
+.sb-sidebar > div > div > div {
+  background: #fafafa !important;
+}
+
 /* Force sidebar background */
 .sb-bar + div,
 .sb-bar + div *,
@@ -547,4 +567,48 @@ button[data-testid*="story"][aria-current="true"],
 [data-testid*="story"][aria-current="true"] {
   background: #ea580c !important;
   color: #ffffff !important;
+}
+
+/* Force FAFAFA background on all possible sidebar elements */
+.sb-bar + div,
+.sb-bar + div > div,
+.sb-bar + div > div > div,
+.sb-bar + div > div > div > div,
+.sb-bar + div > div > div > div > div,
+.sb-bar + div > div > div > div > div > div {
+  background: #fafafa !important;
+}
+
+/* Target the main layout container */
+.sb-show-main > div,
+.sb-show-main > div > div,
+.sb-show-main > div > div > div {
+  background: #fafafa !important;
+}
+
+/* Force sidebar background with maximum specificity */
+div[data-testid="sidebar"],
+div[data-testid="sidebar"] > div,
+div[data-testid="sidebar"] > div > div,
+div[data-testid="sidebar"] > div > div > div {
+  background: #fafafa !important;
+}
+
+/* Ultimate sidebar background override */
+.sb-show-main,
+.sb-show-main > div,
+.sb-show-main > div > div:first-child,
+.sb-show-main > div > div:first-child > div,
+.sb-show-main > div > div:first-child > div > div {
+  background: #fafafa !important;
+}
+
+/* Target the sidebar specifically */
+.sb-show-main > div > div:first-child {
+  background: #fafafa !important;
+}
+
+/* Force all sidebar elements to use FAFAFA */
+.sb-show-main > div > div:first-child * {
+  background: #fafafa !important;
 } 
