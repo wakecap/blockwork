@@ -31,6 +31,8 @@ const config: StorybookConfig = {
   typescript: {
     check: false,
   },
+  
+  staticDirs: ['../public'],
 
   async viteFinal(config) {
     const __dirname = getDirname(import.meta.url);

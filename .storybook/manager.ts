@@ -5,8 +5,8 @@ import { create } from '@storybook/theming';
 const blockworkTheme = create({
   base: 'light',
   
-  // Brand configuration - Logo only, no text
-  brandTitle: '',
+  // Brand configuration
+  brandTitle: 'Blockwork Design System',
   brandUrl: 'https://github.com/wakecap/blockwork',
   brandImage: '/blockwork-logo.png',
   brandTarget: '_self',

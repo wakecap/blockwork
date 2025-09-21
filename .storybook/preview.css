@@ -601,4 +601,33 @@ div[data-testid="sidebar"] > div > div > div {
 .sb-show-main > div > div:first-child > div,
 .sb-show-main > div > div:first-child > div > div {
   background: #fafafa !important;
+}
+
+/* Force Blockwork branding */
+.sb-bar .sb-bar__brand {
+  color: #171717 !important;
+  font-weight: 700 !important;
+  font-size: 18px !important;
+}
+
+.sb-bar .sb-bar__brand img {
+  height: 32px !important;
+  width: auto !important;
+  max-width: 200px !important;
+  object-fit: contain !important;
+  display: block !important;
+}
+
+/* Override any default Storybook branding */
+.sb-bar .sb-bar__brand span {
+  display: none !important;
+}
+
+/* Force the title to show Blockwork */
+.sb-bar .sb-bar__brand::after {
+  content: "Blockwork Design System" !important;
+  color: #171717 !important;
+  font-weight: 700 !important;
+  font-size: 18px !important;
+  margin-left: 8px !important;
 } 

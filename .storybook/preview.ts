@@ -61,13 +61,6 @@ const preview = {
         },
       ],
     },
-    // Custom theme configuration
-    theme: {
-      brandTitle: 'Blockwork',
-      brandUrl: 'https://github.com/wakecap/blockwork',
-      brandImage: './blockwork logo-black.png',
-      brandTarget: '_self',
-    },
   },
 
   tags: ['autodocs']
