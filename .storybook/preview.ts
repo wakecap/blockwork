@@ -63,6 +63,59 @@ const preview = {
     },
   },
 
+  globalTypes: {
+    measureEnabled: {
+      name: 'Measure',
+      description: 'Enable measure addon',
+      defaultValue: false,
+      toolbar: {
+        icon: 'ruler',
+        items: [
+          { value: false, title: 'Disable' },
+          { value: true, title: 'Enable' },
+        ],
+      },
+    },
+    backgrounds: {
+      name: 'Background',
+      description: 'Background color',
+      defaultValue: 'light',
+      toolbar: {
+        icon: 'paintbrush',
+        items: [
+          { value: 'light', title: 'Light' },
+          { value: 'dark', title: 'Dark' },
+          { value: 'neutral', title: 'Neutral' },
+        ],
+      },
+    },
+    outline: {
+      name: 'Outline',
+      description: 'Show outline',
+      defaultValue: false,
+      toolbar: {
+        icon: 'outline',
+        items: [
+          { value: false, title: 'Hide' },
+          { value: true, title: 'Show' },
+        ],
+      },
+    },
+    viewport: {
+      name: 'Viewport',
+      description: 'Viewport size',
+      defaultValue: 'desktop',
+      toolbar: {
+        icon: 'mobile',
+        items: [
+          { value: 'desktop', title: 'Desktop' },
+          { value: 'tablet', title: 'Tablet' },
+          { value: 'mobile', title: 'Mobile' },
+        ],
+      },
+    },
+  },
+
   tags: ['autodocs']
 };
 
