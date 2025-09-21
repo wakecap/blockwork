@@ -579,11 +579,9 @@ button[data-testid*="story"][aria-current="true"],
   background: #fafafa !important;
 }
 
-/* Target the main layout container */
-.sb-show-main > div,
-.sb-show-main > div > div,
-.sb-show-main > div > div > div {
-  background: #fafafa !important;
+/* Keep main content area white - only target sidebar */
+.sb-show-main {
+  background: #ffffff !important;
 }
 
 /* Force sidebar background with maximum specificity */
@@ -594,21 +592,13 @@ div[data-testid="sidebar"] > div > div > div {
   background: #fafafa !important;
 }
 
-/* Ultimate sidebar background override */
-.sb-show-main,
-.sb-show-main > div,
-.sb-show-main > div > div:first-child,
-.sb-show-main > div > div:first-child > div,
-.sb-show-main > div > div:first-child > div > div {
-  background: #fafafa !important;
-}
-
-/* Target the sidebar specifically */
+/* Target only the sidebar specifically - not the main content */
 .sb-show-main > div > div:first-child {
   background: #fafafa !important;
 }
 
-/* Force all sidebar elements to use FAFAFA */
-.sb-show-main > div > div:first-child * {
+/* Force sidebar elements to use FAFAFA, but not the main content area */
+.sb-show-main > div > div:first-child > div,
+.sb-show-main > div > div:first-child > div > div {
   background: #fafafa !important;
 } 

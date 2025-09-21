@@ -16,7 +16,7 @@ const blockworkTheme = create({
   colorSecondary: '#171717', // Black primary
   
   // UI colors
-  appBg: '#fafafa',
+  appBg: '#ffffff',
   appContentBg: '#ffffff',
   appBorderColor: '#e5e5e5',
   appBorderRadius: 12,
