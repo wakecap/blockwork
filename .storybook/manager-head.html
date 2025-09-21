@@ -1,0 +1,36 @@
+<style>
+/* Force Blockwork logo display */
+.sb-bar .sb-bar__brand,
+[data-testid="sidebar-header"] {
+  background-image: url('/Logo-Vector.svg') !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: contain !important;
+  width: 200px !important;
+  height: 32px !important;
+  text-indent: -9999px !important;
+  overflow: hidden !important;
+}
+
+.sb-bar .sb-bar__brand *,
+[data-testid="sidebar-header"] * {
+  display: none !important;
+}
+
+.sb-bar .sb-bar__brand::before,
+[data-testid="sidebar-header"]::before {
+  content: "" !important;
+  display: block !important;
+  width: 200px !important;
+  height: 32px !important;
+  background-image: url('/Logo-Vector.svg') !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: contain !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  z-index: 9999 !important;
+}
+</style>
