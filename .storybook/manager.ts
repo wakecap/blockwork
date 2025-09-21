@@ -6,9 +6,9 @@ const blockworkTheme = create({
   base: 'light',
   
   // Brand configuration - simplified for Storybook 9
-  brandTitle: 'Blockwork Design System',
+  brandTitle: '',
   brandUrl: 'https://github.com/wakecap/blockwork',
-  brandImage: '/Logo-Vector.svg',
+  brandImage: '',
   brandTarget: '_self',
   
   // Core colors

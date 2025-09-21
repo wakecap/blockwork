@@ -1,7 +1,11 @@
 <style>
-/* Force Blockwork logo display */
+/* Force Blockwork logo display - More aggressive targeting */
 .sb-bar .sb-bar__brand,
-[data-testid="sidebar-header"] {
+[data-testid="sidebar-header"],
+.sb-bar [data-testid="sidebar-header"],
+.sb-bar > div:first-child,
+.sb-bar > div:first-child > div,
+.sb-bar > div:first-child > div > div {
   background-image: url('/Logo-Vector.svg') !important;
   background-repeat: no-repeat !important;
   background-position: center !important;
@@ -10,15 +14,24 @@
   height: 32px !important;
   text-indent: -9999px !important;
   overflow: hidden !important;
+  position: relative !important;
 }
 
 .sb-bar .sb-bar__brand *,
-[data-testid="sidebar-header"] * {
+[data-testid="sidebar-header"] *,
+.sb-bar [data-testid="sidebar-header"] *,
+.sb-bar > div:first-child *,
+.sb-bar > div:first-child > div *,
+.sb-bar > div:first-child > div > div * {
   display: none !important;
 }
 
 .sb-bar .sb-bar__brand::before,
-[data-testid="sidebar-header"]::before {
+[data-testid="sidebar-header"]::before,
+.sb-bar [data-testid="sidebar-header"]::before,
+.sb-bar > div:first-child::before,
+.sb-bar > div:first-child > div::before,
+.sb-bar > div:first-child > div > div::before {
   content: "" !important;
   display: block !important;
   width: 200px !important;
@@ -33,4 +46,50 @@
   transform: translate(-50%, -50%) !important;
   z-index: 9999 !important;
 }
+
+/* Force sidebar background to FAFAFA */
+.sb-sidebar,
+.sb-sidebar > div,
+.sb-sidebar > div > div,
+.sb-sidebar > div > div > div,
+[data-testid="sidebar"],
+[data-testid="sidebar"] > div,
+[data-testid="sidebar"] > div > div {
+  background: #fafafa !important;
+}
+
+/* Hide all Storybook text branding */
+.sb-bar .sb-bar__brand span,
+.sb-bar .sb-bar__brand a,
+.sb-bar .sb-bar__brand div,
+.sb-bar .sb-bar__brand svg,
+.sb-bar .sb-bar__brand img {
+  display: none !important;
+}
 </style>
+
+<script>
+// JavaScript to force logo display after page load
+document.addEventListener('DOMContentLoaded', function() {
+  function forceLogo() {
+    const brandElements = document.querySelectorAll('.sb-bar .sb-bar__brand, [data-testid="sidebar-header"], .sb-bar > div:first-child');
+    brandElements.forEach(element => {
+      if (element) {
+        element.innerHTML = '<img src="/Logo-Vector.svg" alt="Blockwork" style="height: 32px; width: auto; max-width: 200px; object-fit: contain;">';
+        element.style.background = 'none';
+        element.style.textIndent = '0';
+        element.style.overflow = 'visible';
+      }
+    });
+  }
+  
+  // Run immediately and after a delay
+  forceLogo();
+  setTimeout(forceLogo, 1000);
+  setTimeout(forceLogo, 3000);
+  
+  // Also run when Storybook updates
+  const observer = new MutationObserver(forceLogo);
+  observer.observe(document.body, { childList: true, subtree: true });
+});
+</script>
