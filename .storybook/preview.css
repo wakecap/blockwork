@@ -22,11 +22,27 @@
   border-bottom: 2px solid #ea580c;
 }
 
-/* Custom brand logo styling */
+/* Custom brand logo styling - Logo only, no text */
 .sb-bar .sb-bar__brand {
   color: #ffffff;
   font-weight: 700;
   font-size: 18px;
+}
+
+/* Hide brand text and show only logo */
+.sb-bar .sb-bar__brand span,
+.sb-bar .sb-bar__brand a span {
+  display: none !important;
+}
+
+/* Style the brand image/logo */
+.sb-bar .sb-bar__brand img,
+.sb-bar .sb-bar__brand svg {
+  height: 32px !important;
+  width: auto !important;
+  max-width: 200px !important;
+  object-fit: contain !important;
+  display: block !important;
 }
 
 .sb-bar .sb-bar__brand:hover {

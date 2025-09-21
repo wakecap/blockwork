@@ -5,10 +5,10 @@ import { themes } from 'storybook/theming';
 const blockworkTheme = {
   ...themes.light,
   
-  // Brand configuration
-  brandTitle: 'Blockwork Design System',
+  // Brand configuration - Logo only, no text
+  brandTitle: '',
   brandUrl: 'https://github.com/wakecap/blockwork',
-  brandImage: './blockwork logo-black.png',
+  brandImage: './blockwork-logo.png',
   brandTarget: '_self',
   
   // Color scheme
@@ -51,11 +51,11 @@ const blockworkTheme = {
   base: 'light',
   borderRadius: 8,
   
-  // Custom properties
+  // Custom properties - Logo only
   brand: {
-    title: 'Blockwork',
+    title: '',
     url: 'https://github.com/wakecap/blockwork',
-    image: './blockwork logo-black.png',
+    image: './blockwork-logo.png',
     target: '_self',
   },
 };
