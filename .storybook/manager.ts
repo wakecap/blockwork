@@ -57,10 +57,10 @@ const blockworkTheme = create({
   colorAddonSupportIcon: '#ffffff',
   
   // Sidebar colors
-  sidebarBg: '#ffffff',
+  sidebarBg: '#fafafa',
   sidebarTextColor: '#171717',
   sidebarSelectedColor: '#ea580c',
-  sidebarHoverColor: '#f5f5f5',
+  sidebarHoverColor: '#f0f0f0',
   
   // Canvas colors
   canvasBg: '#ffffff',
