@@ -5,17 +5,17 @@ import { create } from '@storybook/theming';
 const blockworkTheme = create({
   base: 'light',
   
-  // Brand configuration
+  // Brand configuration - simplified for Storybook 9
   brandTitle: 'Blockwork Design System',
   brandUrl: 'https://github.com/wakecap/blockwork',
   brandImage: '/blockwork-logo.png',
   brandTarget: '_self',
   
-  // Color scheme
-  colorPrimary: '#ea580c', // Orange accent
-  colorSecondary: '#171717', // Black primary
+  // Core colors
+  colorPrimary: '#ea580c',
+  colorSecondary: '#171717',
   
-  // UI colors
+  // Basic UI colors
   appBg: '#ffffff',
   appContentBg: '#ffffff',
   appBorderColor: '#e5e5e5',
@@ -49,28 +49,6 @@ const blockworkTheme = create({
   
   // Layout
   borderRadius: 12,
-  
-  // Additional Storybook 9 properties
-  colorAddonSupport: '#ea580c',
-  colorAddonSupportHover: '#c2410c',
-  colorAddonSupportText: '#ffffff',
-  colorAddonSupportIcon: '#ffffff',
-  
-  // Sidebar colors
-  sidebarBg: '#fafafa',
-  sidebarTextColor: '#171717',
-  sidebarSelectedColor: '#ea580c',
-  sidebarHoverColor: '#f0f0f0',
-  
-  // Canvas colors
-  canvasBg: '#ffffff',
-  canvasToolbarBg: '#f8f9fa',
-  
-  // Toolbar colors
-  toolbarBg: '#171717',
-  toolbarTextColor: '#ffffff',
-  toolbarSelectedColor: '#ea580c',
-  toolbarHoverColor: '#404040',
 });
 
 addons.setConfig({
@@ -85,3 +63,6 @@ addons.setConfig({
   showCanvas: true,
   showDocsPage: true,
 });
+
+// Debug: Log the theme configuration
+console.log('Blockwork theme loaded:', blockworkTheme);
