@@ -610,7 +610,8 @@ div[data-testid="sidebar"] > div > div > div {
   font-size: 18px !important;
 }
 
-.sb-bar .sb-bar__brand img {
+.sb-bar .sb-bar__brand img,
+.sb-bar .sb-bar__brand svg {
   height: 32px !important;
   width: auto !important;
   max-width: 200px !important;
@@ -623,11 +624,7 @@ div[data-testid="sidebar"] > div > div > div {
   display: none !important;
 }
 
-/* Force the title to show Blockwork */
+/* Hide the text and show only the logo */
 .sb-bar .sb-bar__brand::after {
-  content: "Blockwork Design System" !important;
-  color: #171717 !important;
-  font-weight: 700 !important;
-  font-size: 18px !important;
-  margin-left: 8px !important;
+  display: none !important;
 } 
