@@ -48,17 +48,13 @@ const blockworkTheme = create({
   fontCode: '"JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace',
   
   // Layout
-  appBorderRadius: 12,
+  borderRadius: 12,
   
   // Sidebar colors
   sidebarBg: '#fafafa',
   sidebarTextColor: '#171717',
   sidebarSelectedColor: '#ea580c',
   sidebarHoverColor: '#f0f0f0',
-  
-  // Additional sidebar properties
-  sidebarBorder: '#e5e5e5',
-  sidebarBorderRadius: 0,
 });
 
 addons.setConfig({

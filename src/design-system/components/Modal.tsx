@@ -174,13 +174,13 @@ export const ConfirmationModal: React.FC<{
         <div className="flex space-x-3 justify-end">
           <button
             onClick={handleCancel}
-            className="px-4 py-2 text-neutral-700 bg-neutral-200 rounded-lg hover:bg-neutral-300 transition-colors"
+            className="px-4 py-2 text-neutral-700 bg-neutral-200 rounded-sm hover:bg-neutral-300 transition-colors"
           >
             {cancelText}
           </button>
           <button
             onClick={handleConfirm}
-            className={`px-4 py-2 rounded-lg transition-colors ${currentVariant.button}`}
+            className={`px-4 py-2 rounded-sm transition-colors ${currentVariant.button}`}
           >
             {confirmText}
           </button>
@@ -241,14 +241,14 @@ export const FormModal: React.FC<{
           <button
             onClick={handleCancel}
             disabled={isLoading}
-            className="px-4 py-2 text-neutral-700 bg-neutral-200 rounded-lg hover:bg-neutral-300 transition-colors disabled:opacity-50"
+            className="px-4 py-2 text-neutral-700 bg-neutral-200 rounded-sm hover:bg-neutral-300 transition-colors disabled:opacity-50"
           >
             {cancelText}
           </button>
           <button
             onClick={handleSubmit}
             disabled={isLoading}
-            className="px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors disabled:opacity-50"
+            className="px-4 py-2 bg-primary-600 text-white rounded-sm hover:bg-primary-700 transition-colors disabled:opacity-50"
           >
             {isLoading ? 'Loading...' : submitText}
           </button>

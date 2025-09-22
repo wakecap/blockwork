@@ -276,7 +276,7 @@ export const QuickActionsPalette: React.FC<{
     <>
       <button
         onClick={open}
-        className="inline-flex items-center px-4 py-2 bg-neutral-100 text-neutral-700 rounded-lg hover:bg-neutral-200 transition-colors"
+        className="inline-flex items-center px-4 py-2 bg-neutral-100 text-neutral-700 rounded-sm hover:bg-neutral-200 transition-colors"
       >
                       <FontAwesomeIcon icon={faKeyboard} className="w-4 h-4 mr-2" />
         Quick Actions

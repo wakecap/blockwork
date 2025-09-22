@@ -1,50 +1,51 @@
 import type { StorybookConfig } from '@storybook/react-vite';
-import { mergeConfig } from 'vite';
-import { dirname, join } from 'path';
-import { fileURLToPath } from 'url';
-
-function getDirname(metaUrl: string) {
-  return dirname(fileURLToPath(metaUrl));
-}
 
 const config: StorybookConfig = {
   stories: [
-    "../src/design-system/stories/**/*.stories.@(js|jsx|ts|tsx)",
-    "../src/components/**/*.stories.@(js|jsx|ts|tsx)",
+    '../src/SimpleButton.stories.@(js|jsx|ts|tsx)',
+    '../src/components/**/*.stories.@(js|jsx|ts|tsx)',
+    '../src/design-system/stories/**/*.stories.@(js|jsx|ts|tsx)',
   ],
-
   addons: [
     '@storybook/addon-essentials',
-    "@storybook/addon-a11y", 
     '@storybook/addon-docs',
-    '@storybook/addon-interactions',
+    '@storybook/addon-a11y',
+    '@storybook/addon-links',
   ],
-
   framework: {
-    name: "@storybook/react-vite",
+    name: '@storybook/react-vite',
     options: {},
   },
-
-  core: {
-    disableTelemetry: true,
-  },
-
+  staticDirs: ['../public'],
   typescript: {
     check: false,
   },
-  
-  staticDirs: ['../public'],
-
-  async viteFinal(config) {
-    const __dirname = getDirname(import.meta.url);
-    return mergeConfig(config, {
-      resolve: {
-        alias: {
-          '@': join(__dirname, '../'),
-        },
+  viteFinal: async (config) => {
+    // Fix acorn parsing issues
+    config.esbuild = {
+      ...config.esbuild,
+      target: 'es2020',
+    };
+    
+    // Add PostCSS configuration for Tailwind
+    config.css = {
+      ...config.css,
+      postcss: {
+        plugins: [
+          require('tailwindcss'),
+          require('autoprefixer'),
+        ],
       },
-    });
-  }
+    };
+    
+    // Add additional configuration for better parsing
+    config.define = {
+      ...config.define,
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
+    };
+    
+    return config;
+  },
 };
 
-export default config; 
+export default config;

@@ -324,7 +324,7 @@ export const UserProfileForm: React.FC<{
       <div className="mt-6 flex justify-end">
         <button
           type="submit"
-          className="px-6 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors"
+          className="px-6 py-2 bg-primary-600 text-white rounded-sm hover:bg-primary-700 transition-colors"
         >
           Save Profile
         </button>
@@ -457,7 +457,7 @@ export const SettingsForm: React.FC<{
       <div className="mt-6 flex justify-end">
         <button
           type="submit"
-          className="px-6 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors"
+          className="px-6 py-2 bg-primary-600 text-white rounded-sm hover:bg-primary-700 transition-colors"
         >
           Save Settings
         </button>

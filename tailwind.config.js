@@ -418,6 +418,10 @@ export default {
           '0%, 100%': { opacity: '1' },
           '50%': { opacity: '0.5' },
         },
+        'bounce-subtle': {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-2px)' },
+        },
       },
       
       animation: {
@@ -427,6 +431,8 @@ export default {
         'slide-in-from-bottom': 'slide-in-from-bottom 0.25s ease-out',
         'scale-in': 'scale-in 0.25s ease-out',
         'pulse': 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'spin-slow': 'spin 1.5s linear infinite',
+        'bounce-subtle': 'bounce-subtle 1.5s ease-in-out infinite',
       },
 
       // Opacity Scale

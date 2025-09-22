@@ -1,0 +1,359 @@
+/* Fixed sidebar header and scrollable content for Storybook 9.x */
+
+/* Target the main sidebar container */
+[data-testid="sidebar-root"],
+.sb-bar,
+.sidebar-container {
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100vh !important;
+  overflow: hidden !important;
+}
+
+/* Target the sidebar content wrapper */
+[data-testid="sidebar-root"] > div,
+.sb-bar > div,
+.sidebar-container > div {
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+  overflow: hidden !important;
+}
+
+/* Fixed header area - brand logo and title */
+[data-testid="sidebar-root"] > div > div:first-child,
+.sb-bar > div > div:first-child,
+.sidebar-container > div > div:first-child {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 10 !important;
+  background: #fafafa !important;
+  border-bottom: 1px solid #e5e5e5 !important;
+  flex-shrink: 0 !important;
+  padding: 16px !important;
+}
+
+/* Fixed search bar area */
+[data-testid="sidebar-root"] > div > div:nth-child(2),
+.sb-bar > div > div:nth-child(2),
+.sidebar-container > div > div:nth-child(2) {
+  position: sticky !important;
+  top: 80px !important;
+  z-index: 9 !important;
+  background: #fafafa !important;
+  border-bottom: 1px solid #e5e5e5 !important;
+  flex-shrink: 0 !important;
+  padding: 12px 16px !important;
+}
+
+/* Scrollable content area - story list */
+[data-testid="sidebar-root"] > div > div:last-child,
+.sb-bar > div > div:last-child,
+.sidebar-container > div > div:last-child {
+  flex: 1 !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  padding: 16px !important;
+}
+
+/* Additional selectors for Storybook 9.x specific structure */
+
+/* Target the sidebar panel directly */
+.sidebar-container,
+[data-testid="sidebar-root"] {
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100vh !important;
+  overflow: hidden !important;
+}
+
+/* Target the sidebar content area */
+.sidebar-container > div,
+[data-testid="sidebar-root"] > div {
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+  overflow: hidden !important;
+}
+
+/* Header area - brand logo */
+.sidebar-container > div > div:first-child,
+[data-testid="sidebar-root"] > div > div:first-child {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 10 !important;
+  background: #fafafa !important;
+  border-bottom: 1px solid #e5e5e5 !important;
+  flex-shrink: 0 !important;
+  padding: 16px !important;
+}
+
+/* Search area */
+.sidebar-container > div > div:nth-child(2),
+[data-testid="sidebar-root"] > div > div:nth-child(2) {
+  position: sticky !important;
+  top: 80px !important;
+  z-index: 9 !important;
+  background: #fafafa !important;
+  border-bottom: 1px solid #e5e5e5 !important;
+  flex-shrink: 0 !important;
+  padding: 12px 16px !important;
+}
+
+/* Content area - story list */
+.sidebar-container > div > div:last-child,
+[data-testid="sidebar-root"] > div > div:last-child {
+  flex: 1 !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  padding: 16px !important;
+}
+
+/* More specific selectors for Storybook 9.x */
+div[data-testid="sidebar-root"] {
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100vh !important;
+  overflow: hidden !important;
+}
+
+div[data-testid="sidebar-root"] > div {
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+  overflow: hidden !important;
+}
+
+/* Target the first child (header) */
+div[data-testid="sidebar-root"] > div > div:first-child {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 10 !important;
+  background: #fafafa !important;
+  border-bottom: 1px solid #e5e5e5 !important;
+  flex-shrink: 0 !important;
+  padding: 16px !important;
+}
+
+/* Target the second child (search) */
+div[data-testid="sidebar-root"] > div > div:nth-child(2) {
+  position: sticky !important;
+  top: 80px !important;
+  z-index: 9 !important;
+  background: #fafafa !important;
+  border-bottom: 1px solid #e5e5e5 !important;
+  flex-shrink: 0 !important;
+  padding: 12px 16px !important;
+}
+
+/* Target the last child (content) */
+div[data-testid="sidebar-root"] > div > div:last-child {
+  flex: 1 !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  padding: 16px !important;
+}
+
+/* Alternative selectors for different Storybook versions */
+.sidebar-container .os-host {
+  height: 100% !important;
+}
+
+.sidebar-container .os-content {
+  height: 100% !important;
+  overflow-y: auto !important;
+}
+
+/* Story list container */
+[data-testid="story-list"] {
+  padding: 0 !important;
+}
+
+/* Story items */
+[data-testid="story-list"] > div {
+  margin-bottom: 4px !important;
+}
+
+/* Collapsible story groups */
+[data-testid="story-list"] [role="button"] {
+  padding: 8px 12px !important;
+  border-radius: 6px !important;
+  transition: all 0.2s ease !important;
+}
+
+[data-testid="story-list"] [role="button"]:hover {
+  background: #f0f0f0 !important;
+}
+
+/* Selected story */
+[data-testid="story-list"] [aria-selected="true"] {
+  background: #ea580c !important;
+  color: white !important;
+}
+
+/* Story group headers */
+[data-testid="story-list"] h3 {
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  color: #737373 !important;
+  margin: 16px 0 8px 0 !important;
+  padding: 0 12px !important;
+}
+
+/* Search input styling */
+[data-testid="sidebar-root"] input[type="search"],
+[data-testid="sidebar-root"] input[placeholder*="Search"] {
+  width: 100% !important;
+  padding: 8px 12px !important;
+  border: 1px solid #e5e5e5 !important;
+  border-radius: 6px !important;
+  background: white !important;
+  font-size: 14px !important;
+  transition: border-color 0.2s ease !important;
+}
+
+[data-testid="sidebar-root"] input[type="search"]:focus,
+[data-testid="sidebar-root"] input[placeholder*="Search"]:focus {
+  outline: none !important;
+  border-color: #ea580c !important;
+  box-shadow: 0 0 0 2px rgba(234, 88, 12, 0.1) !important;
+}
+
+/* Brand logo area */
+[data-testid="sidebar-root"] img,
+[data-testid="sidebar-root"] svg {
+  max-height: 32px !important;
+  width: auto !important;
+}
+
+/* Custom scrollbar for sidebar */
+.sb-bar .os-content > div:last-child::-webkit-scrollbar,
+[data-testid="sidebar-root"] > div:last-child::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sb-bar .os-content > div:last-child::-webkit-scrollbar-track,
+[data-testid="sidebar-root"] > div:last-child::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sb-bar .os-content > div:last-child::-webkit-scrollbar-thumb,
+[data-testid="sidebar-root"] > div:last-child::-webkit-scrollbar-thumb {
+  background: #d4d4d4;
+  border-radius: 3px;
+}
+
+.sb-bar .os-content > div:last-child::-webkit-scrollbar-thumb:hover,
+[data-testid="sidebar-root"] > div:last-child::-webkit-scrollbar-thumb:hover {
+  background: #a3a3a3;
+}
+
+/* Additional Storybook 9.x specific selectors */
+[data-testid="sidebar-root"] {
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100vh !important;
+  overflow: hidden !important;
+  border: 2px solid red !important; /* Debug border */
+}
+
+/* Target the sidebar content wrapper */
+[data-testid="sidebar-root"] > div {
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+  overflow: hidden !important;
+}
+
+/* Make the first child (header) sticky */
+[data-testid="sidebar-root"] > div > div:first-child {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 10 !important;
+  background: #fafafa !important;
+  border-bottom: 1px solid #e5e5e5 !important;
+  flex-shrink: 0 !important;
+  padding: 16px !important;
+  border: 2px solid blue !important; /* Debug border */
+}
+
+/* Make the second child (search) sticky */
+[data-testid="sidebar-root"] > div > div:nth-child(2) {
+  position: sticky !important;
+  top: 80px !important;
+  z-index: 9 !important;
+  background: #fafafa !important;
+  border-bottom: 1px solid #e5e5e5 !important;
+  flex-shrink: 0 !important;
+  padding: 12px 16px !important;
+  border: 2px solid green !important; /* Debug border */
+}
+
+/* Make the last child (content) scrollable */
+[data-testid="sidebar-root"] > div > div:last-child {
+  flex: 1 !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  padding: 16px !important;
+  border: 2px solid orange !important; /* Debug border */
+}
+
+/* Force the layout with more specific selectors */
+div[data-testid="sidebar-root"] {
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100vh !important;
+  overflow: hidden !important;
+}
+
+div[data-testid="sidebar-root"] > div {
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+  overflow: hidden !important;
+}
+
+div[data-testid="sidebar-root"] > div > div:first-child {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 10 !important;
+  background: #fafafa !important;
+  border-bottom: 1px solid #e5e5e5 !important;
+  flex-shrink: 0 !important;
+  padding: 16px !important;
+}
+
+div[data-testid="sidebar-root"] > div > div:nth-child(2) {
+  position: sticky !important;
+  top: 80px !important;
+  z-index: 9 !important;
+  background: #fafafa !important;
+  border-bottom: 1px solid #e5e5e5 !important;
+  flex-shrink: 0 !important;
+  padding: 12px 16px !important;
+}
+
+div[data-testid="sidebar-root"] > div > div:last-child {
+  flex: 1 !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  padding: 16px !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .sidebar-header {
+    padding: 12px !important;
+  }
+  
+  .sidebar-search {
+    padding: 8px 12px !important;
+    top: 60px !important;
+  }
+  
+  .sidebar-content {
+    padding: 0 12px 12px 12px !important;
+  }
+}

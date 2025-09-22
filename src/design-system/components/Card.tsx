@@ -195,7 +195,7 @@ export const ProductCard: React.FC<{
               e.stopPropagation();
               onAddToCart?.();
             }}
-            className="px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors"
+            className="px-4 py-2 bg-primary-600 text-white rounded-sm hover:bg-primary-700 transition-colors"
           >
             Add to Cart
           </button>
@@ -313,7 +313,7 @@ export const ArticleCard: React.FC<{
           e.stopPropagation();
           onReadMore?.();
         }}
-        className="w-full px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors"
+        className="w-full px-4 py-2 bg-primary-600 text-white rounded-sm hover:bg-primary-700 transition-colors"
       >
         Read More
       </button>

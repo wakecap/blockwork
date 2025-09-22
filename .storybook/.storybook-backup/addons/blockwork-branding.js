@@ -1,5 +1,5 @@
 // Blockwork Branding Addon
-import { addons } from '@storybook/manager-api';
+import { addons } from 'storybook/manager-api';
 
 // Function to replace Storybook branding with Blockwork logo
 function replaceBranding() {

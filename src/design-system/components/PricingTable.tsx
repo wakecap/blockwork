@@ -118,7 +118,7 @@ export const PricingTable: React.FC<PricingTableProps> = ({
             <button
               key={period.value}
               onClick={() => handlePeriodChange(period.value)}
-              className={`px-4 py-2 text-sm font-medium rounded-md transition-colors ${
+              className={`px-4 py-2 text-sm font-medium rounded-sm transition-colors ${
                 currentPeriod === period.value
                   ? 'bg-white text-primary-600 shadow-sm'
                   : 'text-neutral-600 hover:text-neutral-900'
@@ -240,7 +240,7 @@ export const PricingTable: React.FC<PricingTableProps> = ({
         <div className="text-center">
           <button
             onClick={plan.cta.onClick}
-            className={`w-full px-6 py-3 font-semibold rounded-lg transition-colors ${
+            className={`w-full px-6 py-3 font-semibold rounded-sm transition-colors ${
               plan.cta.variant === 'secondary'
                 ? 'bg-neutral-100 text-neutral-900 hover:bg-neutral-200'
                 : plan.cta.variant === 'outline'

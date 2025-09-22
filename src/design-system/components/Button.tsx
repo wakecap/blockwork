@@ -1,9 +1,8 @@
 import React from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
-import { cn } from '@/src/utils/utils';
+import { cn } from '../../utils/utils';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
-import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 // Button variants using CVA with black-primary design system and responsive enhancements
 const buttonVariants = cva(
@@ -58,12 +57,11 @@ const iconSizeMap = {
   icon: "w-5 h-5 sm:w-5 sm:h-5"
 };
 
-// Loading spinner component
+// Minimal loading spinner component
 const LoadingSpinner: React.FC<{ size: keyof typeof iconSizeMap }> = ({ size }) => (
-  <FontAwesomeIcon 
-    icon={faSpinner} 
-    className={cn(iconSizeMap[size], "animate-spin")} 
-  />
+  <div className={cn(iconSizeMap[size], "relative")}>
+    <div className="absolute inset-0 rounded-full border-2 border-current border-t-transparent animate-spin-slow"></div>
+  </div>
 );
 
 // Ripple effect component for enhanced interactions
