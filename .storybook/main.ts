@@ -1,53 +1,52 @@
-import { mergeConfig } from 'vite';
-import path from 'path';
-import { fileURLToPath } from 'url';
+import type { StorybookConfig } from '@storybook/react-vite';
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-
-const config = {
+const config: StorybookConfig = {
   stories: [
-    "../design-system/stories/**/*.stories.@(js|jsx|ts|tsx)",
-    "../components/**/*.stories.@(js|jsx|ts|tsx)",
+    '../src/design-system/stories/**/*.stories.@(js|jsx|ts|tsx)',
+    '../src/stories/**/*.stories.@(js|jsx|ts|tsx)',
   ],
   addons: [
-    "@storybook/addon-essentials",
-    "@storybook/addon-a11y",
-    "@storybook/addon-viewport",
-    "@storybook/addon-backgrounds",
-    "@storybook/addon-measure",
-    "@storybook/addon-outline",
+    '@storybook/addon-docs',
+    '@storybook/addon-a11y',
+    '@storybook/addon-links',
   ],
-  framework: {
-    name: "@storybook/react-vite",
-    options: {},
-  },
-  docs: {
-    autodocs: true,
-  },
-  core: {
-    disableTelemetry: true,
-  },
-  typescript: {
-    check: false,
-  },
   features: {
     storyStoreV7: true,
   },
-  // Custom branding configuration
-  title: "Blockwork Design System",
-  brandTitle: "Blockwork",
-  brandUrl: "https://github.com/wakecap/blockwork",
-  brandImage: "./blockwork-logo.svg",
-  brandTarget: "_self",
-  async viteFinal(config) {
-    return mergeConfig(config, {
-      resolve: {
-        alias: {
-          '@': path.resolve(__dirname, '../'),
-        },
+  framework: {
+    name: '@storybook/react-vite',
+    options: {},
+  },
+  staticDirs: ['../public'],
+  typescript: {
+    check: false,
+  },
+  viteFinal: async (config) => {
+    // Fix acorn parsing issues
+    config.esbuild = {
+      ...config.esbuild,
+      target: 'es2020',
+    };
+    
+    // Add PostCSS configuration for Tailwind
+    config.css = {
+      ...config.css,
+      postcss: {
+        plugins: [
+          require('tailwindcss'),
+          require('autoprefixer'),
+        ],
       },
-    });
+    };
+    
+    // Add additional configuration for better parsing
+    config.define = {
+      ...config.define,
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
+    };
+    
+    return config;
   },
 };
 
-export default config; 
+export default config;

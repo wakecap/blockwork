@@ -22,6 +22,7 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["src", "design-system"],
+  "include": ["src"],
+  "exclude": ["**/*.test.tsx", "**/*.test.ts", "**/__tests__/**"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

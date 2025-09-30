@@ -1,25 +1,26 @@
-import { addons } from '@storybook/manager-api';
-import { themes } from '@storybook/theming';
+import { addons } from 'storybook/manager-api';
+import { create, themes } from 'storybook/theming';
 
-// Custom Blockwork theme
-const blockworkTheme = {
-  ...themes.light,
+
+// Custom Blockwork theme for Storybook 9.x
+const blockworkTheme = create({
+  base: 'light',
   
   // Brand configuration
   brandTitle: 'Blockwork Design System',
   brandUrl: 'https://github.com/wakecap/blockwork',
-  brandImage: './blockwork-logo.svg',
+  brandImage: '/Logo-Vector.svg',
   brandTarget: '_self',
   
-  // Color scheme
-  colorPrimary: '#ea580c', // Orange accent
-  colorSecondary: '#171717', // Black primary
+  // Core colors
+  colorPrimary: '#ea580c',
+  colorSecondary: '#171717',
   
-  // UI colors
+  // Basic UI colors
   appBg: '#ffffff',
   appContentBg: '#ffffff',
   appBorderColor: '#e5e5e5',
-  appBorderRadius: 8,
+  appBorderRadius: 12,
   
   // Text colors
   textColor: '#171717',
@@ -35,7 +36,7 @@ const blockworkTheme = {
   inputBg: '#ffffff',
   inputBorder: '#e5e5e5',
   inputTextColor: '#171717',
-  inputBorderRadius: 4,
+  inputBorderRadius: 12,
   
   // Button colors
   buttonBg: '#ea580c',
@@ -44,21 +45,17 @@ const blockworkTheme = {
   booleanSelectedBg: '#ea580c',
   
   // Typography
-  fontBase: '"Figtree", system-ui, -apple-system, sans-serif',
-  fontCode: '"SF Mono", Consolas, monospace',
+  fontBase: '"Figtree", "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif',
+  fontCode: '"JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace',
   
-  // Layout
-  base: 'light',
-  borderRadius: 8,
-  
-  // Custom properties
-  brand: {
-    title: 'Blockwork',
-    url: 'https://github.com/wakecap/blockwork',
-    image: './blockwork-logo.svg',
-    target: '_self',
-  },
-};
+  // Sidebar colors
+  sidebarBg: '#fafafa',
+  sidebarTextColor: '#171717',
+  sidebarSelectedColor: '#C03131',
+  sidebarHoverColor: '#f0f0f0',
+  sidebarBorder: '#e5e5e5',
+  sidebarBorderRadius: 0,
+});
 
 addons.setConfig({
   theme: blockworkTheme,
@@ -72,3 +69,5 @@ addons.setConfig({
   showCanvas: true,
   showDocsPage: true,
 });
+
+console.log('Blockwork theme loaded:', blockworkTheme);

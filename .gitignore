@@ -46,6 +46,9 @@ pids
 coverage/
 *.lcov
 
+# Test report
+test-report.xml
+
 # nyc test coverage
 .nyc_output
 
@@ -103,3 +106,5 @@ temp/
 *.njsproj
 *.sln
 *.sw?
+
+*storybook.log

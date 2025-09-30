@@ -1,11 +1,8 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+export default {
   darkMode: ["class"],
   content: [
     "./src/**/*.{js,jsx,ts,tsx}",
-    "./design-system/**/*.{js,jsx,ts,tsx}",
-    "./components/**/*.{js,jsx,ts,tsx}",
-    "./lib/**/*.{js,jsx,ts,tsx}",
     "./.storybook/**/*.{js,jsx,ts,tsx,mdx}",
   ],
   theme: {
@@ -421,6 +418,10 @@ module.exports = {
           '0%, 100%': { opacity: '1' },
           '50%': { opacity: '0.5' },
         },
+        'bounce-subtle': {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-2px)' },
+        },
       },
       
       animation: {
@@ -430,6 +431,8 @@ module.exports = {
         'slide-in-from-bottom': 'slide-in-from-bottom 0.25s ease-out',
         'scale-in': 'scale-in 0.25s ease-out',
         'pulse': 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'spin-slow': 'spin 1.5s linear infinite',
+        'bounce-subtle': 'bounce-subtle 1.5s ease-in-out infinite',
       },
 
       // Opacity Scale
