@@ -1,5 +1,10 @@
 import type { StorybookConfig } from '@storybook/react-vite';
 import path from 'path';
+import fs from 'fs';
+
+// Check if public directory exists before adding it to staticDirs
+const publicDir = path.resolve(__dirname, '../public');
+const staticDirs = fs.existsSync(publicDir) ? [publicDir] : [];
 
 const config: StorybookConfig = {
   stories: [
@@ -11,14 +16,12 @@ const config: StorybookConfig = {
     '@storybook/addon-a11y',
     '@storybook/addon-links',
   ],
-  features: {
-    storyStoreV7: true,
-  },
+  features: {},
   framework: {
     name: '@storybook/react-vite',
     options: {},
   },
-  staticDirs: [path.resolve(__dirname, '../public')],
+  staticDirs,
   typescript: {
     check: false,
   },
