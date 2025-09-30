@@ -9,7 +9,7 @@ const blockworkTheme = create({
   // Brand configuration
   brandTitle: 'Blockwork Design System',
   brandUrl: 'https://github.com/wakecap/blockwork',
-  brandImage: '/assets/icons/Logo-Vector.svg',
+  brandImage: '/assets/images/blockwork-logo.png',
   brandTarget: '_self',
   
   // Core colors
