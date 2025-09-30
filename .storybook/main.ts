@@ -3,8 +3,25 @@ import path from 'path';
 import fs from 'fs';
 
 // Check if public directory exists before adding it to staticDirs
-const publicDir = path.resolve(__dirname, '../public');
-const staticDirs = fs.existsSync(publicDir) ? [publicDir] : [];
+// Try multiple possible locations for the public directory
+const possiblePublicDirs = [
+  path.resolve(__dirname, '../public'),
+  path.resolve(process.cwd(), 'public'),
+  path.resolve(process.cwd(), './public'),
+];
+
+const publicDir = possiblePublicDirs.find(dir => fs.existsSync(dir));
+const staticDirs = publicDir ? [publicDir] : [];
+
+// Debug information for CI environments
+if (process.env.CI || process.env.GITHUB_ACTIONS) {
+  console.log('🔍 Storybook CI Debug Info:');
+  console.log('Current working directory:', process.cwd());
+  console.log('__dirname:', __dirname);
+  console.log('Possible public directories:', possiblePublicDirs);
+  console.log('Public directory exists:', publicDir);
+  console.log('Static dirs:', staticDirs);
+}
 
 const config: StorybookConfig = {
   stories: [
