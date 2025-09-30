@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { ChatBubble, SentMessage, ReceivedMessage, SystemMessage } from '../components/ChatBubble';
 
 const meta: Meta<typeof ChatBubble> = {
-  title: 'Communication/ChatBubble',
+  title: 'Components/ChatBubble',
   component: ChatBubble,
   parameters: {
     layout: 'padded',

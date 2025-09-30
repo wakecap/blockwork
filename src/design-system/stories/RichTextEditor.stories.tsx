@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { RichTextEditor, WYSIWYGEditor, MarkdownEditor, SimpleEditor } from '../components/RichTextEditor';
 
 const meta: Meta<typeof RichTextEditor> = {
-  title: 'Forms & Data Entry/RichTextEditor',
+  title: 'Forms and Data Entry/RichTextEditor',
   component: RichTextEditor,
   parameters: {
     layout: 'padded',

@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Skeleton, SkeletonText, SkeletonAvatar, SkeletonButton, SkeletonCard, SkeletonTable } from '../components/Skeleton';
 
 const meta: Meta<typeof Skeleton> = {
-  title: 'Feedback & Status/Skeleton',
+  title: 'Components/Skeleton',
   component: Skeleton,
   parameters: {
     layout: 'padded',

@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faUser, faCog, faFile, faSearch, faPlus, faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 const meta: Meta<typeof CommandPalette> = {
-  title: 'Utility & Advanced Components/CommandPalette',
+  title: 'Navigation/CommandPalette',
   component: CommandPalette,
   parameters: {
     layout: 'padded',

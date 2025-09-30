@@ -5,7 +5,7 @@ import { Input } from '../components/Input';
 import { faSearch, faEye } from '@fortawesome/free-solid-svg-icons';
 
 const meta: Meta<typeof Input> = {
-  title: 'Components/Input',
+  title: 'Forms and Data Entry/Input',
   component: Input,
   tags: ['autodocs'],
   argTypes: {

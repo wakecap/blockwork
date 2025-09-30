@@ -8,7 +8,7 @@ import { Badge } from './badge';
 import { Search, Mail, Lock, User } from 'lucide-react';
 
 const meta: Meta = {
-  title: 'UI/RTL Support',
+  title: 'Components/RTL Support',
   parameters: {
     layout: 'centered',
     docs: {

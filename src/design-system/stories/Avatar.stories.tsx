@@ -13,7 +13,7 @@ const meta: Meta<typeof Avatar> = {
   argTypes: {
     size: {
       control: { type: 'select' },
-      options: ['xs', 'sm', 'md', 'lg', 'xl'],
+      options: ['xs', 'sm', 'md', 'lg', 'xl', 'iconXs', 'iconSm', 'iconMd', 'iconLg', 'iconXl'],
     },
     status: {
       control: { type: 'select' },
@@ -23,9 +23,9 @@ const meta: Meta<typeof Avatar> = {
       control: { type: 'select' },
       options: ['top-right', 'top-left', 'bottom-right', 'bottom-left'],
     },
-    shape: {
-      control: { type: 'select' },
-      options: ['circle', 'square'],
+    showChevron: {
+      control: { type: 'boolean' },
+      description: 'Show chevron down icon for dropdown indicators',
     },
   },
 };
@@ -35,7 +35,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    initials: 'JD',
+    name: 'John Doe',
   },
 };
 
@@ -46,9 +46,9 @@ export const WithImage: Story = {
   },
 };
 
-export const WithInitials: Story = {
+export const WithName: Story = {
   args: {
-    initials: 'JD',
+    name: 'Alice Smith',
   },
 };
 
@@ -66,77 +66,70 @@ export const WithCustomIcon: Story = {
 
 export const Online: Story = {
   args: {
-    initials: 'JD',
+    name: 'John Doe',
     status: 'online',
   },
 };
 
 export const Offline: Story = {
   args: {
-    initials: 'JD',
+    name: 'John Doe',
     status: 'offline',
   },
 };
 
 export const Away: Story = {
   args: {
-    initials: 'JD',
+    name: 'John Doe',
     status: 'away',
   },
 };
 
 export const Busy: Story = {
   args: {
-    initials: 'JD',
+    name: 'John Doe',
     status: 'busy',
-  },
-};
-
-export const Square: Story = {
-  args: {
-    initials: 'JD',
-    shape: 'square',
   },
 };
 
 export const ExtraSmall: Story = {
   args: {
-    initials: 'JD',
+    name: 'John Doe',
     size: 'xs',
   },
 };
 
 export const Small: Story = {
   args: {
-    initials: 'JD',
+    name: 'John Doe',
     size: 'sm',
   },
 };
 
 export const Medium: Story = {
   args: {
-    initials: 'JD',
+    name: 'John Doe',
     size: 'md',
   },
 };
 
 export const Large: Story = {
   args: {
-    initials: 'JD',
+    name: 'John Doe',
     size: 'lg',
   },
 };
 
 export const ExtraLarge: Story = {
   args: {
-    initials: 'JD',
+    name: 'John Doe',
     size: 'xl',
   },
 };
 
 export const StatusTopLeft: Story = {
   args: {
-    initials: 'JD',
+    name: 'John Doe',
     status: 'online',
     statusPosition: 'top-left',
   },
@@ -144,7 +137,7 @@ export const StatusTopLeft: Story = {
 
 export const StatusTopRight: Story = {
   args: {
-    initials: 'JD',
+    name: 'John Doe',
     status: 'online',
     statusPosition: 'top-right',
   },
@@ -152,7 +145,7 @@ export const StatusTopRight: Story = {
 
 export const StatusBottomLeft: Story = {
   args: {
-    initials: 'JD',
+    name: 'John Doe',
     status: 'online',
     statusPosition: 'bottom-left',
   },
@@ -160,7 +153,7 @@ export const StatusBottomLeft: Story = {
 
 export const StatusBottomRight: Story = {
   args: {
-    initials: 'JD',
+    name: 'John Doe',
     status: 'online',
     statusPosition: 'bottom-right',
   },
@@ -168,19 +161,34 @@ export const StatusBottomRight: Story = {
 
 export const Clickable: Story = {
   args: {
-    initials: 'JD',
+    name: 'John Doe',
     onClick: () => console.log('Avatar clicked!'),
+  },
+};
+
+export const WithChevron: Story = {
+  args: {
+    name: 'Project Alpha',
+    showChevron: true,
+    onClick: () => console.log('Project dropdown clicked!'),
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Avatar with chevron down icon, typically used for project or organization selectors that open dropdown menus.',
+      },
+    },
   },
 };
 
 export const AllSizes: Story = {
   render: () => (
     <div className="flex items-center gap-4">
-      <Avatar initials="JD" size="xs" />
-      <Avatar initials="JD" size="sm" />
-      <Avatar initials="JD" size="md" />
-      <Avatar initials="JD" size="lg" />
-      <Avatar initials="JD" size="xl" />
+      <Avatar name="John Doe" size="xs" />
+      <Avatar name="John Doe" size="sm" />
+      <Avatar name="John Doe" size="md" />
+      <Avatar name="John Doe" size="lg" />
+      <Avatar name="John Doe" size="xl" />
     </div>
   ),
 };
@@ -188,10 +196,118 @@ export const AllSizes: Story = {
 export const AllStatuses: Story = {
   render: () => (
     <div className="flex items-center gap-4">
-      <Avatar initials="JD" status="online" />
-      <Avatar initials="JD" status="offline" />
-      <Avatar initials="JD" status="away" />
-      <Avatar initials="JD" status="busy" />
+      <Avatar name="John Doe" status="online" />
+      <Avatar name="John Doe" status="offline" />
+      <Avatar name="John Doe" status="away" />
+      <Avatar name="John Doe" status="busy" />
     </div>
   ),
+};
+
+export const NameExamples: Story = {
+  render: () => (
+    <div className="flex items-center gap-4">
+      <Avatar name="John Doe" />
+      <Avatar name="Alice Smith" />
+      <Avatar name="Bob Johnson" />
+      <Avatar name="Sarah Wilson" />
+      <Avatar name="Mike" />
+    </div>
+  ),
+};
+
+export const ChevronSizes: Story = {
+  render: () => (
+    <div className="flex flex-col gap-6">
+      <div className="flex items-center gap-4">
+        <span className="text-sm font-medium w-24">Extra Small:</span>
+        <Avatar name="Project Alpha" size="xs" showChevron={true} />
+      </div>
+      
+      <div className="flex items-center gap-4">
+        <span className="text-sm font-medium w-24">Small:</span>
+        <Avatar name="Project Beta" size="sm" showChevron={true} />
+      </div>
+      
+      <div className="flex items-center gap-4">
+        <span className="text-sm font-medium w-24">Medium:</span>
+        <Avatar name="Project Gamma" size="md" showChevron={true} />
+      </div>
+      
+      <div className="flex items-center gap-4">
+        <span className="text-sm font-medium w-24">Large:</span>
+        <Avatar name="Project Delta" size="lg" showChevron={true} />
+      </div>
+      
+      <div className="flex items-center gap-4">
+        <span className="text-sm font-medium w-24">Extra Large:</span>
+        <Avatar name="Project Epsilon" size="xl" showChevron={true} />
+      </div>
+    </div>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story: 'Avatar with chevron down icon in different sizes. The chevron scales proportionally with the avatar size.',
+      },
+    },
+  },
+};
+
+export const IconOnlySizes: Story = {
+  render: () => (
+    <div className="flex flex-col gap-6">
+      {/* Icon-only sizes */}
+      <div className="flex items-center gap-4">
+        <span className="text-sm font-medium w-24">Extra Small:</span>
+        <Avatar name="John Doe" size="iconXs" />
+        <Avatar name="Alice Smith" size="iconXs" />
+        <Avatar name="Bob Johnson" size="iconXs" />
+      </div>
+      
+      <div className="flex items-center gap-4">
+        <span className="text-sm font-medium w-24">Small:</span>
+        <Avatar name="John Doe" size="iconSm" />
+        <Avatar name="Alice Smith" size="iconSm" />
+        <Avatar name="Bob Johnson" size="iconSm" />
+      </div>
+      
+      <div className="flex items-center gap-4">
+        <span className="text-sm font-medium w-24">Medium:</span>
+        <Avatar name="John Doe" size="iconMd" />
+        <Avatar name="Alice Smith" size="iconMd" />
+        <Avatar name="Bob Johnson" size="iconMd" />
+      </div>
+      
+      <div className="flex items-center gap-4">
+        <span className="text-sm font-medium w-24">Large:</span>
+        <Avatar name="John Doe" size="iconLg" />
+        <Avatar name="Alice Smith" size="iconLg" />
+        <Avatar name="Bob Johnson" size="iconLg" />
+      </div>
+      
+      <div className="flex items-center gap-4">
+        <span className="text-sm font-medium w-24">Extra Large:</span>
+        <Avatar name="John Doe" size="iconXl" />
+        <Avatar name="Alice Smith" size="iconXl" />
+        <Avatar name="Bob Johnson" size="iconXl" />
+      </div>
+      
+      {/* With status indicators */}
+      <div className="flex items-center gap-4">
+        <span className="text-sm font-medium w-24">With Status:</span>
+        <Avatar name="John Doe" size="iconMd" status="online" />
+        <Avatar name="Alice Smith" size="iconMd" status="away" />
+        <Avatar name="Bob Johnson" size="iconMd" status="busy" />
+        <Avatar name="Sarah Wilson" size="iconMd" status="offline" />
+      </div>
+    </div>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story: 'Icon-only sizes for Avatars, matching the Button component sizing system. These sizes are optimized for compact interfaces and navigation bars.',
+      },
+    },
+  },
 };

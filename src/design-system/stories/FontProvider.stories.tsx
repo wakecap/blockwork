@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { FontProvider, LanguageSwitcher, EnglishText, ArabicText } from '../components/FontProvider';
 
 const meta: Meta<typeof FontProvider> = {
-  title: 'Foundations/FontProvider',
+  title: 'Foundation/FontProvider',
   component: FontProvider,
   parameters: {
     layout: 'padded',

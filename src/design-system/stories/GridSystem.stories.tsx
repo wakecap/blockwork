@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { GridShowcase, FlexboxShowcase, ContainerShowcase, LayoutPatterns } from '../foundations/GridSystem';
 
 const meta: Meta = {
-  title: 'Foundations/Grid & Layout',
+  title: 'Foundation/Grid & Layout',
   parameters: {
     layout: 'padded',
     docs: {

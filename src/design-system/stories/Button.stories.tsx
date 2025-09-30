@@ -44,7 +44,7 @@ const meta: Meta<typeof Button> = {
       control: 'select',
       options: [
         'primary', 'secondary', 'accent', 'outline', 'ghost', 'text',
-        'success', 'warning', 'destructive', 'info', 'pin', 'nav', 'fab'
+        'success', 'warning', 'destructive', 'info', 'pin', 'nav', 'fab', 'iconBtn'
       ],
       description: 'Button variant with black-primary design system',
       table: {
@@ -54,8 +54,8 @@ const meta: Meta<typeof Button> = {
     },
     size: {
       control: 'select',
-      options: ['xs', 'sm', 'md', 'lg', 'xl', 'icon'],
-      description: 'Button size with responsive touch targets',
+      options: ['xs', 'sm', 'md', 'lg', 'xl', 'icon', 'iconXs', 'iconSm', 'iconMd', 'iconLg', 'iconXl'],
+      description: 'Button size with responsive touch targets. Icon-only sizes (iconXs, iconSm, iconMd, iconLg, iconXl) are square buttons optimized for icons.',
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: 'md' },
@@ -519,11 +519,70 @@ export const WithIcons: Story = {
 // Icon-only buttons
 export const IconOnly: Story = {
   render: () => (
-    <div className="flex gap-4">
-      <Button size="icon" icon={faBell} aria-label="Notifications" />
-      <Button size="icon" icon={faCog} variant="secondary" aria-label="Settings" />
-      <Button size="icon" icon={faUser} variant="outline" aria-label="Profile" />
-      <Button size="icon" icon={faStar} variant="accent" aria-label="Favorite" />
+    <div className="flex flex-col gap-6">
+      {/* Different icon-only sizes */}
+      <div className="flex items-center gap-4">
+        <span className="text-sm font-medium w-24">Extra Small:</span>
+        <Button size="iconXs" icon={faBell} variant="iconBtn" aria-label="XS Icon" />
+        <Button size="iconXs" icon={faCog} variant="secondary" aria-label="XS Settings" />
+        <Button size="iconXs" icon={faUser} variant="outline" aria-label="XS Profile" />
+      </div>
+      
+      <div className="flex items-center gap-4">
+        <span className="text-sm font-medium w-24">Small:</span>
+        <Button size="iconSm" icon={faBell} variant="iconBtn" aria-label="SM Icon" />
+        <Button size="iconSm" icon={faCog} variant="secondary" aria-label="SM Settings" />
+        <Button size="iconSm" icon={faUser} variant="outline" aria-label="SM Profile" />
+      </div>
+      
+      <div className="flex items-center gap-4">
+        <span className="text-sm font-medium w-24">Medium:</span>
+        <Button size="iconMd" icon={faBell} variant="iconBtn" aria-label="MD Icon" />
+        <Button size="iconMd" icon={faCog} variant="secondary" aria-label="MD Settings" />
+        <Button size="iconMd" icon={faUser} variant="outline" aria-label="MD Profile" />
+      </div>
+      
+      <div className="flex items-center gap-4">
+        <span className="text-sm font-medium w-24">Large:</span>
+        <Button size="iconLg" icon={faBell} variant="iconBtn" aria-label="LG Icon" />
+        <Button size="iconLg" icon={faCog} variant="secondary" aria-label="LG Settings" />
+        <Button size="iconLg" icon={faUser} variant="outline" aria-label="LG Profile" />
+      </div>
+      
+      <div className="flex items-center gap-4">
+        <span className="text-sm font-medium w-24">Extra Large:</span>
+        <Button size="iconXl" icon={faBell} variant="iconBtn" aria-label="XL Icon" />
+        <Button size="iconXl" icon={faCog} variant="secondary" aria-label="XL Settings" />
+        <Button size="iconXl" icon={faUser} variant="outline" aria-label="XL Profile" />
+      </div>
+      
+      {/* Different variants with medium size */}
+      <div className="flex items-center gap-4">
+        <span className="text-sm font-medium w-24">Variants:</span>
+        <Button size="iconMd" icon={faBell} variant="primary" aria-label="Primary" />
+        <Button size="iconMd" icon={faCog} variant="secondary" aria-label="Secondary" />
+        <Button size="iconMd" icon={faUser} variant="outline" aria-label="Outline" />
+        <Button size="iconMd" icon={faStar} variant="accent" aria-label="Accent" />
+        <Button size="iconMd" icon={faBell} variant="ghost" aria-label="Ghost" />
+        <Button size="iconMd" icon={faCog} variant="text" aria-label="Text" />
+      </div>
+      
+      {/* Semantic variants */}
+      <div className="flex items-center gap-4">
+        <span className="text-sm font-medium w-24">Semantic:</span>
+        <Button size="iconMd" icon={faCheck} variant="success" aria-label="Success" />
+        <Button size="iconMd" icon={faExclamation} variant="warning" aria-label="Warning" />
+        <Button size="iconMd" icon={faTimes} variant="destructive" aria-label="Destructive" />
+        <Button size="iconMd" icon={faInfo} variant="info" aria-label="Info" />
+      </div>
+      
+      {/* Special variants */}
+      <div className="flex items-center gap-4">
+        <span className="text-sm font-medium w-24">Special:</span>
+        <Button size="iconMd" icon={faStar} variant="pin" aria-label="Pin" />
+        <Button size="iconMd" icon={faUser} variant="nav" aria-label="Nav" />
+        <Button size="iconMd" icon={faBell} variant="iconBtn" aria-label="IconBtn" />
+      </div>
     </div>
   ),
   parameters: {

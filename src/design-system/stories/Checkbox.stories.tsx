@@ -4,7 +4,7 @@ import { Checkbox } from '../components/Checkbox';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 
 const meta: Meta<typeof Checkbox> = {
-  title: 'Components/Checkbox',
+  title: 'Forms and Data Entry/Checkbox',
   component: Checkbox,
   tags: ['autodocs'],
   argTypes: {

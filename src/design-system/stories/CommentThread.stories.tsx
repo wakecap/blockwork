@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { CommentThread, Comment } from '../components/CommentThread';
 
 const meta: Meta<typeof CommentThread> = {
-  title: 'Communication/CommentThread',
+  title: 'Components/CommentThread',
   component: CommentThread,
   parameters: {
     layout: 'padded',

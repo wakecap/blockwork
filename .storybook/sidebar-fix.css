@@ -1,0 +1,51 @@
+/* Fix sidebar menu titles to use normal case instead of uppercase */
+[data-testid="sidebar-root"] h3,
+[data-testid="sidebar-root"] [role="button"],
+[data-testid="sidebar-root"] button,
+.sb-bar h3,
+.sb-bar [role="button"],
+.sb-bar button {
+  text-transform: none !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  letter-spacing: normal !important;
+}
+
+/* Target story group headers specifically */
+[data-testid="sidebar-root"] h3,
+.sb-bar h3 {
+  text-transform: none !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  letter-spacing: normal !important;
+  color: #171717 !important;
+  margin: 16px 0 8px 0 !important;
+  padding: 0 12px !important;
+}
+
+/* Target collapsible menu buttons */
+[data-testid="sidebar-root"] [role="button"],
+.sb-bar [role="button"] {
+  text-transform: none !important;
+  font-size: 24px !important;
+  font-weight: 600 !important;
+  letter-spacing: normal !important;
+  padding: 8px 12px !important;
+  border-radius: 6px !important;
+  transition: all 0.2s ease !important;
+}
+
+/* Hover state for menu items */
+[data-testid="sidebar-root"] [role="button"]:hover,
+.sb-bar [role="button"]:hover {
+  background: #f0f0f0 !important;
+  text-transform: none !important;
+}
+
+/* Selected state for menu items */
+[data-testid="sidebar-root"] [role="button"][aria-selected="true"],
+.sb-bar [role="button"][aria-selected="true"] {
+  background: #ea580c !important;
+  color: white !important;
+  text-transform: none !important;
+}

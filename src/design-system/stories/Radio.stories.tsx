@@ -4,7 +4,7 @@ import { Radio } from '../components/Radio';
 import { faDotCircle } from '@fortawesome/free-solid-svg-icons';
 
 const meta: Meta<typeof Radio> = {
-  title: 'Components/Radio',
+  title: 'Forms and Data Entry/Radio',
   component: Radio,
   tags: ['autodocs'],
   argTypes: {

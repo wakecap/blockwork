@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { OTPInput, PINInput, VerificationCode, PasswordOTP, useOTP } from '../components/OTPInput';
 
 const meta: Meta<typeof OTPInput> = {
-  title: 'Forms & Data Entry/OTPInput',
+  title: 'Forms and Data Entry/OTPInput',
   component: OTPInput,
   parameters: {
     layout: 'padded',

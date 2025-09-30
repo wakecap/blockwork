@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { FormLayout, UserProfileForm, SettingsForm } from '../components/FormLayout';
 
 const meta: Meta<typeof FormLayout> = {
-  title: 'Forms & Data Entry/FormLayout',
+  title: 'Forms and Data Entry/FormLayout',
   component: FormLayout,
   parameters: {
     layout: 'padded',

@@ -13,7 +13,7 @@ const buttonVariants = cva(
       variant: {
         // Core variants (Black-based) with responsive hover states
         primary: "bg-neutral-900 text-white border border-neutral-900 hover:bg-neutral-800 hover:shadow-md active:bg-neutral-950 focus-visible:ring-neutral-500 active:scale-[0.98] sm:active:scale-100",
-        secondary: "bg-neutral-100 text-neutral-900 border border-neutral-200 hover:bg-neutral-200 hover:shadow-sm active:bg-neutral-300 focus-visible:ring-neutral-500 active:scale-[0.98] sm:active:scale-100",
+        secondary: "bg-neutral-100 text-neutral-900 border border-neutral-200 hover:border-secondary-200 active:bg-neutral-300 focus-visible:ring-neutral-500 active:scale-[0.98] sm:active:scale-100",
         accent: "bg-orange-600 text-white border border-orange-600 hover:bg-orange-700 hover:shadow-md active:bg-orange-800 focus-visible:ring-orange-500 active:scale-[0.98] sm:active:scale-100",
         outline: "bg-transparent text-neutral-900 border border-neutral-900 hover:bg-neutral-900 hover:text-white hover:shadow-sm focus-visible:ring-neutral-500 active:scale-[0.98] sm:active:scale-100",
         ghost: "bg-transparent text-neutral-600 border border-transparent hover:bg-neutral-100 hover:text-neutral-900 focus-visible:ring-neutral-500 active:scale-[0.98] sm:active:scale-100",
@@ -28,7 +28,8 @@ const buttonVariants = cva(
         // Special variants with mobile optimizations
         pin: "bg-transparent text-neutral-400 border border-transparent hover:bg-orange-50 hover:text-orange-600 focus-visible:ring-orange-500 active:scale-[0.95] sm:active:scale-100",
         nav: "bg-neutral-800 text-white border border-neutral-800 hover:bg-neutral-700 hover:shadow-md active:bg-neutral-900 focus-visible:ring-neutral-500 active:scale-[0.98] sm:active:scale-100",
-        fab: "bg-orange-600 text-white border border-orange-600 hover:bg-orange-700 hover:shadow-xl active:bg-orange-800 focus-visible:ring-orange-500 rounded-full fixed bottom-4 right-4 sm:bottom-6 sm:right-6 shadow-lg z-50 active:scale-[0.95] sm:active:scale-100"
+        fab: "bg-orange-600 text-white border border-orange-600 hover:bg-orange-700 hover:shadow-xl active:bg-orange-800 focus-visible:ring-orange-500 rounded-full fixed bottom-4 right-4 sm:bottom-6 sm:right-6 shadow-lg z-50 active:scale-[0.95] sm:active:scale-100",
+        iconBtn: "bg-transparent text-black border border-transparent hover:bg-gray-200 focus-visible:ring-neutral-500 active:scale-[0.95] sm:active:scale-100"
       },
       size: {
         // Responsive sizes with mobile-first approach and touch-friendly targets
@@ -37,7 +38,13 @@ const buttonVariants = cva(
         md: "h-11 px-4 py-2 text-sm gap-2 min-w-[44px] sm:h-10 sm:min-w-auto",
         lg: "h-12 px-6 py-3 text-base gap-2.5 min-w-[44px] sm:h-12 sm:min-w-auto",
         xl: "h-14 px-8 py-4 text-lg gap-3 min-w-[44px] sm:h-14 sm:min-w-auto",
-        icon: "h-11 w-11 p-0 text-sm gap-0 sm:h-10 sm:w-10"
+        icon: "h-11 w-11 p-0 text-sm gap-0 sm:h-10 sm:w-10",
+        // Icon-only sizes - square buttons with proper scaling
+        iconXs: "h-6 w-6 p-0 text-xs gap-0 sm:h-6 sm:w-6",
+        iconSm: "h-8 w-8 p-0 text-sm gap-0 sm:h-8 sm:w-8", 
+        iconMd: "h-10 w-10 p-0 text-sm gap-0 sm:h-10 sm:w-10",
+        iconLg: "h-12 w-12 p-0 text-base gap-0 sm:h-12 sm:w-12",
+        iconXl: "h-14 w-14 p-0 text-lg gap-0 sm:h-14 sm:w-14"
       }
     },
     defaultVariants: {
@@ -47,14 +54,20 @@ const buttonVariants = cva(
   }
 );
 
-// Responsive icon size mapping
+// Responsive icon size mapping - icons scale with button height
 const iconSizeMap = {
-  xs: "w-3 h-3 sm:w-3 sm:h-3",
-  sm: "w-4 h-4 sm:w-4 sm:h-4", 
-  md: "w-4 h-4 sm:w-4 sm:h-4",
-  lg: "w-5 h-5 sm:w-5 sm:h-5",
-  xl: "w-6 h-6 sm:w-6 sm:h-6",
-  icon: "w-5 h-5 sm:w-5 sm:h-5"
+  xs: "w-3 h-3 sm:w-3 sm:h-3", // 12px for h-7/h-6 buttons
+  sm: "w-4 h-4 sm:w-4 sm:h-4", // 16px for h-9/h-8 buttons  
+  md: "w-5 h-5 sm:w-5 sm:h-5", // 20px for h-11/h-10 buttons
+  lg: "w-6 h-6 sm:w-6 sm:h-6", // 24px for h-12 buttons
+  xl: "w-7 h-7 sm:w-7 sm:h-7", // 28px for h-14 buttons
+  icon: "w-5 h-5 sm:w-5 sm:h-5", // 20px for h-11/h-10 icon buttons
+  // Icon-only sizes - icons scale with square button dimensions
+  iconXs: "w-3 h-3 sm:w-3 sm:h-3", // 12px for 24px square buttons
+  iconSm: "w-4 h-4 sm:w-4 sm:h-4", // 16px for 32px square buttons
+  iconMd: "w-5 h-5 sm:w-5 sm:h-5", // 20px for 40px square buttons
+  iconLg: "w-6 h-6 sm:w-6 sm:h-6", // 24px for 48px square buttons
+  iconXl: "w-7 h-7 sm:w-7 sm:h-7"  // 28px for 56px square buttons
 };
 
 // Minimal loading spinner component
@@ -200,7 +213,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 
     // Determine if button is icon-only
     const isIconOnly = !children && !loadingText && !arabicText;
-    const effectiveSize = isIconOnly ? 'icon' : size;
+    const effectiveSize = isIconOnly && !size?.startsWith('icon') ? 'icon' : size;
 
     // Get the appropriate icon
     const displayIcon = loading ? undefined : icon;

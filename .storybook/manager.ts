@@ -1,6 +1,7 @@
 import { addons } from 'storybook/manager-api';
 import { create, themes } from 'storybook/theming';
 
+
 // Custom Blockwork theme for Storybook 9.x
 const blockworkTheme = create({
   base: 'light',
@@ -47,16 +48,11 @@ const blockworkTheme = create({
   fontBase: '"Figtree", "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif',
   fontCode: '"JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace',
   
-  // Layout
-  appBorderRadius: 12,
-  
   // Sidebar colors
   sidebarBg: '#fafafa',
   sidebarTextColor: '#171717',
-  sidebarSelectedColor: '#ea580c',
+  sidebarSelectedColor: '#C03131',
   sidebarHoverColor: '#f0f0f0',
-  
-  // Additional sidebar properties
   sidebarBorder: '#e5e5e5',
   sidebarBorderRadius: 0,
 });

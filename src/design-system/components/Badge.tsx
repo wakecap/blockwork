@@ -1,24 +1,53 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { cva, type VariantProps } from 'class-variance-authority';
+import { twMerge } from 'tailwind-merge';
 
-export interface BadgeProps {
-  label: string;
-  variant?: 'primary' | 'secondary' | 'success' | 'danger' | 'neutral';
-  icon?: IconProp;
+const badgeVariants = cva(
+  'inline-flex items-center rounded-md rounded-bl-none border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2',
+  {
+    variants: {
+      variant: {
+        default: 'border-transparent bg-primary text-primary-foreground hover:bg-primary/80',
+        secondary: 'border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80',
+        destructive: 'border-transparent bg-destructive text-destructive-foreground hover:bg-destructive/80',
+        outline: 'text-foreground border-gray-800',
+        // Minimal variants
+        success: 'border-transparent bg-green-100 text-green-700 hover:bg-green-200',
+        warning: 'border-transparent bg-yellow-100 text-yellow-700 hover:bg-yellow-200',
+        info: 'border-transparent bg-blue-100 text-blue-700 hover:bg-blue-200',
+      },
+      size: {
+        sm: 'px-1.5 py-0.5 text-xs',
+        md: 'px-2.5 py-1 text-sm',
+        lg: 'px-3 py-1.5 text-base',
+      },
+    },
+    defaultVariants: {
+      variant: 'default',
+      size: 'sm',
+    },
+  }
+);
+
+export interface BadgeProps
+  extends React.HTMLAttributes<HTMLDivElement>,
+    VariantProps<typeof badgeVariants> {
+  children: React.ReactNode;
 }
 
-const variantClasses: Record<string, string> = {
-  primary: 'bg-primary-100 text-primary-700',
-  secondary: 'bg-secondary-100 text-secondary-700',
-  success: 'bg-green-100 text-green-700',
-  danger: 'bg-red-100 text-red-700',
-  neutral: 'bg-neutral-100 text-neutral-700',
-};
+const Badge = React.forwardRef<HTMLDivElement, BadgeProps>(
+  ({ className, variant, size, children, ...props }, ref) => {
+    return (
+      <div
+        ref={ref}
+        className={twMerge(badgeVariants({ variant, size }), className)}
+        {...props}
+      >
+        {children}
+      </div>
+    );
+  }
+);
+Badge.displayName = 'Badge';
 
-export const Badge: React.FC<BadgeProps> = ({ label, variant = 'primary', icon }) => (
-  <span className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded font-sans text-xs font-medium ${variantClasses[variant]}`}>
-    {icon && <FontAwesomeIcon icon={icon} className="w-4 h-4 mr-1" />}
-    {label}
-  </span>
-); 
+export { Badge, badgeVariants };

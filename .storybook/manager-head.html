@@ -1,3 +1,40 @@
 <link rel="icon" href="/favicons/favicon.ico" sizes="any" />
-<link rel="stylesheet" href="/sidebar.css" />
-<script src="/sidebar-layout.js"></script>
+<style>
+/* Ultra-specific selectors to override Storybook's default uppercase */
+div[data-testid="sidebar-root"] h3,
+div[data-testid="sidebar-root"] [role="button"],
+div[data-testid="sidebar-root"] button,
+div[data-testid="sidebar-root"] span,
+div[data-testid="sidebar-root"] div,
+.sb-bar h3,
+.sb-bar [role="button"],
+.sb-bar button,
+.sb-bar span,
+.sb-bar div,
+[data-testid="story-list"] h3,
+[data-testid="story-list"] [role="button"],
+[data-testid="story-list"] button,
+[data-testid="story-list"] span,
+[data-testid="story-list"] div,
+h3[data-testid="story-list"],
+button[data-testid="story-list"],
+span[data-testid="story-list"],
+div[data-testid="story-list"] {
+  text-transform: none !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  letter-spacing: normal !important;
+}
+
+/* Target all text elements in sidebar */
+div[data-testid="sidebar-root"] *,
+.sb-bar *,
+[data-testid="story-list"] * {
+  text-transform: none !important;
+}
+
+/* Force override for any element with uppercase */
+* {
+  text-transform: none !important;
+}
+</style>

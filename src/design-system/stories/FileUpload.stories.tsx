@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { FileUpload, ImageUpload, DocumentUpload, VideoUpload, useFileUpload } from '../components/FileUpload';
 
 const meta: Meta<typeof FileUpload> = {
-  title: 'Forms & Data Entry/FileUpload',
+  title: 'Forms and Data Entry/FileUpload',
   component: FileUpload,
   parameters: {
     layout: 'padded',

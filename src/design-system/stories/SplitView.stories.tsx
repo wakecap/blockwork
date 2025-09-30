@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { SplitView, HorizontalSplit, ThreePanelSplit } from '../components/SplitView';
 
 const meta: Meta<typeof SplitView> = {
-  title: 'Utility & Advanced Components/SplitView',
+  title: 'Content Display/SplitView',
   component: SplitView,
   parameters: {
     layout: 'padded',

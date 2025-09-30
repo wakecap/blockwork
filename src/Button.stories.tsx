@@ -6,7 +6,7 @@ const Button = ({ children, ...props }) => (
 );
 
 const meta: Meta<typeof Button> = {
-  title: 'Example/Button',
+  title: 'Components/Button',
   component: Button,
   parameters: {
     layout: 'centered',

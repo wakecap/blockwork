@@ -7,7 +7,7 @@ import { RTLInput } from '../../components/ui/rtl-input';
 import { LanguageProvider } from '../../components/ui/language-provider';
 
 const meta: Meta = {
-  title: 'Design System/Migration Guide',
+  title: 'Foundation/Migration Guide',
   parameters: {
     layout: 'fullscreen',
     docs: {

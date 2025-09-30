@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { ColorPicker, SimpleColorPicker, AdvancedColorPicker, ThemeColorPicker, useColorPicker } from '../components/ColorPicker';
 
 const meta: Meta<typeof ColorPicker> = {
-  title: 'Forms & Data Entry/ColorPicker',
+  title: 'Forms and Data Entry/ColorPicker',
   component: ColorPicker,
   parameters: {
     layout: 'padded',

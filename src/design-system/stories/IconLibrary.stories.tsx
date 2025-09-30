@@ -3,7 +3,7 @@ import { IconShowcase, IconSizes, IconColors, Icon } from '../foundations/IconLi
 import { faHeart, faUser, faCog, faSearch, faBell } from '@fortawesome/free-solid-svg-icons';
 
 const meta: Meta = {
-  title: 'Foundations/Icon Library',
+  title: 'Foundation/Icon Library',
   parameters: {
     layout: 'padded',
     docs: {
@@ -52,7 +52,7 @@ export const Colors: StoryObj = {
 
 // Individual icon component stories
 const IconMeta: Meta<typeof Icon> = {
-  title: 'Foundations/Icon Component',
+  title: 'Foundation/Icon Component',
   component: Icon,
   parameters: {
     layout: 'centered',

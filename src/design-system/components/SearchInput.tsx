@@ -57,6 +57,15 @@ export const SearchInput: React.FC<SearchInputProps> = ({
   return (
     <div className="w-full font-sans">
       {label && <label className="block mb-1 text-sm font-medium text-neutral-700">{label}</label>}
+      <style>
+        {`
+          .search-input-custom::placeholder {
+            font-size: 13px;
+            font-weight: 300;
+            color: #9ca3af;
+          }
+        `}
+      </style>
       <div className="relative flex items-center">
         <span className="absolute left-3 text-neutral-400">
           <FontAwesomeIcon icon={faSearch} className="w-4 h-4" />
@@ -64,13 +73,13 @@ export const SearchInput: React.FC<SearchInputProps> = ({
         <input
           type="text"
           className={
-            `block w-full rounded border px-3 py-2 text-base focus:outline-none focus:ring-2 transition pl-9 ` +
+            `search-input-custom block w-full rounded border px-3 py-2 text-base focus:outline-none focus:ring-1 transition pl-9 ` +
             (showClearButton && searchValue ? 'pr-9 ' : '') +
             (error
-              ? 'border-red-500 focus:ring-red-500'
+              ? 'border-red-500 focus:ring-1 focus:ring-red-500'
               : success
-              ? 'border-green-500 focus:ring-green-500'
-              : 'border-neutral-300 focus:ring-primary-500') +
+              ? 'border-green-500 focus:ring-1 focus:ring-green-500'
+              : 'border-neutral-300 focus:border-gray-500 focus:ring-1 focus:ring-gray-500') +
             (className ? ' ' + className : '')
           }
           placeholder={placeholder}

@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { SignatureInput, DocumentSignature, CompactSignature } from '../components/SignatureInput';
 
 const meta: Meta<typeof SignatureInput> = {
-  title: 'Forms & Data Entry/SignatureInput',
+  title: 'Forms and Data Entry/SignatureInput',
   component: SignatureInput,
   parameters: {
     layout: 'padded',

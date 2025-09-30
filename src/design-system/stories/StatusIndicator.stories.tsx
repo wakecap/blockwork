@@ -10,7 +10,7 @@ import {
 } from '../components/StatusIndicator';
 
 const meta: Meta<typeof StatusIndicator> = {
-  title: 'Feedback & Status/StatusIndicator',
+  title: 'Components/StatusIndicator',
   component: StatusIndicator,
   parameters: {
     layout: 'padded',

@@ -9,7 +9,7 @@ import { Badge } from '../../components/ui/badge';
 import { LanguageToggle } from '../../components/ui/language-toggle';
 
 const meta: Meta = {
-  title: 'Design System/Overview',
+  title: 'Foundation/Overview',
   parameters: {
     layout: 'fullscreen',
     docs: {

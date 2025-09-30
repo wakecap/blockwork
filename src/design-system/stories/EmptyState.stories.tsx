@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { EmptyState, EmptySearchResults, EmptyFiles, EmptyUsers, EmptyError } from '../components/EmptyState';
 
 const meta: Meta<typeof EmptyState> = {
-  title: 'Feedback & Status/EmptyState',
+  title: 'Components/EmptyState',
   component: EmptyState,
   parameters: {
     layout: 'padded',
