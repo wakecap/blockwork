@@ -1,5 +1,27 @@
 import type { StorybookConfig } from '@storybook/react-vite';
 import path from 'path';
+import fs from 'fs';
+
+// Check if public directory exists before adding it to staticDirs
+// Try multiple possible locations for the public directory
+const possiblePublicDirs = [
+  path.resolve(__dirname, '../public'),
+  path.resolve(process.cwd(), 'public'),
+  path.resolve(process.cwd(), './public'),
+];
+
+const publicDir = possiblePublicDirs.find(dir => fs.existsSync(dir));
+const staticDirs = publicDir ? [publicDir] : [];
+
+// Debug information for CI environments
+if (process.env.CI || process.env.GITHUB_ACTIONS) {
+  console.log('🔍 Storybook CI Debug Info:');
+  console.log('Current working directory:', process.cwd());
+  console.log('__dirname:', __dirname);
+  console.log('Possible public directories:', possiblePublicDirs);
+  console.log('Public directory exists:', publicDir);
+  console.log('Static dirs:', staticDirs);
+}
 
 const config: StorybookConfig = {
   stories: [
@@ -11,14 +33,12 @@ const config: StorybookConfig = {
     '@storybook/addon-a11y',
     '@storybook/addon-links',
   ],
-  features: {
-    storyStoreV7: true,
-  },
+  features: {},
   framework: {
     name: '@storybook/react-vite',
     options: {},
   },
-  staticDirs: [path.resolve(__dirname, '../public')],
+  staticDirs,
   typescript: {
     check: false,
   },
