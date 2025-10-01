@@ -1,8 +1,9 @@
-import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch, faTimes } from '@fortawesome/free-solid-svg-icons';
+import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch, faTimes } from "@fortawesome/free-solid-svg-icons";
 
-export interface SearchInputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type'> {
+export interface SearchInputProps
+  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "type"> {
   label?: string;
   error?: string;
   success?: string;
@@ -12,10 +13,10 @@ export interface SearchInputProps extends Omit<React.InputHTMLAttributes<HTMLInp
   onSearch?: (value: string) => void;
 }
 
-export const SearchInput: React.FC<SearchInputProps> = ({ 
-  label, 
-  error, 
-  success, 
+export const SearchInput: React.FC<SearchInputProps> = ({
+  label,
+  error,
+  success,
   placeholder = "Search...",
   onClear,
   showClearButton = true,
@@ -23,9 +24,9 @@ export const SearchInput: React.FC<SearchInputProps> = ({
   className,
   value,
   onChange,
-  ...props 
+  ...props
 }) => {
-  const [searchValue, setSearchValue] = React.useState(value || '');
+  const [searchValue, setSearchValue] = React.useState(value || "");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value;
@@ -36,7 +37,7 @@ export const SearchInput: React.FC<SearchInputProps> = ({
   };
 
   const handleClear = () => {
-    setSearchValue('');
+    setSearchValue("");
     if (onClear) {
       onClear();
     }
@@ -49,7 +50,7 @@ export const SearchInput: React.FC<SearchInputProps> = ({
   };
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter') {
+    if (e.key === "Enter") {
       handleSearch();
     }
   };
@@ -74,13 +75,13 @@ export const SearchInput: React.FC<SearchInputProps> = ({
           type="text"
           className={
             `search-input-custom block w-full rounded border px-3 py-2 text-base focus:outline-none focus:ring-1 transition pl-9 ` +
-            (showClearButton && searchValue ? 'pr-9 ' : '') +
+            (showClearButton && searchValue ? "pr-9 " : "") +
             (error
-              ? 'border-red-500 focus:ring-1 focus:ring-red-500'
+              ? "border-red-500 focus:ring-1 focus:ring-red-500"
               : success
-              ? 'border-green-500 focus:ring-1 focus:ring-green-500'
-              : 'border-neutral-300 focus:border-gray-500 focus:ring-1 focus:ring-gray-500') +
-            (className ? ' ' + className : '')
+                ? "border-green-500 focus:ring-1 focus:ring-green-500"
+                : "border-neutral-300 focus:border-gray-500 focus:ring-1 focus:ring-gray-500") +
+            (className ? " " + className : "")
           }
           placeholder={placeholder}
           value={searchValue}
@@ -103,4 +104,3 @@ export const SearchInput: React.FC<SearchInputProps> = ({
     </div>
   );
 };
-

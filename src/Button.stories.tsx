@@ -1,19 +1,17 @@
-import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import React from "react";
+import type { Meta, StoryObj } from "@storybook/react";
 
-const Button = ({ children, ...props }) => (
-  <button {...props}>{children}</button>
-);
+const Button = ({ children, ...props }) => <button {...props}>{children}</button>;
 
 const meta: Meta<typeof Button> = {
-  title: 'Components/Button',
+  title: "Components/Button",
   component: Button,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
-    backgroundColor: { control: 'color' },
+    backgroundColor: { control: "color" },
   },
 };
 
@@ -22,12 +20,12 @@ type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
   args: {
-    children: 'Button',
+    children: "Button",
   },
 };
 
 export const Secondary: Story = {
   args: {
-    children: 'Button',
+    children: "Button",
   },
 };

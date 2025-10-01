@@ -1,37 +1,37 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import { 
-  StatusIndicator, 
-  OnlineStatus, 
-  OfflineStatus, 
-  AwayStatus, 
-  BusyStatus, 
-  ActiveStatus, 
-  InactiveStatus 
-} from '../components/StatusIndicator';
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import {
+  StatusIndicator,
+  OnlineStatus,
+  OfflineStatus,
+  AwayStatus,
+  BusyStatus,
+  ActiveStatus,
+  InactiveStatus,
+} from "../components/StatusIndicator";
 
 const meta: Meta<typeof StatusIndicator> = {
-  title: 'Components/StatusIndicator',
+  title: "Components/StatusIndicator",
   component: StatusIndicator,
   parameters: {
-    layout: 'padded',
+    layout: "padded",
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     status: {
-      control: { type: 'select' },
-      options: ['online', 'offline', 'away', 'busy', 'active', 'inactive', 'pending', 'error'],
+      control: { type: "select" },
+      options: ["online", "offline", "away", "busy", "active", "inactive", "pending", "error"],
     },
     size: {
-      control: { type: 'select' },
-      options: ['xs', 'sm', 'md', 'lg'],
+      control: { type: "select" },
+      options: ["xs", "sm", "md", "lg"],
     },
     variant: {
-      control: { type: 'select' },
-      options: ['dot', 'ring', 'pulse'],
+      control: { type: "select" },
+      options: ["dot", "ring", "pulse"],
     },
     labelPosition: {
-      control: { type: 'select' },
-      options: ['left', 'right', 'top', 'bottom'],
+      control: { type: "select" },
+      options: ["left", "right", "top", "bottom"],
     },
   },
 };
@@ -41,81 +41,81 @@ type Story = StoryObj<typeof meta>;
 
 export const Online: Story = {
   args: {
-    status: 'online',
-    size: 'md',
+    status: "online",
+    size: "md",
     showLabel: true,
-    labelPosition: 'right',
-    variant: 'dot',
+    labelPosition: "right",
+    variant: "dot",
   },
 };
 
 export const Offline: Story = {
   args: {
-    status: 'offline',
-    size: 'md',
+    status: "offline",
+    size: "md",
     showLabel: true,
-    labelPosition: 'right',
-    variant: 'dot',
+    labelPosition: "right",
+    variant: "dot",
   },
 };
 
 export const Away: Story = {
   args: {
-    status: 'away',
-    size: 'md',
+    status: "away",
+    size: "md",
     showLabel: true,
-    labelPosition: 'right',
-    variant: 'dot',
+    labelPosition: "right",
+    variant: "dot",
   },
 };
 
 export const Busy: Story = {
   args: {
-    status: 'busy',
-    size: 'md',
+    status: "busy",
+    size: "md",
     showLabel: true,
-    labelPosition: 'right',
-    variant: 'dot',
+    labelPosition: "right",
+    variant: "dot",
   },
 };
 
 export const Active: Story = {
   args: {
-    status: 'active',
-    size: 'md',
+    status: "active",
+    size: "md",
     showLabel: true,
-    labelPosition: 'right',
-    variant: 'dot',
+    labelPosition: "right",
+    variant: "dot",
   },
 };
 
 export const Inactive: Story = {
   args: {
-    status: 'inactive',
-    size: 'md',
+    status: "inactive",
+    size: "md",
     showLabel: true,
-    labelPosition: 'right',
-    variant: 'dot',
+    labelPosition: "right",
+    variant: "dot",
   },
 };
 
 export const Pending: Story = {
   args: {
-    status: 'pending',
-    size: 'md',
+    status: "pending",
+    size: "md",
     showLabel: true,
-    labelPosition: 'right',
-    variant: 'dot',
+    labelPosition: "right",
+    variant: "dot",
   },
 };
 
 export const Error: Story = {
   args: {
-    status: 'error',
-    size: 'md',
+    status: "error",
+    size: "md",
     showLabel: true,
-    labelPosition: 'right',
-    variant: 'dot',
+    labelPosition: "right",
+    variant: "dot",
   },
 };
 
@@ -294,5 +294,3 @@ export const UserListExample: Story = {
     </div>
   ),
 };
-
-

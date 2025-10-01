@@ -24,7 +24,7 @@
     --input: 214.3 31.8% 91.4%;
     --ring: 222.2 84% 4.9%;
     --radius: 0.5rem;
-    
+
     /* WakeCap Brand Colors */
     --wakecap-primary: 24 100% 50%;
     --wakecap-primary-foreground: 0 0% 100%;
@@ -32,7 +32,7 @@
     --wakecap-secondary-foreground: 222.2 84% 4.9%;
     --wakecap-accent: 24 100% 50%;
     --wakecap-accent-foreground: 0 0% 100%;
-    
+
     /* Arabic Font Support */
     --font-arabic: "IBM Plex Sans Arabic", "Figtree", ui-sans-serif, system-ui;
   }
@@ -57,7 +57,7 @@
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
-    
+
     /* WakeCap Dark Theme */
     --wakecap-primary: 24 100% 50%;
     --wakecap-primary-foreground: 0 0% 100%;
@@ -71,16 +71,16 @@
   body {
     @apply bg-background text-foreground;
   }
-  
+
   /* Arabic RTL Support */
   [dir="rtl"] {
     font-family: var(--font-arabic);
   }
-  
+
   [dir="rtl"] * {
     text-align: right;
   }
-  
+
   /* Custom scrollbar for Arabic content */
   [dir="rtl"] ::-webkit-scrollbar {
     direction: rtl;
@@ -89,7 +89,9 @@
   /* Enhanced Arabic font support */
   .font-arabic {
     font-family: var(--font-arabic);
-    font-feature-settings: "liga" 1, "kern" 1;
+    font-feature-settings:
+      "liga" 1,
+      "kern" 1;
     text-rendering: optimizeLegibility;
   }
 
@@ -111,79 +113,79 @@
   .touch-manipulation {
     touch-action: manipulation;
   }
-  
+
   /* Responsive text utilities */
   .text-responsive-xs {
     @apply text-xs sm:text-xs;
   }
-  
+
   .text-responsive-sm {
     @apply text-sm sm:text-sm;
   }
-  
+
   .text-responsive-base {
     @apply text-sm sm:text-base;
   }
-  
+
   .text-responsive-lg {
     @apply text-base sm:text-lg;
   }
-  
+
   /* Responsive spacing utilities */
   .gap-responsive-1 {
     @apply gap-1 sm:gap-1;
   }
-  
+
   .gap-responsive-2 {
     @apply gap-1.5 sm:gap-2;
   }
-  
+
   .gap-responsive-3 {
     @apply gap-2 sm:gap-2.5;
   }
-  
+
   /* Mobile-first button utilities */
   .btn-mobile-optimized {
     @apply min-h-[44px] min-w-[44px] touch-manipulation select-none;
   }
-  
+
   /* Responsive container utilities */
   .container-responsive {
     @apply w-full px-4 sm:px-6 lg:px-8;
   }
-  
+
   /* Responsive flex utilities */
   .flex-responsive {
     @apply flex flex-col sm:flex-row;
   }
-  
+
   .flex-responsive-reverse {
     @apply flex flex-col-reverse sm:flex-row;
   }
-  
+
   /* Responsive grid utilities */
   .grid-responsive-1 {
     @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3;
   }
-  
+
   .grid-responsive-2 {
     @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4;
   }
-  
+
   /* Responsive visibility utilities */
   .visible-mobile {
     @apply block sm:hidden;
   }
-  
+
   .visible-desktop {
     @apply hidden sm:block;
   }
-  
+
   /* Responsive width utilities */
   .w-responsive-full {
     @apply w-full sm:w-auto;
   }
-  
+
   .w-responsive-auto {
     @apply w-auto sm:w-full;
   }

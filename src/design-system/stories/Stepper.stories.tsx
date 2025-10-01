@@ -1,33 +1,33 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Stepper } from '../components/Stepper';
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { Stepper } from "../components/Stepper";
 
 const meta: Meta<typeof Stepper> = {
-  title: 'Components/Stepper',
+  title: "Components/Stepper",
   component: Stepper,
   parameters: {
-    layout: 'padded',
+    layout: "padded",
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     orientation: {
-      control: { type: 'select' },
-      options: ['horizontal', 'vertical'],
+      control: { type: "select" },
+      options: ["horizontal", "vertical"],
     },
     size: {
-      control: { type: 'select' },
-      options: ['sm', 'md', 'lg'],
+      control: { type: "select" },
+      options: ["sm", "md", "lg"],
     },
     showStepNumbers: {
-      control: 'boolean',
+      control: "boolean",
     },
     showStepDescriptions: {
-      control: 'boolean',
+      control: "boolean",
     },
     allowClickOnCompleted: {
-      control: 'boolean',
+      control: "boolean",
     },
     allowClickOnFuture: {
-      control: 'boolean',
+      control: "boolean",
     },
   },
 };
@@ -37,24 +37,24 @@ type Story = StoryObj<typeof meta>;
 
 const sampleSteps = [
   {
-    id: 'step1',
-    title: 'Personal Information',
-    description: 'Enter your basic details',
+    id: "step1",
+    title: "Personal Information",
+    description: "Enter your basic details",
   },
   {
-    id: 'step2',
-    title: 'Contact Details',
-    description: 'Provide your contact information',
+    id: "step2",
+    title: "Contact Details",
+    description: "Provide your contact information",
   },
   {
-    id: 'step3',
-    title: 'Preferences',
-    description: 'Set your preferences',
+    id: "step3",
+    title: "Preferences",
+    description: "Set your preferences",
   },
   {
-    id: 'step4',
-    title: 'Review',
-    description: 'Review and confirm',
+    id: "step4",
+    title: "Review",
+    description: "Review and confirm",
   },
 ];
 
@@ -62,7 +62,7 @@ export const Default: Story = {
   args: {
     steps: sampleSteps,
     currentStep: 1,
-    onStepClick: (stepIndex) => console.log('Clicked step:', stepIndex),
+    onStepClick: (stepIndex) => console.log("Clicked step:", stepIndex),
   },
 };
 
@@ -70,7 +70,7 @@ export const FirstStep: Story = {
   args: {
     steps: sampleSteps,
     currentStep: 0,
-    onStepClick: (stepIndex) => console.log('Clicked step:', stepIndex),
+    onStepClick: (stepIndex) => console.log("Clicked step:", stepIndex),
   },
 };
 
@@ -78,7 +78,7 @@ export const LastStep: Story = {
   args: {
     steps: sampleSteps,
     currentStep: 3,
-    onStepClick: (stepIndex) => console.log('Clicked step:', stepIndex),
+    onStepClick: (stepIndex) => console.log("Clicked step:", stepIndex),
   },
 };
 
@@ -86,8 +86,8 @@ export const Vertical: Story = {
   args: {
     steps: sampleSteps,
     currentStep: 1,
-    orientation: 'vertical',
-    onStepClick: (stepIndex) => console.log('Clicked step:', stepIndex),
+    orientation: "vertical",
+    onStepClick: (stepIndex) => console.log("Clicked step:", stepIndex),
   },
 };
 
@@ -95,8 +95,8 @@ export const Small: Story = {
   args: {
     steps: sampleSteps,
     currentStep: 1,
-    size: 'sm',
-    onStepClick: (stepIndex) => console.log('Clicked step:', stepIndex),
+    size: "sm",
+    onStepClick: (stepIndex) => console.log("Clicked step:", stepIndex),
   },
 };
 
@@ -104,8 +104,8 @@ export const Large: Story = {
   args: {
     steps: sampleSteps,
     currentStep: 1,
-    size: 'lg',
-    onStepClick: (stepIndex) => console.log('Clicked step:', stepIndex),
+    size: "lg",
+    onStepClick: (stepIndex) => console.log("Clicked step:", stepIndex),
   },
 };
 
@@ -114,7 +114,7 @@ export const WithoutNumbers: Story = {
     steps: sampleSteps,
     currentStep: 1,
     showStepNumbers: false,
-    onStepClick: (stepIndex) => console.log('Clicked step:', stepIndex),
+    onStepClick: (stepIndex) => console.log("Clicked step:", stepIndex),
   },
 };
 
@@ -123,7 +123,7 @@ export const WithoutDescriptions: Story = {
     steps: sampleSteps,
     currentStep: 1,
     showStepDescriptions: false,
-    onStepClick: (stepIndex) => console.log('Clicked step:', stepIndex),
+    onStepClick: (stepIndex) => console.log("Clicked step:", stepIndex),
   },
 };
 
@@ -131,29 +131,29 @@ export const WithDisabledSteps: Story = {
   args: {
     steps: [
       {
-        id: 'step1',
-        title: 'Personal Information',
-        description: 'Enter your basic details',
+        id: "step1",
+        title: "Personal Information",
+        description: "Enter your basic details",
       },
       {
-        id: 'step2',
-        title: 'Contact Details',
-        description: 'Provide your contact information',
+        id: "step2",
+        title: "Contact Details",
+        description: "Provide your contact information",
         disabled: true,
       },
       {
-        id: 'step3',
-        title: 'Preferences',
-        description: 'Set your preferences',
+        id: "step3",
+        title: "Preferences",
+        description: "Set your preferences",
       },
       {
-        id: 'step4',
-        title: 'Review',
-        description: 'Review and confirm',
+        id: "step4",
+        title: "Review",
+        description: "Review and confirm",
       },
     ],
     currentStep: 1,
-    onStepClick: (stepIndex) => console.log('Clicked step:', stepIndex),
+    onStepClick: (stepIndex) => console.log("Clicked step:", stepIndex),
   },
 };
 
@@ -162,7 +162,7 @@ export const AllowClickOnFuture: Story = {
     steps: sampleSteps,
     currentStep: 1,
     allowClickOnFuture: true,
-    onStepClick: (stepIndex) => console.log('Clicked step:', stepIndex),
+    onStepClick: (stepIndex) => console.log("Clicked step:", stepIndex),
   },
 };
 
@@ -171,6 +171,6 @@ export const DisableClickOnCompleted: Story = {
     steps: sampleSteps,
     currentStep: 1,
     allowClickOnCompleted: false,
-    onStepClick: (stepIndex) => console.log('Clicked step:', stepIndex),
+    onStepClick: (stepIndex) => console.log("Clicked step:", stepIndex),
   },
 };

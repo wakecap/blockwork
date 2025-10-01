@@ -1,35 +1,42 @@
-import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import { ColorPicker, SimpleColorPicker, AdvancedColorPicker, ThemeColorPicker, useColorPicker } from '../components/ColorPicker';
+import React from "react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import {
+  ColorPicker,
+  SimpleColorPicker,
+  AdvancedColorPicker,
+  ThemeColorPicker,
+  useColorPicker,
+} from "../components/ColorPicker";
 
 const meta: Meta<typeof ColorPicker> = {
-  title: 'Forms and Data Entry/ColorPicker',
+  title: "Forms and Data Entry/ColorPicker",
   component: ColorPicker,
   parameters: {
-    layout: 'padded',
+    layout: "padded",
     docs: {
       description: {
-        component: 'A color picker component for selecting colors with preset options, format display, and customizable appearance.',
+        component:
+          "A color picker component for selecting colors with preset options, format display, and customizable appearance.",
       },
     },
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     format: {
-      control: { type: 'select' },
-      options: ['hex', 'rgb', 'hsl'],
+      control: { type: "select" },
+      options: ["hex", "rgb", "hsl"],
     },
     showPresets: {
-      control: { type: 'boolean' },
+      control: { type: "boolean" },
     },
     showInput: {
-      control: { type: 'boolean' },
+      control: { type: "boolean" },
     },
     showPreview: {
-      control: { type: 'boolean' },
+      control: { type: "boolean" },
     },
     disabled: {
-      control: { type: 'boolean' },
+      control: { type: "boolean" },
     },
   },
 };
@@ -39,29 +46,20 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   render: () => {
-    const [color, setColor] = React.useState('#3b82f6');
+    const [color, setColor] = React.useState("#3b82f6");
 
-    return (
-      <ColorPicker
-        value={color}
-        onChange={setColor}
-        className="w-full max-w-md"
-      />
-    );
+    return <ColorPicker value={color} onChange={setColor} className="w-full max-w-md" />;
   },
 };
 
 export const SimpleColorPickerExample: Story = {
   render: () => {
-    const [color, setColor] = React.useState('#ef4444');
+    const [color, setColor] = React.useState("#ef4444");
 
     return (
       <div className="w-full max-w-md">
         <h2 className="text-2xl font-bold text-neutral-900 mb-6">Simple Color Picker</h2>
-        <SimpleColorPicker
-          value={color}
-          onChange={setColor}
-        />
+        <SimpleColorPicker value={color} onChange={setColor} />
       </div>
     );
   },
@@ -69,15 +67,12 @@ export const SimpleColorPickerExample: Story = {
 
 export const AdvancedColorPickerExample: Story = {
   render: () => {
-    const [color, setColor] = React.useState('#10b981');
+    const [color, setColor] = React.useState("#10b981");
 
     return (
       <div className="w-full max-w-md">
         <h2 className="text-2xl font-bold text-neutral-900 mb-6">Advanced Color Picker</h2>
-        <AdvancedColorPicker
-          value={color}
-          onChange={setColor}
-        />
+        <AdvancedColorPicker value={color} onChange={setColor} />
       </div>
     );
   },
@@ -85,15 +80,12 @@ export const AdvancedColorPickerExample: Story = {
 
 export const ThemeColorPickerExample: Story = {
   render: () => {
-    const [color, setColor] = React.useState('#8b5cf6');
+    const [color, setColor] = React.useState("#8b5cf6");
 
     return (
       <div className="w-full max-w-md">
         <h2 className="text-2xl font-bold text-neutral-900 mb-6">Theme Color Picker</h2>
-        <ThemeColorPicker
-          value={color}
-          onChange={setColor}
-        />
+        <ThemeColorPicker value={color} onChange={setColor} />
       </div>
     );
   },
@@ -101,23 +93,33 @@ export const ThemeColorPickerExample: Story = {
 
 export const WithCustomPresets: Story = {
   render: () => {
-    const [color, setColor] = React.useState('#f59e0b');
+    const [color, setColor] = React.useState("#f59e0b");
 
     const customPresets = [
-      '#ff0000', '#ff8000', '#ffff00', '#80ff00', '#00ff00',
-      '#00ff80', '#00ffff', '#0080ff', '#0000ff', '#8000ff',
-      '#ff00ff', '#ff0080', '#ffffff', '#cccccc', '#999999',
-      '#666666', '#333333', '#000000'
+      "#ff0000",
+      "#ff8000",
+      "#ffff00",
+      "#80ff00",
+      "#00ff00",
+      "#00ff80",
+      "#00ffff",
+      "#0080ff",
+      "#0000ff",
+      "#8000ff",
+      "#ff00ff",
+      "#ff0080",
+      "#ffffff",
+      "#cccccc",
+      "#999999",
+      "#666666",
+      "#333333",
+      "#000000",
     ];
 
     return (
       <div className="w-full max-w-md">
         <h2 className="text-2xl font-bold text-neutral-900 mb-6">Custom Presets</h2>
-        <ColorPicker
-          value={color}
-          onChange={setColor}
-          presetColors={customPresets}
-        />
+        <ColorPicker value={color} onChange={setColor} presetColors={customPresets} />
       </div>
     );
   },
@@ -125,16 +127,12 @@ export const WithCustomPresets: Story = {
 
 export const RGBFormat: Story = {
   render: () => {
-    const [color, setColor] = React.useState('#dc2626');
+    const [color, setColor] = React.useState("#dc2626");
 
     return (
       <div className="w-full max-w-md">
         <h2 className="text-2xl font-bold text-neutral-900 mb-6">RGB Format</h2>
-        <ColorPicker
-          value={color}
-          onChange={setColor}
-          format="rgb"
-        />
+        <ColorPicker value={color} onChange={setColor} format="rgb" />
       </div>
     );
   },
@@ -142,16 +140,12 @@ export const RGBFormat: Story = {
 
 export const HSLFormat: Story = {
   render: () => {
-    const [color, setColor] = React.useState('#7c3aed');
+    const [color, setColor] = React.useState("#7c3aed");
 
     return (
       <div className="w-full max-w-md">
         <h2 className="text-2xl font-bold text-neutral-900 mb-6">HSL Format</h2>
-        <ColorPicker
-          value={color}
-          onChange={setColor}
-          format="hsl"
-        />
+        <ColorPicker value={color} onChange={setColor} format="hsl" />
       </div>
     );
   },
@@ -159,16 +153,12 @@ export const HSLFormat: Story = {
 
 export const WithoutPresets: Story = {
   render: () => {
-    const [color, setColor] = React.useState('#059669');
+    const [color, setColor] = React.useState("#059669");
 
     return (
       <div className="w-full max-w-md">
         <h2 className="text-2xl font-bold text-neutral-900 mb-6">Without Presets</h2>
-        <ColorPicker
-          value={color}
-          onChange={setColor}
-          showPresets={false}
-        />
+        <ColorPicker value={color} onChange={setColor} showPresets={false} />
       </div>
     );
   },
@@ -176,16 +166,12 @@ export const WithoutPresets: Story = {
 
 export const WithoutInput: Story = {
   render: () => {
-    const [color, setColor] = React.useState('#f97316');
+    const [color, setColor] = React.useState("#f97316");
 
     return (
       <div className="w-full max-w-md">
         <h2 className="text-2xl font-bold text-neutral-900 mb-6">Without Input</h2>
-        <ColorPicker
-          value={color}
-          onChange={setColor}
-          showInput={false}
-        />
+        <ColorPicker value={color} onChange={setColor} showInput={false} />
       </div>
     );
   },
@@ -193,16 +179,12 @@ export const WithoutInput: Story = {
 
 export const WithoutPreview: Story = {
   render: () => {
-    const [color, setColor] = React.useState('#ec4899');
+    const [color, setColor] = React.useState("#ec4899");
 
     return (
       <div className="w-full max-w-md">
         <h2 className="text-2xl font-bold text-neutral-900 mb-6">Without Preview</h2>
-        <ColorPicker
-          value={color}
-          onChange={setColor}
-          showPreview={false}
-        />
+        <ColorPicker value={color} onChange={setColor} showPreview={false} />
       </div>
     );
   },
@@ -213,11 +195,7 @@ export const Disabled: Story = {
     return (
       <div className="w-full max-w-md">
         <h2 className="text-2xl font-bold text-neutral-900 mb-6">Disabled</h2>
-        <ColorPicker
-          value="#6b7280"
-          onChange={() => {}}
-          disabled={true}
-        />
+        <ColorPicker value="#6b7280" onChange={() => {}} disabled={true} />
       </div>
     );
   },
@@ -225,9 +203,9 @@ export const Disabled: Story = {
 
 export const ThemeBuilder: Story = {
   render: () => {
-    const [primaryColor, setPrimaryColor] = React.useState('#3b82f6');
-    const [secondaryColor, setSecondaryColor] = React.useState('#10b981');
-    const [accentColor, setAccentColor] = React.useState('#f59e0b');
+    const [primaryColor, setPrimaryColor] = React.useState("#3b82f6");
+    const [secondaryColor, setSecondaryColor] = React.useState("#10b981");
+    const [accentColor, setAccentColor] = React.useState("#f59e0b");
 
     return (
       <div className="w-full max-w-2xl">
@@ -235,45 +213,33 @@ export const ThemeBuilder: Story = {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <div className="bg-white border border-neutral-200 rounded-lg p-4">
             <h3 className="text-lg font-medium text-neutral-900 mb-4">Primary Color</h3>
-            <ColorPicker
-              value={primaryColor}
-              onChange={setPrimaryColor}
-              format="hex"
-            />
+            <ColorPicker value={primaryColor} onChange={setPrimaryColor} format="hex" />
             <div className="mt-4 p-3 rounded-lg" style={{ backgroundColor: primaryColor }}>
               <p className="text-white font-medium">Primary Button</p>
             </div>
           </div>
-          
+
           <div className="bg-white border border-neutral-200 rounded-lg p-4">
             <h3 className="text-lg font-medium text-neutral-900 mb-4">Secondary Color</h3>
-            <ColorPicker
-              value={secondaryColor}
-              onChange={setSecondaryColor}
-              format="hex"
-            />
+            <ColorPicker value={secondaryColor} onChange={setSecondaryColor} format="hex" />
             <div className="mt-4 p-3 rounded-lg" style={{ backgroundColor: secondaryColor }}>
               <p className="text-white font-medium">Secondary Button</p>
             </div>
           </div>
-          
+
           <div className="bg-white border border-neutral-200 rounded-lg p-4">
             <h3 className="text-lg font-medium text-neutral-900 mb-4">Accent Color</h3>
-            <ColorPicker
-              value={accentColor}
-              onChange={setAccentColor}
-              format="hex"
-            />
+            <ColorPicker value={accentColor} onChange={setAccentColor} format="hex" />
             <div className="mt-4 p-3 rounded-lg" style={{ backgroundColor: accentColor }}>
               <p className="text-white font-medium">Accent Element</p>
             </div>
           </div>
         </div>
-        
+
         <div className="mt-6 p-4 bg-neutral-50 rounded-lg">
           <h3 className="font-medium text-neutral-900 mb-2">CSS Variables</h3>
           <pre className="text-sm text-neutral-600 overflow-x-auto">
-{`:root {
+            {`:root {
   --primary-color: ${primaryColor};
   --secondary-color: ${secondaryColor};
   --accent-color: ${accentColor};
@@ -287,28 +253,30 @@ export const ThemeBuilder: Story = {
 
 export const ColorPaletteGenerator: Story = {
   render: () => {
-    const [baseColor, setBaseColor] = React.useState('#3b82f6');
+    const [baseColor, setBaseColor] = React.useState("#3b82f6");
     const [palette, setPalette] = React.useState<string[]>([]);
 
     React.useEffect(() => {
       // Generate a simple color palette based on the base color
       const generatePalette = (color: string) => {
-        const hex = color.replace('#', '');
+        const hex = color.replace("#", "");
         const r = parseInt(hex.substr(0, 2), 16);
         const g = parseInt(hex.substr(2, 2), 16);
         const b = parseInt(hex.substr(4, 2), 16);
-        
+
         const palette = [];
         for (let i = 0; i < 5; i++) {
-          const factor = 1 - (i * 0.2);
+          const factor = 1 - i * 0.2;
           const newR = Math.round(r * factor);
           const newG = Math.round(g * factor);
           const newB = Math.round(b * factor);
-          palette.push(`#${newR.toString(16).padStart(2, '0')}${newG.toString(16).padStart(2, '0')}${newB.toString(16).padStart(2, '0')}`);
+          palette.push(
+            `#${newR.toString(16).padStart(2, "0")}${newG.toString(16).padStart(2, "0")}${newB.toString(16).padStart(2, "0")}`,
+          );
         }
         return palette;
       };
-      
+
       setPalette(generatePalette(baseColor));
     }, [baseColor]);
 
@@ -317,16 +285,10 @@ export const ColorPaletteGenerator: Story = {
         <h2 className="text-2xl font-bold text-neutral-900 mb-6">Color Palette Generator</h2>
         <div className="bg-white border border-neutral-200 rounded-lg p-6">
           <div className="mb-6">
-            <label className="block text-sm font-medium text-neutral-700 mb-2">
-              Base Color
-            </label>
-            <ColorPicker
-              value={baseColor}
-              onChange={setBaseColor}
-              format="hex"
-            />
+            <label className="block text-sm font-medium text-neutral-700 mb-2">Base Color</label>
+            <ColorPicker value={baseColor} onChange={setBaseColor} format="hex" />
           </div>
-          
+
           <div>
             <label className="block text-sm font-medium text-neutral-700 mb-2">
               Generated Palette
@@ -351,26 +313,26 @@ export const ColorPaletteGenerator: Story = {
 
 export const AccessibilityChecker: Story = {
   render: () => {
-    const [backgroundColor, setBackgroundColor] = React.useState('#ffffff');
-    const [textColor, setTextColor] = React.useState('#000000');
+    const [backgroundColor, setBackgroundColor] = React.useState("#ffffff");
+    const [textColor, setTextColor] = React.useState("#000000");
     const [contrastRatio, setContrastRatio] = React.useState(0);
 
     React.useEffect(() => {
       // Calculate contrast ratio
       const getLuminance = (color: string) => {
-        const hex = color.replace('#', '');
+        const hex = color.replace("#", "");
         const r = parseInt(hex.substr(0, 2), 16) / 255;
         const g = parseInt(hex.substr(2, 2), 16) / 255;
         const b = parseInt(hex.substr(4, 2), 16) / 255;
-        
-        const [rs, gs, bs] = [r, g, b].map(c => {
+
+        const [rs, gs, bs] = [r, g, b].map((c) => {
           if (c <= 0.03928) return c / 12.92;
           return Math.pow((c + 0.055) / 1.055, 2.4);
         });
-        
+
         return 0.2126 * rs + 0.7152 * gs + 0.0722 * bs;
       };
-      
+
       const l1 = getLuminance(backgroundColor);
       const l2 = getLuminance(textColor);
       const ratio = (Math.max(l1, l2) + 0.05) / (Math.min(l1, l2) + 0.05);
@@ -378,9 +340,9 @@ export const AccessibilityChecker: Story = {
     }, [backgroundColor, textColor]);
 
     const getAccessibilityLevel = (ratio: number) => {
-      if (ratio >= 7) return { level: 'AAA', color: 'text-green-600' };
-      if (ratio >= 4.5) return { level: 'AA', color: 'text-yellow-600' };
-      return { level: 'Fail', color: 'text-red-600' };
+      if (ratio >= 7) return { level: "AAA", color: "text-green-600" };
+      if (ratio >= 4.5) return { level: "AA", color: "text-yellow-600" };
+      return { level: "Fail", color: "text-red-600" };
     };
 
     const accessibility = getAccessibilityLevel(contrastRatio);
@@ -394,29 +356,17 @@ export const AccessibilityChecker: Story = {
               <label className="block text-sm font-medium text-neutral-700 mb-2">
                 Background Color
               </label>
-              <ColorPicker
-                value={backgroundColor}
-                onChange={setBackgroundColor}
-                format="hex"
-              />
+              <ColorPicker value={backgroundColor} onChange={setBackgroundColor} format="hex" />
             </div>
-            
+
             <div>
-              <label className="block text-sm font-medium text-neutral-700 mb-2">
-                Text Color
-              </label>
-              <ColorPicker
-                value={textColor}
-                onChange={setTextColor}
-                format="hex"
-              />
+              <label className="block text-sm font-medium text-neutral-700 mb-2">Text Color</label>
+              <ColorPicker value={textColor} onChange={setTextColor} format="hex" />
             </div>
           </div>
-          
+
           <div className="mb-6">
-            <label className="block text-sm font-medium text-neutral-700 mb-2">
-              Preview
-            </label>
+            <label className="block text-sm font-medium text-neutral-700 mb-2">Preview</label>
             <div
               className="p-4 rounded-lg border border-neutral-200"
               style={{ backgroundColor, color: textColor }}
@@ -425,7 +375,7 @@ export const AccessibilityChecker: Story = {
               <p className="text-sm">This is how your text will appear with the selected colors.</p>
             </div>
           </div>
-          
+
           <div className="p-4 bg-neutral-50 rounded-lg">
             <h3 className="font-medium text-neutral-900 mb-2">Accessibility Results</h3>
             <div className="space-y-2">
@@ -442,7 +392,7 @@ export const AccessibilityChecker: Story = {
               <div className="flex justify-between">
                 <span className="text-sm text-neutral-600">Status:</span>
                 <span className={`text-sm font-medium ${accessibility.color}`}>
-                  {accessibility.level === 'Fail' ? 'Needs improvement' : 'Pass'}
+                  {accessibility.level === "Fail" ? "Needs improvement" : "Pass"}
                 </span>
               </div>
             </div>

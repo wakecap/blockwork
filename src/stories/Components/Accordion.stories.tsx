@@ -1,11 +1,11 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta = {
-  title: 'Components/Accordion',
+  title: "Components/Accordion",
   parameters: {
     docs: {
       description: {
-        component: 'Accordion component for collapsible content sections.',
+        component: "Accordion component for collapsible content sections.",
       },
     },
   },
@@ -21,7 +21,7 @@ export const Overview: Story = {
       <p className="text-gray-600 mb-4">
         Accordion component for organizing and displaying collapsible content.
       </p>
-      
+
       <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
         <p className="text-yellow-800">
           <strong>Coming Soon:</strong> Accordion component implementation.

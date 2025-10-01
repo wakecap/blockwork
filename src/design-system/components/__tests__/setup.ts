@@ -1,10 +1,10 @@
 // Test setup file for design system components
-import '@testing-library/jest-dom';
+import "@testing-library/jest-dom";
 
 // Re-export testing utilities for convenience
-export * from '@testing-library/react';
-export * from '@testing-library/user-event';
-export { default as userEvent } from '@testing-library/user-event';
+export * from "@testing-library/react";
+export * from "@testing-library/user-event";
+export { default as userEvent } from "@testing-library/user-event";
 
 // Test utilities and helpers
 export const createMockProps = (overrides = {}) => ({
@@ -22,10 +22,10 @@ export const TestProviders = ({ children }: { children: React.ReactNode }) => {
 };
 
 // Mock data generators
-export const generateMockButtonProps = (variant = 'primary') => ({
+export const generateMockButtonProps = (variant = "primary") => ({
   variant,
-  size: 'md',
-  children: 'Test Button',
+  size: "md",
+  children: "Test Button",
   ...createMockProps(),
 });
 
@@ -33,10 +33,10 @@ export const generateMockButtonProps = (variant = 'primary') => ({
 export const expectToBeAccessible = async (element: HTMLElement) => {
   expect(element).toBeInTheDocument();
   expect(element).toBeVisible();
-  
+
   // Check for basic accessibility attributes
-  if (element.tagName === 'BUTTON') {
-    expect(element).not.toHaveAttribute('aria-hidden', 'true');
+  if (element.tagName === "BUTTON") {
+    expect(element).not.toHaveAttribute("aria-hidden", "true");
   }
 };
 
@@ -54,7 +54,7 @@ export const mockIntersectionObserver = () => {
   mockIntersectionObserver.mockReturnValue({
     observe: () => null,
     unobserve: () => null,
-    disconnect: () => null
+    disconnect: () => null,
   });
   window.IntersectionObserver = mockIntersectionObserver;
 };
@@ -64,7 +64,7 @@ export const mockResizeObserver = () => {
   mockResizeObserver.mockReturnValue({
     observe: () => null,
     unobserve: () => null,
-    disconnect: () => null
+    disconnect: () => null,
   });
   window.ResizeObserver = mockResizeObserver;
 };
@@ -73,9 +73,9 @@ export const mockResizeObserver = () => {
 beforeEach(() => {
   // Clear all mocks before each test
   jest.clearAllMocks();
-  
+
   // Reset DOM
-  document.body.innerHTML = '';
+  document.body.innerHTML = "";
 });
 
 afterEach(() => {

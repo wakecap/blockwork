@@ -1,13 +1,13 @@
-import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar, faCircle } from '@fortawesome/free-solid-svg-icons';
+import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar, faCircle } from "@fortawesome/free-solid-svg-icons";
 
 export interface RatingStarsProps {
   value: number;
   onChange?: (rating: number) => void;
   maxStars?: number;
-  size?: 'sm' | 'md' | 'lg';
-  variant?: 'default' | 'filled' | 'outlined';
+  size?: "sm" | "md" | "lg";
+  variant?: "default" | "filled" | "outlined";
   color?: string;
   readOnly?: boolean;
   showValue?: boolean;
@@ -19,20 +19,20 @@ export const RatingStars: React.FC<RatingStarsProps> = ({
   value,
   onChange,
   maxStars = 5,
-  size = 'md',
-  variant = 'default',
-  color = '#fbbf24', // yellow-400
+  size = "md",
+  variant = "default",
+  color = "#fbbf24", // yellow-400
   readOnly = false,
   showValue = false,
   showLabel = false,
-  className = '',
+  className = "",
 }) => {
   const [hoverValue, setHoverValue] = React.useState(0);
 
   const sizeStyles = {
-    sm: 'w-4 h-4',
-    md: 'w-5 h-5',
-    lg: 'w-6 h-6',
+    sm: "w-4 h-4",
+    md: "w-5 h-5",
+    lg: "w-6 h-6",
   };
 
   const getStarIcon = (index: number) => {
@@ -40,9 +40,9 @@ export const RatingStars: React.FC<RatingStarsProps> = ({
     const isFilled = index < currentValue;
     const isHalf = !isFilled && currentValue > index && currentValue < index + 1;
 
-    if (variant === 'filled') {
+    if (variant === "filled") {
       return faStar;
-    } else if (variant === 'outlined') {
+    } else if (variant === "outlined") {
       return isFilled ? faStar : faCircle;
     } else {
       // Default variant
@@ -58,7 +58,7 @@ export const RatingStars: React.FC<RatingStarsProps> = ({
     if (isFilled || isHalf) {
       return color;
     }
-    return '#d1d5db'; // gray-300
+    return "#d1d5db"; // gray-300
   };
 
   const handleStarClick = (index: number) => {
@@ -77,21 +77,18 @@ export const RatingStars: React.FC<RatingStarsProps> = ({
   };
 
   const getRatingLabel = (rating: number) => {
-    if (rating === 0) return 'No rating';
-    if (rating <= 1) return 'Poor';
-    if (rating <= 2) return 'Fair';
-    if (rating <= 3) return 'Good';
-    if (rating <= 4) return 'Very Good';
-    return 'Excellent';
+    if (rating === 0) return "No rating";
+    if (rating <= 1) return "Poor";
+    if (rating <= 2) return "Fair";
+    if (rating <= 3) return "Good";
+    if (rating <= 4) return "Very Good";
+    return "Excellent";
   };
 
   return (
     <div className={`flex items-center space-x-2 ${className}`}>
       {/* Stars */}
-      <div
-        className="flex items-center space-x-1"
-        onMouseLeave={handleMouseLeave}
-      >
+      <div className="flex items-center space-x-1" onMouseLeave={handleMouseLeave}>
         {Array.from({ length: maxStars }, (_, index) => (
           <button
             key={index}
@@ -102,7 +99,7 @@ export const RatingStars: React.FC<RatingStarsProps> = ({
             className={`
               ${sizeStyles[size]}
               transition-colors duration-200
-              ${readOnly ? 'cursor-default' : 'cursor-pointer hover:scale-110'}
+              ${readOnly ? "cursor-default" : "cursor-pointer hover:scale-110"}
               focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500
             `}
             style={{ color: getStarColor(index) }}
@@ -120,11 +117,7 @@ export const RatingStars: React.FC<RatingStarsProps> = ({
       )}
 
       {/* Label */}
-      {showLabel && (
-        <span className="text-sm text-neutral-600">
-          {getRatingLabel(value)}
-        </span>
-      )}
+      {showLabel && <span className="text-sm text-neutral-600">{getRatingLabel(value)}</span>}
     </div>
   );
 };
@@ -137,7 +130,14 @@ export const ProductRating: React.FC<{
   showValue?: boolean;
   showLabel?: boolean;
   className?: string;
-}> = ({ value, onChange, readOnly = false, showValue = true, showLabel = true, className = '' }) => {
+}> = ({
+  value,
+  onChange,
+  readOnly = false,
+  showValue = true,
+  showLabel = true,
+  className = "",
+}) => {
   return (
     <RatingStars
       value={value}
@@ -159,7 +159,7 @@ export const ReviewRating: React.FC<{
   onChange?: (rating: number) => void;
   readOnly?: boolean;
   className?: string;
-}> = ({ value, onChange, readOnly = false, className = '' }) => {
+}> = ({ value, onChange, readOnly = false, className = "" }) => {
   return (
     <div className={`space-y-2 ${className}`}>
       <RatingStars
@@ -173,11 +173,7 @@ export const ReviewRating: React.FC<{
         showValue={true}
         showLabel={true}
       />
-      {!readOnly && (
-        <p className="text-xs text-neutral-500">
-          Click on a star to rate
-        </p>
-      )}
+      {!readOnly && <p className="text-xs text-neutral-500">Click on a star to rate</p>}
     </div>
   );
 };
@@ -187,7 +183,7 @@ export const CompactRating: React.FC<{
   onChange?: (rating: number) => void;
   readOnly?: boolean;
   className?: string;
-}> = ({ value, onChange, readOnly = false, className = '' }) => {
+}> = ({ value, onChange, readOnly = false, className = "" }) => {
   return (
     <RatingStars
       value={value}
@@ -211,7 +207,14 @@ export const TenStarRating: React.FC<{
   showValue?: boolean;
   showLabel?: boolean;
   className?: string;
-}> = ({ value, onChange, readOnly = false, showValue = true, showLabel = true, className = '' }) => {
+}> = ({
+  value,
+  onChange,
+  readOnly = false,
+  showValue = true,
+  showLabel = true,
+  className = "",
+}) => {
   return (
     <RatingStars
       value={value}

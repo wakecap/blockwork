@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 export interface FormField {
   id: string;
@@ -23,30 +23,32 @@ export interface FormGroup {
   title: string;
   description?: string;
   sections: FormSection[];
-  variant?: 'default' | 'card' | 'bordered';
+  variant?: "default" | "card" | "bordered";
 }
 
 export interface FormLayoutProps {
   groups: FormGroup[];
-  variant?: 'default' | 'compact' | 'spacious';
-  layout?: 'vertical' | 'horizontal' | 'two-column';
+  variant?: "default" | "compact" | "spacious";
+  layout?: "vertical" | "horizontal" | "two-column";
   showSectionNumbers?: boolean;
   className?: string;
 }
 
 export const FormLayout: React.FC<FormLayoutProps> = ({
   groups,
-  variant = 'default',
-  layout = 'vertical',
+  variant = "default",
+  layout = "vertical",
   showSectionNumbers = false,
-  className = '',
+  className = "",
 }) => {
   const [expandedSections, setExpandedSections] = React.useState<Set<string>>(
-    new Set(groups.flatMap(group => 
-      group.sections
-        .filter(section => section.defaultExpanded !== false)
-        .map(section => `${group.id}-${section.id}`)
-    ))
+    new Set(
+      groups.flatMap((group) =>
+        group.sections
+          .filter((section) => section.defaultExpanded !== false)
+          .map((section) => `${group.id}-${section.id}`),
+      ),
+    ),
   );
 
   const toggleSection = (sectionId: string) => {
@@ -60,34 +62,33 @@ export const FormLayout: React.FC<FormLayoutProps> = ({
   };
 
   const variantStyles = {
-    default: 'space-y-6',
-    compact: 'space-y-4',
-    spacious: 'space-y-8',
+    default: "space-y-6",
+    compact: "space-y-4",
+    spacious: "space-y-8",
   };
 
   const layoutStyles = {
-    vertical: '',
-    horizontal: 'grid grid-cols-1 lg:grid-cols-2 gap-6',
-    'two-column': 'grid grid-cols-1 lg:grid-cols-2 gap-8',
+    vertical: "",
+    horizontal: "grid grid-cols-1 lg:grid-cols-2 gap-6",
+    "two-column": "grid grid-cols-1 lg:grid-cols-2 gap-8",
   };
 
   const groupVariantStyles = {
-    default: '',
-    card: 'bg-white rounded-lg shadow-sm border border-neutral-200 p-6',
-    bordered: 'border border-neutral-200 rounded-lg p-6',
+    default: "",
+    card: "bg-white rounded-lg shadow-sm border border-neutral-200 p-6",
+    bordered: "border border-neutral-200 rounded-lg p-6",
   };
 
   return (
     <div className={`${variantStyles[variant]} ${layoutStyles[layout]} ${className}`}>
       {groups.map((group, groupIndex) => (
-        <div key={group.id} className={groupVariantStyles[group.variant || 'default']}>
+        <div key={group.id} className={groupVariantStyles[group.variant || "default"]}>
           <div className="mb-6">
             <h2 className="text-xl font-semibold text-neutral-900 mb-2">
-              {showSectionNumbers && `${groupIndex + 1}. `}{group.title}
+              {showSectionNumbers && `${groupIndex + 1}. `}
+              {group.title}
             </h2>
-            {group.description && (
-              <p className="text-sm text-neutral-600">{group.description}</p>
-            )}
+            {group.description && <p className="text-sm text-neutral-600">{group.description}</p>}
           </div>
 
           <div className="space-y-6">
@@ -112,13 +113,18 @@ export const FormLayout: React.FC<FormLayoutProps> = ({
                       </div>
                       <svg
                         className={`w-5 h-5 text-neutral-500 transform transition-transform ${
-                          isExpanded ? 'rotate-180' : ''
+                          isExpanded ? "rotate-180" : ""
                         }`}
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
                       >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M19 9l-7 7-7-7"
+                        />
                       </svg>
                     </button>
                   ) : (
@@ -142,7 +148,10 @@ export const FormLayout: React.FC<FormLayoutProps> = ({
                       <div className="space-y-4">
                         {section.fields.map((field) => (
                           <div key={field.id} className="space-y-2">
-                            <label htmlFor={field.id} className="block text-sm font-medium text-neutral-700">
+                            <label
+                              htmlFor={field.id}
+                              className="block text-sm font-medium text-neutral-700"
+                            >
                               {field.label}
                               {field.required && <span className="text-red-500 ml-1">*</span>}
                             </label>
@@ -150,9 +159,7 @@ export const FormLayout: React.FC<FormLayoutProps> = ({
                             {field.helpText && (
                               <p className="text-sm text-neutral-500">{field.helpText}</p>
                             )}
-                            {field.error && (
-                              <p className="text-sm text-red-600">{field.error}</p>
-                            )}
+                            {field.error && <p className="text-sm text-red-600">{field.error}</p>}
                           </div>
                         ))}
                       </div>
@@ -172,15 +179,15 @@ export const FormLayout: React.FC<FormLayoutProps> = ({
 export const UserProfileForm: React.FC<{
   onSubmit?: (data: any) => void;
   className?: string;
-}> = ({ onSubmit, className = '' }) => {
+}> = ({ onSubmit, className = "" }) => {
   const [formData, setFormData] = React.useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    bio: '',
-    location: '',
-    website: '',
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    bio: "",
+    location: "",
+    website: "",
   });
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -190,18 +197,18 @@ export const UserProfileForm: React.FC<{
 
   const groups: FormGroup[] = [
     {
-      id: 'personal',
-      title: 'Personal Information',
-      description: 'Basic information about yourself',
-      variant: 'card',
+      id: "personal",
+      title: "Personal Information",
+      description: "Basic information about yourself",
+      variant: "card",
       sections: [
         {
-          id: 'basic',
-          title: 'Basic Details',
+          id: "basic",
+          title: "Basic Details",
           fields: [
             {
-              id: 'firstName',
-              label: 'First Name',
+              id: "firstName",
+              label: "First Name",
               required: true,
               children: (
                 <input
@@ -213,8 +220,8 @@ export const UserProfileForm: React.FC<{
               ),
             },
             {
-              id: 'lastName',
-              label: 'Last Name',
+              id: "lastName",
+              label: "Last Name",
               required: true,
               children: (
                 <input
@@ -226,8 +233,8 @@ export const UserProfileForm: React.FC<{
               ),
             },
             {
-              id: 'email',
-              label: 'Email Address',
+              id: "email",
+              label: "Email Address",
               required: true,
               children: (
                 <input
@@ -241,13 +248,13 @@ export const UserProfileForm: React.FC<{
           ],
         },
         {
-          id: 'contact',
-          title: 'Contact Information',
+          id: "contact",
+          title: "Contact Information",
           collapsible: true,
           fields: [
             {
-              id: 'phone',
-              label: 'Phone Number',
+              id: "phone",
+              label: "Phone Number",
               children: (
                 <input
                   type="tel"
@@ -258,8 +265,8 @@ export const UserProfileForm: React.FC<{
               ),
             },
             {
-              id: 'location',
-              label: 'Location',
+              id: "location",
+              label: "Location",
               children: (
                 <input
                   type="text"
@@ -274,19 +281,19 @@ export const UserProfileForm: React.FC<{
       ],
     },
     {
-      id: 'professional',
-      title: 'Professional Information',
-      description: 'Information about your professional background',
-      variant: 'card',
+      id: "professional",
+      title: "Professional Information",
+      description: "Information about your professional background",
+      variant: "card",
       sections: [
         {
-          id: 'bio',
-          title: 'Biography',
+          id: "bio",
+          title: "Biography",
           fields: [
             {
-              id: 'bio',
-              label: 'Bio',
-              helpText: 'Tell us a bit about yourself',
+              id: "bio",
+              label: "Bio",
+              helpText: "Tell us a bit about yourself",
               children: (
                 <textarea
                   value={formData.bio}
@@ -297,8 +304,8 @@ export const UserProfileForm: React.FC<{
               ),
             },
             {
-              id: 'website',
-              label: 'Website',
+              id: "website",
+              label: "Website",
               children: (
                 <input
                   type="url"
@@ -316,11 +323,7 @@ export const UserProfileForm: React.FC<{
 
   return (
     <form onSubmit={handleSubmit} className={className}>
-      <FormLayout
-        groups={groups}
-        variant="spacious"
-        showSectionNumbers
-      />
+      <FormLayout groups={groups} variant="spacious" showSectionNumbers />
       <div className="mt-6 flex justify-end">
         <button
           type="submit"
@@ -336,13 +339,13 @@ export const UserProfileForm: React.FC<{
 export const SettingsForm: React.FC<{
   onSubmit?: (data: any) => void;
   className?: string;
-}> = ({ onSubmit, className = '' }) => {
+}> = ({ onSubmit, className = "" }) => {
   const [formData, setFormData] = React.useState({
     notifications: true,
     emailUpdates: false,
     darkMode: false,
-    language: 'en',
-    timezone: 'UTC',
+    language: "en",
+    timezone: "UTC",
   });
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -352,17 +355,17 @@ export const SettingsForm: React.FC<{
 
   const groups: FormGroup[] = [
     {
-      id: 'notifications',
-      title: 'Notification Settings',
-      variant: 'bordered',
+      id: "notifications",
+      title: "Notification Settings",
+      variant: "bordered",
       sections: [
         {
-          id: 'preferences',
-          title: 'Preferences',
+          id: "preferences",
+          title: "Preferences",
           fields: [
             {
-              id: 'notifications',
-              label: 'Push Notifications',
+              id: "notifications",
+              label: "Push Notifications",
               children: (
                 <input
                   type="checkbox"
@@ -373,8 +376,8 @@ export const SettingsForm: React.FC<{
               ),
             },
             {
-              id: 'emailUpdates',
-              label: 'Email Updates',
+              id: "emailUpdates",
+              label: "Email Updates",
               children: (
                 <input
                   type="checkbox"
@@ -389,17 +392,17 @@ export const SettingsForm: React.FC<{
       ],
     },
     {
-      id: 'appearance',
-      title: 'Appearance & Language',
-      variant: 'bordered',
+      id: "appearance",
+      title: "Appearance & Language",
+      variant: "bordered",
       sections: [
         {
-          id: 'theme',
-          title: 'Theme',
+          id: "theme",
+          title: "Theme",
           fields: [
             {
-              id: 'darkMode',
-              label: 'Dark Mode',
+              id: "darkMode",
+              label: "Dark Mode",
               children: (
                 <input
                   type="checkbox"
@@ -410,8 +413,8 @@ export const SettingsForm: React.FC<{
               ),
             },
             {
-              id: 'language',
-              label: 'Language',
+              id: "language",
+              label: "Language",
               children: (
                 <select
                   value={formData.language}
@@ -426,8 +429,8 @@ export const SettingsForm: React.FC<{
               ),
             },
             {
-              id: 'timezone',
-              label: 'Timezone',
+              id: "timezone",
+              label: "Timezone",
               children: (
                 <select
                   value={formData.timezone}
@@ -449,11 +452,7 @@ export const SettingsForm: React.FC<{
 
   return (
     <form onSubmit={handleSubmit} className={className}>
-      <FormLayout
-        groups={groups}
-        variant="compact"
-        layout="two-column"
-      />
+      <FormLayout groups={groups} variant="compact" layout="two-column" />
       <div className="mt-6 flex justify-end">
         <button
           type="submit"

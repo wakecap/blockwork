@@ -1,17 +1,23 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import { GridShowcase, FlexboxShowcase, ContainerShowcase, LayoutPatterns } from '../foundations/GridSystem';
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import {
+  GridShowcase,
+  FlexboxShowcase,
+  ContainerShowcase,
+  LayoutPatterns,
+} from "../foundations/GridSystem";
 
 const meta: Meta = {
-  title: 'Foundation/Grid & Layout',
+  title: "Foundation/Grid & Layout",
   parameters: {
-    layout: 'padded',
+    layout: "padded",
     docs: {
       description: {
-        component: 'Grid and layout system built on CSS Grid and Flexbox with responsive utilities for creating flexible, consistent layouts.',
+        component:
+          "Grid and layout system built on CSS Grid and Flexbox with responsive utilities for creating flexible, consistent layouts.",
       },
     },
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
 };
 
 export default meta;
@@ -21,7 +27,8 @@ export const GridSystem: StoryObj = {
   parameters: {
     docs: {
       description: {
-        story: 'CSS Grid-based layout system with 12 columns, responsive breakpoints, and column spanning utilities.',
+        story:
+          "CSS Grid-based layout system with 12 columns, responsive breakpoints, and column spanning utilities.",
       },
     },
   },
@@ -32,7 +39,8 @@ export const FlexboxSystem: StoryObj = {
   parameters: {
     docs: {
       description: {
-        story: 'Flexbox utilities for controlling direction, justification, alignment, and distribution of elements.',
+        story:
+          "Flexbox utilities for controlling direction, justification, alignment, and distribution of elements.",
       },
     },
   },
@@ -43,7 +51,8 @@ export const Containers: StoryObj = {
   parameters: {
     docs: {
       description: {
-        story: 'Container and max-width utilities for constraining content width and creating consistent layouts.',
+        story:
+          "Container and max-width utilities for constraining content width and creating consistent layouts.",
       },
     },
   },
@@ -54,10 +63,9 @@ export const CommonPatterns: StoryObj = {
   parameters: {
     docs: {
       description: {
-        story: 'Common layout patterns including sidebar layouts, header-content-footer structures, and responsive card grids.',
+        story:
+          "Common layout patterns including sidebar layouts, header-content-footer structures, and responsive card grids.",
       },
     },
   },
 };
-
-

@@ -1,6 +1,6 @@
-import React from 'react';
-import { AgGridReact } from 'ag-grid-react';
-import { ColDef } from 'ag-grid-community';
+import React from "react";
+import { AgGridReact } from "ag-grid-react";
+import { ColDef } from "ag-grid-community";
 
 export interface TableColumn<T = any> {
   key: string;
@@ -13,13 +13,13 @@ export interface TableColumn<T = any> {
   minWidth?: number;
   maxWidth?: number;
   flex?: number;
-  align?: 'left' | 'center' | 'right';
+  align?: "left" | "center" | "right";
   cellRenderer?: (params: any) => React.ReactNode;
   cellEditor?: string;
   editable?: boolean;
   checkboxSelection?: boolean;
   headerCheckboxSelection?: boolean;
-  pinned?: 'left' | 'right';
+  pinned?: "left" | "right";
   resizable?: boolean;
   hide?: boolean;
 }
@@ -34,7 +34,7 @@ export interface TableProps<T = any> {
   editable?: boolean;
   loading?: boolean;
   emptyMessage?: string;
-  onSort?: (key: string, direction: 'asc' | 'desc') => void;
+  onSort?: (key: string, direction: "asc" | "desc") => void;
   onFilter?: (filters: Record<string, string>) => void;
   onSelect?: (selectedItems: T[]) => void;
   onEdit?: (item: T) => void;
@@ -43,8 +43,8 @@ export interface TableProps<T = any> {
   onCellValueChanged?: (item: T, field: string, newValue: any) => void;
   className?: string;
   height?: number | string;
-  theme?: 'alpine';
-  rowSelection?: 'single' | 'multiple';
+  theme?: "alpine";
+  rowSelection?: "single" | "multiple";
   pagination?: boolean;
   paginationPageSize?: number;
   paginationPageSizeSelector?: number[];
@@ -52,7 +52,7 @@ export interface TableProps<T = any> {
   animateRows?: boolean;
   rowHeight?: number;
   headerHeight?: number;
-  groupDisplayType?: 'singleColumn' | 'multipleColumns' | 'groupRows';
+  groupDisplayType?: "singleColumn" | "multipleColumns" | "groupRows";
   autoGroupColumnDef?: ColDef;
   masterDetail?: boolean;
   detailCellRenderer?: (params: any) => React.ReactNode;
@@ -67,7 +67,7 @@ export const Table = <T extends Record<string, any>>({
   expandable = false,
   editable = false,
   loading = false,
-  emptyMessage = 'No data available',
+  emptyMessage = "No data available",
   onSort,
   onFilter,
   onSelect,
@@ -75,10 +75,10 @@ export const Table = <T extends Record<string, any>>({
   onDelete,
   onRowClick,
   onCellValueChanged,
-  className = '',
+  className = "",
   height = 400,
-  theme = 'alpine',
-  rowSelection = 'multiple',
+  theme = "alpine",
+  rowSelection = "multiple",
   pagination = false,
   paginationPageSize = 10,
   paginationPageSizeSelector = [10, 20, 50, 100],
@@ -86,7 +86,7 @@ export const Table = <T extends Record<string, any>>({
   animateRows = true,
   rowHeight = 40,
   headerHeight = 40,
-  groupDisplayType = 'singleColumn',
+  groupDisplayType = "singleColumn",
   autoGroupColumnDef,
   masterDetail = false,
   detailCellRenderer,
@@ -103,7 +103,7 @@ export const Table = <T extends Record<string, any>>({
       maxWidth: column.maxWidth,
       flex: column.flex,
       cellStyle: {
-        textAlign: column.align || 'left',
+        textAlign: column.align || "left",
       },
       cellRenderer: column.cellRenderer,
       cellEditor: column.cellEditor,
@@ -118,8 +118,8 @@ export const Table = <T extends Record<string, any>>({
     // Add actions column if needed
     if (onEdit || onDelete || onRowClick) {
       agColumns.push({
-        field: 'actions',
-        headerName: 'Actions',
+        field: "actions",
+        headerName: "Actions",
         width: 120,
         cellRenderer: (params: any) => {
           return (

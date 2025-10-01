@@ -1,13 +1,13 @@
-import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircle, faCheck, faTimes, faExclamation } from '@fortawesome/free-solid-svg-icons';
+import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircle, faCheck, faTimes, faExclamation } from "@fortawesome/free-solid-svg-icons";
 
 export interface TimelineItem {
   id: string;
   title: string;
   description?: string;
   date: string;
-  status?: 'completed' | 'pending' | 'error' | 'warning';
+  status?: "completed" | "pending" | "error" | "warning";
   icon?: any;
   color?: string;
   children?: TimelineItem[];
@@ -15,8 +15,8 @@ export interface TimelineItem {
 
 export interface TimelineProps {
   items: TimelineItem[];
-  variant?: 'default' | 'vertical' | 'horizontal';
-  size?: 'sm' | 'md' | 'lg';
+  variant?: "default" | "vertical" | "horizontal";
+  size?: "sm" | "md" | "lg";
   showConnectors?: boolean;
   showDates?: boolean;
   className?: string;
@@ -24,73 +24,73 @@ export interface TimelineProps {
 
 export const Timeline: React.FC<TimelineProps> = ({
   items,
-  variant = 'default',
-  size = 'md',
+  variant = "default",
+  size = "md",
   showConnectors = true,
   showDates = true,
-  className = '',
+  className = "",
 }) => {
   const sizeStyles = {
     sm: {
-      container: 'space-y-3',
-      item: 'text-sm',
-      title: 'text-sm',
-      description: 'text-xs',
-      date: 'text-xs',
-      icon: 'w-4 h-4',
-      connector: 'w-0.5',
+      container: "space-y-3",
+      item: "text-sm",
+      title: "text-sm",
+      description: "text-xs",
+      date: "text-xs",
+      icon: "w-4 h-4",
+      connector: "w-0.5",
     },
     md: {
-      container: 'space-y-4',
-      item: 'text-base',
-      title: 'text-base',
-      description: 'text-sm',
-      date: 'text-sm',
-      icon: 'w-5 h-5',
-      connector: 'w-1',
+      container: "space-y-4",
+      item: "text-base",
+      title: "text-base",
+      description: "text-sm",
+      date: "text-sm",
+      icon: "w-5 h-5",
+      connector: "w-1",
     },
     lg: {
-      container: 'space-y-6',
-      item: 'text-lg',
-      title: 'text-lg',
-      description: 'text-base',
-      date: 'text-base',
-      icon: 'w-6 h-6',
-      connector: 'w-1.5',
+      container: "space-y-6",
+      item: "text-lg",
+      title: "text-lg",
+      description: "text-base",
+      date: "text-base",
+      icon: "w-6 h-6",
+      connector: "w-1.5",
     },
   };
 
   const statusStyles = {
     completed: {
       icon: faCheck,
-      color: 'text-success-600',
-      bg: 'bg-success-100',
-      border: 'border-success-200',
+      color: "text-success-600",
+      bg: "bg-success-100",
+      border: "border-success-200",
     },
     pending: {
       icon: faCircle,
-      color: 'text-neutral-400',
-      bg: 'bg-neutral-100',
-      border: 'border-neutral-200',
+      color: "text-neutral-400",
+      bg: "bg-neutral-100",
+      border: "border-neutral-200",
     },
     error: {
       icon: faTimes,
-      color: 'text-error-600',
-      bg: 'bg-error-100',
-      border: 'border-error-200',
+      color: "text-error-600",
+      bg: "bg-error-100",
+      border: "border-error-200",
     },
     warning: {
       icon: faExclamation,
-      color: 'text-warning-600',
-      bg: 'bg-warning-100',
-      border: 'border-warning-200',
+      color: "text-warning-600",
+      bg: "bg-warning-100",
+      border: "border-warning-200",
     },
   };
 
   const currentSize = sizeStyles[size];
 
   const renderTimelineItem = (item: TimelineItem, index: number, isLast: boolean) => {
-    const status = item.status || 'pending';
+    const status = item.status || "pending";
     const statusConfig = statusStyles[status];
     const IconComponent = item.icon || statusConfig.icon;
 
@@ -99,7 +99,9 @@ export const Timeline: React.FC<TimelineProps> = ({
         <div className="flex items-start space-x-4">
           {/* Icon */}
           <div className="flex-shrink-0">
-            <div className={`${currentSize.icon} ${statusConfig.bg} ${statusConfig.border} border-2 rounded-full flex items-center justify-center ${statusConfig.color}`}>
+            <div
+              className={`${currentSize.icon} ${statusConfig.bg} ${statusConfig.border} border-2 rounded-full flex items-center justify-center ${statusConfig.color}`}
+            >
               <FontAwesomeIcon icon={IconComponent} className="w-3 h-3" />
             </div>
           </div>
@@ -107,16 +109,12 @@ export const Timeline: React.FC<TimelineProps> = ({
           {/* Content */}
           <div className="flex-1 min-w-0">
             <div className="flex items-center justify-between">
-              <h3 className={`${currentSize.title} font-medium text-neutral-900`}>
-                {item.title}
-              </h3>
+              <h3 className={`${currentSize.title} font-medium text-neutral-900`}>{item.title}</h3>
               {showDates && (
-                <span className={`${currentSize.date} text-neutral-500`}>
-                  {item.date}
-                </span>
+                <span className={`${currentSize.date} text-neutral-500`}>{item.date}</span>
               )}
             </div>
-            
+
             {item.description && (
               <p className={`${currentSize.description} text-neutral-600 mt-1`}>
                 {item.description}
@@ -155,7 +153,7 @@ export const Timeline: React.FC<TimelineProps> = ({
   const renderHorizontalTimeline = () => (
     <div className={`flex space-x-8 overflow-x-auto pb-4 ${className}`}>
       {items.map((item, index) => {
-        const status = item.status || 'pending';
+        const status = item.status || "pending";
         const statusConfig = statusStyles[status];
         const IconComponent = item.icon || statusConfig.icon;
 
@@ -164,7 +162,9 @@ export const Timeline: React.FC<TimelineProps> = ({
             <div className="text-center">
               {/* Icon */}
               <div className="flex justify-center mb-3">
-                <div className={`${currentSize.icon} ${statusConfig.bg} ${statusConfig.border} border-2 rounded-full flex items-center justify-center ${statusConfig.color}`}>
+                <div
+                  className={`${currentSize.icon} ${statusConfig.bg} ${statusConfig.border} border-2 rounded-full flex items-center justify-center ${statusConfig.color}`}
+                >
                   <FontAwesomeIcon icon={IconComponent} className="w-3 h-3" />
                 </div>
               </div>
@@ -174,17 +174,15 @@ export const Timeline: React.FC<TimelineProps> = ({
                 <h3 className={`${currentSize.title} font-medium text-neutral-900 mb-1`}>
                   {item.title}
                 </h3>
-                
+
                 {item.description && (
                   <p className={`${currentSize.description} text-neutral-600 mb-2`}>
                     {item.description}
                   </p>
                 )}
-                
+
                 {showDates && (
-                  <span className={`${currentSize.date} text-neutral-500`}>
-                    {item.date}
-                  </span>
+                  <span className={`${currentSize.date} text-neutral-500`}>{item.date}</span>
                 )}
               </div>
 
@@ -199,7 +197,7 @@ export const Timeline: React.FC<TimelineProps> = ({
     </div>
   );
 
-  if (variant === 'horizontal') {
+  if (variant === "horizontal") {
     return renderHorizontalTimeline();
   }
 
@@ -213,11 +211,11 @@ export const ActivityTimeline: React.FC<{
     action: string;
     user: string;
     date: string;
-    status: 'completed' | 'pending' | 'error';
+    status: "completed" | "pending" | "error";
   }>;
   className?: string;
-}> = ({ activities, className = '' }) => {
-  const items: TimelineItem[] = activities.map(activity => ({
+}> = ({ activities, className = "" }) => {
+  const items: TimelineItem[] = activities.map((activity) => ({
     id: activity.id,
     title: activity.action,
     description: `by ${activity.user}`,
@@ -225,14 +223,7 @@ export const ActivityTimeline: React.FC<{
     status: activity.status,
   }));
 
-  return (
-    <Timeline
-      items={items}
-      variant="default"
-      size="md"
-      className={className}
-    />
-  );
+  return <Timeline items={items} variant="default" size="md" className={className} />;
 };
 
 export const ProjectTimeline: React.FC<{
@@ -241,12 +232,12 @@ export const ProjectTimeline: React.FC<{
     title: string;
     description: string;
     date: string;
-    status: 'completed' | 'pending' | 'warning';
+    status: "completed" | "pending" | "warning";
     progress?: number;
   }>;
   className?: string;
-}> = ({ milestones, className = '' }) => {
-  const items: TimelineItem[] = milestones.map(milestone => ({
+}> = ({ milestones, className = "" }) => {
+  const items: TimelineItem[] = milestones.map((milestone) => ({
     id: milestone.id,
     title: milestone.title,
     description: milestone.description,
@@ -254,14 +245,7 @@ export const ProjectTimeline: React.FC<{
     status: milestone.status,
   }));
 
-  return (
-    <Timeline
-      items={items}
-      variant="default"
-      size="lg"
-      className={className}
-    />
-  );
+  return <Timeline items={items} variant="default" size="lg" className={className} />;
 };
 
 export const EventTimeline: React.FC<{
@@ -274,21 +258,14 @@ export const EventTimeline: React.FC<{
     location?: string;
   }>;
   className?: string;
-}> = ({ events, className = '' }) => {
-  const items: TimelineItem[] = events.map(event => ({
+}> = ({ events, className = "" }) => {
+  const items: TimelineItem[] = events.map((event) => ({
     id: event.id,
     title: event.title,
-    description: `${event.time}${event.location ? ` • ${event.location}` : ''}`,
+    description: `${event.time}${event.location ? ` • ${event.location}` : ""}`,
     date: event.date,
-    status: 'pending',
+    status: "pending",
   }));
 
-  return (
-    <Timeline
-      items={items}
-      variant="default"
-      size="md"
-      className={className}
-    />
-  );
+  return <Timeline items={items} variant="default" size="md" className={className} />;
 };

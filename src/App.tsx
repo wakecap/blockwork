@@ -1,13 +1,11 @@
-import React from 'react'
+import React from "react";
 
 function App() {
   return (
     <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="text-center">
-          <h1 className="text-4xl font-bold text-gray-900 mb-8">
-            Blockwork Design System
-          </h1>
+          <h1 className="text-4xl font-bold text-gray-900 mb-8">Blockwork Design System</h1>
           <p className="text-xl text-gray-600 mb-12">
             A comprehensive design system built with React, TypeScript, and Tailwind CSS
           </p>
@@ -16,8 +14,8 @@ function App() {
               Welcome to the Design System
             </h2>
             <p className="text-gray-600 mb-6">
-              This application showcases our component library. For detailed component 
-              documentation and interactive examples, please visit our Storybook.
+              This application showcases our component library. For detailed component documentation
+              and interactive examples, please visit our Storybook.
             </p>
             <div className="flex justify-center space-x-4">
               <a
@@ -41,7 +39,7 @@ function App() {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

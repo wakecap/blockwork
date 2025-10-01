@@ -1,15 +1,23 @@
-import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 export interface PopoverProps {
   content: React.ReactNode;
   children: React.ReactElement;
   isOpen: boolean;
   onClose: () => void;
-  position?: 'top' | 'bottom' | 'left' | 'right' | 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
-  variant?: 'default' | 'light' | 'dark';
-  size?: 'sm' | 'md' | 'lg';
+  position?:
+    | "top"
+    | "bottom"
+    | "left"
+    | "right"
+    | "top-left"
+    | "top-right"
+    | "bottom-left"
+    | "bottom-right";
+  variant?: "default" | "light" | "dark";
+  size?: "sm" | "md" | "lg";
   showArrow?: boolean;
   showCloseButton?: boolean;
   maxWidth?: string;
@@ -21,13 +29,13 @@ export const Popover: React.FC<PopoverProps> = ({
   children,
   isOpen,
   onClose,
-  position = 'bottom',
-  variant = 'default',
-  size = 'md',
+  position = "bottom",
+  variant = "default",
+  size = "md",
   showArrow = true,
   showCloseButton = false,
-  maxWidth = '300px',
-  className = '',
+  maxWidth = "300px",
+  className = "",
 }) => {
   const popoverRef = React.useRef<HTMLDivElement>(null);
 
@@ -39,46 +47,46 @@ export const Popover: React.FC<PopoverProps> = ({
     };
 
     if (isOpen) {
-      document.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener("mousedown", handleClickOutside);
     }
 
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [isOpen, onClose]);
 
   const variantStyles = {
-    default: 'bg-white text-neutral-900 border border-neutral-200 shadow-lg',
-    light: 'bg-white text-neutral-900 border border-neutral-200 shadow-lg',
-    dark: 'bg-neutral-800 text-white border border-neutral-700 shadow-lg',
+    default: "bg-white text-neutral-900 border border-neutral-200 shadow-lg",
+    light: "bg-white text-neutral-900 border border-neutral-200 shadow-lg",
+    dark: "bg-neutral-800 text-white border border-neutral-700 shadow-lg",
   };
 
   const sizeStyles = {
-    sm: 'p-3',
-    md: 'p-4',
-    lg: 'p-6',
+    sm: "p-3",
+    md: "p-4",
+    lg: "p-6",
   };
 
   const positionStyles = {
-    top: 'bottom-full left-1/2 transform -translate-x-1/2 mb-2',
-    bottom: 'top-full left-1/2 transform -translate-x-1/2 mt-2',
-    left: 'right-full top-1/2 transform -translate-y-1/2 mr-2',
-    right: 'left-full top-1/2 transform -translate-y-1/2 ml-2',
-    'top-left': 'bottom-full right-0 mb-2',
-    'top-right': 'bottom-full left-0 mb-2',
-    'bottom-left': 'top-full right-0 mt-2',
-    'bottom-right': 'top-full left-0 mt-2',
+    top: "bottom-full left-1/2 transform -translate-x-1/2 mb-2",
+    bottom: "top-full left-1/2 transform -translate-x-1/2 mt-2",
+    left: "right-full top-1/2 transform -translate-y-1/2 mr-2",
+    right: "left-full top-1/2 transform -translate-y-1/2 ml-2",
+    "top-left": "bottom-full right-0 mb-2",
+    "top-right": "bottom-full left-0 mb-2",
+    "bottom-left": "top-full right-0 mt-2",
+    "bottom-right": "top-full left-0 mt-2",
   };
 
   const arrowStyles = {
-    top: 'top-full left-1/2 transform -translate-x-1/2 border-t-neutral-200',
-    bottom: 'bottom-full left-1/2 transform -translate-x-1/2 border-b-neutral-200',
-    left: 'left-full top-1/2 transform -translate-y-1/2 border-l-neutral-200',
-    right: 'right-full top-1/2 transform -translate-y-1/2 border-r-neutral-200',
-    'top-left': 'top-full right-2 border-t-neutral-200',
-    'top-right': 'top-full left-2 border-t-neutral-200',
-    'bottom-left': 'bottom-full right-2 border-b-neutral-200',
-    'bottom-right': 'bottom-full left-2 border-b-neutral-200',
+    top: "top-full left-1/2 transform -translate-x-1/2 border-t-neutral-200",
+    bottom: "bottom-full left-1/2 transform -translate-x-1/2 border-b-neutral-200",
+    left: "left-full top-1/2 transform -translate-y-1/2 border-l-neutral-200",
+    right: "right-full top-1/2 transform -translate-y-1/2 border-r-neutral-200",
+    "top-left": "top-full right-2 border-t-neutral-200",
+    "top-right": "top-full left-2 border-t-neutral-200",
+    "bottom-left": "bottom-full right-2 border-b-neutral-200",
+    "bottom-right": "bottom-full left-2 border-b-neutral-200",
   };
 
   const currentVariant = variantStyles[variant];
@@ -109,13 +117,11 @@ export const Popover: React.FC<PopoverProps> = ({
             <FontAwesomeIcon icon={faTimes} className="w-4 h-4" />
           </button>
         )}
-        
+
         <div className="relative">
           {content}
           {showArrow && (
-            <div
-              className={`absolute w-0 h-0 border-4 border-transparent ${currentArrow}`}
-            />
+            <div className={`absolute w-0 h-0 border-4 border-transparent ${currentArrow}`} />
           )}
         </div>
       </div>
@@ -135,7 +141,7 @@ export const MenuPopover: React.FC<{
   isOpen: boolean;
   onClose: () => void;
   className?: string;
-}> = ({ items, children, isOpen, onClose, className = '' }) => (
+}> = ({ items, children, isOpen, onClose, className = "" }) => (
   <Popover
     content={
       <div className="min-w-48">
@@ -150,15 +156,10 @@ export const MenuPopover: React.FC<{
             }}
             disabled={item.disabled}
             className={`w-full flex items-center space-x-3 px-3 py-2 text-left text-sm rounded hover:bg-neutral-100 transition-colors ${
-              item.disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'
+              item.disabled ? "opacity-50 cursor-not-allowed" : "cursor-pointer"
             }`}
           >
-            {item.icon && (
-              <FontAwesomeIcon
-                icon={item.icon}
-                className="w-4 h-4 text-neutral-500"
-              />
-            )}
+            {item.icon && <FontAwesomeIcon icon={item.icon} className="w-4 h-4 text-neutral-500" />}
             <span>{item.label}</span>
           </button>
         ))}
@@ -181,7 +182,7 @@ export const InfoPopover: React.FC<{
   isOpen: boolean;
   onClose: () => void;
   className?: string;
-}> = ({ title, content, children, isOpen, onClose, className = '' }) => (
+}> = ({ title, content, children, isOpen, onClose, className = "" }) => (
   <Popover
     content={
       <div className="space-y-2">
@@ -207,7 +208,7 @@ export const FormPopover: React.FC<{
   isOpen: boolean;
   onClose: () => void;
   className?: string;
-}> = ({ title, children, trigger, isOpen, onClose, className = '' }) => (
+}> = ({ title, children, trigger, isOpen, onClose, className = "" }) => (
   <Popover
     content={
       <div className="space-y-4">

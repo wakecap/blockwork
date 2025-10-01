@@ -15,6 +15,7 @@ Create a [component-name] component with:
 ### Example Prompts
 
 1. Basic Button:
+
 ```
 Create a button component with:
 - Variants: primary, secondary, outline
@@ -23,6 +24,7 @@ Create a button component with:
 ```
 
 2. Card with Icon:
+
 ```
 Create a card component with:
 - Variants: default, elevated, interactive
@@ -32,6 +34,7 @@ Create a card component with:
 ```
 
 3. Input Field:
+
 ```
 Create an input component with:
 - Variants: default, error, success
@@ -43,6 +46,7 @@ Create an input component with:
 ## Component Structure
 
 Each generated component will include:
+
 1. Component file in `/design-system/components/`
 2. Story file in `/design-system/stories/`
 3. TypeScript types (if applicable)
@@ -51,6 +55,7 @@ Each generated component will include:
 ## Design Tokens
 
 The following design tokens are available:
+
 - Colors: primary, secondary (with shades 50-900)
 - Spacing: 4xs to 4xl
 - Typography: xs to 4xl
@@ -64,4 +69,4 @@ The following design tokens are available:
 4. Include proper TypeScript types
 5. Add comprehensive Storybook documentationGeneral
 6. Include hover and focus states
-7. Consider mobile responsiveness 
+7. Consider mobile responsiveness

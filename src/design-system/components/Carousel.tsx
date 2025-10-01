@@ -1,6 +1,6 @@
-import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronLeft, faChevronRight, faPlay, faPause } from '@fortawesome/free-solid-svg-icons';
+import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronLeft, faChevronRight, faPlay, faPause } from "@fortawesome/free-solid-svg-icons";
 
 export interface CarouselItem {
   id: string;
@@ -17,7 +17,7 @@ export interface CarouselProps {
   showIndicators?: boolean;
   showPlayPause?: boolean;
   showTitle?: boolean;
-  variant?: 'default' | 'cards' | 'fullscreen';
+  variant?: "default" | "cards" | "fullscreen";
   height?: string;
   className?: string;
 }
@@ -30,9 +30,9 @@ export const Carousel: React.FC<CarouselProps> = ({
   showIndicators = true,
   showPlayPause = false,
   showTitle = false,
-  variant = 'default',
-  height = '400px',
-  className = '',
+  variant = "default",
+  height = "400px",
+  className = "",
 }) => {
   const [currentIndex, setCurrentIndex] = React.useState(0);
   const [isPlaying, setIsPlaying] = React.useState(autoPlay);
@@ -71,9 +71,9 @@ export const Carousel: React.FC<CarouselProps> = ({
   }, [isPlaying, autoPlay, autoPlayInterval, items.length]);
 
   const variantStyles = {
-    default: 'relative overflow-hidden rounded-lg',
-    cards: 'relative overflow-hidden',
-    fullscreen: 'fixed inset-0 z-50',
+    default: "relative overflow-hidden rounded-lg",
+    cards: "relative overflow-hidden",
+    fullscreen: "fixed inset-0 z-50",
   };
 
   const currentVariant = variantStyles[variant];
@@ -88,7 +88,7 @@ export const Carousel: React.FC<CarouselProps> = ({
             <div
               key={item.id}
               className={`absolute inset-0 transition-opacity duration-500 ${
-                index === currentIndex ? 'opacity-100' : 'opacity-0'
+                index === currentIndex ? "opacity-100" : "opacity-0"
               }`}
             >
               {item.content}
@@ -99,13 +99,9 @@ export const Carousel: React.FC<CarouselProps> = ({
         {/* Title overlay */}
         {showTitle && items[currentIndex].title && (
           <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
-            <h3 className="text-white text-xl font-semibold mb-2">
-              {items[currentIndex].title}
-            </h3>
+            <h3 className="text-white text-xl font-semibold mb-2">{items[currentIndex].title}</h3>
             {items[currentIndex].description && (
-              <p className="text-white/90 text-sm">
-                {items[currentIndex].description}
-              </p>
+              <p className="text-white/90 text-sm">{items[currentIndex].description}</p>
             )}
           </div>
         )}
@@ -138,9 +134,7 @@ export const Carousel: React.FC<CarouselProps> = ({
                 key={index}
                 onClick={() => goToSlide(index)}
                 className={`w-3 h-3 rounded-full transition-colors ${
-                  index === currentIndex
-                    ? 'bg-white'
-                    : 'bg-white/50 hover:bg-white/75'
+                  index === currentIndex ? "bg-white" : "bg-white/50 hover:bg-white/75"
                 }`}
                 aria-label={`Go to slide ${index + 1}`}
               />
@@ -153,12 +147,9 @@ export const Carousel: React.FC<CarouselProps> = ({
           <button
             onClick={togglePlayPause}
             className="absolute top-4 right-4 w-10 h-10 bg-black/30 hover:bg-black/50 text-white rounded-full flex items-center justify-center transition-colors"
-            aria-label={isPlaying ? 'Pause' : 'Play'}
+            aria-label={isPlaying ? "Pause" : "Play"}
           >
-            <FontAwesomeIcon
-              icon={isPlaying ? faPause : faPlay}
-              className="w-4 h-4"
-            />
+            <FontAwesomeIcon icon={isPlaying ? faPause : faPlay} className="w-4 h-4" />
           </button>
         )}
 
@@ -196,18 +187,12 @@ export const ImageCarousel: React.FC<{
   showIndicators = true,
   showPlayPause = false,
   showTitle = false,
-  height = '400px',
-  className = '',
+  height = "400px",
+  className = "",
 }) => {
-  const items: CarouselItem[] = images.map(image => ({
+  const items: CarouselItem[] = images.map((image) => ({
     id: image.id,
-    content: (
-      <img
-        src={image.src}
-        alt={image.alt}
-        className="w-full h-full object-cover"
-      />
-    ),
+    content: <img src={image.src} alt={image.alt} className="w-full h-full object-cover" />,
     title: image.title,
     description: image.description,
   }));
@@ -247,9 +232,9 @@ export const CardCarousel: React.FC<{
   autoPlayInterval = 5000,
   showArrows = true,
   showIndicators = true,
-  className = '',
+  className = "",
 }) => {
-  const items: CarouselItem[] = cards.map(card => ({
+  const items: CarouselItem[] = cards.map((card) => ({
     id: card.id,
     content: (
       <div className="bg-white rounded-lg shadow-lg p-6 h-full flex flex-col">
@@ -260,17 +245,9 @@ export const CardCarousel: React.FC<{
             className="w-full h-32 object-cover rounded-lg mb-4"
           />
         )}
-        <h3 className="text-lg font-semibold text-neutral-900 mb-2">
-          {card.title}
-        </h3>
-        <p className="text-neutral-600 flex-1">
-          {card.description}
-        </p>
-        {card.action && (
-          <div className="mt-4">
-            {card.action}
-          </div>
-        )}
+        <h3 className="text-lg font-semibold text-neutral-900 mb-2">{card.title}</h3>
+        <p className="text-neutral-600 flex-1">{card.description}</p>
+        {card.action && <div className="mt-4">{card.action}</div>}
       </div>
     ),
   }));

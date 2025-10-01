@@ -1,11 +1,11 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta = {
-  title: 'Text/Text',
+  title: "Text/Text",
   parameters: {
     docs: {
       description: {
-        component: 'Text component for displaying body text.',
+        component: "Text component for displaying body text.",
       },
     },
   },
@@ -18,10 +18,8 @@ export const Overview: Story = {
   render: () => (
     <div className="p-6">
       <h1 className="text-2xl font-bold mb-4">Text</h1>
-      <p className="text-gray-600 mb-4">
-        Text component for consistent body text display.
-      </p>
-      
+      <p className="text-gray-600 mb-4">Text component for consistent body text display.</p>
+
       <div className="bg-orange-50 border border-orange-200 rounded-lg p-4">
         <p className="text-orange-800">
           <strong>Coming Soon:</strong> Text component implementation.

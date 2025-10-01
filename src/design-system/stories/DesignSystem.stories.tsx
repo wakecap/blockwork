@@ -1,24 +1,41 @@
-import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import { LanguageProvider } from '../../components/ui/language-provider';
-import { ColorPalette, TypographyScale, SpacingScale, ElevationScale, BorderRadiusScale, BreakpointScale, ZIndexScale, MotionTokens, OpacityScale } from '../foundations/DesignTokens';
-import { Button } from '../../components/ui/button';
-import { Input } from '../../components/ui/input';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../components/ui/card';
-import { Badge } from '../../components/ui/badge';
-import { LanguageToggle } from '../../components/ui/language-toggle';
+import React from "react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { LanguageProvider } from "../../components/ui/language-provider";
+import {
+  ColorPalette,
+  TypographyScale,
+  SpacingScale,
+  ElevationScale,
+  BorderRadiusScale,
+  BreakpointScale,
+  ZIndexScale,
+  MotionTokens,
+  OpacityScale,
+} from "../foundations/DesignTokens";
+import { Button } from "../../components/ui/button";
+import { Input } from "../../components/ui/input";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "../../components/ui/card";
+import { Badge } from "../../components/ui/badge";
+import { LanguageToggle } from "../../components/ui/language-toggle";
 
 const meta: Meta = {
-  title: 'Foundation/Overview',
+  title: "Foundation/Overview",
   parameters: {
-    layout: 'fullscreen',
+    layout: "fullscreen",
     docs: {
       description: {
-        component: 'Complete overview of the WakeCap Design System built with Tailwind CSS and shadcn/ui patterns.',
+        component:
+          "Complete overview of the WakeCap Design System built with Tailwind CSS and shadcn/ui patterns.",
       },
     },
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   decorators: [
     (Story) => (
       <LanguageProvider>
@@ -50,14 +67,19 @@ export const Welcome: Story = {
       <div className="text-center space-y-4">
         <h1 className="text-4xl font-bold text-foreground">Welcome to WakeCap Design System</h1>
         <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-          A comprehensive design system built with Tailwind CSS and shadcn/ui patterns. Features black as primary color (neutrals) and orange as accent, with full Arabic/RTL support.
+          A comprehensive design system built with Tailwind CSS and shadcn/ui patterns. Features
+          black as primary color (neutrals) and orange as accent, with full Arabic/RTL support.
         </p>
         <div className="flex justify-center gap-4">
-          <Button variant="primary" size="lg">Get Started</Button>
-          <Button variant="outline" size="lg">View Components</Button>
+          <Button variant="primary" size="lg">
+            Get Started
+          </Button>
+          <Button variant="outline" size="lg">
+            View Components
+          </Button>
         </div>
       </div>
-      
+
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <Card>
           <CardHeader>
@@ -70,7 +92,7 @@ export const Welcome: Story = {
             </p>
           </CardContent>
         </Card>
-        
+
         <Card>
           <CardHeader>
             <CardTitle>🌍 RTL Support</CardTitle>
@@ -82,7 +104,7 @@ export const Welcome: Story = {
             </p>
           </CardContent>
         </Card>
-        
+
         <Card>
           <CardHeader>
             <CardTitle>⚡ Modern Stack</CardTitle>
@@ -105,7 +127,8 @@ export const Colors: Story = {
       <div>
         <h2 className="text-3xl font-bold text-foreground mb-4">Color Palette</h2>
         <p className="text-muted-foreground mb-8">
-          Our color system uses black (neutrals) as primary colors, orange as accent, with Tailwind semantic colors and shadcn/ui CSS variables for theming.
+          Our color system uses black (neutrals) as primary colors, orange as accent, with Tailwind
+          semantic colors and shadcn/ui CSS variables for theming.
         </p>
       </div>
       <ColorPalette />
@@ -234,7 +257,7 @@ export const ComponentShowcase: Story = {
           Examples of our core components using the black primary and orange accent color scheme.
         </p>
       </div>
-      
+
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         <Card>
           <CardHeader>
@@ -256,7 +279,7 @@ export const ComponentShowcase: Story = {
             </div>
           </CardContent>
         </Card>
-        
+
         <Card>
           <CardHeader>
             <CardTitle>Inputs</CardTitle>
@@ -269,7 +292,7 @@ export const ComponentShowcase: Story = {
             <Input placeholder="Disabled" disabled />
           </CardContent>
         </Card>
-        
+
         <Card>
           <CardHeader>
             <CardTitle>Badges</CardTitle>
@@ -286,7 +309,7 @@ export const ComponentShowcase: Story = {
             </div>
           </CardContent>
         </Card>
-        
+
         <Card>
           <CardHeader>
             <CardTitle>Cards</CardTitle>

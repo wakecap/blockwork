@@ -1,22 +1,28 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../components/ui/card';
-import { Badge } from '../../components/ui/badge';
-import { Button } from '../../components/ui/button';
-import { Input } from '../../components/ui/input';
-import { RTLInput } from '../../components/ui/rtl-input';
-import { LanguageProvider } from '../../components/ui/language-provider';
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "../../components/ui/card";
+import { Badge } from "../../components/ui/badge";
+import { Button } from "../../components/ui/button";
+import { Input } from "../../components/ui/input";
+import { RTLInput } from "../../components/ui/rtl-input";
+import { LanguageProvider } from "../../components/ui/language-provider";
 
 const meta: Meta = {
-  title: 'Foundation/Migration Guide',
+  title: "Foundation/Migration Guide",
   parameters: {
-    layout: 'fullscreen',
+    layout: "fullscreen",
     docs: {
       description: {
-        component: 'Migration guide from the old design system to the new shadcn/ui-based system.',
+        component: "Migration guide from the old design system to the new shadcn/ui-based system.",
       },
     },
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   decorators: [
     (Story) => (
       <LanguageProvider>
@@ -39,10 +45,11 @@ export const Overview: Story = {
       <div className="text-center space-y-4">
         <h1 className="text-4xl font-bold text-foreground">Migration Guide</h1>
         <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-          This guide will help you migrate from the old design system to the new shadcn/ui-based system with Tailwind CSS.
+          This guide will help you migrate from the old design system to the new shadcn/ui-based
+          system with Tailwind CSS.
         </p>
       </div>
-      
+
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <Card>
           <CardHeader>
@@ -56,7 +63,7 @@ export const Overview: Story = {
             <p className="text-sm">• Better TypeScript support</p>
           </CardContent>
         </Card>
-        
+
         <Card>
           <CardHeader>
             <CardTitle>⚡ Quick Start</CardTitle>
@@ -69,7 +76,7 @@ export const Overview: Story = {
             <p className="text-sm">• Update styling</p>
           </CardContent>
         </Card>
-        
+
         <Card>
           <CardHeader>
             <CardTitle>🔧 Breaking Changes</CardTitle>
@@ -96,7 +103,7 @@ export const ButtonMigration: Story = {
           The Button component has been updated with new variants and improved styling.
         </p>
       </div>
-      
+
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         <Card>
           <CardHeader>
@@ -109,7 +116,7 @@ export const ButtonMigration: Story = {
           <CardContent className="space-y-4">
             <div className="bg-muted p-4 rounded-lg">
               <pre className="text-sm overflow-x-auto">
-{`// Old Button Usage
+                {`// Old Button Usage
 <Button 
   variant="primary" 
   size="md"
@@ -128,7 +135,7 @@ export const ButtonMigration: Story = {
             </div>
           </CardContent>
         </Card>
-        
+
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
@@ -140,7 +147,7 @@ export const ButtonMigration: Story = {
           <CardContent className="space-y-4">
             <div className="bg-muted p-4 rounded-lg">
               <pre className="text-sm overflow-x-auto">
-{`// New Button Usage
+                {`// New Button Usage
 <Button 
   variant="wakecap" 
   size="default"
@@ -169,7 +176,7 @@ export const ButtonMigration: Story = {
           </CardContent>
         </Card>
       </div>
-      
+
       <Card>
         <CardHeader>
           <CardTitle>Migration Steps</CardTitle>
@@ -177,7 +184,9 @@ export const ButtonMigration: Story = {
         <CardContent className="space-y-4">
           <div className="space-y-3">
             <div className="flex items-start gap-3">
-              <Badge variant="default" className="mt-0.5">1</Badge>
+              <Badge variant="default" className="mt-0.5">
+                1
+              </Badge>
               <div>
                 <p className="font-medium">Update imports</p>
                 <p className="text-sm text-muted-foreground">
@@ -186,7 +195,9 @@ export const ButtonMigration: Story = {
               </div>
             </div>
             <div className="flex items-start gap-3">
-              <Badge variant="default" className="mt-0.5">2</Badge>
+              <Badge variant="default" className="mt-0.5">
+                2
+              </Badge>
               <div>
                 <p className="font-medium">Update variant names</p>
                 <p className="text-sm text-muted-foreground">
@@ -195,7 +206,9 @@ export const ButtonMigration: Story = {
               </div>
             </div>
             <div className="flex items-start gap-3">
-              <Badge variant="default" className="mt-0.5">3</Badge>
+              <Badge variant="default" className="mt-0.5">
+                3
+              </Badge>
               <div>
                 <p className="font-medium">Update icon usage</p>
                 <p className="text-sm text-muted-foreground">
@@ -204,7 +217,9 @@ export const ButtonMigration: Story = {
               </div>
             </div>
             <div className="flex items-start gap-3">
-              <Badge variant="default" className="mt-0.5">4</Badge>
+              <Badge variant="default" className="mt-0.5">
+                4
+              </Badge>
               <div>
                 <p className="font-medium">Add RTL support</p>
                 <p className="text-sm text-muted-foreground">
@@ -225,10 +240,11 @@ export const InputMigration: Story = {
       <div>
         <h2 className="text-3xl font-bold text-foreground mb-4">Input Component Migration</h2>
         <p className="text-muted-foreground mb-8">
-          The Input component now uses shadcn/ui patterns with improved accessibility and RTL support.
+          The Input component now uses shadcn/ui patterns with improved accessibility and RTL
+          support.
         </p>
       </div>
-      
+
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         <Card>
           <CardHeader>
@@ -241,7 +257,7 @@ export const InputMigration: Story = {
           <CardContent className="space-y-4">
             <div className="bg-muted p-4 rounded-lg">
               <pre className="text-sm overflow-x-auto">
-{`// Old Input Usage
+                {`// Old Input Usage
 <Input 
   label="Search"
   placeholder="Search..."
@@ -254,15 +270,11 @@ export const InputMigration: Story = {
               </pre>
             </div>
             <div className="space-y-2">
-              <Input 
-                label="Search" 
-                placeholder="Search..." 
-                iconLeft={<span>🔍</span>}
-              />
+              <Input label="Search" placeholder="Search..." iconLeft={<span>🔍</span>} />
             </div>
           </CardContent>
         </Card>
-        
+
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
@@ -274,7 +286,7 @@ export const InputMigration: Story = {
           <CardContent className="space-y-4">
             <div className="bg-muted p-4 rounded-lg">
               <pre className="text-sm overflow-x-auto">
-{`// New Input Usage
+                {`// New Input Usage
 <Input 
   label="Search"
   placeholder="Search..."
@@ -294,9 +306,9 @@ export const InputMigration: Story = {
               </pre>
             </div>
             <div className="space-y-2">
-              <RTLInput 
-                label="Search" 
-                placeholder="Search..." 
+              <RTLInput
+                label="Search"
+                placeholder="Search..."
                 iconLeft={<span>🔍</span>}
                 arabicLabel="بحث"
                 arabicPlaceholder="ابحث..."
@@ -306,7 +318,7 @@ export const InputMigration: Story = {
           </CardContent>
         </Card>
       </div>
-      
+
       <Card>
         <CardHeader>
           <CardTitle>Key Changes</CardTitle>
@@ -347,7 +359,7 @@ export const StylingMigration: Story = {
           The styling approach has changed from custom CSS to Tailwind CSS with CSS variables.
         </p>
       </div>
-      
+
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         <Card>
           <CardHeader>
@@ -360,7 +372,7 @@ export const StylingMigration: Story = {
           <CardContent className="space-y-4">
             <div className="bg-muted p-4 rounded-lg">
               <pre className="text-sm overflow-x-auto">
-{`/* Old CSS Approach */
+                {`/* Old CSS Approach */
 .input {
   background: var(--Neutral-900, #171717);
   color: #FFF;
@@ -377,7 +389,7 @@ export const StylingMigration: Story = {
             </div>
           </CardContent>
         </Card>
-        
+
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
@@ -389,7 +401,7 @@ export const StylingMigration: Story = {
           <CardContent className="space-y-4">
             <div className="bg-muted p-4 rounded-lg">
               <pre className="text-sm overflow-x-auto">
-{`/* New Tailwind Approach */
+                {`/* New Tailwind Approach */
 className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
 
 /* CSS Variables in globals.css */
@@ -404,7 +416,7 @@ className="flex h-10 w-full rounded-md border border-input bg-background px-3 py
           </CardContent>
         </Card>
       </div>
-      
+
       <Card>
         <CardHeader>
           <CardTitle>Migration Benefits</CardTitle>
@@ -451,7 +463,7 @@ export const NextSteps: Story = {
           Follow these steps to complete your migration to the new design system.
         </p>
       </div>
-      
+
       <div className="space-y-6">
         <Card>
           <CardHeader>
@@ -463,12 +475,12 @@ export const NextSteps: Story = {
           <CardContent>
             <div className="bg-muted p-4 rounded-lg">
               <pre className="text-sm overflow-x-auto">
-{`npm install class-variance-authority clsx tailwind-merge lucide-react @radix-ui/react-slot @radix-ui/react-label`}
+                {`npm install class-variance-authority clsx tailwind-merge lucide-react @radix-ui/react-slot @radix-ui/react-label`}
               </pre>
             </div>
           </CardContent>
         </Card>
-        
+
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
@@ -479,7 +491,7 @@ export const NextSteps: Story = {
           <CardContent>
             <div className="bg-muted p-4 rounded-lg">
               <pre className="text-sm overflow-x-auto">
-{`// Replace old imports
+                {`// Replace old imports
 import { Button } from './design-system/components/Button';
 import { Input } from './design-system/components/Input';
 
@@ -492,7 +504,7 @@ import { RTLInput } from './components/ui/rtl-input';`}
             </div>
           </CardContent>
         </Card>
-        
+
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
@@ -503,7 +515,7 @@ import { RTLInput } from './components/ui/rtl-input';`}
           <CardContent>
             <div className="bg-muted p-4 rounded-lg">
               <pre className="text-sm overflow-x-auto">
-{`// Wrap your app with LanguageProvider
+                {`// Wrap your app with LanguageProvider
 import { LanguageProvider } from './components/ui/language-provider';
 
 function App() {
@@ -517,7 +529,7 @@ function App() {
             </div>
           </CardContent>
         </Card>
-        
+
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
@@ -530,15 +542,9 @@ function App() {
               <p className="text-sm text-muted-foreground">
                 • Test all components in both LTR and RTL modes
               </p>
-              <p className="text-sm text-muted-foreground">
-                • Verify accessibility compliance
-              </p>
-              <p className="text-sm text-muted-foreground">
-                • Check responsive behavior
-              </p>
-              <p className="text-sm text-muted-foreground">
-                • Validate theme switching
-              </p>
+              <p className="text-sm text-muted-foreground">• Verify accessibility compliance</p>
+              <p className="text-sm text-muted-foreground">• Check responsive behavior</p>
+              <p className="text-sm text-muted-foreground">• Validate theme switching</p>
             </div>
           </CardContent>
         </Card>

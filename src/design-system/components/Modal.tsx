@@ -1,14 +1,14 @@
-import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 export interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
   title?: string;
   children: React.ReactNode;
-  variant?: 'default' | 'confirmation' | 'form' | 'fullscreen';
-  size?: 'sm' | 'md' | 'lg' | 'xl';
+  variant?: "default" | "confirmation" | "form" | "fullscreen";
+  size?: "sm" | "md" | "lg" | "xl";
   showCloseButton?: boolean;
   closeOnOverlayClick?: boolean;
   closeOnEscape?: boolean;
@@ -20,30 +20,30 @@ export const Modal: React.FC<ModalProps> = ({
   onClose,
   title,
   children,
-  variant = 'default',
-  size = 'md',
+  variant = "default",
+  size = "md",
   showCloseButton = true,
   closeOnOverlayClick = true,
   closeOnEscape = true,
-  className = '',
+  className = "",
 }) => {
   const modalRef = React.useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {
     const handleEscape = (event: KeyboardEvent) => {
-      if (event.key === 'Escape' && closeOnEscape) {
+      if (event.key === "Escape" && closeOnEscape) {
         onClose();
       }
     };
 
     if (isOpen) {
-      document.addEventListener('keydown', handleEscape);
-      document.body.style.overflow = 'hidden';
+      document.addEventListener("keydown", handleEscape);
+      document.body.style.overflow = "hidden";
     }
 
     return () => {
-      document.removeEventListener('keydown', handleEscape);
-      document.body.style.overflow = 'unset';
+      document.removeEventListener("keydown", handleEscape);
+      document.body.style.overflow = "unset";
     };
   }, [isOpen, onClose, closeOnEscape]);
 
@@ -54,17 +54,17 @@ export const Modal: React.FC<ModalProps> = ({
   };
 
   const sizeStyles = {
-    sm: 'max-w-sm',
-    md: 'max-w-md',
-    lg: 'max-w-lg',
-    xl: 'max-w-xl',
+    sm: "max-w-sm",
+    md: "max-w-md",
+    lg: "max-w-lg",
+    xl: "max-w-xl",
   };
 
   const variantStyles = {
-    default: 'bg-white rounded-lg shadow-xl',
-    confirmation: 'bg-white rounded-lg shadow-xl',
-    form: 'bg-white rounded-lg shadow-xl',
-    fullscreen: 'bg-white h-full w-full rounded-none',
+    default: "bg-white rounded-lg shadow-xl",
+    confirmation: "bg-white rounded-lg shadow-xl",
+    form: "bg-white rounded-lg shadow-xl",
+    fullscreen: "bg-white h-full w-full rounded-none",
   };
 
   if (!isOpen) return null;
@@ -79,7 +79,7 @@ export const Modal: React.FC<ModalProps> = ({
         className={`${variantStyles[variant]} ${sizeStyles[size]} w-full ${className}`}
         role="dialog"
         aria-modal="true"
-        aria-labelledby={title ? 'modal-title' : undefined}
+        aria-labelledby={title ? "modal-title" : undefined}
       >
         {(title || showCloseButton) && (
           <div className="flex items-center justify-between p-6 border-b border-neutral-200">
@@ -99,10 +99,8 @@ export const Modal: React.FC<ModalProps> = ({
             )}
           </div>
         )}
-        
-        <div className="p-6">
-          {children}
-        </div>
+
+        <div className="p-6">{children}</div>
       </div>
     </div>
   );
@@ -116,7 +114,7 @@ export const ConfirmationModal: React.FC<{
   message: string;
   confirmText?: string;
   cancelText?: string;
-  variant?: 'danger' | 'warning' | 'info';
+  variant?: "danger" | "warning" | "info";
   onConfirm: () => void;
   onCancel?: () => void;
   className?: string;
@@ -125,12 +123,12 @@ export const ConfirmationModal: React.FC<{
   onClose,
   title,
   message,
-  confirmText = 'Confirm',
-  cancelText = 'Cancel',
-  variant = 'danger',
+  confirmText = "Confirm",
+  cancelText = "Cancel",
+  variant = "danger",
   onConfirm,
   onCancel,
-  className = '',
+  className = "",
 }) => {
   const handleConfirm = () => {
     onConfirm();
@@ -144,16 +142,16 @@ export const ConfirmationModal: React.FC<{
 
   const variantStyles = {
     danger: {
-      button: 'bg-error-600 hover:bg-error-700 text-white',
-      icon: 'text-error-600',
+      button: "bg-error-600 hover:bg-error-700 text-white",
+      icon: "text-error-600",
     },
     warning: {
-      button: 'bg-warning-600 hover:bg-warning-700 text-white',
-      icon: 'text-warning-600',
+      button: "bg-warning-600 hover:bg-warning-700 text-white",
+      icon: "text-warning-600",
     },
     info: {
-      button: 'bg-primary-600 hover:bg-primary-700 text-white',
-      icon: 'text-primary-600',
+      button: "bg-primary-600 hover:bg-primary-700 text-white",
+      icon: "text-primary-600",
     },
   };
 
@@ -170,7 +168,7 @@ export const ConfirmationModal: React.FC<{
     >
       <div className="space-y-4">
         <p className="text-neutral-600">{message}</p>
-        
+
         <div className="flex space-x-3 justify-end">
           <button
             onClick={handleCancel}
@@ -207,12 +205,12 @@ export const FormModal: React.FC<{
   onClose,
   title,
   children,
-  submitText = 'Submit',
-  cancelText = 'Cancel',
+  submitText = "Submit",
+  cancelText = "Cancel",
   onSubmit,
   onCancel,
   isLoading = false,
-  className = '',
+  className = "",
 }) => {
   const handleSubmit = () => {
     onSubmit();
@@ -233,10 +231,8 @@ export const FormModal: React.FC<{
       className={className}
     >
       <div className="space-y-6">
-        <div>
-          {children}
-        </div>
-        
+        <div>{children}</div>
+
         <div className="flex space-x-3 justify-end pt-4 border-t border-neutral-200">
           <button
             onClick={handleCancel}
@@ -250,7 +246,7 @@ export const FormModal: React.FC<{
             disabled={isLoading}
             className="px-4 py-2 bg-primary-600 text-white rounded-sm hover:bg-primary-700 transition-colors disabled:opacity-50"
           >
-            {isLoading ? 'Loading...' : submitText}
+            {isLoading ? "Loading..." : submitText}
           </button>
         </div>
       </div>
@@ -265,13 +261,7 @@ export const FullscreenModal: React.FC<{
   title?: string;
   children: React.ReactNode;
   className?: string;
-}> = ({
-  isOpen,
-  onClose,
-  title,
-  children,
-  className = '',
-}) => {
+}> = ({ isOpen, onClose, title, children, className = "" }) => {
   return (
     <Modal
       isOpen={isOpen}
@@ -280,9 +270,7 @@ export const FullscreenModal: React.FC<{
       variant="fullscreen"
       className={className}
     >
-      <div className="h-full overflow-auto">
-        {children}
-      </div>
+      <div className="h-full overflow-auto">{children}</div>
     </Modal>
   );
-}; 
+};

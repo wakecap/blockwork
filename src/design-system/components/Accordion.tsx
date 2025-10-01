@@ -1,6 +1,6 @@
-import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronDown, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronDown, faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
 export interface AccordionItemProps {
   title: string;
@@ -13,8 +13,8 @@ export interface AccordionItemProps {
 
 export interface AccordionProps {
   items: AccordionItemProps[];
-  variant?: 'default' | 'bordered' | 'separated';
-  size?: 'sm' | 'md' | 'lg';
+  variant?: "default" | "bordered" | "separated";
+  size?: "sm" | "md" | "lg";
   allowMultiple?: boolean;
   defaultOpenItems?: number[];
   onToggle?: (index: number, isOpen: boolean) => void;
@@ -23,22 +23,20 @@ export interface AccordionProps {
 
 export const Accordion: React.FC<AccordionProps> = ({
   items,
-  variant = 'default',
-  size = 'md',
+  variant = "default",
+  size = "md",
   allowMultiple = false,
   defaultOpenItems = [],
   onToggle,
-  className = '',
+  className = "",
 }) => {
-  const [openItems, setOpenItems] = React.useState<Set<number>>(
-    new Set(defaultOpenItems)
-  );
+  const [openItems, setOpenItems] = React.useState<Set<number>>(new Set(defaultOpenItems));
 
   const handleToggle = (index: number) => {
     if (items[index].isDisabled) return;
 
     const newOpenItems = new Set(openItems);
-    
+
     if (allowMultiple) {
       if (newOpenItems.has(index)) {
         newOpenItems.delete(index);
@@ -57,26 +55,26 @@ export const Accordion: React.FC<AccordionProps> = ({
   };
 
   const variantStyles = {
-    default: 'border border-neutral-200 rounded-lg',
-    bordered: 'border border-neutral-200',
-    separated: 'border-b border-neutral-200 last:border-b-0',
+    default: "border border-neutral-200 rounded-lg",
+    bordered: "border border-neutral-200",
+    separated: "border-b border-neutral-200 last:border-b-0",
   };
 
   const sizeStyles = {
     sm: {
-      header: 'px-3 py-2',
-      content: 'px-3 pb-2',
-      title: 'text-sm',
+      header: "px-3 py-2",
+      content: "px-3 pb-2",
+      title: "text-sm",
     },
     md: {
-      header: 'px-4 py-3',
-      content: 'px-4 pb-3',
-      title: 'text-base',
+      header: "px-4 py-3",
+      content: "px-4 pb-3",
+      title: "text-base",
     },
     lg: {
-      header: 'px-6 py-4',
-      content: 'px-6 pb-4',
-      title: 'text-lg',
+      header: "px-6 py-4",
+      content: "px-6 pb-4",
+      title: "text-lg",
     },
   };
 
@@ -93,24 +91,19 @@ export const Accordion: React.FC<AccordionProps> = ({
           <div
             key={index}
             className={`${currentVariant} ${
-              variant === 'separated' ? '' : index > 0 ? 'mt-2' : ''
+              variant === "separated" ? "" : index > 0 ? "mt-2" : ""
             }`}
           >
             <button
               onClick={() => handleToggle(index)}
               disabled={isDisabled}
               className={`w-full flex items-center justify-between ${currentSize.header} ${
-                isDisabled
-                  ? 'cursor-not-allowed opacity-50'
-                  : 'cursor-pointer hover:bg-neutral-50'
+                isDisabled ? "cursor-not-allowed opacity-50" : "cursor-pointer hover:bg-neutral-50"
               } transition-colors duration-150`}
             >
               <div className="flex items-center space-x-3">
                 {item.icon && (
-                  <FontAwesomeIcon
-                    icon={item.icon}
-                    className="w-4 h-4 text-neutral-500"
-                  />
+                  <FontAwesomeIcon icon={item.icon} className="w-4 h-4 text-neutral-500" />
                 )}
                 <h3 className={`font-medium text-neutral-900 ${currentSize.title} text-center`}>
                   {item.title}
@@ -119,14 +112,14 @@ export const Accordion: React.FC<AccordionProps> = ({
               <FontAwesomeIcon
                 icon={isOpen ? faChevronDown : faChevronRight}
                 className={`w-4 h-4 text-neutral-500 transition-transform duration-200 ${
-                  isOpen ? 'rotate-0' : '-rotate-90'
+                  isOpen ? "rotate-0" : "-rotate-90"
                 }`}
               />
             </button>
-            
+
             <div
               className={`overflow-hidden transition-all duration-200 ease-out-quart ${
-                isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
               }`}
             >
               <div className={`${currentSize.content} text-neutral-700 text-left`}>
@@ -149,12 +142,12 @@ export const AccordionItem: React.FC<{
   icon?: any;
   onToggle?: (isOpen: boolean) => void;
   className?: string;
-}> = ({ title, children, isOpen = false, isDisabled = false, icon, onToggle, className = '' }) => {
+}> = ({ title, children, isOpen = false, isDisabled = false, icon, onToggle, className = "" }) => {
   const [isExpanded, setIsExpanded] = React.useState(isOpen);
 
   const handleToggle = () => {
     if (isDisabled) return;
-    
+
     const newState = !isExpanded;
     setIsExpanded(newState);
     onToggle?.(newState);
@@ -166,38 +159,27 @@ export const AccordionItem: React.FC<{
         onClick={handleToggle}
         disabled={isDisabled}
         className={`w-full flex items-center justify-between px-4 py-3 ${
-          isDisabled
-            ? 'cursor-not-allowed opacity-50'
-            : 'cursor-pointer hover:bg-neutral-50'
+          isDisabled ? "cursor-not-allowed opacity-50" : "cursor-pointer hover:bg-neutral-50"
         } transition-colors duration-150`}
       >
         <div className="flex items-center space-x-3">
-          {icon && (
-            <FontAwesomeIcon
-              icon={icon}
-              className="w-4 h-4 text-neutral-500"
-            />
-          )}
-          <h3 className="font-medium text-neutral-900 text-center">
-            {title}
-          </h3>
+          {icon && <FontAwesomeIcon icon={icon} className="w-4 h-4 text-neutral-500" />}
+          <h3 className="font-medium text-neutral-900 text-center">{title}</h3>
         </div>
         <FontAwesomeIcon
           icon={isExpanded ? faChevronDown : faChevronRight}
           className={`w-4 h-4 text-neutral-500 transition-transform duration-200 ${
-            isExpanded ? 'rotate-0' : '-rotate-90'
+            isExpanded ? "rotate-0" : "-rotate-90"
           }`}
         />
       </button>
-      
+
       <div
         className={`overflow-hidden transition-all duration-200 ease-out-quart ${
-          isExpanded ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+          isExpanded ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <div className="px-4 pb-3 text-neutral-700 text-left">
-          {children}
-        </div>
+        <div className="px-4 pb-3 text-neutral-700 text-left">{children}</div>
       </div>
     </div>
   );
@@ -210,20 +192,13 @@ export const FAQAccordion: React.FC<{
     answer: string;
   }>;
   className?: string;
-}> = ({ questions, className = '' }) => {
+}> = ({ questions, className = "" }) => {
   const items = questions.map(({ question, answer }) => ({
     title: question,
     content: <p className="text-neutral-600 leading-relaxed">{answer}</p>,
   }));
 
-  return (
-    <Accordion
-      items={items}
-      variant="separated"
-      allowMultiple={true}
-      className={className}
-    />
-  );
+  return <Accordion items={items} variant="separated" allowMultiple={true} className={className} />;
 };
 
 // Settings Accordion component
@@ -234,19 +209,12 @@ export const SettingsAccordion: React.FC<{
     content: React.ReactNode;
   }>;
   className?: string;
-}> = ({ sections, className = '' }) => {
+}> = ({ sections, className = "" }) => {
   const items = sections.map(({ title, icon, content }) => ({
     title,
     icon,
     content,
   }));
 
-  return (
-    <Accordion
-      items={items}
-      variant="bordered"
-      allowMultiple={false}
-      className={className}
-    />
-  );
+  return <Accordion items={items} variant="bordered" allowMultiple={false} className={className} />;
 };

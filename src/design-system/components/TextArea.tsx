@@ -1,6 +1,6 @@
-import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 export interface TextAreaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
   label?: string;
@@ -13,17 +13,17 @@ export interface TextAreaProps extends React.TextareaHTMLAttributes<HTMLTextArea
   showCharacterCount?: boolean;
 }
 
-export const TextArea: React.FC<TextAreaProps> = ({ 
-  label, 
-  error, 
-  success, 
-  iconLeft, 
-  iconRight, 
-  className, 
+export const TextArea: React.FC<TextAreaProps> = ({
+  label,
+  error,
+  success,
+  iconLeft,
+  iconRight,
+  className,
   rows = 4,
   maxLength,
   showCharacterCount = false,
-  ...props 
+  ...props
 }) => {
   const [charCount, setCharCount] = React.useState(0);
 
@@ -46,14 +46,14 @@ export const TextArea: React.FC<TextAreaProps> = ({
         <textarea
           className={
             `block w-full rounded border px-3 py-2 text-base focus:outline-none focus:ring-2 transition resize-none ` +
-            (iconLeft ? 'pl-9 ' : '') +
-            (iconRight ? 'pr-9 ' : '') +
+            (iconLeft ? "pl-9 " : "") +
+            (iconRight ? "pr-9 " : "") +
             (error
-              ? 'border-red-500 focus:ring-red-500'
+              ? "border-red-500 focus:ring-red-500"
               : success
-              ? 'border-green-500 focus:ring-green-500'
-              : 'border-neutral-300 focus:ring-primary-500') +
-            (className ? ' ' + className : '')
+                ? "border-green-500 focus:ring-green-500"
+                : "border-neutral-300 focus:ring-primary-500") +
+            (className ? " " + className : "")
           }
           rows={rows}
           maxLength={maxLength}
@@ -70,7 +70,9 @@ export const TextArea: React.FC<TextAreaProps> = ({
         {error && <p className="text-xs text-red-600">{error}</p>}
         {success && !error && <p className="text-xs text-green-600">{success}</p>}
         {showCharacterCount && maxLength && (
-          <span className={`text-xs ${charCount > maxLength * 0.9 ? 'text-orange-600' : 'text-neutral-500'}`}>
+          <span
+            className={`text-xs ${charCount > maxLength * 0.9 ? "text-orange-600" : "text-neutral-500"}`}
+          >
             {charCount}/{maxLength}
           </span>
         )}
@@ -78,4 +80,3 @@ export const TextArea: React.FC<TextAreaProps> = ({
     </div>
   );
 };
-

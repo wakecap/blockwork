@@ -1,18 +1,19 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import { IconShowcase, IconSizes, IconColors, Icon } from '../foundations/IconLibrary';
-import { faHeart, faUser, faCog, faSearch, faBell } from '@fortawesome/free-solid-svg-icons';
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { IconShowcase, IconSizes, IconColors, Icon } from "../foundations/IconLibrary";
+import { faHeart, faUser, faCog, faSearch, faBell } from "@fortawesome/free-solid-svg-icons";
 
 const meta: Meta = {
-  title: 'Foundation/Icon Library',
+  title: "Foundation/Icon Library",
   parameters: {
-    layout: 'padded',
+    layout: "padded",
     docs: {
       description: {
-        component: 'Our icon library provides a comprehensive set of icons organized by category. Built on FontAwesome 7 Pro with licensed access to premium icons, consistent sizing and color tokens.',
+        component:
+          "Our icon library provides a comprehensive set of icons organized by category. Built on FontAwesome 7 Pro with licensed access to premium icons, consistent sizing and color tokens.",
       },
     },
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
 };
 
 export default meta;
@@ -22,7 +23,8 @@ export const AllIcons: StoryObj = {
   parameters: {
     docs: {
       description: {
-        story: 'Complete FontAwesome 7 Pro icon library organized by categories: Navigation, Actions, Status, User, Communication, and Settings. Licensed for premium icon access.',
+        story:
+          "Complete FontAwesome 7 Pro icon library organized by categories: Navigation, Actions, Status, User, Communication, and Settings. Licensed for premium icon access.",
       },
     },
   },
@@ -33,7 +35,7 @@ export const Sizes: StoryObj = {
   parameters: {
     docs: {
       description: {
-        story: 'Icon sizes from xs (12px) to 4xl (36px) following our typography scale.',
+        story: "Icon sizes from xs (12px) to 4xl (36px) following our typography scale.",
       },
     },
   },
@@ -44,7 +46,8 @@ export const Colors: StoryObj = {
   parameters: {
     docs: {
       description: {
-        story: 'Semantic color options for icons including neutral, primary, success, error, warning, and info states.',
+        story:
+          "Semantic color options for icons including neutral, primary, success, error, warning, and info states.",
       },
     },
   },
@@ -52,25 +55,25 @@ export const Colors: StoryObj = {
 
 // Individual icon component stories
 const IconMeta: Meta<typeof Icon> = {
-  title: 'Foundation/Icon Component',
+  title: "Foundation/Icon Component",
   component: Icon,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
     docs: {
       description: {
-        component: 'Standardized Icon component with size and color variants.',
+        component: "Standardized Icon component with size and color variants.",
       },
     },
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     size: {
-      control: { type: 'select' },
-      options: ['xs', 'sm', 'base', 'lg', 'xl', '2xl', '3xl', '4xl'],
+      control: { type: "select" },
+      options: ["xs", "sm", "base", "lg", "xl", "2xl", "3xl", "4xl"],
     },
     color: {
-      control: { type: 'select' },
-      options: ['neutral', 'primary', 'success', 'error', 'warning', 'info'],
+      control: { type: "select" },
+      options: ["neutral", "primary", "success", "error", "warning", "info"],
     },
   },
 };
@@ -79,8 +82,8 @@ export const IconComponent: StoryObj<typeof Icon> = {
   ...IconMeta,
   args: {
     icon: faHeart,
-    size: 'base',
-    color: 'primary',
+    size: "base",
+    color: "primary",
   },
 };
 
@@ -88,8 +91,8 @@ export const SmallIcon: StoryObj<typeof Icon> = {
   ...IconMeta,
   args: {
     icon: faUser,
-    size: 'sm',
-    color: 'neutral',
+    size: "sm",
+    color: "neutral",
   },
 };
 
@@ -97,8 +100,8 @@ export const LargeIcon: StoryObj<typeof Icon> = {
   ...IconMeta,
   args: {
     icon: faCog,
-    size: '2xl',
-    color: 'primary',
+    size: "2xl",
+    color: "primary",
   },
 };
 
@@ -106,8 +109,8 @@ export const SuccessIcon: StoryObj<typeof Icon> = {
   ...IconMeta,
   args: {
     icon: faSearch,
-    size: 'lg',
-    color: 'success',
+    size: "lg",
+    color: "success",
   },
 };
 
@@ -115,8 +118,8 @@ export const ErrorIcon: StoryObj<typeof Icon> = {
   ...IconMeta,
   args: {
     icon: faBell,
-    size: 'lg',
-    color: 'error',
+    size: "lg",
+    color: "error",
   },
 };
 
@@ -178,7 +181,8 @@ export const UsageExamples: StoryObj = {
   parameters: {
     docs: {
       description: {
-        story: 'Examples of how to use icons in real UI components like buttons, status indicators, and navigation.',
+        story:
+          "Examples of how to use icons in real UI components like buttons, status indicators, and navigation.",
       },
     },
   },

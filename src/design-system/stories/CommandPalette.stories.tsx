@@ -1,27 +1,42 @@
-import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import { CommandPalette, GlobalCommandPalette, QuickActionsPalette, useCommandPalette } from '../components/CommandPalette';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome, faUser, faCog, faFile, faSearch, faPlus, faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
+import React from "react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import {
+  CommandPalette,
+  GlobalCommandPalette,
+  QuickActionsPalette,
+  useCommandPalette,
+} from "../components/CommandPalette";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faHome,
+  faUser,
+  faCog,
+  faFile,
+  faSearch,
+  faPlus,
+  faEdit,
+  faTrash,
+} from "@fortawesome/free-solid-svg-icons";
 
 const meta: Meta<typeof CommandPalette> = {
-  title: 'Navigation/CommandPalette',
+  title: "Navigation/CommandPalette",
   component: CommandPalette,
   parameters: {
-    layout: 'padded',
+    layout: "padded",
     docs: {
       description: {
-        component: 'A powerful command palette component for quick actions and navigation, similar to Spotlight on Mac or Command Palette in VS Code.',
+        component:
+          "A powerful command palette component for quick actions and navigation, similar to Spotlight on Mac or Command Palette in VS Code.",
       },
     },
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     placeholder: {
-      control: { type: 'text' },
+      control: { type: "text" },
     },
     title: {
-      control: { type: 'text' },
+      control: { type: "text" },
     },
   },
 };
@@ -31,147 +46,147 @@ type Story = StoryObj<typeof meta>;
 
 const sampleActions = [
   {
-    id: 'home',
-    title: 'Go to Home',
-    description: 'Navigate to the home page',
+    id: "home",
+    title: "Go to Home",
+    description: "Navigate to the home page",
     icon: <FontAwesomeIcon icon={faHome} />,
-    keywords: ['home', 'dashboard', 'main'],
-    action: () => alert('Navigating to home...'),
-    category: 'Navigation',
-    shortcut: '⌘H',
+    keywords: ["home", "dashboard", "main"],
+    action: () => alert("Navigating to home..."),
+    category: "Navigation",
+    shortcut: "⌘H",
   },
   {
-    id: 'profile',
-    title: 'Open Profile',
-    description: 'View and edit your profile settings',
+    id: "profile",
+    title: "Open Profile",
+    description: "View and edit your profile settings",
     icon: <FontAwesomeIcon icon={faUser} />,
-    keywords: ['profile', 'account', 'settings', 'user'],
-    action: () => alert('Opening profile...'),
-    category: 'User',
-    shortcut: '⌘P',
+    keywords: ["profile", "account", "settings", "user"],
+    action: () => alert("Opening profile..."),
+    category: "User",
+    shortcut: "⌘P",
   },
   {
-    id: 'settings',
-    title: 'Open Settings',
-    description: 'Access application settings and preferences',
+    id: "settings",
+    title: "Open Settings",
+    description: "Access application settings and preferences",
     icon: <FontAwesomeIcon icon={faCog} />,
-    keywords: ['settings', 'preferences', 'config', 'options'],
-    action: () => alert('Opening settings...'),
-    category: 'System',
-    shortcut: '⌘,',
+    keywords: ["settings", "preferences", "config", "options"],
+    action: () => alert("Opening settings..."),
+    category: "System",
+    shortcut: "⌘,",
   },
   {
-    id: 'new-file',
-    title: 'Create New File',
-    description: 'Start a new document or project',
+    id: "new-file",
+    title: "Create New File",
+    description: "Start a new document or project",
     icon: <FontAwesomeIcon icon={faFile} />,
-    keywords: ['new', 'create', 'file', 'document', 'project'],
-    action: () => alert('Creating new file...'),
-    category: 'File',
-    shortcut: '⌘N',
+    keywords: ["new", "create", "file", "document", "project"],
+    action: () => alert("Creating new file..."),
+    category: "File",
+    shortcut: "⌘N",
   },
   {
-    id: 'search',
-    title: 'Search',
-    description: 'Search across the application',
+    id: "search",
+    title: "Search",
+    description: "Search across the application",
     icon: <FontAwesomeIcon icon={faSearch} />,
-    keywords: ['search', 'find', 'lookup', 'query'],
-    action: () => alert('Opening search...'),
-    category: 'Search',
-    shortcut: '⌘F',
+    keywords: ["search", "find", "lookup", "query"],
+    action: () => alert("Opening search..."),
+    category: "Search",
+    shortcut: "⌘F",
   },
   {
-    id: 'add-item',
-    title: 'Add New Item',
-    description: 'Create a new item or entry',
+    id: "add-item",
+    title: "Add New Item",
+    description: "Create a new item or entry",
     icon: <FontAwesomeIcon icon={faPlus} />,
-    keywords: ['add', 'create', 'new', 'insert'],
-    action: () => alert('Adding new item...'),
-    category: 'Actions',
-    shortcut: '⌘+',
+    keywords: ["add", "create", "new", "insert"],
+    action: () => alert("Adding new item..."),
+    category: "Actions",
+    shortcut: "⌘+",
   },
   {
-    id: 'edit',
-    title: 'Edit Mode',
-    description: 'Toggle edit mode for current item',
+    id: "edit",
+    title: "Edit Mode",
+    description: "Toggle edit mode for current item",
     icon: <FontAwesomeIcon icon={faEdit} />,
-    keywords: ['edit', 'modify', 'change', 'update'],
-    action: () => alert('Toggling edit mode...'),
-    category: 'Actions',
-    shortcut: '⌘E',
+    keywords: ["edit", "modify", "change", "update"],
+    action: () => alert("Toggling edit mode..."),
+    category: "Actions",
+    shortcut: "⌘E",
   },
   {
-    id: 'delete',
-    title: 'Delete Item',
-    description: 'Remove the current item',
+    id: "delete",
+    title: "Delete Item",
+    description: "Remove the current item",
     icon: <FontAwesomeIcon icon={faTrash} />,
-    keywords: ['delete', 'remove', 'trash', 'destroy'],
-    action: () => alert('Deleting item...'),
-    category: 'Actions',
-    shortcut: '⌘⌫',
+    keywords: ["delete", "remove", "trash", "destroy"],
+    action: () => alert("Deleting item..."),
+    category: "Actions",
+    shortcut: "⌘⌫",
   },
 ];
 
 const developmentActions = [
   {
-    id: 'run-tests',
-    title: 'Run Tests',
-    description: 'Execute all test suites',
+    id: "run-tests",
+    title: "Run Tests",
+    description: "Execute all test suites",
     icon: <FontAwesomeIcon icon={faCog} />,
-    keywords: ['test', 'run', 'execute', 'suite'],
-    action: () => alert('Running tests...'),
-    category: 'Development',
-    shortcut: '⌘T',
+    keywords: ["test", "run", "execute", "suite"],
+    action: () => alert("Running tests..."),
+    category: "Development",
+    shortcut: "⌘T",
   },
   {
-    id: 'build',
-    title: 'Build Project',
-    description: 'Compile and build the project',
+    id: "build",
+    title: "Build Project",
+    description: "Compile and build the project",
     icon: <FontAwesomeIcon icon={faCog} />,
-    keywords: ['build', 'compile', 'make', 'project'],
-    action: () => alert('Building project...'),
-    category: 'Development',
-    shortcut: '⌘B',
+    keywords: ["build", "compile", "make", "project"],
+    action: () => alert("Building project..."),
+    category: "Development",
+    shortcut: "⌘B",
   },
   {
-    id: 'deploy',
-    title: 'Deploy to Production',
-    description: 'Deploy the current version to production',
+    id: "deploy",
+    title: "Deploy to Production",
+    description: "Deploy the current version to production",
     icon: <FontAwesomeIcon icon={faCog} />,
-    keywords: ['deploy', 'production', 'release', 'publish'],
-    action: () => alert('Deploying to production...'),
-    category: 'Development',
-    shortcut: '⌘D',
+    keywords: ["deploy", "production", "release", "publish"],
+    action: () => alert("Deploying to production..."),
+    category: "Development",
+    shortcut: "⌘D",
   },
 ];
 
 const marketingActions = [
   {
-    id: 'create-campaign',
-    title: 'Create Campaign',
-    description: 'Start a new marketing campaign',
+    id: "create-campaign",
+    title: "Create Campaign",
+    description: "Start a new marketing campaign",
     icon: <FontAwesomeIcon icon={faPlus} />,
-    keywords: ['campaign', 'marketing', 'create', 'new'],
-    action: () => alert('Creating campaign...'),
-    category: 'Marketing',
-    shortcut: '⌘C',
+    keywords: ["campaign", "marketing", "create", "new"],
+    action: () => alert("Creating campaign..."),
+    category: "Marketing",
+    shortcut: "⌘C",
   },
   {
-    id: 'analytics',
-    title: 'View Analytics',
-    description: 'Open analytics dashboard',
+    id: "analytics",
+    title: "View Analytics",
+    description: "Open analytics dashboard",
     icon: <FontAwesomeIcon icon={faSearch} />,
-    keywords: ['analytics', 'stats', 'metrics', 'dashboard'],
-    action: () => alert('Opening analytics...'),
-    category: 'Marketing',
-    shortcut: '⌘A',
+    keywords: ["analytics", "stats", "metrics", "dashboard"],
+    action: () => alert("Opening analytics..."),
+    category: "Marketing",
+    shortcut: "⌘A",
   },
 ];
 
 export const Default: Story = {
   render: () => {
     const { isOpen, open, close } = useCommandPalette();
-    
+
     return (
       <div>
         <button
@@ -180,7 +195,7 @@ export const Default: Story = {
         >
           Open Command Palette
         </button>
-        
+
         <CommandPalette
           isOpen={isOpen}
           onClose={close}
@@ -196,7 +211,7 @@ export const Default: Story = {
 export const WithCustomPlaceholder: Story = {
   render: () => {
     const { isOpen, open, close } = useCommandPalette();
-    
+
     return (
       <div>
         <button
@@ -205,7 +220,7 @@ export const WithCustomPlaceholder: Story = {
         >
           Open with Custom Placeholder
         </button>
-        
+
         <CommandPalette
           isOpen={isOpen}
           onClose={close}
@@ -221,13 +236,9 @@ export const WithCustomPlaceholder: Story = {
 export const WithCategories: Story = {
   render: () => {
     const { isOpen, open, close } = useCommandPalette();
-    
-    const categorizedActions = [
-      ...sampleActions,
-      ...developmentActions,
-      ...marketingActions,
-    ];
-    
+
+    const categorizedActions = [...sampleActions, ...developmentActions, ...marketingActions];
+
     return (
       <div>
         <button
@@ -236,7 +247,7 @@ export const WithCategories: Story = {
         >
           Open Categorized Commands
         </button>
-        
+
         <CommandPalette
           isOpen={isOpen}
           onClose={close}
@@ -253,13 +264,12 @@ export const GlobalCommandPaletteExample: Story = {
   render: () => (
     <div className="space-y-4">
       <p className="text-sm text-neutral-600">
-        Press <kbd className="px-2 py-1 bg-neutral-100 rounded text-xs">⌘K</kbd> to open the global command palette
+        Press <kbd className="px-2 py-1 bg-neutral-100 rounded text-xs">⌘K</kbd> to open the global
+        command palette
       </p>
-      
-      <GlobalCommandPalette
-        actions={sampleActions}
-      />
-      
+
+      <GlobalCommandPalette actions={sampleActions} />
+
       <div className="text-sm text-neutral-500">
         This command palette is globally accessible and responds to keyboard shortcuts.
       </div>
@@ -273,11 +283,11 @@ export const QuickActionsPaletteExample: Story = {
       <p className="text-sm text-neutral-600">
         Click the button below to open the quick actions palette
       </p>
-      
+
       <QuickActionsPalette
         actions={sampleActions.slice(0, 4)} // Only first 4 actions
       />
-      
+
       <div className="text-sm text-neutral-500">
         This is a simpler command palette for quick access to common actions.
       </div>
@@ -288,7 +298,7 @@ export const QuickActionsPaletteExample: Story = {
 export const DevelopmentCommands: Story = {
   render: () => {
     const { isOpen, open, close } = useCommandPalette();
-    
+
     return (
       <div>
         <button
@@ -297,7 +307,7 @@ export const DevelopmentCommands: Story = {
         >
           Open Development Commands
         </button>
-        
+
         <CommandPalette
           isOpen={isOpen}
           onClose={close}
@@ -313,7 +323,7 @@ export const DevelopmentCommands: Story = {
 export const MarketingCommands: Story = {
   render: () => {
     const { isOpen, open, close } = useCommandPalette();
-    
+
     return (
       <div>
         <button
@@ -322,7 +332,7 @@ export const MarketingCommands: Story = {
         >
           Open Marketing Commands
         </button>
-        
+
         <CommandPalette
           isOpen={isOpen}
           onClose={close}
@@ -338,9 +348,9 @@ export const MarketingCommands: Story = {
 export const WithShortcuts: Story = {
   render: () => {
     const { isOpen, open, close } = useCommandPalette();
-    
-    const actionsWithShortcuts = sampleActions.filter(action => action.shortcut);
-    
+
+    const actionsWithShortcuts = sampleActions.filter((action) => action.shortcut);
+
     return (
       <div>
         <button
@@ -349,7 +359,7 @@ export const WithShortcuts: Story = {
         >
           Open Commands with Shortcuts
         </button>
-        
+
         <CommandPalette
           isOpen={isOpen}
           onClose={close}
@@ -365,7 +375,7 @@ export const WithShortcuts: Story = {
 export const EmptyState: Story = {
   render: () => {
     const { isOpen, open, close } = useCommandPalette();
-    
+
     return (
       <div>
         <button
@@ -374,7 +384,7 @@ export const EmptyState: Story = {
         >
           Open Empty Command Palette
         </button>
-        
+
         <CommandPalette
           isOpen={isOpen}
           onClose={close}
@@ -390,45 +400,45 @@ export const EmptyState: Story = {
 export const InteractiveDemo: Story = {
   render: () => {
     const { isOpen, open, close } = useCommandPalette();
-    
+
     const demoActions = [
       {
-        id: 'demo-1',
-        title: 'Show Success Message',
-        description: 'Display a success notification',
+        id: "demo-1",
+        title: "Show Success Message",
+        description: "Display a success notification",
         icon: <FontAwesomeIcon icon={faHome} />,
-        action: () => alert('✅ Success! This action was executed successfully.'),
-        category: 'Demo',
+        action: () => alert("✅ Success! This action was executed successfully."),
+        category: "Demo",
       },
       {
-        id: 'demo-2',
-        title: 'Show Error Message',
-        description: 'Display an error notification',
+        id: "demo-2",
+        title: "Show Error Message",
+        description: "Display an error notification",
         icon: <FontAwesomeIcon icon={faUser} />,
-        action: () => alert('❌ Error! Something went wrong.'),
-        category: 'Demo',
+        action: () => alert("❌ Error! Something went wrong."),
+        category: "Demo",
       },
       {
-        id: 'demo-3',
-        title: 'Show Info Message',
-        description: 'Display an information notification',
+        id: "demo-3",
+        title: "Show Info Message",
+        description: "Display an information notification",
         icon: <FontAwesomeIcon icon={faCog} />,
-        action: () => alert('ℹ️ Info: This is an informational message.'),
-        category: 'Demo',
+        action: () => alert("ℹ️ Info: This is an informational message."),
+        category: "Demo",
       },
       {
-        id: 'demo-4',
-        title: 'Console Log',
-        description: 'Log a message to the browser console',
+        id: "demo-4",
+        title: "Console Log",
+        description: "Log a message to the browser console",
         icon: <FontAwesomeIcon icon={faFile} />,
         action: () => {
-          console.log('🚀 Command executed from Command Palette!');
-          alert('Check the browser console for the log message.');
+          console.log("🚀 Command executed from Command Palette!");
+          alert("Check the browser console for the log message.");
         },
-        category: 'Demo',
+        category: "Demo",
       },
     ];
-    
+
     return (
       <div className="space-y-4">
         <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
@@ -437,14 +447,14 @@ export const InteractiveDemo: Story = {
             Try opening the command palette and executing different commands to see them in action!
           </p>
         </div>
-        
+
         <button
           onClick={open}
           className="px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all transform hover:scale-105"
         >
           🚀 Open Interactive Commands
         </button>
-        
+
         <CommandPalette
           isOpen={isOpen}
           onClose={close}

@@ -1,9 +1,10 @@
-import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
-export interface PasswordInputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type'> {
+export interface PasswordInputProps
+  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "type"> {
   label?: string;
   error?: string;
   success?: string;
@@ -12,18 +13,18 @@ export interface PasswordInputProps extends Omit<React.InputHTMLAttributes<HTMLI
   strengthIndicator?: boolean;
 }
 
-export const PasswordInput: React.FC<PasswordInputProps> = ({ 
-  label, 
-  error, 
-  success, 
+export const PasswordInput: React.FC<PasswordInputProps> = ({
+  label,
+  error,
+  success,
   iconLeft,
   showToggle = true,
   strengthIndicator = false,
   className,
-  ...props 
+  ...props
 }) => {
   const [showPassword, setShowPassword] = React.useState(false);
-  const [password, setPassword] = React.useState('');
+  const [password, setPassword] = React.useState("");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
@@ -37,8 +38,8 @@ export const PasswordInput: React.FC<PasswordInputProps> = ({
   };
 
   const getPasswordStrength = (password: string) => {
-    if (!password) return { score: 0, label: '', color: '' };
-    
+    if (!password) return { score: 0, label: "", color: "" };
+
     let score = 0;
     if (password.length >= 8) score++;
     if (/[a-z]/.test(password)) score++;
@@ -47,12 +48,12 @@ export const PasswordInput: React.FC<PasswordInputProps> = ({
     if (/[^A-Za-z0-9]/.test(password)) score++;
 
     const strengthMap = {
-      0: { label: 'Very Weak', color: 'bg-red-500' },
-      1: { label: 'Weak', color: 'bg-orange-500' },
-      2: { label: 'Fair', color: 'bg-yellow-500' },
-      3: { label: 'Good', color: 'bg-blue-500' },
-      4: { label: 'Strong', color: 'bg-green-500' },
-      5: { label: 'Very Strong', color: 'bg-green-600' }
+      0: { label: "Very Weak", color: "bg-red-500" },
+      1: { label: "Weak", color: "bg-orange-500" },
+      2: { label: "Fair", color: "bg-yellow-500" },
+      3: { label: "Good", color: "bg-blue-500" },
+      4: { label: "Strong", color: "bg-green-500" },
+      5: { label: "Very Strong", color: "bg-green-600" },
     };
 
     return { score, ...strengthMap[score as keyof typeof strengthMap] };
@@ -70,17 +71,17 @@ export const PasswordInput: React.FC<PasswordInputProps> = ({
           </span>
         )}
         <input
-          type={showPassword ? 'text' : 'password'}
+          type={showPassword ? "text" : "password"}
           className={
             `block w-full rounded border px-3 py-2 text-base focus:outline-none focus:ring-2 transition ` +
-            (iconLeft ? 'pl-9 ' : '') +
-            (showToggle ? 'pr-10 ' : '') +
+            (iconLeft ? "pl-9 " : "") +
+            (showToggle ? "pr-10 " : "") +
             (error
-              ? 'border-red-500 focus:ring-red-500'
+              ? "border-red-500 focus:ring-red-500"
               : success
-              ? 'border-green-500 focus:ring-green-500'
-              : 'border-neutral-300 focus:ring-primary-500') +
-            (className ? ' ' + className : '')
+                ? "border-green-500 focus:ring-green-500"
+                : "border-neutral-300 focus:ring-primary-500") +
+            (className ? " " + className : "")
           }
           onChange={handleChange}
           {...props}
@@ -99,7 +100,7 @@ export const PasswordInput: React.FC<PasswordInputProps> = ({
         <div className="mt-2">
           <div className="flex items-center gap-2 mb-1">
             <div className="flex-1 h-2 bg-neutral-200 rounded-full overflow-hidden">
-              <div 
+              <div
                 className={`h-full transition-all duration-300 ${strength.color}`}
                 style={{ width: `${(strength.score / 5) * 100}%` }}
               />
@@ -113,4 +114,3 @@ export const PasswordInput: React.FC<PasswordInputProps> = ({
     </div>
   );
 };
-

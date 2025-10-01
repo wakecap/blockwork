@@ -1,37 +1,38 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Card, ProductCard, UserCard, ArticleCard } from '../components/Card';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart, faShare, faBookmark, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { Card, ProductCard, UserCard, ArticleCard } from "../components/Card";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeart, faShare, faBookmark, faEllipsisV } from "@fortawesome/free-solid-svg-icons";
 
 const meta: Meta<typeof Card> = {
-  title: 'Content Display/Card',
+  title: "Content Display/Card",
   component: Card,
   parameters: {
-    layout: 'padded',
+    layout: "padded",
     docs: {
       description: {
-        component: 'A versatile card component for displaying content in various formats with different variants and sizes.',
+        component:
+          "A versatile card component for displaying content in various formats with different variants and sizes.",
       },
     },
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     variant: {
-      control: { type: 'select' },
-      options: ['default', 'elevated', 'outlined', 'interactive'],
+      control: { type: "select" },
+      options: ["default", "elevated", "outlined", "interactive"],
     },
     size: {
-      control: { type: 'select' },
-      options: ['sm', 'md', 'lg'],
+      control: { type: "select" },
+      options: ["sm", "md", "lg"],
     },
     isHoverable: {
-      control: { type: 'boolean' },
+      control: { type: "boolean" },
     },
     isSelected: {
-      control: { type: 'boolean' },
+      control: { type: "boolean" },
     },
     isDisabled: {
-      control: { type: 'boolean' },
+      control: { type: "boolean" },
     },
   },
 };
@@ -41,31 +42,31 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    title: 'Card Title',
-    subtitle: 'Card subtitle or description',
-    content: 'This is the main content of the card. It can contain any React elements.',
-    className: 'w-80',
+    title: "Card Title",
+    subtitle: "Card subtitle or description",
+    content: "This is the main content of the card. It can contain any React elements.",
+    className: "w-80",
   },
 };
 
 export const WithImage: Story = {
   args: {
-    title: 'Card with Image',
-    subtitle: 'Beautiful landscape',
-    content: 'This card includes an image at the top.',
-    image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop',
-    imageAlt: 'Mountain landscape',
-    className: 'w-80',
+    title: "Card with Image",
+    subtitle: "Beautiful landscape",
+    content: "This card includes an image at the top.",
+    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop",
+    imageAlt: "Mountain landscape",
+    className: "w-80",
   },
 };
 
 export const WithActions: Story = {
   args: {
-    title: 'Card with Actions',
-    subtitle: 'Interactive card with action buttons',
-    content: 'This card has action buttons in the top-right corner.',
-    image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop',
-    imageAlt: 'Mountain landscape',
+    title: "Card with Actions",
+    subtitle: "Interactive card with action buttons",
+    content: "This card has action buttons in the top-right corner.",
+    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop",
+    imageAlt: "Mountain landscape",
     actions: (
       <div className="flex space-x-2">
         <button className="p-2 bg-white bg-opacity-80 rounded-full hover:bg-opacity-100 transition-all">
@@ -79,15 +80,15 @@ export const WithActions: Story = {
         </button>
       </div>
     ),
-    className: 'w-80',
+    className: "w-80",
   },
 };
 
 export const WithFooter: Story = {
   args: {
-    title: 'Card with Footer',
-    subtitle: 'Card that includes a footer section',
-    content: 'This card has a footer with additional information or actions.',
+    title: "Card with Footer",
+    subtitle: "Card that includes a footer section",
+    content: "This card has a footer with additional information or actions.",
     footer: (
       <div className="flex justify-between items-center">
         <span className="text-sm text-neutral-600">Last updated: 2 hours ago</span>
@@ -96,7 +97,7 @@ export const WithFooter: Story = {
         </button>
       </div>
     ),
-    className: 'w-80',
+    className: "w-80",
   },
 };
 
@@ -253,7 +254,7 @@ export const ArticleCardExample: Story = {
         publishDate="2024-01-15"
         readTime="5 min read"
         image="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=200&fit=crop"
-        tags={['Web Development', 'Technology', 'AI']}
+        tags={["Web Development", "Technology", "AI"]}
         className="w-full"
       />
       <ArticleCard
@@ -264,7 +265,7 @@ export const ArticleCardExample: Story = {
         publishDate="2024-01-12"
         readTime="8 min read"
         image="https://images.unsplash.com/photo-1558655146-d09347e92766?w=400&h=200&fit=crop"
-        tags={['Design', 'UX', 'Design Systems']}
+        tags={["Design", "UX", "Design Systems"]}
         className="w-full"
       />
     </div>

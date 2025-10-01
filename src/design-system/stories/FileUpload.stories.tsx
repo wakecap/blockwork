@@ -1,35 +1,42 @@
-import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import { FileUpload, ImageUpload, DocumentUpload, VideoUpload, useFileUpload } from '../components/FileUpload';
+import React from "react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import {
+  FileUpload,
+  ImageUpload,
+  DocumentUpload,
+  VideoUpload,
+  useFileUpload,
+} from "../components/FileUpload";
 
 const meta: Meta<typeof FileUpload> = {
-  title: 'Forms and Data Entry/FileUpload',
+  title: "Forms and Data Entry/FileUpload",
   component: FileUpload,
   parameters: {
-    layout: 'padded',
+    layout: "padded",
     docs: {
       description: {
-        component: 'A file upload component with drag & drop functionality, progress tracking, and various file type support.',
+        component:
+          "A file upload component with drag & drop functionality, progress tracking, and various file type support.",
       },
     },
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     variant: {
-      control: { type: 'select' },
-      options: ['default', 'compact', 'detailed'],
+      control: { type: "select" },
+      options: ["default", "compact", "detailed"],
     },
     multiple: {
-      control: { type: 'boolean' },
+      control: { type: "boolean" },
     },
     showPresets: {
-      control: { type: 'boolean' },
+      control: { type: "boolean" },
     },
     showInput: {
-      control: { type: 'boolean' },
+      control: { type: "boolean" },
     },
     showPreview: {
-      control: { type: 'boolean' },
+      control: { type: "boolean" },
     },
   },
 };
@@ -39,7 +46,16 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   render: () => {
-    const { files, dragActive, onFilesSelect, onFileRemove, onFileRetry, onDragEnter, onDragLeave, onDrop } = useFileUpload();
+    const {
+      files,
+      dragActive,
+      onFilesSelect,
+      onFileRemove,
+      onFileRetry,
+      onDragEnter,
+      onDragLeave,
+      onDrop,
+    } = useFileUpload();
 
     return (
       <FileUpload
@@ -59,7 +75,16 @@ export const Default: Story = {
 
 export const Compact: Story = {
   render: () => {
-    const { files, dragActive, onFilesSelect, onFileRemove, onFileRetry, onDragEnter, onDragLeave, onDrop } = useFileUpload();
+    const {
+      files,
+      dragActive,
+      onFilesSelect,
+      onFileRemove,
+      onFileRetry,
+      onDragEnter,
+      onDragLeave,
+      onDrop,
+    } = useFileUpload();
 
     return (
       <FileUpload
@@ -80,7 +105,16 @@ export const Compact: Story = {
 
 export const Detailed: Story = {
   render: () => {
-    const { files, dragActive, onFilesSelect, onFileRemove, onFileRetry, onDragEnter, onDragLeave, onDrop } = useFileUpload();
+    const {
+      files,
+      dragActive,
+      onFilesSelect,
+      onFileRemove,
+      onFileRetry,
+      onDragEnter,
+      onDragLeave,
+      onDrop,
+    } = useFileUpload();
 
     return (
       <FileUpload
@@ -101,7 +135,16 @@ export const Detailed: Story = {
 
 export const SingleFile: Story = {
   render: () => {
-    const { files, dragActive, onFilesSelect, onFileRemove, onFileRetry, onDragEnter, onDragLeave, onDrop } = useFileUpload();
+    const {
+      files,
+      dragActive,
+      onFilesSelect,
+      onFileRemove,
+      onFileRetry,
+      onDragEnter,
+      onDragLeave,
+      onDrop,
+    } = useFileUpload();
 
     return (
       <FileUpload
@@ -123,7 +166,16 @@ export const SingleFile: Story = {
 
 export const WithCustomAccept: Story = {
   render: () => {
-    const { files, dragActive, onFilesSelect, onFileRemove, onFileRetry, onDragEnter, onDragLeave, onDrop } = useFileUpload();
+    const {
+      files,
+      dragActive,
+      onFilesSelect,
+      onFileRemove,
+      onFileRetry,
+      onDragEnter,
+      onDragLeave,
+      onDrop,
+    } = useFileUpload();
 
     return (
       <FileUpload
@@ -146,7 +198,16 @@ export const WithCustomAccept: Story = {
 // Pre-built file upload components
 export const ImageUploadExample: Story = {
   render: () => {
-    const { files, dragActive, onFilesSelect, onFileRemove, onFileRetry, onDragEnter, onDragLeave, onDrop } = useFileUpload();
+    const {
+      files,
+      dragActive,
+      onFilesSelect,
+      onFileRemove,
+      onFileRetry,
+      onDragEnter,
+      onDragLeave,
+      onDrop,
+    } = useFileUpload();
 
     return (
       <div className="w-full max-w-2xl">
@@ -170,7 +231,16 @@ export const ImageUploadExample: Story = {
 
 export const DocumentUploadExample: Story = {
   render: () => {
-    const { files, dragActive, onFilesSelect, onFileRemove, onFileRetry, onDragEnter, onDragLeave, onDrop } = useFileUpload();
+    const {
+      files,
+      dragActive,
+      onFilesSelect,
+      onFileRemove,
+      onFileRetry,
+      onDragEnter,
+      onDragLeave,
+      onDrop,
+    } = useFileUpload();
 
     return (
       <div className="w-full max-w-2xl">
@@ -194,7 +264,16 @@ export const DocumentUploadExample: Story = {
 
 export const VideoUploadExample: Story = {
   render: () => {
-    const { files, dragActive, onFilesSelect, onFileRemove, onFileRetry, onDragEnter, onDragLeave, onDrop } = useFileUpload();
+    const {
+      files,
+      dragActive,
+      onFilesSelect,
+      onFileRemove,
+      onFileRetry,
+      onDragEnter,
+      onDragLeave,
+      onDrop,
+    } = useFileUpload();
 
     return (
       <div className="w-full max-w-2xl">
@@ -220,29 +299,29 @@ export const WithExistingFiles: Story = {
   render: () => {
     const [files, setFiles] = React.useState([
       {
-        id: '1',
-        name: 'document.pdf',
+        id: "1",
+        name: "document.pdf",
         size: 1024 * 1024, // 1MB
-        type: 'application/pdf',
+        type: "application/pdf",
         progress: 100,
-        status: 'completed' as const,
+        status: "completed" as const,
       },
       {
-        id: '2',
-        name: 'image.jpg',
+        id: "2",
+        name: "image.jpg",
         size: 512 * 1024, // 512KB
-        type: 'image/jpeg',
+        type: "image/jpeg",
         progress: 75,
-        status: 'uploading' as const,
+        status: "uploading" as const,
       },
       {
-        id: '3',
-        name: 'large-file.zip',
+        id: "3",
+        name: "large-file.zip",
         size: 50 * 1024 * 1024, // 50MB
-        type: 'application/zip',
+        type: "application/zip",
         progress: 0,
-        status: 'error' as const,
-        error: 'File too large',
+        status: "error" as const,
+        error: "File too large",
       },
     ]);
 
@@ -253,28 +332,30 @@ export const WithExistingFiles: Story = {
         size: file.size,
         type: file.type,
         progress: 0,
-        status: 'uploading' as const,
+        status: "uploading" as const,
       }));
-      setFiles(prev => [...prev, ...newFiles]);
+      setFiles((prev) => [...prev, ...newFiles]);
     };
 
     const handleFileRemove = (fileId: string) => {
-      setFiles(prev => prev.filter(f => f.id !== fileId));
+      setFiles((prev) => prev.filter((f) => f.id !== fileId));
     };
 
     const handleFileRetry = (fileId: string) => {
-      setFiles(prev =>
-        prev.map(f =>
+      setFiles((prev) =>
+        prev.map((f) =>
           f.id === fileId
-            ? { ...f, progress: 0, status: 'uploading' as const, error: undefined }
-            : f
-        )
+            ? { ...f, progress: 0, status: "uploading" as const, error: undefined }
+            : f,
+        ),
       );
     };
 
     return (
       <div className="w-full max-w-2xl">
-        <h2 className="text-2xl font-bold text-neutral-900 mb-6">File Upload with Existing Files</h2>
+        <h2 className="text-2xl font-bold text-neutral-900 mb-6">
+          File Upload with Existing Files
+        </h2>
         <FileUpload
           files={files}
           onFilesSelect={handleFilesSelect}
@@ -291,7 +372,16 @@ export const WithExistingFiles: Story = {
 
 export const PhotoGalleryUpload: Story = {
   render: () => {
-    const { files, dragActive, onFilesSelect, onFileRemove, onFileRetry, onDragEnter, onDragLeave, onDrop } = useFileUpload();
+    const {
+      files,
+      dragActive,
+      onFilesSelect,
+      onFileRemove,
+      onFileRetry,
+      onDragEnter,
+      onDragLeave,
+      onDrop,
+    } = useFileUpload();
 
     return (
       <div className="w-full max-w-4xl">
@@ -329,7 +419,9 @@ export const PhotoGalleryUpload: Story = {
               </div>
               <div className="flex items-center space-x-2">
                 <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                <span className="text-sm text-neutral-700">Recommended resolution: 1920x1080 or higher</span>
+                <span className="text-sm text-neutral-700">
+                  Recommended resolution: 1920x1080 or higher
+                </span>
               </div>
             </div>
           </div>

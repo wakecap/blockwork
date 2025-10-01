@@ -1,21 +1,28 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Skeleton, SkeletonText, SkeletonAvatar, SkeletonButton, SkeletonCard, SkeletonTable } from '../components/Skeleton';
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import {
+  Skeleton,
+  SkeletonText,
+  SkeletonAvatar,
+  SkeletonButton,
+  SkeletonCard,
+  SkeletonTable,
+} from "../components/Skeleton";
 
 const meta: Meta<typeof Skeleton> = {
-  title: 'Components/Skeleton',
+  title: "Components/Skeleton",
   component: Skeleton,
   parameters: {
-    layout: 'padded',
+    layout: "padded",
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     variant: {
-      control: { type: 'select' },
-      options: ['text', 'circular', 'rectangular', 'rounded'],
+      control: { type: "select" },
+      options: ["text", "circular", "rectangular", "rounded"],
     },
     animation: {
-      control: { type: 'select' },
-      options: ['pulse', 'wave', 'none'],
+      control: { type: "select" },
+      options: ["pulse", "wave", "none"],
     },
   },
 };
@@ -25,10 +32,10 @@ type Story = StoryObj<typeof meta>;
 
 export const BasicSkeleton: Story = {
   args: {
-    variant: 'text',
-    width: '100%',
+    variant: "text",
+    width: "100%",
     height: 16,
-    animation: 'pulse',
+    animation: "pulse",
   },
 };
 
@@ -234,5 +241,3 @@ export const LoadingStates: Story = {
     </div>
   ),
 };
-
-

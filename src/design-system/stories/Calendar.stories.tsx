@@ -1,32 +1,33 @@
-import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Calendar, DatePicker, DateRangePicker } from '../components/Calendar';
+import React from "react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { Calendar, DatePicker, DateRangePicker } from "../components/Calendar";
 
 const meta: Meta<typeof Calendar> = {
-  title: 'Content Display/Calendar',
+  title: "Content Display/Calendar",
   component: Calendar,
   parameters: {
-    layout: 'padded',
+    layout: "padded",
     docs: {
       description: {
-        component: 'A calendar component for date selection with support for single dates, date ranges, and various customization options.',
+        component:
+          "A calendar component for date selection with support for single dates, date ranges, and various customization options.",
       },
     },
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     variant: {
-      control: { type: 'select' },
-      options: ['single', 'range', 'multi-month'],
+      control: { type: "select" },
+      options: ["single", "range", "multi-month"],
     },
     showWeekNumbers: {
-      control: { type: 'boolean' },
+      control: { type: "boolean" },
     },
     showClearButton: {
-      control: { type: 'boolean' },
+      control: { type: "boolean" },
     },
     showSelectButton: {
-      control: { type: 'boolean' },
+      control: { type: "boolean" },
     },
   },
 };
@@ -36,54 +37,47 @@ type Story = StoryObj<typeof meta>;
 
 export const SingleDateSelection: Story = {
   args: {
-    variant: 'single',
-    value: new Date('2024-03-23'),
-    className: 'w-80',
+    variant: "single",
+    value: new Date("2024-03-23"),
+    className: "w-80",
   },
 };
 
 export const SingleDateWithMarkers: Story = {
   args: {
-    variant: 'single',
-    value: new Date('2024-03-23'),
-    highlightedDates: [
-      new Date('2024-03-10'),
-      new Date('2024-03-14'),
-      new Date('2024-03-18'),
-    ],
-    className: 'w-80',
+    variant: "single",
+    value: new Date("2024-03-23"),
+    highlightedDates: [new Date("2024-03-10"), new Date("2024-03-14"), new Date("2024-03-18")],
+    className: "w-80",
   },
 };
 
-
-
-
 export const DateRangeSelection: Story = {
   args: {
-    variant: 'range',
-    rangeStart: new Date('2024-03-23'),
-    rangeEnd: new Date('2024-03-26'),
-    className: 'w-80',
+    variant: "range",
+    rangeStart: new Date("2024-03-23"),
+    rangeEnd: new Date("2024-03-26"),
+    className: "w-80",
   },
 };
 
 export const MultiMonthWithPredefinedRanges: Story = {
   args: {
-    variant: 'multi-month',
-    rangeStart: new Date('2024-03-23'),
-    rangeEnd: new Date('2024-03-26'),
+    variant: "multi-month",
+    rangeStart: new Date("2024-03-23"),
+    rangeEnd: new Date("2024-03-26"),
     predefinedRanges: [
       {
-        label: 'Today',
-        value: 'today',
+        label: "Today",
+        value: "today",
         getValue: () => {
           const today = new Date();
           return { start: today, end: today };
         },
       },
       {
-        label: 'Yesterday',
-        value: 'yesterday',
+        label: "Yesterday",
+        value: "yesterday",
         getValue: () => {
           const yesterday = new Date();
           yesterday.setDate(yesterday.getDate() - 1);
@@ -91,8 +85,8 @@ export const MultiMonthWithPredefinedRanges: Story = {
         },
       },
       {
-        label: 'Last 7 days',
-        value: 'last7days',
+        label: "Last 7 days",
+        value: "last7days",
         getValue: () => {
           const end = new Date();
           const start = new Date();
@@ -101,8 +95,8 @@ export const MultiMonthWithPredefinedRanges: Story = {
         },
       },
       {
-        label: 'Last 15 days',
-        value: 'last15days',
+        label: "Last 15 days",
+        value: "last15days",
         getValue: () => {
           const end = new Date();
           const start = new Date();
@@ -111,8 +105,8 @@ export const MultiMonthWithPredefinedRanges: Story = {
         },
       },
       {
-        label: 'Last 30 days',
-        value: 'last30days',
+        label: "Last 30 days",
+        value: "last30days",
         getValue: () => {
           const end = new Date();
           const start = new Date();
@@ -121,14 +115,14 @@ export const MultiMonthWithPredefinedRanges: Story = {
         },
       },
       {
-        label: 'Custom Dates',
-        value: 'custom',
+        label: "Custom Dates",
+        value: "custom",
         getValue: () => {
-          return { start: new Date('2024-03-23'), end: new Date('2024-03-26') };
+          return { start: new Date("2024-03-23"), end: new Date("2024-03-26") };
         },
       },
     ],
-    className: 'w-full max-w-4xl',
+    className: "w-full max-w-4xl",
   },
 };
 
@@ -139,13 +133,9 @@ export const InteractiveExample: Story = {
     return (
       <div className="space-y-4">
         <div className="text-sm text-neutral-600">
-          Selected: {selectedDate ? selectedDate.toLocaleDateString() : 'None'}
+          Selected: {selectedDate ? selectedDate.toLocaleDateString() : "None"}
         </div>
-        <Calendar
-          value={selectedDate}
-          onChange={setSelectedDate}
-          className="w-80"
-        />
+        <Calendar value={selectedDate} onChange={setSelectedDate} className="w-80" />
       </div>
     );
   },
@@ -153,8 +143,8 @@ export const InteractiveExample: Story = {
 
 export const RangeExample: Story = {
   render: () => {
-    const [rangeStart, setRangeStart] = React.useState<Date | undefined>(new Date('2024-01-10'));
-    const [rangeEnd, setRangeEnd] = React.useState<Date | undefined>(new Date('2024-01-20'));
+    const [rangeStart, setRangeStart] = React.useState<Date | undefined>(new Date("2024-01-10"));
+    const [rangeEnd, setRangeEnd] = React.useState<Date | undefined>(new Date("2024-01-20"));
 
     const handleRangeChange = (start: Date, end: Date) => {
       setRangeStart(start);
@@ -181,12 +171,14 @@ export const RangeExample: Story = {
 // Pre-built Calendar Components
 export const DatePickerExample: Story = {
   render: () => {
-    const [selectedDate, setSelectedDate] = React.useState<Date | undefined>(new Date('2024-09-14'));
+    const [selectedDate, setSelectedDate] = React.useState<Date | undefined>(
+      new Date("2024-09-14"),
+    );
 
     return (
       <div className="space-y-4">
         <div className="text-sm text-neutral-600">
-          Selected: {selectedDate ? selectedDate.toLocaleDateString() : 'None'}
+          Selected: {selectedDate ? selectedDate.toLocaleDateString() : "None"}
         </div>
         <DatePicker
           value={selectedDate}
@@ -201,8 +193,8 @@ export const DatePickerExample: Story = {
 
 export const DateRangePickerExample: Story = {
   render: () => {
-    const [startDate, setStartDate] = React.useState<Date | undefined>(new Date('2024-09-14'));
-    const [endDate, setEndDate] = React.useState<Date | undefined>(new Date('2024-09-14'));
+    const [startDate, setStartDate] = React.useState<Date | undefined>(new Date("2024-09-14"));
+    const [endDate, setEndDate] = React.useState<Date | undefined>(new Date("2024-09-14"));
 
     const handleRangeChange = (start: Date, end: Date) => {
       setStartDate(start);
@@ -225,4 +217,3 @@ export const DateRangePickerExample: Story = {
     );
   },
 };
-

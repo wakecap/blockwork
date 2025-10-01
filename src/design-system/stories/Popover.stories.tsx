@@ -1,40 +1,57 @@
-import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Popover, MenuPopover, InfoPopover, FormPopover } from '../components/Popover';
-import { Button } from '../components/Button';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faCog, faSignOutAlt, faInfo, faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
+import React from "react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { Popover, MenuPopover, InfoPopover, FormPopover } from "../components/Popover";
+import { Button } from "../components/Button";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faUser,
+  faCog,
+  faSignOutAlt,
+  faInfo,
+  faEdit,
+  faTrash,
+} from "@fortawesome/free-solid-svg-icons";
 
 const meta: Meta<typeof Popover> = {
-  title: 'Content Display/Popover',
+  title: "Content Display/Popover",
   component: Popover,
   parameters: {
-    layout: 'padded',
+    layout: "padded",
     docs: {
       description: {
-        component: 'A floating panel component for displaying rich content with various positions and variants.',
+        component:
+          "A floating panel component for displaying rich content with various positions and variants.",
       },
     },
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     position: {
-      control: { type: 'select' },
-      options: ['top', 'bottom', 'left', 'right', 'top-left', 'top-right', 'bottom-left', 'bottom-right'],
+      control: { type: "select" },
+      options: [
+        "top",
+        "bottom",
+        "left",
+        "right",
+        "top-left",
+        "top-right",
+        "bottom-left",
+        "bottom-right",
+      ],
     },
     variant: {
-      control: { type: 'select' },
-      options: ['default', 'light', 'dark'],
+      control: { type: "select" },
+      options: ["default", "light", "dark"],
     },
     size: {
-      control: { type: 'select' },
-      options: ['sm', 'md', 'lg'],
+      control: { type: "select" },
+      options: ["sm", "md", "lg"],
     },
     showArrow: {
-      control: { type: 'boolean' },
+      control: { type: "boolean" },
     },
     showCloseButton: {
-      control: { type: 'boolean' },
+      control: { type: "boolean" },
     },
   },
 };
@@ -59,9 +76,7 @@ export const Default: Story = {
         isOpen={isOpen}
         onClose={() => setIsOpen(false)}
       >
-        <Button onClick={() => setIsOpen(!isOpen)}>
-          Click to open popover
-        </Button>
+        <Button onClick={() => setIsOpen(!isOpen)}>Click to open popover</Button>
       </Popover>
     );
   },
@@ -69,7 +84,16 @@ export const Default: Story = {
 
 export const Positions: Story = {
   render: () => {
-    const positions = ['top', 'bottom', 'left', 'right', 'top-left', 'top-right', 'bottom-left', 'bottom-right'];
+    const positions = [
+      "top",
+      "bottom",
+      "left",
+      "right",
+      "top-left",
+      "top-right",
+      "bottom-left",
+      "bottom-right",
+    ];
     const [openPosition, setOpenPosition] = React.useState<string | null>(null);
 
     return (
@@ -79,9 +103,7 @@ export const Positions: Story = {
             <Popover
               content={
                 <div className="p-3">
-                  <p className="text-sm text-neutral-600">
-                    Position: {position}
-                  </p>
+                  <p className="text-sm text-neutral-600">Position: {position}</p>
                 </div>
               }
               position={position as any}
@@ -105,7 +127,7 @@ export const Positions: Story = {
 
 export const Variants: Story = {
   render: () => {
-    const variants = ['default', 'light', 'dark'];
+    const variants = ["default", "light", "dark"];
     const [openVariant, setOpenVariant] = React.useState<string | null>(null);
 
     return (
@@ -115,9 +137,7 @@ export const Variants: Story = {
             key={variant}
             content={
               <div className="p-3">
-                <p className="text-sm">
-                  {variant} variant
-                </p>
+                <p className="text-sm">{variant} variant</p>
               </div>
             }
             variant={variant as any}
@@ -139,7 +159,7 @@ export const Variants: Story = {
 
 export const Sizes: Story = {
   render: () => {
-    const sizes = ['sm', 'md', 'lg'];
+    const sizes = ["sm", "md", "lg"];
     const [openSize, setOpenSize] = React.useState<string | null>(null);
 
     return (
@@ -149,19 +169,14 @@ export const Sizes: Story = {
             key={size}
             content={
               <div className="p-3">
-                <p className="text-sm text-neutral-600">
-                  {size} size popover
-                </p>
+                <p className="text-sm text-neutral-600">{size} size popover</p>
               </div>
             }
             size={size as any}
             isOpen={openSize === size}
             onClose={() => setOpenSize(null)}
           >
-            <Button
-              variant="outline"
-              onClick={() => setOpenSize(openSize === size ? null : size)}
-            >
+            <Button variant="outline" onClick={() => setOpenSize(openSize === size ? null : size)}>
               {size}
             </Button>
           </Popover>
@@ -189,9 +204,7 @@ export const WithArrow: Story = {
         onClose={() => setIsOpen(false)}
         showArrow
       >
-        <Button onClick={() => setIsOpen(!isOpen)}>
-          With Arrow
-        </Button>
+        <Button onClick={() => setIsOpen(!isOpen)}>With Arrow</Button>
       </Popover>
     );
   },
@@ -215,9 +228,7 @@ export const WithCloseButton: Story = {
         onClose={() => setIsOpen(false)}
         showCloseButton
       >
-        <Button onClick={() => setIsOpen(!isOpen)}>
-          With Close Button
-        </Button>
+        <Button onClick={() => setIsOpen(!isOpen)}>With Close Button</Button>
       </Popover>
     );
   },
@@ -230,40 +241,34 @@ export const MenuPopoverExample: Story = {
 
     const menuItems = [
       {
-        label: 'Profile',
+        label: "Profile",
         icon: faUser,
         onClick: () => {
-          alert('Profile clicked');
+          alert("Profile clicked");
           setIsOpen(false);
         },
       },
       {
-        label: 'Settings',
+        label: "Settings",
         icon: faCog,
         onClick: () => {
-          alert('Settings clicked');
+          alert("Settings clicked");
           setIsOpen(false);
         },
       },
       {
-        label: 'Sign Out',
+        label: "Sign Out",
         icon: faSignOutAlt,
         onClick: () => {
-          alert('Sign out clicked');
+          alert("Sign out clicked");
           setIsOpen(false);
         },
       },
     ];
 
     return (
-      <MenuPopover
-        items={menuItems}
-        isOpen={isOpen}
-        onClose={() => setIsOpen(false)}
-      >
-        <Button onClick={() => setIsOpen(!isOpen)}>
-          User Menu
-        </Button>
+      <MenuPopover items={menuItems} isOpen={isOpen} onClose={() => setIsOpen(false)}>
+        <Button onClick={() => setIsOpen(!isOpen)}>User Menu</Button>
       </MenuPopover>
     );
   },
@@ -280,11 +285,7 @@ export const InfoPopoverExample: Story = {
         isOpen={isOpen}
         onClose={() => setIsOpen(false)}
       >
-        <Button
-          variant="ghost"
-          size="sm"
-          onClick={() => setIsOpen(!isOpen)}
-        >
+        <Button variant="ghost" size="sm" onClick={() => setIsOpen(!isOpen)}>
           <FontAwesomeIcon icon={faInfo} className="w-4 h-4" />
         </Button>
       </InfoPopover>
@@ -310,9 +311,7 @@ export const FormPopoverExample: Story = {
       >
         <div className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-neutral-700 mb-1">
-              Name
-            </label>
+            <label className="block text-sm font-medium text-neutral-700 mb-1">Name</label>
             <input
               type="text"
               defaultValue="Sarah Johnson"
@@ -320,9 +319,7 @@ export const FormPopoverExample: Story = {
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-neutral-700 mb-1">
-              Email
-            </label>
+            <label className="block text-sm font-medium text-neutral-700 mb-1">Email</label>
             <input
               type="email"
               defaultValue="sarah.johnson@company.com"
@@ -330,17 +327,13 @@ export const FormPopoverExample: Story = {
             />
           </div>
           <div className="flex space-x-3 pt-4">
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => setIsOpen(false)}
-            >
+            <Button variant="outline" size="sm" onClick={() => setIsOpen(false)}>
               Cancel
             </Button>
             <Button
               size="sm"
               onClick={() => {
-                alert('User updated!');
+                alert("User updated!");
                 setIsOpen(false);
               }}
             >
@@ -370,7 +363,7 @@ export const ComplexContent: Story = {
                 <p className="text-sm text-neutral-600">Senior Designer</p>
               </div>
             </div>
-            
+
             <div className="space-y-3">
               <div className="flex items-center justify-between">
                 <span className="text-sm text-neutral-600">Email</span>
@@ -387,13 +380,17 @@ export const ComplexContent: Story = {
                 </span>
               </div>
             </div>
-            
+
             <div className="flex space-x-2 mt-4 pt-4 border-t border-neutral-200">
               <Button size="sm" variant="outline" className="flex-1">
                 <FontAwesomeIcon icon={faEdit} className="w-3 h-3 mr-1" />
                 Edit
               </Button>
-              <Button size="sm" variant="outline" className="flex-1 text-red-600 hover:text-red-700">
+              <Button
+                size="sm"
+                variant="outline"
+                className="flex-1 text-red-600 hover:text-red-700"
+              >
                 <FontAwesomeIcon icon={faTrash} className="w-3 h-3 mr-1" />
                 Delete
               </Button>
@@ -405,9 +402,7 @@ export const ComplexContent: Story = {
         size="lg"
         showCloseButton
       >
-        <Button onClick={() => setIsOpen(!isOpen)}>
-          User Profile
-        </Button>
+        <Button onClick={() => setIsOpen(!isOpen)}>User Profile</Button>
       </Popover>
     );
   },

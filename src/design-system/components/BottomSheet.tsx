@@ -1,13 +1,13 @@
-import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes, faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 
 export interface BottomSheetProps {
   isOpen: boolean;
   onClose: () => void;
   title?: string;
   children: React.ReactNode;
-  variant?: 'default' | 'full' | 'half';
+  variant?: "default" | "full" | "half";
   showHandle?: boolean;
   showCloseButton?: boolean;
   closeOnOverlayClick?: boolean;
@@ -20,12 +20,12 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({
   onClose,
   title,
   children,
-  variant = 'default',
+  variant = "default",
   showHandle = true,
   showCloseButton = true,
   closeOnOverlayClick = true,
   closeOnEscape = true,
-  className = '',
+  className = "",
 }) => {
   const [isDragging, setIsDragging] = React.useState(false);
   const [startY, setStartY] = React.useState(0);
@@ -34,19 +34,19 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({
 
   React.useEffect(() => {
     const handleEscape = (event: KeyboardEvent) => {
-      if (event.key === 'Escape' && closeOnEscape) {
+      if (event.key === "Escape" && closeOnEscape) {
         onClose();
       }
     };
 
     if (isOpen) {
-      document.addEventListener('keydown', handleEscape);
-      document.body.style.overflow = 'hidden';
+      document.addEventListener("keydown", handleEscape);
+      document.body.style.overflow = "hidden";
     }
 
     return () => {
-      document.removeEventListener('keydown', handleEscape);
-      document.body.style.overflow = 'unset';
+      document.removeEventListener("keydown", handleEscape);
+      document.body.style.overflow = "unset";
     };
   }, [isOpen, onClose, closeOnEscape]);
 
@@ -58,10 +58,10 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({
 
   const handleTouchMove = (e: React.TouchEvent) => {
     if (!isDragging) return;
-    
+
     const newY = e.touches[0].clientY;
     setCurrentY(newY);
-    
+
     // Prevent scrolling when dragging down
     if (newY > startY) {
       e.preventDefault();
@@ -70,10 +70,10 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({
 
   const handleTouchEnd = () => {
     if (!isDragging) return;
-    
+
     setIsDragging(false);
     const deltaY = currentY - startY;
-    
+
     // Close if dragged down more than 100px
     if (deltaY > 100) {
       onClose();
@@ -87,9 +87,9 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({
   };
 
   const variantStyles = {
-    default: 'max-h-96',
-    half: 'max-h-1/2',
-    full: 'max-h-full',
+    default: "max-h-96",
+    half: "max-h-1/2",
+    full: "max-h-full",
   };
 
   const currentVariant = variantStyles[variant];
@@ -118,11 +118,7 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({
         {/* Header */}
         {(title || showCloseButton) && (
           <div className="flex items-center justify-between px-4 py-3 border-b border-neutral-200">
-            {title && (
-              <h2 className="text-lg font-semibold text-neutral-900">
-                {title}
-              </h2>
-            )}
+            {title && <h2 className="text-lg font-semibold text-neutral-900">{title}</h2>}
             {showCloseButton && (
               <button
                 onClick={onClose}
@@ -136,9 +132,7 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({
         )}
 
         {/* Content */}
-        <div className="overflow-y-auto">
-          {children}
-        </div>
+        <div className="overflow-y-auto">{children}</div>
       </div>
     </div>
   );
@@ -153,12 +147,12 @@ export const ActionSheet: React.FC<{
     label: string;
     icon?: any;
     onClick: () => void;
-    variant?: 'default' | 'danger' | 'cancel';
+    variant?: "default" | "danger" | "cancel";
     disabled?: boolean;
   }>;
   className?: string;
-}> = ({ isOpen, onClose, title, actions, className = '' }) => {
-  const handleActionClick = (action: typeof actions[0]) => {
+}> = ({ isOpen, onClose, title, actions, className = "" }) => {
+  const handleActionClick = (action: (typeof actions)[0]) => {
     if (!action.disabled) {
       action.onClick();
       onClose();
@@ -167,12 +161,12 @@ export const ActionSheet: React.FC<{
 
   const getActionStyles = (variant: string) => {
     switch (variant) {
-      case 'danger':
-        return 'text-error-600 hover:bg-error-50';
-      case 'cancel':
-        return 'text-neutral-600 hover:bg-neutral-50';
+      case "danger":
+        return "text-error-600 hover:bg-error-50";
+      case "cancel":
+        return "text-neutral-600 hover:bg-neutral-50";
       default:
-        return 'text-neutral-900 hover:bg-neutral-50';
+        return "text-neutral-900 hover:bg-neutral-50";
     }
   };
 
@@ -191,15 +185,10 @@ export const ActionSheet: React.FC<{
             onClick={() => handleActionClick(action)}
             disabled={action.disabled}
             className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors ${
-              action.disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'
-            } ${getActionStyles(action.variant || 'default')}`}
+              action.disabled ? "opacity-50 cursor-not-allowed" : "cursor-pointer"
+            } ${getActionStyles(action.variant || "default")}`}
           >
-            {action.icon && (
-              <FontAwesomeIcon
-                icon={action.icon}
-                className="w-5 h-5"
-              />
-            )}
+            {action.icon && <FontAwesomeIcon icon={action.icon} className="w-5 h-5" />}
             <span className="font-medium">{action.label}</span>
           </button>
         ))}
@@ -225,12 +214,12 @@ export const FormBottomSheet: React.FC<{
   onClose,
   title,
   children,
-  submitText = 'Submit',
-  cancelText = 'Cancel',
+  submitText = "Submit",
+  cancelText = "Cancel",
   onSubmit,
   onCancel,
   isLoading = false,
-  className = '',
+  className = "",
 }) => {
   const handleSubmit = () => {
     onSubmit();
@@ -250,10 +239,8 @@ export const FormBottomSheet: React.FC<{
       className={className}
     >
       <div className="p-4 space-y-6">
-        <div>
-          {children}
-        </div>
-        
+        <div>{children}</div>
+
         <div className="flex space-x-3 pt-4 border-t border-neutral-200">
           <button
             onClick={handleCancel}
@@ -267,7 +254,7 @@ export const FormBottomSheet: React.FC<{
             disabled={isLoading}
             className="flex-1 px-4 py-3 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors disabled:opacity-50"
           >
-            {isLoading ? 'Loading...' : submitText}
+            {isLoading ? "Loading..." : submitText}
           </button>
         </div>
       </div>

@@ -18,7 +18,9 @@ __tests__/
 ## 🧪 Test Categories
 
 ### 1. Unit Tests (`Button.test.tsx`)
+
 Tests individual component behavior and props:
+
 - ✅ Basic rendering with default props
 - ✅ All variant styles (primary, secondary, accent, etc.)
 - ✅ All size variants (xs, sm, md, lg, xl, icon)
@@ -33,7 +35,9 @@ Tests individual component behavior and props:
 - ✅ Error handling
 
 ### 2. Integration Tests (`Button.integration.test.tsx`)
+
 Tests user interactions and complex workflows:
+
 - ✅ Form submission flows
 - ✅ Button group interactions
 - ✅ File upload workflows
@@ -44,7 +48,9 @@ Tests user interactions and complex workflows:
 - ✅ Performance under load
 
 ### 3. Accessibility Tests (`Button.accessibility.test.tsx`)
+
 WCAG 2.1 AA compliance and screen reader support:
+
 - ✅ WCAG 2.1 AA compliance (using jest-axe)
 - ✅ Keyboard navigation (Tab, Enter, Space)
 - ✅ Screen reader support (ARIA labels, descriptions)
@@ -59,7 +65,9 @@ WCAG 2.1 AA compliance and screen reader support:
 - ✅ Complex interaction accessibility
 
 ### 4. Visual Regression Tests (`Button.visual.test.tsx`)
+
 Ensures visual consistency across changes:
+
 - ✅ Basic variant rendering
 - ✅ Semantic variant rendering
 - ✅ Special variant rendering
@@ -74,7 +82,9 @@ Ensures visual consistency across changes:
 - ✅ Edge cases
 
 ### 5. Performance Tests (`Button.performance.test.tsx`)
+
 Validates performance under various conditions:
+
 - ✅ Rendering performance (100, 500, 1000+ buttons)
 - ✅ Interaction performance (rapid clicks, hovers)
 - ✅ Re-rendering performance
@@ -87,6 +97,7 @@ Validates performance under various conditions:
 ## 🚀 Running Tests
 
 ### Individual Test Suites
+
 ```bash
 # Unit tests only
 npm run test:button
@@ -105,12 +116,14 @@ npm run test:button:performance
 ```
 
 ### All Button Tests
+
 ```bash
 # Run all button tests
 npm run test:button:all
 ```
 
 ### Coverage and CI
+
 ```bash
 # Run with coverage
 npm run test:coverage
@@ -132,6 +145,7 @@ The test suite aims for comprehensive coverage:
 - **Lines**: 80%+
 
 ### Coverage Areas
+
 - ✅ Component rendering
 - ✅ Props handling
 - ✅ Event handling
@@ -145,6 +159,7 @@ The test suite aims for comprehensive coverage:
 ## 🔧 Test Configuration
 
 ### Jest Configuration (`jest.config.js`)
+
 - **Environment**: jsdom for DOM testing
 - **Setup**: Custom setup file with mocks
 - **Transform**: TypeScript support with ts-jest
@@ -152,6 +167,7 @@ The test suite aims for comprehensive coverage:
 - **Timeout**: 10 seconds for complex tests
 
 ### Test Setup (`setup.ts`)
+
 - **Mocks**: FontAwesome, FontProvider, performance APIs
 - **Utilities**: Custom matchers and helpers
 - **Environment**: Browser APIs and observers
@@ -160,6 +176,7 @@ The test suite aims for comprehensive coverage:
 ## 🎯 Test Scenarios
 
 ### Basic Functionality
+
 - [x] Renders with default props
 - [x] Applies correct CSS classes
 - [x] Handles click events
@@ -168,12 +185,14 @@ The test suite aims for comprehensive coverage:
 - [x] Disables when needed
 
 ### Variants and Sizes
+
 - [x] All 13 variants render correctly
 - [x] All 6 sizes render correctly
 - [x] Icon positioning works
 - [x] Custom styling applies
 
 ### Accessibility
+
 - [x] WCAG 2.1 AA compliant
 - [x] Keyboard accessible
 - [x] Screen reader friendly
@@ -181,12 +200,14 @@ The test suite aims for comprehensive coverage:
 - [x] Color contrast compliant
 
 ### Internationalization
+
 - [x] RTL layout support
 - [x] Arabic font rendering
 - [x] Icon position flipping
 - [x] Text direction handling
 
 ### Performance
+
 - [x] Renders 1000+ buttons efficiently
 - [x] Handles rapid interactions
 - [x] No memory leaks
@@ -195,12 +216,14 @@ The test suite aims for comprehensive coverage:
 ## 🐛 Debugging Tests
 
 ### Common Issues
+
 1. **FontAwesome mocks**: Ensure icons are properly mocked
 2. **FontProvider**: Check that language context is available
 3. **Performance**: Adjust timeouts for slower machines
 4. **Accessibility**: Verify axe rules are up to date
 
 ### Debug Commands
+
 ```bash
 # Run specific test with verbose output
 npm run test:button -- --verbose
@@ -215,6 +238,7 @@ npm run test:coverage -- --verbose
 ## 📈 Test Metrics
 
 ### Performance Benchmarks
+
 - **100 buttons**: < 100ms render time
 - **500 buttons**: < 500ms render time
 - **1000 buttons**: < 1000ms render time
@@ -222,6 +246,7 @@ npm run test:coverage -- --verbose
 - **Hover events**: 20 cycles < 500ms
 
 ### Accessibility Standards
+
 - **WCAG 2.1 AA**: Full compliance
 - **Keyboard navigation**: Tab, Enter, Space support
 - **Screen readers**: Proper announcements
@@ -231,6 +256,7 @@ npm run test:coverage -- --verbose
 ## 🔄 Continuous Integration
 
 ### GitHub Actions (Recommended)
+
 ```yaml
 name: Button Tests
 on: [push, pull_request]
@@ -246,6 +272,7 @@ jobs:
 ```
 
 ### Pre-commit Hooks
+
 ```bash
 # Install husky for git hooks
 npm install --save-dev husky
@@ -257,16 +284,17 @@ npx husky add .husky/pre-commit "npm run test:button:all"
 ## 📝 Writing New Tests
 
 ### Test Structure
+
 ```typescript
 describe('Feature Name', () => {
   it('should do something specific', () => {
     // Arrange
     render(<Button>Test</Button>, { wrapper: TestWrapper });
-    
+
     // Act
     const button = screen.getByRole('button');
     fireEvent.click(button);
-    
+
     // Assert
     expect(button).toHaveClass('expected-class');
   });
@@ -274,6 +302,7 @@ describe('Feature Name', () => {
 ```
 
 ### Best Practices
+
 1. **Use descriptive test names**
 2. **Follow AAA pattern** (Arrange, Act, Assert)
 3. **Test one thing at a time**
@@ -284,6 +313,7 @@ describe('Feature Name', () => {
 ## 🎉 Success Criteria
 
 A test passes when:
+
 - ✅ Component renders without errors
 - ✅ All assertions pass
 - ✅ No accessibility violations

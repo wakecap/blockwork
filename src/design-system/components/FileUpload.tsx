@@ -1,6 +1,14 @@
-import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUpload, faFile, faImage, faVideo, faMusic, faTimes, faCheck } from '@fortawesome/free-solid-svg-icons';
+import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faUpload,
+  faFile,
+  faImage,
+  faVideo,
+  faMusic,
+  faTimes,
+  faCheck,
+} from "@fortawesome/free-solid-svg-icons";
 
 export interface FileUploadFile {
   id: string;
@@ -8,7 +16,7 @@ export interface FileUploadFile {
   size: number;
   type: string;
   progress: number;
-  status: 'uploading' | 'completed' | 'error';
+  status: "uploading" | "completed" | "error";
   error?: string;
   preview?: string;
 }
@@ -22,7 +30,7 @@ export interface FileUploadProps {
   multiple?: boolean;
   maxFiles?: number;
   maxFileSize?: number; // in bytes
-  variant?: 'default' | 'compact' | 'detailed';
+  variant?: "default" | "compact" | "detailed";
   dragActive?: boolean;
   onDragEnter?: () => void;
   onDragLeave?: () => void;
@@ -35,16 +43,16 @@ export const FileUpload: React.FC<FileUploadProps> = ({
   onFilesSelect,
   onFileRemove,
   onFileRetry,
-  accept = '*/*',
+  accept = "*/*",
   multiple = false,
   maxFiles = 10,
   maxFileSize = 10 * 1024 * 1024, // 10MB
-  variant = 'default',
+  variant = "default",
   dragActive = false,
   onDragEnter,
   onDragLeave,
   onDrop,
-  className = '',
+  className = "",
 }) => {
   const fileInputRef = React.useRef<HTMLInputElement>(null);
   const dropZoneRef = React.useRef<HTMLDivElement>(null);
@@ -83,25 +91,25 @@ export const FileUpload: React.FC<FileUploadProps> = ({
   };
 
   const getFileIcon = (fileType: string) => {
-    if (fileType.startsWith('image/')) return faImage;
-    if (fileType.startsWith('video/')) return faVideo;
-    if (fileType.startsWith('audio/')) return faMusic;
+    if (fileType.startsWith("image/")) return faImage;
+    if (fileType.startsWith("video/")) return faVideo;
+    if (fileType.startsWith("audio/")) return faMusic;
     return faFile;
   };
 
   const formatFileSize = (bytes: number) => {
-    if (bytes === 0) return '0 Bytes';
+    if (bytes === 0) return "0 Bytes";
     const k = 1024;
-    const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+    const sizes = ["Bytes", "KB", "MB", "GB"];
     const i = Math.floor(Math.log(bytes) / Math.log(k));
-    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + " " + sizes[i];
   };
 
-  const getStatusIcon = (status: FileUploadFile['status']) => {
+  const getStatusIcon = (status: FileUploadFile["status"]) => {
     switch (status) {
-      case 'completed':
+      case "completed":
         return <FontAwesomeIcon icon={faCheck} className="w-4 h-4 text-green-500" />;
-      case 'error':
+      case "error":
         return <FontAwesomeIcon icon={faTimes} className="w-4 h-4 text-red-500" />;
       default:
         return null;
@@ -109,14 +117,14 @@ export const FileUpload: React.FC<FileUploadProps> = ({
   };
 
   const variantStyles = {
-    default: 'p-6',
-    compact: 'p-4',
-    detailed: 'p-8',
+    default: "p-6",
+    compact: "p-4",
+    detailed: "p-8",
   };
 
   const dragStyles = dragActive
-    ? 'border-primary-500 bg-primary-50'
-    : 'border-neutral-300 hover:border-neutral-400';
+    ? "border-primary-500 bg-primary-50"
+    : "border-neutral-300 hover:border-neutral-400";
 
   return (
     <div className={`space-y-4 ${className}`}>
@@ -132,10 +140,10 @@ export const FileUpload: React.FC<FileUploadProps> = ({
         <div className="text-center">
           <FontAwesomeIcon icon={faUpload} className="w-8 h-8 text-neutral-400 mb-4" />
           <h3 className="text-lg font-medium text-neutral-900 mb-2">
-            {dragActive ? 'Drop files here' : 'Upload files'}
+            {dragActive ? "Drop files here" : "Upload files"}
           </h3>
           <p className="text-sm text-neutral-600 mb-4">
-            Drag and drop files here, or{' '}
+            Drag and drop files here, or{" "}
             <button
               type="button"
               onClick={() => fileInputRef.current?.click()}
@@ -145,7 +153,8 @@ export const FileUpload: React.FC<FileUploadProps> = ({
             </button>
           </p>
           <div className="text-xs text-neutral-500">
-            {multiple ? `Up to ${maxFiles} files` : 'Single file'} • Max size: {formatFileSize(maxFileSize)}
+            {multiple ? `Up to ${maxFiles} files` : "Single file"} • Max size:{" "}
+            {formatFileSize(maxFileSize)}
           </div>
         </div>
       </div>
@@ -163,9 +172,7 @@ export const FileUpload: React.FC<FileUploadProps> = ({
       {/* File List */}
       {files.length > 0 && (
         <div className="space-y-2">
-          <h4 className="text-sm font-medium text-neutral-900">
-            Files ({files.length})
-          </h4>
+          <h4 className="text-sm font-medium text-neutral-900">Files ({files.length})</h4>
           <div className="space-y-2">
             {files.map((file) => (
               <div
@@ -184,12 +191,8 @@ export const FileUpload: React.FC<FileUploadProps> = ({
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center justify-between">
                     <div className="min-w-0 flex-1">
-                      <p className="text-sm font-medium text-neutral-900 truncate">
-                        {file.name}
-                      </p>
-                      <p className="text-xs text-neutral-500">
-                        {formatFileSize(file.size)}
-                      </p>
+                      <p className="text-sm font-medium text-neutral-900 truncate">{file.name}</p>
+                      <p className="text-xs text-neutral-500">{formatFileSize(file.size)}</p>
                     </div>
                     <div className="flex items-center space-x-2">
                       {getStatusIcon(file.status)}
@@ -203,7 +206,7 @@ export const FileUpload: React.FC<FileUploadProps> = ({
                   </div>
 
                   {/* Progress Bar */}
-                  {file.status === 'uploading' && (
+                  {file.status === "uploading" && (
                     <div className="mt-2">
                       <div className="w-full bg-neutral-200 rounded-full h-2">
                         <div
@@ -211,14 +214,12 @@ export const FileUpload: React.FC<FileUploadProps> = ({
                           style={{ width: `${file.progress}%` }}
                         />
                       </div>
-                      <p className="text-xs text-neutral-500 mt-1">
-                        {file.progress}% uploaded
-                      </p>
+                      <p className="text-xs text-neutral-500 mt-1">{file.progress}% uploaded</p>
                     </div>
                   )}
 
                   {/* Error Message */}
-                  {file.status === 'error' && file.error && (
+                  {file.status === "error" && file.error && (
                     <div className="mt-2">
                       <p className="text-xs text-red-600">{file.error}</p>
                       {onFileRetry && (
@@ -250,7 +251,15 @@ export const ImageUpload: React.FC<{
   multiple?: boolean;
   maxFiles?: number;
   className?: string;
-}> = ({ files, onFilesSelect, onFileRemove, onFileRetry, multiple = true, maxFiles = 5, className = '' }) => {
+}> = ({
+  files,
+  onFilesSelect,
+  onFileRemove,
+  onFileRetry,
+  multiple = true,
+  maxFiles = 5,
+  className = "",
+}) => {
   return (
     <FileUpload
       files={files}
@@ -275,7 +284,15 @@ export const DocumentUpload: React.FC<{
   multiple?: boolean;
   maxFiles?: number;
   className?: string;
-}> = ({ files, onFilesSelect, onFileRemove, onFileRetry, multiple = true, maxFiles = 10, className = '' }) => {
+}> = ({
+  files,
+  onFilesSelect,
+  onFileRemove,
+  onFileRetry,
+  multiple = true,
+  maxFiles = 10,
+  className = "",
+}) => {
   return (
     <FileUpload
       files={files}
@@ -300,7 +317,15 @@ export const VideoUpload: React.FC<{
   multiple?: boolean;
   maxFiles?: number;
   className?: string;
-}> = ({ files, onFilesSelect, onFileRemove, onFileRetry, multiple = false, maxFiles = 1, className = '' }) => {
+}> = ({
+  files,
+  onFilesSelect,
+  onFileRemove,
+  onFileRetry,
+  multiple = false,
+  maxFiles = 1,
+  className = "",
+}) => {
   return (
     <FileUpload
       files={files}
@@ -329,10 +354,10 @@ export const useFileUpload = () => {
       size: file.size,
       type: file.type,
       progress: 0,
-      status: 'uploading' as const,
+      status: "uploading" as const,
     }));
 
-    setFiles(prev => [...prev, ...newFiles]);
+    setFiles((prev) => [...prev, ...newFiles]);
 
     // Simulate upload progress
     newFiles.forEach((file) => {
@@ -347,34 +372,26 @@ export const useFileUpload = () => {
       if (progress >= 100) {
         progress = 100;
         clearInterval(interval);
-        setFiles(prev =>
-          prev.map(f =>
-            f.id === fileId
-              ? { ...f, progress: 100, status: 'completed' as const }
-              : f
-          )
+        setFiles((prev) =>
+          prev.map((f) =>
+            f.id === fileId ? { ...f, progress: 100, status: "completed" as const } : f,
+          ),
         );
       } else {
-        setFiles(prev =>
-          prev.map(f =>
-            f.id === fileId ? { ...f, progress } : f
-          )
-        );
+        setFiles((prev) => prev.map((f) => (f.id === fileId ? { ...f, progress } : f)));
       }
     }, 200);
   };
 
   const handleFileRemove = (fileId: string) => {
-    setFiles(prev => prev.filter(f => f.id !== fileId));
+    setFiles((prev) => prev.filter((f) => f.id !== fileId));
   };
 
   const handleFileRetry = (fileId: string) => {
-    setFiles(prev =>
-      prev.map(f =>
-        f.id === fileId
-          ? { ...f, progress: 0, status: 'uploading' as const, error: undefined }
-          : f
-      )
+    setFiles((prev) =>
+      prev.map((f) =>
+        f.id === fileId ? { ...f, progress: 0, status: "uploading" as const, error: undefined } : f,
+      ),
     );
     simulateUpload(fileId);
   };

@@ -1,31 +1,31 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Avatar } from '../components/Avatar';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faRobot } from '@fortawesome/free-solid-svg-icons';
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { Avatar } from "../components/Avatar";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser, faRobot } from "@fortawesome/free-solid-svg-icons";
 
 const meta: Meta<typeof Avatar> = {
-  title: 'Components/Avatar',
+  title: "Components/Avatar",
   component: Avatar,
   parameters: {
-    layout: 'padded',
+    layout: "padded",
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     size: {
-      control: { type: 'select' },
-      options: ['xs', 'sm', 'md', 'lg', 'xl', 'iconXs', 'iconSm', 'iconMd', 'iconLg', 'iconXl'],
+      control: { type: "select" },
+      options: ["xs", "sm", "md", "lg", "xl", "iconXs", "iconSm", "iconMd", "iconLg", "iconXl"],
     },
     status: {
-      control: { type: 'select' },
-      options: ['online', 'offline', 'away', 'busy'],
+      control: { type: "select" },
+      options: ["online", "offline", "away", "busy"],
     },
     statusPosition: {
-      control: { type: 'select' },
-      options: ['top-right', 'top-left', 'bottom-right', 'bottom-left'],
+      control: { type: "select" },
+      options: ["top-right", "top-left", "bottom-right", "bottom-left"],
     },
     showChevron: {
-      control: { type: 'boolean' },
-      description: 'Show chevron down icon for dropdown indicators',
+      control: { type: "boolean" },
+      description: "Show chevron down icon for dropdown indicators",
     },
   },
 };
@@ -35,20 +35,20 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    name: 'John Doe',
+    name: "John Doe",
   },
 };
 
 export const WithImage: Story = {
   args: {
-    src: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face',
-    alt: 'John Doe',
+    src: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
+    alt: "John Doe",
   },
 };
 
 export const WithName: Story = {
   args: {
-    name: 'Alice Smith',
+    name: "Alice Smith",
   },
 };
 
@@ -66,116 +66,117 @@ export const WithCustomIcon: Story = {
 
 export const Online: Story = {
   args: {
-    name: 'John Doe',
-    status: 'online',
+    name: "John Doe",
+    status: "online",
   },
 };
 
 export const Offline: Story = {
   args: {
-    name: 'John Doe',
-    status: 'offline',
+    name: "John Doe",
+    status: "offline",
   },
 };
 
 export const Away: Story = {
   args: {
-    name: 'John Doe',
-    status: 'away',
+    name: "John Doe",
+    status: "away",
   },
 };
 
 export const Busy: Story = {
   args: {
-    name: 'John Doe',
-    status: 'busy',
+    name: "John Doe",
+    status: "busy",
   },
 };
 
 export const ExtraSmall: Story = {
   args: {
-    name: 'John Doe',
-    size: 'xs',
+    name: "John Doe",
+    size: "xs",
   },
 };
 
 export const Small: Story = {
   args: {
-    name: 'John Doe',
-    size: 'sm',
+    name: "John Doe",
+    size: "sm",
   },
 };
 
 export const Medium: Story = {
   args: {
-    name: 'John Doe',
-    size: 'md',
+    name: "John Doe",
+    size: "md",
   },
 };
 
 export const Large: Story = {
   args: {
-    name: 'John Doe',
-    size: 'lg',
+    name: "John Doe",
+    size: "lg",
   },
 };
 
 export const ExtraLarge: Story = {
   args: {
-    name: 'John Doe',
-    size: 'xl',
+    name: "John Doe",
+    size: "xl",
   },
 };
 
 export const StatusTopLeft: Story = {
   args: {
-    name: 'John Doe',
-    status: 'online',
-    statusPosition: 'top-left',
+    name: "John Doe",
+    status: "online",
+    statusPosition: "top-left",
   },
 };
 
 export const StatusTopRight: Story = {
   args: {
-    name: 'John Doe',
-    status: 'online',
-    statusPosition: 'top-right',
+    name: "John Doe",
+    status: "online",
+    statusPosition: "top-right",
   },
 };
 
 export const StatusBottomLeft: Story = {
   args: {
-    name: 'John Doe',
-    status: 'online',
-    statusPosition: 'bottom-left',
+    name: "John Doe",
+    status: "online",
+    statusPosition: "bottom-left",
   },
 };
 
 export const StatusBottomRight: Story = {
   args: {
-    name: 'John Doe',
-    status: 'online',
-    statusPosition: 'bottom-right',
+    name: "John Doe",
+    status: "online",
+    statusPosition: "bottom-right",
   },
 };
 
 export const Clickable: Story = {
   args: {
-    name: 'John Doe',
-    onClick: () => console.log('Avatar clicked!'),
+    name: "John Doe",
+    onClick: () => console.log("Avatar clicked!"),
   },
 };
 
 export const WithChevron: Story = {
   args: {
-    name: 'Project Alpha',
+    name: "Project Alpha",
     showChevron: true,
-    onClick: () => console.log('Project dropdown clicked!'),
+    onClick: () => console.log("Project dropdown clicked!"),
   },
   parameters: {
     docs: {
       description: {
-        story: 'Avatar with chevron down icon, typically used for project or organization selectors that open dropdown menus.',
+        story:
+          "Avatar with chevron down icon, typically used for project or organization selectors that open dropdown menus.",
       },
     },
   },
@@ -223,22 +224,22 @@ export const ChevronSizes: Story = {
         <span className="text-sm font-medium w-24">Extra Small:</span>
         <Avatar name="Project Alpha" size="xs" showChevron={true} />
       </div>
-      
+
       <div className="flex items-center gap-4">
         <span className="text-sm font-medium w-24">Small:</span>
         <Avatar name="Project Beta" size="sm" showChevron={true} />
       </div>
-      
+
       <div className="flex items-center gap-4">
         <span className="text-sm font-medium w-24">Medium:</span>
         <Avatar name="Project Gamma" size="md" showChevron={true} />
       </div>
-      
+
       <div className="flex items-center gap-4">
         <span className="text-sm font-medium w-24">Large:</span>
         <Avatar name="Project Delta" size="lg" showChevron={true} />
       </div>
-      
+
       <div className="flex items-center gap-4">
         <span className="text-sm font-medium w-24">Extra Large:</span>
         <Avatar name="Project Epsilon" size="xl" showChevron={true} />
@@ -248,7 +249,8 @@ export const ChevronSizes: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Avatar with chevron down icon in different sizes. The chevron scales proportionally with the avatar size.',
+        story:
+          "Avatar with chevron down icon in different sizes. The chevron scales proportionally with the avatar size.",
       },
     },
   },
@@ -264,35 +266,35 @@ export const IconOnlySizes: Story = {
         <Avatar name="Alice Smith" size="iconXs" />
         <Avatar name="Bob Johnson" size="iconXs" />
       </div>
-      
+
       <div className="flex items-center gap-4">
         <span className="text-sm font-medium w-24">Small:</span>
         <Avatar name="John Doe" size="iconSm" />
         <Avatar name="Alice Smith" size="iconSm" />
         <Avatar name="Bob Johnson" size="iconSm" />
       </div>
-      
+
       <div className="flex items-center gap-4">
         <span className="text-sm font-medium w-24">Medium:</span>
         <Avatar name="John Doe" size="iconMd" />
         <Avatar name="Alice Smith" size="iconMd" />
         <Avatar name="Bob Johnson" size="iconMd" />
       </div>
-      
+
       <div className="flex items-center gap-4">
         <span className="text-sm font-medium w-24">Large:</span>
         <Avatar name="John Doe" size="iconLg" />
         <Avatar name="Alice Smith" size="iconLg" />
         <Avatar name="Bob Johnson" size="iconLg" />
       </div>
-      
+
       <div className="flex items-center gap-4">
         <span className="text-sm font-medium w-24">Extra Large:</span>
         <Avatar name="John Doe" size="iconXl" />
         <Avatar name="Alice Smith" size="iconXl" />
         <Avatar name="Bob Johnson" size="iconXl" />
       </div>
-      
+
       {/* With status indicators */}
       <div className="flex items-center gap-4">
         <span className="text-sm font-medium w-24">With Status:</span>
@@ -306,7 +308,8 @@ export const IconOnlySizes: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Icon-only sizes for Avatars, matching the Button component sizing system. These sizes are optimized for compact interfaces and navigation bars.',
+        story:
+          "Icon-only sizes for Avatars, matching the Button component sizing system. These sizes are optimized for compact interfaces and navigation bars.",
       },
     },
   },

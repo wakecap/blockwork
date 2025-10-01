@@ -1,8 +1,8 @@
-import React from 'react';
-import { cva, type VariantProps } from 'class-variance-authority';
-import { cn } from '../../utils/utils';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
+import React from "react";
+import { cva, type VariantProps } from "class-variance-authority";
+import { cn } from "../../utils/utils";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 
 // Button variants using CVA with black-primary design system and responsive enhancements
 const buttonVariants = cva(
@@ -12,24 +12,33 @@ const buttonVariants = cva(
     variants: {
       variant: {
         // Core variants (Black-based) with responsive hover states
-        primary: "bg-neutral-900 text-white border border-neutral-900 hover:bg-neutral-800 hover:shadow-md active:bg-neutral-950 focus-visible:ring-neutral-500 active:scale-[0.98] sm:active:scale-100",
-        secondary: "bg-neutral-100 text-neutral-900 border border-neutral-200 hover:border-secondary-200 active:bg-neutral-300 focus-visible:ring-neutral-500 active:scale-[0.98] sm:active:scale-100",
-        accent: "bg-orange-600 text-white border border-orange-600 hover:bg-orange-700 hover:shadow-md active:bg-orange-800 focus-visible:ring-orange-500 active:scale-[0.98] sm:active:scale-100",
-        outline: "bg-transparent text-neutral-900 border border-neutral-900 hover:bg-neutral-900 hover:text-white hover:shadow-sm focus-visible:ring-neutral-500 active:scale-[0.98] sm:active:scale-100",
-        ghost: "bg-transparent text-neutral-600 border border-transparent hover:bg-neutral-100 hover:text-neutral-900 focus-visible:ring-neutral-500 active:scale-[0.98] sm:active:scale-100",
+        primary:
+          "bg-neutral-900 text-white border border-neutral-900 hover:bg-neutral-800 hover:shadow-md active:bg-neutral-950 focus-visible:ring-neutral-500 active:scale-[0.98] sm:active:scale-100",
+        secondary:
+          "bg-neutral-100 text-neutral-900 border border-neutral-200 hover:border-secondary-200 active:bg-neutral-300 focus-visible:ring-neutral-500 active:scale-[0.98] sm:active:scale-100",
+        accent:
+          "bg-orange-600 text-white border border-orange-600 hover:bg-orange-700 hover:shadow-md active:bg-orange-800 focus-visible:ring-orange-500 active:scale-[0.98] sm:active:scale-100",
+        outline:
+          "bg-transparent text-neutral-900 border border-neutral-900 hover:bg-neutral-900 hover:text-white hover:shadow-sm focus-visible:ring-neutral-500 active:scale-[0.98] sm:active:scale-100",
+        ghost:
+          "bg-transparent text-neutral-600 border border-transparent hover:bg-neutral-100 hover:text-neutral-900 focus-visible:ring-neutral-500 active:scale-[0.98] sm:active:scale-100",
         text: "bg-transparent text-neutral-900 border border-transparent hover:bg-neutral-50 hover:text-neutral-700 focus-visible:ring-neutral-500 active:scale-[0.98] sm:active:scale-100",
-        
+
         // Semantic variants with responsive interactions
-        success: "bg-green-600 text-white border border-green-600 hover:bg-green-700 hover:shadow-md active:bg-green-800 focus-visible:ring-green-500 active:scale-[0.98] sm:active:scale-100",
-        warning: "bg-yellow-500 text-white border border-yellow-500 hover:bg-yellow-600 hover:shadow-md active:bg-yellow-700 focus-visible:ring-yellow-500 active:scale-[0.98] sm:active:scale-100",
-        destructive: "bg-red-600 text-white border border-red-600 hover:bg-red-700 hover:shadow-md active:bg-red-800 focus-visible:ring-red-500 active:scale-[0.98] sm:active:scale-100",
+        success:
+          "bg-green-600 text-white border border-green-600 hover:bg-green-700 hover:shadow-md active:bg-green-800 focus-visible:ring-green-500 active:scale-[0.98] sm:active:scale-100",
+        warning:
+          "bg-yellow-500 text-white border border-yellow-500 hover:bg-yellow-600 hover:shadow-md active:bg-yellow-700 focus-visible:ring-yellow-500 active:scale-[0.98] sm:active:scale-100",
+        destructive:
+          "bg-red-600 text-white border border-red-600 hover:bg-red-700 hover:shadow-md active:bg-red-800 focus-visible:ring-red-500 active:scale-[0.98] sm:active:scale-100",
         info: "bg-blue-600 text-white border border-blue-600 hover:bg-blue-700 hover:shadow-md active:bg-blue-800 focus-visible:ring-blue-500 active:scale-[0.98] sm:active:scale-100",
-        
+
         // Special variants with mobile optimizations
         pin: "bg-transparent text-neutral-400 border border-transparent hover:bg-orange-50 hover:text-orange-600 focus-visible:ring-orange-500 active:scale-[0.95] sm:active:scale-100",
         nav: "bg-neutral-800 text-white border border-neutral-800 hover:bg-neutral-700 hover:shadow-md active:bg-neutral-900 focus-visible:ring-neutral-500 active:scale-[0.98] sm:active:scale-100",
         fab: "bg-orange-600 text-white border border-orange-600 hover:bg-orange-700 hover:shadow-xl active:bg-orange-800 focus-visible:ring-orange-500 rounded-full fixed bottom-4 right-4 sm:bottom-6 sm:right-6 shadow-lg z-50 active:scale-[0.95] sm:active:scale-100",
-        iconBtn: "bg-transparent text-black border border-transparent hover:bg-gray-200 focus-visible:ring-neutral-500 active:scale-[0.95] sm:active:scale-100"
+        iconBtn:
+          "bg-transparent text-black border border-transparent hover:bg-gray-200 focus-visible:ring-neutral-500 active:scale-[0.95] sm:active:scale-100",
       },
       size: {
         // Responsive sizes with mobile-first approach and touch-friendly targets
@@ -41,23 +50,23 @@ const buttonVariants = cva(
         icon: "h-11 w-11 p-0 text-sm gap-0 sm:h-10 sm:w-10",
         // Icon-only sizes - square buttons with proper scaling
         iconXs: "h-6 w-6 p-0 text-xs gap-0 sm:h-6 sm:w-6",
-        iconSm: "h-8 w-8 p-0 text-sm gap-0 sm:h-8 sm:w-8", 
+        iconSm: "h-8 w-8 p-0 text-sm gap-0 sm:h-8 sm:w-8",
         iconMd: "h-10 w-10 p-0 text-sm gap-0 sm:h-10 sm:w-10",
         iconLg: "h-12 w-12 p-0 text-base gap-0 sm:h-12 sm:w-12",
-        iconXl: "h-14 w-14 p-0 text-lg gap-0 sm:h-14 sm:w-14"
-      }
+        iconXl: "h-14 w-14 p-0 text-lg gap-0 sm:h-14 sm:w-14",
+      },
     },
     defaultVariants: {
       variant: "primary",
-      size: "md"
-    }
-  }
+      size: "md",
+    },
+  },
 );
 
 // Responsive icon size mapping - icons scale with button height
 const iconSizeMap = {
   xs: "w-3 h-3 sm:w-3 sm:h-3", // 12px for h-7/h-6 buttons
-  sm: "w-4 h-4 sm:w-4 sm:h-4", // 16px for h-9/h-8 buttons  
+  sm: "w-4 h-4 sm:w-4 sm:h-4", // 16px for h-9/h-8 buttons
   md: "w-5 h-5 sm:w-5 sm:h-5", // 20px for h-11/h-10 buttons
   lg: "w-6 h-6 sm:w-6 sm:h-6", // 24px for h-12 buttons
   xl: "w-7 h-7 sm:w-7 sm:h-7", // 28px for h-14 buttons
@@ -67,7 +76,7 @@ const iconSizeMap = {
   iconSm: "w-4 h-4 sm:w-4 sm:h-4", // 16px for 32px square buttons
   iconMd: "w-5 h-5 sm:w-5 sm:h-5", // 20px for 40px square buttons
   iconLg: "w-6 h-6 sm:w-6 sm:h-6", // 24px for 48px square buttons
-  iconXl: "w-7 h-7 sm:w-7 sm:h-7"  // 28px for 56px square buttons
+  iconXl: "w-7 h-7 sm:w-7 sm:h-7", // 28px for 56px square buttons
 };
 
 // Minimal loading spinner component
@@ -79,12 +88,12 @@ const LoadingSpinner: React.FC<{ size: keyof typeof iconSizeMap }> = ({ size }) 
 
 // Ripple effect component for enhanced interactions
 const RippleEffect: React.FC<{ isActive: boolean }> = ({ isActive }) => (
-  <span 
+  <span
     className={cn(
       "absolute inset-0 rounded-sm overflow-hidden",
       "before:absolute before:inset-0 before:bg-white before:opacity-0",
       "before:transition-opacity before:duration-150",
-      isActive && "before:opacity-20"
+      isActive && "before:opacity-20",
     )}
   />
 );
@@ -94,57 +103,60 @@ export interface ButtonProps
     VariantProps<typeof buttonVariants> {
   // Icon props
   icon?: IconDefinition;
-  iconPosition?: 'left' | 'right';
-  
+  iconPosition?: "left" | "right";
+
   // Loading state
   loading?: boolean;
   loadingText?: string;
-  
+
   // RTL support
   arabicText?: string;
   showArabicText?: boolean;
-  
+
   // Special states
   isPinned?: boolean;
   isActive?: boolean;
-  
+
   // Enhanced interactions
   ripple?: boolean;
-  
+
   // Responsive features
   fullWidth?: boolean;
   fullWidthOnMobile?: boolean;
-  
+
   // Accessibility
   ariaLabel?: string;
   ariaDescribedBy?: string;
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({
-    className,
-    variant,
-    size,
-  icon,
-  iconPosition = 'left',
-    loading = false,
-    loadingText,
-  arabicText,
-  showArabicText = false,
-    isPinned = false,
-    isActive = false,
-    ripple = true,
-    fullWidth = false,
-    fullWidthOnMobile = false,
-    children,
-    disabled,
-    onClick,
-    onMouseDown,
-    onMouseUp,
-  ...props
-  }, ref) => {
+  (
+    {
+      className,
+      variant,
+      size,
+      icon,
+      iconPosition = "left",
+      loading = false,
+      loadingText,
+      arabicText,
+      showArabicText = false,
+      isPinned = false,
+      isActive = false,
+      ripple = true,
+      fullWidth = false,
+      fullWidthOnMobile = false,
+      children,
+      disabled,
+      onClick,
+      onMouseDown,
+      onMouseUp,
+      ...props
+    },
+    ref,
+  ) => {
     const [isPressed, setIsPressed] = React.useState(false);
-  const [isHovered, setIsHovered] = React.useState(false);
+    const [isHovered, setIsHovered] = React.useState(false);
 
     // Handle button text with Arabic support
     const getButtonText = () => {
@@ -157,7 +169,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     const getIconPosition = () => {
       // In RTL, flip the icon position
       if (showArabicText) {
-        return iconPosition === 'left' ? 'right' : 'left';
+        return iconPosition === "left" ? "right" : "left";
       }
       return iconPosition;
     };
@@ -165,23 +177,23 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     // Get font family based on language
     const getFontFamily = () => {
       if (showArabicText && arabicText) {
-        return 'font-arabic'; // IBM Plex Sans Arabic
+        return "font-arabic"; // IBM Plex Sans Arabic
       }
-      return 'font-sans'; // Figtree for English
+      return "font-sans"; // Figtree for English
     };
 
     // Get text direction
     const getTextDirection = () => {
       if (showArabicText && arabicText) {
-        return 'rtl';
+        return "rtl";
       }
-      return 'ltr';
+      return "ltr";
     };
 
     // Handle special pin state
     const getVariant = () => {
-      if (variant === 'pin' && isPinned) {
-        return 'accent'; // Use accent (orange) when pinned
+      if (variant === "pin" && isPinned) {
+        return "accent"; // Use accent (orange) when pinned
       }
       return variant;
     };
@@ -213,19 +225,19 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 
     // Determine if button is icon-only
     const isIconOnly = !children && !loadingText && !arabicText;
-    const effectiveSize = isIconOnly && !size?.startsWith('icon') ? 'icon' : size;
+    const effectiveSize = isIconOnly && !size?.startsWith("icon") ? "icon" : size;
 
     // Get the appropriate icon
     const displayIcon = loading ? undefined : icon;
     const showLoadingSpinner = loading;
 
-  return (
-    <button
+    return (
+      <button
         className={cn(
-          buttonVariants({ 
-            variant: getVariant(), 
+          buttonVariants({
+            variant: getVariant(),
             size: effectiveSize,
-            className 
+            className,
           }),
           // Font family based on language
           getFontFamily(),
@@ -234,7 +246,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           fullWidthOnMobile && "w-full sm:w-auto",
           // Additional state classes
           isActive && "ring-2 ring-offset-2 ring-neutral-500",
-          isPinned && variant === 'pin' && "bg-orange-100 text-orange-700"
+          isPinned && variant === "pin" && "bg-orange-100 text-orange-700",
         )}
         dir={getTextDirection()}
         ref={ref}
@@ -244,43 +256,31 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         onMouseUp={handleMouseUp}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        aria-label={props.ariaLabel || (isIconOnly && icon ? 'Button' : undefined)}
+        aria-label={props.ariaLabel || (isIconOnly && icon ? "Button" : undefined)}
         aria-describedby={props.ariaDescribedBy}
-      {...props}
+        {...props}
       >
         {/* Ripple effect overlay */}
         {ripple && <RippleEffect isActive={isPressed} />}
-        
+
         {/* Loading spinner */}
-        {showLoadingSpinner && (
-          <LoadingSpinner size={effectiveSize || 'md'} />
-        )}
-        
+        {showLoadingSpinner && <LoadingSpinner size={effectiveSize || "md"} />}
+
         {/* Left icon */}
-        {displayIcon && getIconPosition() === 'left' && (
-          <FontAwesomeIcon 
-            icon={displayIcon} 
-            className={cn(iconSizeMap[effectiveSize || 'md'])} 
-          />
+        {displayIcon && getIconPosition() === "left" && (
+          <FontAwesomeIcon icon={displayIcon} className={cn(iconSizeMap[effectiveSize || "md"])} />
         )}
-        
+
         {/* Button text */}
-        {getButtonText() && (
-          <span className="relative z-10">
-            {getButtonText()}
-          </span>
-        )}
-        
+        {getButtonText() && <span className="relative z-10">{getButtonText()}</span>}
+
         {/* Right icon */}
-        {displayIcon && getIconPosition() === 'right' && (
-          <FontAwesomeIcon 
-            icon={displayIcon} 
-            className={cn(iconSizeMap[effectiveSize || 'md'])} 
-          />
+        {displayIcon && getIconPosition() === "right" && (
+          <FontAwesomeIcon icon={displayIcon} className={cn(iconSizeMap[effectiveSize || "md"])} />
         )}
-    </button>
-  );
-  }
+      </button>
+    );
+  },
 );
 
 Button.displayName = "Button";

@@ -1,6 +1,12 @@
-import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch, faKeyboard, faArrowUp, faArrowDown, faTimes } from '@fortawesome/free-solid-svg-icons';
+import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faSearch,
+  faKeyboard,
+  faArrowUp,
+  faArrowDown,
+  faTimes,
+} from "@fortawesome/free-solid-svg-icons";
 
 export interface CommandAction {
   id: string;
@@ -26,18 +32,18 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
   isOpen,
   onClose,
   actions,
-  placeholder = 'Search commands...',
-  title = 'Command Palette',
-  className = '',
+  placeholder = "Search commands...",
+  title = "Command Palette",
+  className = "",
 }) => {
-  const [query, setQuery] = React.useState('');
+  const [query, setQuery] = React.useState("");
   const [selectedIndex, setSelectedIndex] = React.useState(0);
   const [filteredActions, setFilteredActions] = React.useState<CommandAction[]>([]);
   const inputRef = React.useRef<HTMLInputElement>(null);
 
   React.useEffect(() => {
     if (isOpen) {
-      setQuery('');
+      setQuery("");
       setSelectedIndex(0);
       inputRef.current?.focus();
     }
@@ -50,8 +56,9 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
       return;
     }
 
-    const filtered = actions.filter(action => {
-      const searchText = `${action.title} ${action.description || ''} ${action.keywords?.join(' ') || ''}`.toLowerCase();
+    const filtered = actions.filter((action) => {
+      const searchText =
+        `${action.title} ${action.description || ""} ${action.keywords?.join(" ") || ""}`.toLowerCase();
       return searchText.includes(query.toLowerCase());
     });
 
@@ -64,26 +71,26 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
       if (!isOpen) return;
 
       switch (e.key) {
-        case 'Escape':
+        case "Escape":
           onClose();
           break;
-        case 'ArrowDown':
+        case "ArrowDown":
           e.preventDefault();
-          setSelectedIndex(prev => (prev + 1) % filteredActions.length);
+          setSelectedIndex((prev) => (prev + 1) % filteredActions.length);
           break;
-        case 'ArrowUp':
+        case "ArrowUp":
           e.preventDefault();
-          setSelectedIndex(prev => (prev - 1 + filteredActions.length) % filteredActions.length);
+          setSelectedIndex((prev) => (prev - 1 + filteredActions.length) % filteredActions.length);
           break;
-        case 'Enter':
+        case "Enter":
           e.preventDefault();
           if (filteredActions[selectedIndex]) {
             filteredActions[selectedIndex].action();
             onClose();
           }
           break;
-        case 'k':
-        case 'K':
+        case "k":
+        case "K":
           if (e.metaKey || e.ctrlKey) {
             e.preventDefault();
             onClose();
@@ -92,8 +99,8 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
       }
     };
 
-    document.addEventListener('keydown', handleKeyDown);
-    return () => document.removeEventListener('keydown', handleKeyDown);
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
   }, [isOpen, filteredActions, selectedIndex, onClose]);
 
   const handleActionClick = (action: CommandAction) => {
@@ -106,14 +113,13 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto">
       {/* Backdrop */}
-      <div
-        className="fixed inset-0 bg-black bg-opacity-50 transition-opacity"
-        onClick={onClose}
-      />
+      <div className="fixed inset-0 bg-black bg-opacity-50 transition-opacity" onClick={onClose} />
 
       {/* Modal */}
       <div className="flex min-h-full items-start justify-center p-4 pt-16">
-        <div className={`w-full max-w-2xl transform overflow-hidden rounded-xl bg-white shadow-2xl transition-all ${className}`}>
+        <div
+          className={`w-full max-w-2xl transform overflow-hidden rounded-xl bg-white shadow-2xl transition-all ${className}`}
+        >
           {/* Header */}
           <div className="border-b border-neutral-200 px-6 py-4">
             <div className="flex items-center justify-between">
@@ -149,7 +155,10 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
           <div className="max-h-96 overflow-y-auto">
             {filteredActions.length === 0 ? (
               <div className="px-6 py-12 text-center">
-                <FontAwesomeIcon icon={faSearch} className="w-12 h-12 text-neutral-300 mx-auto mb-4" />
+                <FontAwesomeIcon
+                  icon={faSearch}
+                  className="w-12 h-12 text-neutral-300 mx-auto mb-4"
+                />
                 <p className="text-neutral-500 text-lg">No commands found</p>
                 <p className="text-neutral-400 text-sm">Try a different search term</p>
               </div>
@@ -160,7 +169,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
                     key={action.id}
                     onClick={() => handleActionClick(action)}
                     className={`w-full px-6 py-3 text-left hover:bg-neutral-50 transition-colors ${
-                      index === selectedIndex ? 'bg-neutral-100' : ''
+                      index === selectedIndex ? "bg-neutral-100" : ""
                     }`}
                   >
                     <div className="flex items-center space-x-3">
@@ -239,19 +248,19 @@ export const useCommandPalette = () => {
 export const GlobalCommandPalette: React.FC<{
   actions: CommandAction[];
   className?: string;
-}> = ({ actions, className = '' }) => {
+}> = ({ actions, className = "" }) => {
   const { isOpen, open, close } = useCommandPalette();
 
   React.useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+      if ((e.metaKey || e.ctrlKey) && e.key === "k") {
         e.preventDefault();
         open();
       }
     };
 
-    document.addEventListener('keydown', handleKeyDown);
-    return () => document.removeEventListener('keydown', handleKeyDown);
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
   }, [open]);
 
   return (
@@ -269,7 +278,7 @@ export const GlobalCommandPalette: React.FC<{
 export const QuickActionsPalette: React.FC<{
   actions: CommandAction[];
   className?: string;
-}> = ({ actions, className = '' }) => {
+}> = ({ actions, className = "" }) => {
   const { isOpen, open, close } = useCommandPalette();
 
   return (
@@ -278,7 +287,7 @@ export const QuickActionsPalette: React.FC<{
         onClick={open}
         className="inline-flex items-center px-4 py-2 bg-neutral-100 text-neutral-700 rounded-sm hover:bg-neutral-200 transition-colors"
       >
-                      <FontAwesomeIcon icon={faKeyboard} className="w-4 h-4 mr-2" />
+        <FontAwesomeIcon icon={faKeyboard} className="w-4 h-4 mr-2" />
         Quick Actions
       </button>
 

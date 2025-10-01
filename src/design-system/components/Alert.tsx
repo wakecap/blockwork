@@ -1,11 +1,17 @@
-import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheck, faTimes, faExclamation, faInfo, faXmark } from '@fortawesome/free-solid-svg-icons';
+import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faCheck,
+  faTimes,
+  faExclamation,
+  faInfo,
+  faXmark,
+} from "@fortawesome/free-solid-svg-icons";
 
 export interface AlertProps {
   title?: string;
   message: string;
-  variant?: 'success' | 'error' | 'warning' | 'info';
+  variant?: "success" | "error" | "warning" | "info";
   showIcon?: boolean;
   showCloseButton?: boolean;
   onClose?: () => void;
@@ -16,45 +22,45 @@ export interface AlertProps {
 export const Alert: React.FC<AlertProps> = ({
   title,
   message,
-  variant = 'info',
+  variant = "info",
   showIcon = true,
   showCloseButton = false,
   onClose,
-  className = '',
+  className = "",
   children,
 }) => {
   const variantStyles = {
     success: {
-      background: 'bg-success-50',
-      border: 'border-success-200',
-      title: 'text-success-800',
-      message: 'text-success-700',
+      background: "bg-success-50",
+      border: "border-success-200",
+      title: "text-success-800",
+      message: "text-success-700",
       icon: faCheck,
-      iconColor: 'text-success-600',
+      iconColor: "text-success-600",
     },
     error: {
-      background: 'bg-error-50',
-      border: 'border-error-200',
-      title: 'text-error-800',
-      message: 'text-error-700',
+      background: "bg-error-50",
+      border: "border-error-200",
+      title: "text-error-800",
+      message: "text-error-700",
       icon: faTimes,
-      iconColor: 'text-error-600',
+      iconColor: "text-error-600",
     },
     warning: {
-      background: 'bg-warning-50',
-      border: 'border-warning-200',
-      title: 'text-warning-800',
-      message: 'text-warning-700',
+      background: "bg-warning-50",
+      border: "border-warning-200",
+      title: "text-warning-800",
+      message: "text-warning-700",
       icon: faExclamation,
-      iconColor: 'text-warning-600',
+      iconColor: "text-warning-600",
     },
     info: {
-      background: 'bg-info-50',
-      border: 'border-info-200',
-      title: 'text-info-800',
-      message: 'text-info-700',
+      background: "bg-info-50",
+      border: "border-info-200",
+      title: "text-info-800",
+      message: "text-info-700",
       icon: faInfo,
-      iconColor: 'text-info-600',
+      iconColor: "text-info-600",
     },
   };
 
@@ -73,14 +79,8 @@ export const Alert: React.FC<AlertProps> = ({
           />
         )}
         <div className="flex-1 min-w-0">
-          {title && (
-            <h3 className={`${currentVariant.title} font-medium text-sm mb-1`}>
-              {title}
-            </h3>
-          )}
-          <div className={`${currentVariant.message} text-sm`}>
-            {message}
-          </div>
+          {title && <h3 className={`${currentVariant.title} font-medium text-sm mb-1`}>{title}</h3>}
+          <div className={`${currentVariant.message} text-sm`}>{message}</div>
           {children && <div className="mt-3">{children}</div>}
         </div>
         {showCloseButton && onClose && (
@@ -96,5 +96,3 @@ export const Alert: React.FC<AlertProps> = ({
     </div>
   );
 };
-
-

@@ -1,24 +1,24 @@
-import React from 'react';
-import { Meta, StoryObj } from '@storybook/react-vite';
-import { Badge } from '../components/Badge';
+import React from "react";
+import { Meta, StoryObj } from "@storybook/react-vite";
+import { Badge } from "../components/Badge";
 
 const meta: Meta<typeof Badge> = {
-  title: 'Components/Badge',
+  title: "Components/Badge",
   component: Badge,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
   argTypes: {
     variant: {
-      control: { type: 'select' },
-      options: ['default', 'secondary', 'destructive', 'outline', 'success', 'warning', 'info'],
+      control: { type: "select" },
+      options: ["default", "secondary", "destructive", "outline", "success", "warning", "info"],
     },
     size: {
-      control: { type: 'select' },
-      options: ['sm', 'md', 'lg'],
+      control: { type: "select" },
+      options: ["sm", "md", "lg"],
     },
     children: {
-      control: { type: 'text' },
+      control: { type: "text" },
     },
   },
 };
@@ -28,7 +28,7 @@ type Story = StoryObj<typeof Badge>;
 
 export const Default: Story = {
   args: {
-    children: 'Badge',
+    children: "Badge",
   },
 };
 
@@ -47,7 +47,7 @@ export const Variants: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Different badge variants with semantic meanings.',
+        story: "Different badge variants with semantic meanings.",
       },
     },
   },
@@ -64,7 +64,7 @@ export const Sizes: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Different badge sizes for various use cases.',
+        story: "Different badge sizes for various use cases.",
       },
     },
   },
@@ -83,7 +83,7 @@ export const MinimalDesign: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Minimal badge design with subtle colors and clean typography.',
+        story: "Minimal badge design with subtle colors and clean typography.",
       },
     },
   },
@@ -113,7 +113,7 @@ export const WithIcons: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Badges with icons for enhanced visual communication.',
+        story: "Badges with icons for enhanced visual communication.",
       },
     },
   },
@@ -136,7 +136,7 @@ export const Interactive: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Interactive badges with hover effects for clickable elements.',
+        story: "Interactive badges with hover effects for clickable elements.",
       },
     },
   },

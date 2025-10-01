@@ -1,10 +1,10 @@
-import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGripVertical } from '@fortawesome/free-solid-svg-icons';
+import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGripVertical } from "@fortawesome/free-solid-svg-icons";
 
 export interface SplitViewProps {
   children: [React.ReactNode, React.ReactNode];
-  direction?: 'horizontal' | 'vertical';
+  direction?: "horizontal" | "vertical";
   initialSizes?: [number, number]; // percentages
   minSizes?: [number, number]; // minimum sizes in pixels
   maxSizes?: [number, number]; // maximum sizes in pixels
@@ -16,13 +16,13 @@ export interface SplitViewProps {
 
 export const SplitView: React.FC<SplitViewProps> = ({
   children,
-  direction = 'horizontal',
+  direction = "horizontal",
   initialSizes = [50, 50],
   minSizes = [100, 100],
   maxSizes = [undefined, undefined],
   showDivider = true,
   dividerSize = 4,
-  className = '',
+  className = "",
   onResize,
 }) => {
   const [sizes, setSizes] = React.useState<[number, number]>(initialSizes);
@@ -31,11 +31,12 @@ export const SplitView: React.FC<SplitViewProps> = ({
   const startPosRef = React.useRef<{ x: number; y: number } | null>(null);
   const startSizesRef = React.useRef<[number, number]>([0, 0]);
 
-  const isHorizontal = direction === 'horizontal';
+  const isHorizontal = direction === "horizontal";
 
   React.useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-      if (!isDragging || !startPosRef.current || !startSizesRef.current || !containerRef.current) return;
+      if (!isDragging || !startPosRef.current || !startSizesRef.current || !containerRef.current)
+        return;
 
       const containerRect = containerRef.current.getBoundingClientRect();
       let delta: number;
@@ -44,7 +45,7 @@ export const SplitView: React.FC<SplitViewProps> = ({
         delta = e.clientX - startPosRef.current.x;
         const containerWidth = containerRect.width;
         const deltaPercent = (delta / containerWidth) * 100;
-        
+
         let newSize1 = startSizesRef.current[0] + deltaPercent;
         let newSize2 = startSizesRef.current[1] - deltaPercent;
 
@@ -80,7 +81,7 @@ export const SplitView: React.FC<SplitViewProps> = ({
         delta = e.clientY - startPosRef.current.y;
         const containerHeight = containerRect.height;
         const deltaPercent = (delta / containerHeight) * 100;
-        
+
         let newSize1 = startSizesRef.current[0] + deltaPercent;
         let newSize2 = startSizesRef.current[1] - deltaPercent;
 
@@ -122,26 +123,26 @@ export const SplitView: React.FC<SplitViewProps> = ({
     };
 
     if (isDragging) {
-      document.addEventListener('mousemove', handleMouseMove);
-      document.addEventListener('mouseup', handleMouseUp);
+      document.addEventListener("mousemove", handleMouseMove);
+      document.addEventListener("mouseup", handleMouseUp);
     }
 
     return () => {
-      document.removeEventListener('mousemove', handleMouseMove);
-      document.removeEventListener('mouseup', handleMouseUp);
+      document.removeEventListener("mousemove", handleMouseMove);
+      document.removeEventListener("mouseup", handleMouseUp);
     };
   }, [isDragging, isHorizontal, minSizes, maxSizes, onResize]);
 
   const handleMouseDown = (e: React.MouseEvent) => {
     e.preventDefault();
     setIsDragging(true);
-    
+
     if (isHorizontal) {
       startPosRef.current = { x: e.clientX, y: e.clientY };
     } else {
       startPosRef.current = { x: e.clientX, y: e.clientY };
     }
-    
+
     startSizesRef.current = [...sizes];
   };
 
@@ -156,9 +157,9 @@ export const SplitView: React.FC<SplitViewProps> = ({
 
   const getContainerStyles = () => {
     if (isHorizontal) {
-      return 'flex-row';
+      return "flex-row";
     } else {
-      return 'flex-col';
+      return "flex-col";
     }
   };
 
@@ -174,13 +175,10 @@ export const SplitView: React.FC<SplitViewProps> = ({
     <div
       ref={containerRef}
       className={`flex ${getContainerStyles()} ${className}`}
-      style={{ height: '100%' }}
+      style={{ height: "100%" }}
     >
       {/* First Panel */}
-      <div
-        className="flex-shrink-0 overflow-hidden"
-        style={getPanelStyles(0)}
-      >
+      <div className="flex-shrink-0 overflow-hidden" style={getPanelStyles(0)}>
         {children[0]}
       </div>
 
@@ -190,22 +188,19 @@ export const SplitView: React.FC<SplitViewProps> = ({
           className={`flex items-center justify-center bg-neutral-200 hover:bg-neutral-300 transition-colors ${getDividerStyles()}`}
           onMouseDown={handleMouseDown}
           style={{
-            cursor: isHorizontal ? 'col-resize' : 'row-resize',
-            userSelect: 'none',
+            cursor: isHorizontal ? "col-resize" : "row-resize",
+            userSelect: "none",
           }}
         >
           <FontAwesomeIcon
             icon={faGripVertical}
-            className={`text-neutral-400 ${isHorizontal ? '' : 'rotate-90'}`}
+            className={`text-neutral-400 ${isHorizontal ? "" : "rotate-90"}`}
           />
         </div>
       )}
 
       {/* Second Panel */}
-      <div
-        className="flex-shrink-0 overflow-hidden"
-        style={getPanelStyles(1)}
-      >
+      <div className="flex-shrink-0 overflow-hidden" style={getPanelStyles(1)}>
         {children[1]}
       </div>
     </div>
@@ -221,7 +216,15 @@ export const HorizontalSplit: React.FC<{
   minLeftSize?: number;
   minRightSize?: number;
   className?: string;
-}> = ({ leftPanel, rightPanel, leftSize = 50, rightSize = 50, minLeftSize, minRightSize, className = '' }) => {
+}> = ({
+  leftPanel,
+  rightPanel,
+  leftSize = 50,
+  rightSize = 50,
+  minLeftSize,
+  minRightSize,
+  className = "",
+}) => {
   return (
     <SplitView
       direction="horizontal"
@@ -243,7 +246,15 @@ export const VerticalSplit: React.FC<{
   minTopSize?: number;
   minBottomSize?: number;
   className?: string;
-}> = ({ topPanel, bottomPanel, topSize = 50, bottomSize = 50, minTopSize, minBottomSize, className = '' }) => {
+}> = ({
+  topPanel,
+  bottomPanel,
+  topSize = 50,
+  bottomSize = 50,
+  minTopSize,
+  minBottomSize,
+  className = "",
+}) => {
   return (
     <SplitView
       direction="vertical"
@@ -265,7 +276,15 @@ export const ThreePanelSplit: React.FC<{
   centerSize?: number;
   rightSize?: number;
   className?: string;
-}> = ({ leftPanel, centerPanel, rightPanel, leftSize = 25, centerSize = 50, rightSize = 25, className = '' }) => {
+}> = ({
+  leftPanel,
+  centerPanel,
+  rightPanel,
+  leftSize = 25,
+  centerSize = 50,
+  rightSize = 25,
+  className = "",
+}) => {
   return (
     <div className={`flex h-full ${className}`}>
       <div className="flex-shrink-0" style={{ width: `${leftSize}%` }}>

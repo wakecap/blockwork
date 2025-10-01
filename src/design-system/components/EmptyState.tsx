@@ -1,14 +1,20 @@
-import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faInbox, faSearch, faFile, faUsers, faExclamation } from '@fortawesome/free-solid-svg-icons';
+import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faInbox,
+  faSearch,
+  faFile,
+  faUsers,
+  faExclamation,
+} from "@fortawesome/free-solid-svg-icons";
 
 export interface EmptyStateProps {
   title: string;
   description?: string;
   icon?: any;
-  variant?: 'default' | 'search' | 'files' | 'users' | 'error';
+  variant?: "default" | "search" | "files" | "users" | "error";
   action?: React.ReactNode;
-  size?: 'sm' | 'md' | 'lg';
+  size?: "sm" | "md" | "lg";
   className?: string;
 }
 
@@ -16,10 +22,10 @@ export const EmptyState: React.FC<EmptyStateProps> = ({
   title,
   description,
   icon,
-  variant = 'default',
+  variant = "default",
   action,
-  size = 'md',
-  className = '',
+  size = "md",
+  className = "",
 }) => {
   const defaultIcons = {
     default: faInbox,
@@ -31,22 +37,22 @@ export const EmptyState: React.FC<EmptyStateProps> = ({
 
   const sizeClasses = {
     sm: {
-      container: 'p-6',
-      icon: 'w-8 h-8',
-      title: 'text-lg',
-      description: 'text-sm',
+      container: "p-6",
+      icon: "w-8 h-8",
+      title: "text-lg",
+      description: "text-sm",
     },
     md: {
-      container: 'p-8',
-      icon: 'w-12 h-12',
-      title: 'text-xl',
-      description: 'text-base',
+      container: "p-8",
+      icon: "w-12 h-12",
+      title: "text-xl",
+      description: "text-base",
     },
     lg: {
-      container: 'p-12',
-      icon: 'w-16 h-16',
-      title: 'text-2xl',
-      description: 'text-lg',
+      container: "p-12",
+      icon: "w-16 h-16",
+      title: "text-2xl",
+      description: "text-lg",
     },
   };
 
@@ -59,11 +65,9 @@ export const EmptyState: React.FC<EmptyStateProps> = ({
         <div className={`${currentSize.icon} text-neutral-400`}>
           <FontAwesomeIcon icon={currentIcon} className="w-full h-full" />
         </div>
-        
+
         <div className="space-y-2">
-          <h3 className={`${currentSize.title} font-medium text-neutral-900`}>
-            {title}
-          </h3>
+          <h3 className={`${currentSize.title} font-medium text-neutral-900`}>{title}</h3>
           {description && (
             <p className={`${currentSize.description} text-neutral-600 max-w-md mx-auto`}>
               {description}
@@ -71,11 +75,7 @@ export const EmptyState: React.FC<EmptyStateProps> = ({
           )}
         </div>
 
-        {action && (
-          <div className="pt-2">
-            {action}
-          </div>
-        )}
+        {action && <div className="pt-2">{action}</div>}
       </div>
     </div>
   );
@@ -86,7 +86,7 @@ export const EmptySearchResults: React.FC<{
   searchTerm?: string;
   onClearSearch?: () => void;
   className?: string;
-}> = ({ searchTerm, onClearSearch, className = '' }) => (
+}> = ({ searchTerm, onClearSearch, className = "" }) => (
   <EmptyState
     title="No results found"
     description={
@@ -112,7 +112,7 @@ export const EmptySearchResults: React.FC<{
 export const EmptyFiles: React.FC<{
   onUpload?: () => void;
   className?: string;
-}> = ({ onUpload, className = '' }) => (
+}> = ({ onUpload, className = "" }) => (
   <EmptyState
     title="No files yet"
     description="Get started by uploading your first file to see it here."
@@ -134,7 +134,7 @@ export const EmptyFiles: React.FC<{
 export const EmptyUsers: React.FC<{
   onInvite?: () => void;
   className?: string;
-}> = ({ onInvite, className = '' }) => (
+}> = ({ onInvite, className = "" }) => (
   <EmptyState
     title="No team members"
     description="Start building your team by inviting the first member."
@@ -156,7 +156,7 @@ export const EmptyUsers: React.FC<{
 export const EmptyError: React.FC<{
   onRetry?: () => void;
   className?: string;
-}> = ({ onRetry, className = '' }) => (
+}> = ({ onRetry, className = "" }) => (
   <EmptyState
     title="Something went wrong"
     description="We encountered an error while loading this content. Please try again."
@@ -174,5 +174,3 @@ export const EmptyError: React.FC<{
     className={className}
   />
 );
-
-

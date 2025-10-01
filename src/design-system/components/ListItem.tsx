@@ -1,6 +1,6 @@
-import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEllipsisV, faChevronRight, faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
+import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEllipsisV, faChevronRight, faCheck, faTimes } from "@fortawesome/free-solid-svg-icons";
 
 export interface ListItemProps {
   title: string;
@@ -11,8 +11,8 @@ export interface ListItemProps {
   actions?: React.ReactNode;
   leading?: React.ReactNode;
   trailing?: React.ReactNode;
-  variant?: 'single-line' | 'multi-line' | 'with-avatar' | 'with-icon';
-  size?: 'sm' | 'md' | 'lg';
+  variant?: "single-line" | "multi-line" | "with-avatar" | "with-icon";
+  size?: "sm" | "md" | "lg";
   isSelected?: boolean;
   isDisabled?: boolean;
   isClickable?: boolean;
@@ -31,36 +31,36 @@ export const ListItem: React.FC<ListItemProps> = ({
   actions,
   leading,
   trailing,
-  variant = 'single-line',
-  size = 'md',
+  variant = "single-line",
+  size = "md",
   isSelected = false,
   isDisabled = false,
   isClickable = false,
   showDivider = true,
   onClick,
   onSelect,
-  className = '',
+  className = "",
 }) => {
   const sizeStyles = {
-    sm: 'py-2 px-3',
-    md: 'py-3 px-4',
-    lg: 'py-4 px-6',
+    sm: "py-2 px-3",
+    md: "py-3 px-4",
+    lg: "py-4 px-6",
   };
 
   const baseClasses = `
     flex items-center
     ${sizeStyles[size]}
-    ${isClickable || onClick ? 'cursor-pointer hover:bg-neutral-50' : ''}
-    ${isSelected ? 'bg-primary-50 border-primary-200' : ''}
-    ${isDisabled ? 'opacity-50 cursor-not-allowed' : ''}
-    ${showDivider ? 'border-b border-neutral-100' : ''}
+    ${isClickable || onClick ? "cursor-pointer hover:bg-neutral-50" : ""}
+    ${isSelected ? "bg-primary-50 border-primary-200" : ""}
+    ${isDisabled ? "opacity-50 cursor-not-allowed" : ""}
+    ${showDivider ? "border-b border-neutral-100" : ""}
     transition-colors duration-150
     ${className}
   `.trim();
 
   const handleClick = () => {
     if (isDisabled) return;
-    
+
     if (onSelect) {
       onSelect(!isSelected);
     } else if (onClick) {
@@ -70,95 +70,77 @@ export const ListItem: React.FC<ListItemProps> = ({
 
   const renderLeading = () => {
     if (leading) return leading;
-    
+
     if (avatar) {
       return (
         <div className="flex-shrink-0 mr-3">
-          <img
-            src={avatar}
-            alt={title}
-            className="w-10 h-10 rounded-full object-cover"
-          />
+          <img src={avatar} alt={title} className="w-10 h-10 rounded-full object-cover" />
         </div>
       );
     }
-    
+
     if (icon) {
       return (
         <div className="flex-shrink-0 mr-3">
-          <FontAwesomeIcon
-            icon={icon}
-            className="w-5 h-5 text-neutral-500"
-          />
+          <FontAwesomeIcon icon={icon} className="w-5 h-5 text-neutral-500" />
         </div>
       );
     }
-    
+
     return null;
   };
 
   const renderTrailing = () => {
     if (trailing) return trailing;
-    
+
     if (onSelect !== undefined) {
       return (
         <div className="flex-shrink-0 ml-3">
           <FontAwesomeIcon
             icon={isSelected ? faCheck : faTimes}
-            className={`w-4 h-4 ${isSelected ? 'text-success-500' : 'text-neutral-400'}`}
+            className={`w-4 h-4 ${isSelected ? "text-success-500" : "text-neutral-400"}`}
           />
         </div>
       );
     }
-    
+
     if (isClickable || onClick) {
       return (
         <div className="flex-shrink-0 ml-3">
-          <FontAwesomeIcon
-            icon={faChevronRight}
-            className="w-4 h-4 text-neutral-400"
-          />
+          <FontAwesomeIcon icon={faChevronRight} className="w-4 h-4 text-neutral-400" />
         </div>
       );
     }
-    
+
     return null;
   };
 
   const content = (
     <>
       {renderLeading()}
-      
+
       <div className="flex-1 min-w-0">
         <div className="flex items-center justify-between">
           <div className="min-w-0 flex-1">
-            <h3 className={`font-medium text-neutral-900 truncate ${
-              variant === 'multi-line' ? 'mb-1' : ''
-            }`}>
+            <h3
+              className={`font-medium text-neutral-900 truncate ${
+                variant === "multi-line" ? "mb-1" : ""
+              }`}
+            >
               {title}
             </h3>
-            
-            {subtitle && (
-              <p className="text-sm text-neutral-600 truncate">
-                {subtitle}
-              </p>
-            )}
-            
-            {description && variant === 'multi-line' && (
-              <p className="text-sm text-neutral-500 mt-1 line-clamp-2">
-                {description}
-              </p>
+
+            {subtitle && <p className="text-sm text-neutral-600 truncate">{subtitle}</p>}
+
+            {description && variant === "multi-line" && (
+              <p className="text-sm text-neutral-500 mt-1 line-clamp-2">{description}</p>
             )}
           </div>
-          
-          {actions && (
-            <div className="flex-shrink-0 ml-3">
-              {actions}
-            </div>
-          )}
+
+          {actions && <div className="flex-shrink-0 ml-3">{actions}</div>}
         </div>
       </div>
-      
+
       {renderTrailing()}
     </>
   );
@@ -171,7 +153,7 @@ export const ListItem: React.FC<ListItemProps> = ({
         role="button"
         tabIndex={0}
         onKeyDown={(e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
+          if (e.key === "Enter" || e.key === " ") {
             e.preventDefault();
             handleClick();
           }
@@ -182,11 +164,7 @@ export const ListItem: React.FC<ListItemProps> = ({
     );
   }
 
-  return (
-    <div className={baseClasses}>
-      {content}
-    </div>
-  );
+  return <div className={baseClasses}>{content}</div>;
 };
 
 // Predefined list item components
@@ -199,7 +177,16 @@ export const UserListItem: React.FC<{
   onMessage?: () => void;
   onViewProfile?: () => void;
   className?: string;
-}> = ({ name, email, avatar, role, isOnline = false, onMessage, onViewProfile, className = '' }) => (
+}> = ({
+  name,
+  email,
+  avatar,
+  role,
+  isOnline = false,
+  onMessage,
+  onViewProfile,
+  className = "",
+}) => (
   <ListItem
     title={name}
     subtitle={email}
@@ -210,14 +197,12 @@ export const UserListItem: React.FC<{
     className={className}
     leading={
       <div className="relative">
-        <img
-          src={avatar}
-          alt={name}
-          className="w-10 h-10 rounded-full object-cover"
+        <img src={avatar} alt={name} className="w-10 h-10 rounded-full object-cover" />
+        <div
+          className={`absolute -bottom-1 -right-1 w-3 h-3 rounded-full border-2 border-white ${
+            isOnline ? "bg-success-500" : "bg-neutral-400"
+          }`}
         />
-        <div className={`absolute -bottom-1 -right-1 w-3 h-3 rounded-full border-2 border-white ${
-          isOnline ? 'bg-success-500' : 'bg-neutral-400'
-        }`} />
       </div>
     }
     actions={
@@ -244,7 +229,7 @@ export const FileListItem: React.FC<{
   onDownload?: () => void;
   onDelete?: () => void;
   className?: string;
-}> = ({ name, size, modified, icon, onDownload, onDelete, className = '' }) => (
+}> = ({ name, size, modified, icon, onDownload, onDelete, className = "" }) => (
   <ListItem
     title={name}
     subtitle={`${size} • Modified ${modified}`}
@@ -289,23 +274,21 @@ export const NotificationListItem: React.FC<{
   onMarkAsRead?: () => void;
   onDelete?: () => void;
   className?: string;
-}> = ({ title, message, time, isRead, icon, onMarkAsRead, onDelete, className = '' }) => (
+}> = ({ title, message, time, isRead, icon, onMarkAsRead, onDelete, className = "" }) => (
   <ListItem
     title={title}
     subtitle={message}
     description={time}
     icon={icon}
     variant="multi-line"
-    className={`${className} ${!isRead ? 'bg-blue-50' : ''}`}
+    className={`${className} ${!isRead ? "bg-blue-50" : ""}`}
     leading={
       <div className="relative">
         <FontAwesomeIcon
           icon={icon}
-          className={`w-5 h-5 ${isRead ? 'text-neutral-500' : 'text-blue-500'}`}
+          className={`w-5 h-5 ${isRead ? "text-neutral-500" : "text-blue-500"}`}
         />
-        {!isRead && (
-          <div className="absolute -top-1 -right-1 w-2 h-2 bg-blue-500 rounded-full" />
-        )}
+        {!isRead && <div className="absolute -top-1 -right-1 w-2 h-2 bg-blue-500 rounded-full" />}
       </div>
     }
     actions={
@@ -343,7 +326,7 @@ export const SelectableListItem: React.FC<{
   isSelected: boolean;
   onSelect: (selected: boolean) => void;
   className?: string;
-}> = ({ title, subtitle, isSelected, onSelect, className = '' }) => (
+}> = ({ title, subtitle, isSelected, onSelect, className = "" }) => (
   <ListItem
     title={title}
     subtitle={subtitle}

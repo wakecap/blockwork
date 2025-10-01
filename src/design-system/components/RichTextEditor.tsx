@@ -1,15 +1,25 @@
-import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { 
-  faBold, faItalic, faUnderline, faStrikethrough, 
-  faListUl, faListOl, faQuoteLeft, faCode, faLink,
-  faHeading, faParagraph, faEye, faEyeSlash
-} from '@fortawesome/free-solid-svg-icons';
+import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faBold,
+  faItalic,
+  faUnderline,
+  faStrikethrough,
+  faListUl,
+  faListOl,
+  faQuoteLeft,
+  faCode,
+  faLink,
+  faHeading,
+  faParagraph,
+  faEye,
+  faEyeSlash,
+} from "@fortawesome/free-solid-svg-icons";
 
 export interface RichTextEditorProps {
   value: string;
   onChange: (value: string) => void;
-  mode?: 'wysiwyg' | 'markdown';
+  mode?: "wysiwyg" | "markdown";
   placeholder?: string;
   readOnly?: boolean;
   toolbar?: string[];
@@ -19,70 +29,80 @@ export interface RichTextEditorProps {
 export const RichTextEditor: React.FC<RichTextEditorProps> = ({
   value,
   onChange,
-  mode = 'wysiwyg',
-  placeholder = 'Start writing...',
+  mode = "wysiwyg",
+  placeholder = "Start writing...",
   readOnly = false,
-  toolbar = ['bold', 'italic', 'underline', 'strikethrough', 'heading', 'list', 'quote', 'code', 'link'],
-  className = '',
+  toolbar = [
+    "bold",
+    "italic",
+    "underline",
+    "strikethrough",
+    "heading",
+    "list",
+    "quote",
+    "code",
+    "link",
+  ],
+  className = "",
 }) => {
   const [isMarkdownPreview, setIsMarkdownPreview] = React.useState(false);
   const editorRef = React.useRef<HTMLDivElement>(null);
 
   const toolbarItems = {
-    bold: { icon: faBold, label: 'Bold', command: 'bold' },
-    italic: { icon: faItalic, label: 'Italic', command: 'italic' },
-    underline: { icon: faUnderline, label: 'Underline', command: 'underline' },
-    strikethrough: { icon: faStrikethrough, label: 'Strikethrough', command: 'strikeThrough' },
-    heading: { icon: faHeading, label: 'Heading', command: 'formatBlock' },
-    list: { icon: faListUl, label: 'List', command: 'insertUnorderedList' },
-    orderedList: { icon: faListOl, label: 'Ordered List', command: 'insertOrderedList' },
-    quote: { icon: faQuoteLeft, label: 'Quote', command: 'formatBlock' },
-    code: { icon: faCode, label: 'Code', command: 'formatBlock' },
-    link: { icon: faLink, label: 'Link', command: 'createLink' },
+    bold: { icon: faBold, label: "Bold", command: "bold" },
+    italic: { icon: faItalic, label: "Italic", command: "italic" },
+    underline: { icon: faUnderline, label: "Underline", command: "underline" },
+    strikethrough: { icon: faStrikethrough, label: "Strikethrough", command: "strikeThrough" },
+    heading: { icon: faHeading, label: "Heading", command: "formatBlock" },
+    list: { icon: faListUl, label: "List", command: "insertUnorderedList" },
+    orderedList: { icon: faListOl, label: "Ordered List", command: "insertOrderedList" },
+    quote: { icon: faQuoteLeft, label: "Quote", command: "formatBlock" },
+    code: { icon: faCode, label: "Code", command: "formatBlock" },
+    link: { icon: faLink, label: "Link", command: "createLink" },
   };
 
   const handleToolbarClick = (command: string, value?: string) => {
     if (readOnly) return;
 
-    if (mode === 'wysiwyg') {
+    if (mode === "wysiwyg") {
       document.execCommand(command, false, value);
       editorRef.current?.focus();
     } else {
       // Markdown mode - insert markdown syntax
-      const textarea = editorRef.current?.querySelector('textarea') as HTMLTextAreaElement;
+      const textarea = editorRef.current?.querySelector("textarea") as HTMLTextAreaElement;
       if (textarea) {
         const start = textarea.selectionStart;
         const end = textarea.selectionEnd;
         const selectedText = textarea.value.substring(start, end);
-        
-        let replacement = '';
+
+        let replacement = "";
         switch (command) {
-          case 'bold':
+          case "bold":
             replacement = `**${selectedText}**`;
             break;
-          case 'italic':
+          case "italic":
             replacement = `*${selectedText}*`;
             break;
-          case 'strikethrough':
+          case "strikethrough":
             replacement = `~~${selectedText}~~`;
             break;
-          case 'heading':
+          case "heading":
             replacement = `# ${selectedText}`;
             break;
-          case 'list':
+          case "list":
             replacement = `- ${selectedText}`;
             break;
-          case 'orderedList':
+          case "orderedList":
             replacement = `1. ${selectedText}`;
             break;
-          case 'quote':
+          case "quote":
             replacement = `> ${selectedText}`;
             break;
-          case 'code':
+          case "code":
             replacement = `\`${selectedText}\``;
             break;
-          case 'link':
-            const url = prompt('Enter URL:');
+          case "link":
+            const url = prompt("Enter URL:");
             if (url) {
               replacement = `[${selectedText}](${url})`;
             } else {
@@ -90,10 +110,11 @@ export const RichTextEditor: React.FC<RichTextEditorProps> = ({
             }
             break;
         }
-        
-        const newValue = textarea.value.substring(0, start) + replacement + textarea.value.substring(end);
+
+        const newValue =
+          textarea.value.substring(0, start) + replacement + textarea.value.substring(end);
         onChange(newValue);
-        
+
         // Set cursor position
         setTimeout(() => {
           textarea.setSelectionRange(start + replacement.length, start + replacement.length);
@@ -106,18 +127,18 @@ export const RichTextEditor: React.FC<RichTextEditorProps> = ({
   const renderMarkdownPreview = (markdown: string) => {
     // Simple markdown to HTML conversion
     let html = markdown
-      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-      .replace(/\*(.*?)\*/g, '<em>$1</em>')
-      .replace(/~~(.*?)~~/g, '<del>$1</del>')
-      .replace(/^# (.*$)/gm, '<h1>$1</h1>')
-      .replace(/^## (.*$)/gm, '<h2>$1</h2>')
-      .replace(/^### (.*$)/gm, '<h3>$1</h3>')
-      .replace(/^- (.*$)/gm, '<li>$1</li>')
-      .replace(/^(\d+)\. (.*$)/gm, '<li>$2</li>')
-      .replace(/^> (.*$)/gm, '<blockquote>$1</blockquote>')
-      .replace(/`(.*?)`/g, '<code>$1</code>')
+      .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
+      .replace(/\*(.*?)\*/g, "<em>$1</em>")
+      .replace(/~~(.*?)~~/g, "<del>$1</del>")
+      .replace(/^# (.*$)/gm, "<h1>$1</h1>")
+      .replace(/^## (.*$)/gm, "<h2>$1</h2>")
+      .replace(/^### (.*$)/gm, "<h3>$1</h3>")
+      .replace(/^- (.*$)/gm, "<li>$1</li>")
+      .replace(/^(\d+)\. (.*$)/gm, "<li>$2</li>")
+      .replace(/^> (.*$)/gm, "<blockquote>$1</blockquote>")
+      .replace(/`(.*?)`/g, "<code>$1</code>")
       .replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2">$1</a>')
-      .replace(/\n/g, '<br>');
+      .replace(/\n/g, "<br>");
 
     return <div dangerouslySetInnerHTML={{ __html: html }} />;
   };
@@ -143,20 +164,17 @@ export const RichTextEditor: React.FC<RichTextEditorProps> = ({
           );
         })}
 
-        {mode === 'markdown' && (
+        {mode === "markdown" && (
           <div className="ml-auto flex items-center space-x-2">
             <button
               onClick={() => setIsMarkdownPreview(!isMarkdownPreview)}
               className="p-2 text-neutral-600 hover:text-neutral-900 hover:bg-neutral-200 rounded transition-colors"
-              title={isMarkdownPreview ? 'Edit' : 'Preview'}
+              title={isMarkdownPreview ? "Edit" : "Preview"}
             >
-              <FontAwesomeIcon 
-                icon={isMarkdownPreview ? faEyeSlash : faEye} 
-                className="w-4 h-4" 
-              />
+              <FontAwesomeIcon icon={isMarkdownPreview ? faEyeSlash : faEye} className="w-4 h-4" />
             </button>
             <span className="text-xs text-neutral-500">
-              {isMarkdownPreview ? 'Preview' : 'Markdown'}
+              {isMarkdownPreview ? "Preview" : "Markdown"}
             </span>
           </div>
         )}
@@ -164,7 +182,7 @@ export const RichTextEditor: React.FC<RichTextEditorProps> = ({
 
       {/* Editor */}
       <div ref={editorRef} className="min-h-48">
-        {mode === 'wysiwyg' ? (
+        {mode === "wysiwyg" ? (
           <div
             contentEditable={!readOnly}
             onInput={(e) => onChange(e.currentTarget.innerHTML)}
@@ -172,7 +190,7 @@ export const RichTextEditor: React.FC<RichTextEditorProps> = ({
             dangerouslySetInnerHTML={{ __html: value }}
             placeholder={placeholder}
             className="p-4 focus:outline-none min-h-48"
-            style={{ minHeight: '12rem' }}
+            style={{ minHeight: "12rem" }}
           />
         ) : (
           <div className="relative">
@@ -187,7 +205,7 @@ export const RichTextEditor: React.FC<RichTextEditorProps> = ({
                 placeholder={placeholder}
                 readOnly={readOnly}
                 className="w-full p-4 border-0 focus:outline-none resize-none min-h-48 font-mono text-sm"
-                style={{ minHeight: '12rem' }}
+                style={{ minHeight: "12rem" }}
               />
             )}
           </div>
@@ -204,7 +222,7 @@ export const WYSIWYGEditor: React.FC<{
   placeholder?: string;
   readOnly?: boolean;
   className?: string;
-}> = ({ value, onChange, placeholder, readOnly, className = '' }) => {
+}> = ({ value, onChange, placeholder, readOnly, className = "" }) => {
   return (
     <RichTextEditor
       value={value}
@@ -223,7 +241,7 @@ export const MarkdownEditor: React.FC<{
   placeholder?: string;
   readOnly?: boolean;
   className?: string;
-}> = ({ value, onChange, placeholder, readOnly, className = '' }) => {
+}> = ({ value, onChange, placeholder, readOnly, className = "" }) => {
   return (
     <RichTextEditor
       value={value}
@@ -242,7 +260,7 @@ export const SimpleEditor: React.FC<{
   placeholder?: string;
   readOnly?: boolean;
   className?: string;
-}> = ({ value, onChange, placeholder, readOnly, className = '' }) => {
+}> = ({ value, onChange, placeholder, readOnly, className = "" }) => {
   return (
     <RichTextEditor
       value={value}
@@ -250,7 +268,7 @@ export const SimpleEditor: React.FC<{
       mode="wysiwyg"
       placeholder={placeholder}
       readOnly={readOnly}
-      toolbar={['bold', 'italic', 'underline', 'list', 'link']}
+      toolbar={["bold", "italic", "underline", "list", "link"]}
       className={className}
     />
   );

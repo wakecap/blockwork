@@ -1,32 +1,32 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Progress } from '../components/Progress';
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { Progress } from "../components/Progress";
 
 const meta: Meta<typeof Progress> = {
-  title: 'Components/Progress',
+  title: "Components/Progress",
   component: Progress,
   parameters: {
-    layout: 'padded',
+    layout: "padded",
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     variant: {
-      control: { type: 'select' },
-      options: ['linear', 'circular'],
+      control: { type: "select" },
+      options: ["linear", "circular"],
     },
     size: {
-      control: { type: 'select' },
-      options: ['sm', 'md', 'lg'],
+      control: { type: "select" },
+      options: ["sm", "md", "lg"],
     },
     color: {
-      control: { type: 'select' },
-      options: ['primary', 'success', 'warning', 'error'],
+      control: { type: "select" },
+      options: ["primary", "success", "warning", "error"],
     },
     labelPosition: {
-      control: { type: 'select' },
-      options: ['top', 'bottom', 'left', 'right'],
+      control: { type: "select" },
+      options: ["top", "bottom", "left", "right"],
     },
     indeterminate: {
-      control: 'boolean',
+      control: "boolean",
     },
   },
 };
@@ -38,11 +38,11 @@ export const LinearProgress: Story = {
   args: {
     value: 65,
     max: 100,
-    variant: 'linear',
-    size: 'md',
-    color: 'primary',
+    variant: "linear",
+    size: "md",
+    color: "primary",
     showLabel: true,
-    labelPosition: 'top',
+    labelPosition: "top",
     indeterminate: false,
   },
 };
@@ -51,29 +51,29 @@ export const CircularProgress: Story = {
   args: {
     value: 75,
     max: 100,
-    variant: 'circular',
-    size: 'md',
-    color: 'primary',
+    variant: "circular",
+    size: "md",
+    color: "primary",
     showLabel: true,
-    labelPosition: 'top',
+    labelPosition: "top",
     indeterminate: false,
   },
 };
 
 export const IndeterminateLinear: Story = {
   args: {
-    variant: 'linear',
-    size: 'md',
-    color: 'primary',
+    variant: "linear",
+    size: "md",
+    color: "primary",
     indeterminate: true,
   },
 };
 
 export const IndeterminateCircular: Story = {
   args: {
-    variant: 'circular',
-    size: 'md',
-    color: 'primary',
+    variant: "circular",
+    size: "md",
+    color: "primary",
     indeterminate: true,
   },
 };
@@ -95,7 +95,7 @@ export const AllSizes: Story = {
           </div>
         </div>
       </div>
-      
+
       <div>
         <h3 className="text-lg font-semibold mb-4">Circular Progress - All Sizes</h3>
         <div className="flex items-center space-x-8">
@@ -120,7 +120,7 @@ export const AllColors: Story = {
           <Progress value={60} color="error" showLabel labelPosition="top" />
         </div>
       </div>
-      
+
       <div>
         <h3 className="text-lg font-semibold mb-4">Circular Progress - All Colors</h3>
         <div className="flex items-center space-x-8">
@@ -150,7 +150,7 @@ export const LabelPositions: Story = {
           </div>
         </div>
       </div>
-      
+
       <div>
         <h3 className="text-lg font-semibold mb-4">Circular Progress - Label Positions</h3>
         <div className="flex items-center space-x-8">
@@ -195,5 +195,3 @@ export const CustomValues: Story = {
     </div>
   ),
 };
-
-

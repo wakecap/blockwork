@@ -1,32 +1,38 @@
-import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import { RichTextEditor, WYSIWYGEditor, MarkdownEditor, SimpleEditor } from '../components/RichTextEditor';
+import React from "react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import {
+  RichTextEditor,
+  WYSIWYGEditor,
+  MarkdownEditor,
+  SimpleEditor,
+} from "../components/RichTextEditor";
 
 const meta: Meta<typeof RichTextEditor> = {
-  title: 'Forms and Data Entry/RichTextEditor',
+  title: "Forms and Data Entry/RichTextEditor",
   component: RichTextEditor,
   parameters: {
-    layout: 'padded',
+    layout: "padded",
     docs: {
       description: {
-        component: 'A rich text editor component supporting both WYSIWYG and Markdown modes with customizable toolbar.',
+        component:
+          "A rich text editor component supporting both WYSIWYG and Markdown modes with customizable toolbar.",
       },
     },
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     mode: {
-      control: { type: 'select' },
-      options: ['wysiwyg', 'markdown'],
+      control: { type: "select" },
+      options: ["wysiwyg", "markdown"],
     },
     readOnly: {
-      control: { type: 'boolean' },
+      control: { type: "boolean" },
     },
     showValue: {
-      control: { type: 'boolean' },
+      control: { type: "boolean" },
     },
     showLabel: {
-      control: { type: 'boolean' },
+      control: { type: "boolean" },
     },
   },
 };
@@ -36,7 +42,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   render: () => {
-    const [value, setValue] = React.useState('<p>Start writing your content here...</p>');
+    const [value, setValue] = React.useState("<p>Start writing your content here...</p>");
 
     return (
       <RichTextEditor
@@ -51,7 +57,9 @@ export const Default: Story = {
 
 export const WYSIWYG: Story = {
   render: () => {
-    const [value, setValue] = React.useState('<h2>Welcome to the WYSIWYG Editor</h2><p>This is a <strong>rich text editor</strong> that allows you to format your content visually.</p><ul><li>Create lists</li><li>Add formatting</li><li>Insert links</li></ul>');
+    const [value, setValue] = React.useState(
+      "<h2>Welcome to the WYSIWYG Editor</h2><p>This is a <strong>rich text editor</strong> that allows you to format your content visually.</p><ul><li>Create lists</li><li>Add formatting</li><li>Insert links</li></ul>",
+    );
 
     return (
       <div className="w-full max-w-4xl">
@@ -103,7 +111,9 @@ This is a **markdown editor** that allows you to write content using markdown sy
         />
         <div className="mt-6 p-4 bg-neutral-50 rounded-lg">
           <h3 className="text-lg font-medium text-neutral-900 mb-2">Markdown Output:</h3>
-          <pre className="text-sm text-neutral-600 overflow-x-auto whitespace-pre-wrap">{value}</pre>
+          <pre className="text-sm text-neutral-600 overflow-x-auto whitespace-pre-wrap">
+            {value}
+          </pre>
         </div>
       </div>
     );
@@ -112,16 +122,14 @@ This is a **markdown editor** that allows you to write content using markdown sy
 
 export const Simple: Story = {
   render: () => {
-    const [value, setValue] = React.useState('<p>This is a <strong>simple editor</strong> with basic formatting options.</p>');
+    const [value, setValue] = React.useState(
+      "<p>This is a <strong>simple editor</strong> with basic formatting options.</p>",
+    );
 
     return (
       <div className="w-full max-w-4xl">
         <h2 className="text-2xl font-bold text-neutral-900 mb-6">Simple Editor</h2>
-        <SimpleEditor
-          value={value}
-          onChange={setValue}
-          placeholder="Write your content..."
-        />
+        <SimpleEditor value={value} onChange={setValue} placeholder="Write your content..." />
       </div>
     );
   },
@@ -143,11 +151,7 @@ export const ReadOnly: Story = {
     return (
       <div className="w-full max-w-4xl">
         <h2 className="text-2xl font-bold text-neutral-900 mb-6">Read-Only Editor</h2>
-        <RichTextEditor
-          value={value}
-          onChange={() => {}}
-          readOnly={true}
-        />
+        <RichTextEditor value={value} onChange={() => {}} readOnly={true} />
       </div>
     );
   },
@@ -155,7 +159,9 @@ export const ReadOnly: Story = {
 
 export const CustomToolbar: Story = {
   render: () => {
-    const [value, setValue] = React.useState('<h1>Custom Toolbar</h1><p>This editor has a custom toolbar with only specific formatting options.</p>');
+    const [value, setValue] = React.useState(
+      "<h1>Custom Toolbar</h1><p>This editor has a custom toolbar with only specific formatting options.</p>",
+    );
 
     return (
       <div className="w-full max-w-4xl">
@@ -163,7 +169,7 @@ export const CustomToolbar: Story = {
         <RichTextEditor
           value={value}
           onChange={setValue}
-          toolbar={['bold', 'italic', 'underline', 'heading', 'list', 'quote']}
+          toolbar={["bold", "italic", "underline", "heading", "list", "quote"]}
           placeholder="Write with custom toolbar..."
         />
       </div>
@@ -228,7 +234,7 @@ export const EmailComposer: Story = {
               value={value}
               onChange={setValue}
               placeholder="Compose your email..."
-              toolbar={['bold', 'italic', 'underline', 'link']}
+              toolbar={["bold", "italic", "underline", "link"]}
             />
           </div>
           <div>

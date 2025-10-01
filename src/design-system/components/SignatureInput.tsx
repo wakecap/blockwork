@@ -1,6 +1,13 @@
-import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPen, faEraser, faUndo, faRedo, faDownload, faTrash } from '@fortawesome/free-solid-svg-icons';
+import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faPen,
+  faEraser,
+  faUndo,
+  faRedo,
+  faDownload,
+  faTrash,
+} from "@fortawesome/free-solid-svg-icons";
 
 export interface SignatureInputProps {
   value?: string;
@@ -16,16 +23,16 @@ export interface SignatureInputProps {
 }
 
 export const SignatureInput: React.FC<SignatureInputProps> = ({
-  value = '',
+  value = "",
   onChange,
   width = 400,
   height = 200,
-  penColor = '#000000',
+  penColor = "#000000",
   penWidth = 2,
-  backgroundColor = '#ffffff',
-  placeholder = 'Sign here...',
+  backgroundColor = "#ffffff",
+  placeholder = "Sign here...",
   readOnly = false,
-  className = '',
+  className = "",
 }) => {
   const canvasRef = React.useRef<HTMLCanvasElement>(null);
   const [isDrawing, setIsDrawing] = React.useState(false);
@@ -37,7 +44,7 @@ export const SignatureInput: React.FC<SignatureInputProps> = ({
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
     // Set canvas size
@@ -59,14 +66,16 @@ export const SignatureInput: React.FC<SignatureInputProps> = ({
     }
   }, [width, height, backgroundColor, value]);
 
-  const startDrawing = (e: React.MouseEvent<HTMLCanvasElement> | React.TouchEvent<HTMLCanvasElement>) => {
+  const startDrawing = (
+    e: React.MouseEvent<HTMLCanvasElement> | React.TouchEvent<HTMLCanvasElement>,
+  ) => {
     if (readOnly) return;
 
     setIsDrawing(true);
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
     const rect = canvas.getBoundingClientRect();
@@ -77,8 +86,8 @@ export const SignatureInput: React.FC<SignatureInputProps> = ({
     ctx.moveTo(x, y);
     ctx.strokeStyle = penColor;
     ctx.lineWidth = penWidth;
-    ctx.lineCap = 'round';
-    ctx.lineJoin = 'round';
+    ctx.lineCap = "round";
+    ctx.lineJoin = "round";
   };
 
   const draw = (e: React.MouseEvent<HTMLCanvasElement> | React.TouchEvent<HTMLCanvasElement>) => {
@@ -87,7 +96,7 @@ export const SignatureInput: React.FC<SignatureInputProps> = ({
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
     const rect = canvas.getBoundingClientRect();
@@ -122,13 +131,13 @@ export const SignatureInput: React.FC<SignatureInputProps> = ({
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
     ctx.fillStyle = backgroundColor;
     ctx.fillRect(0, 0, width, height);
     setHasSignature(false);
-    onChange?.('');
+    onChange?.("");
   };
 
   const undo = () => {
@@ -154,7 +163,7 @@ export const SignatureInput: React.FC<SignatureInputProps> = ({
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
     ctx.fillStyle = backgroundColor;
@@ -173,8 +182,8 @@ export const SignatureInput: React.FC<SignatureInputProps> = ({
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const link = document.createElement('a');
-    link.download = 'signature.png';
+    const link = document.createElement("a");
+    link.download = "signature.png";
     link.href = canvas.toDataURL();
     link.click();
   };
@@ -243,9 +252,7 @@ export const SignatureInput: React.FC<SignatureInputProps> = ({
       {/* Status */}
       <div className="p-3 border-t border-neutral-200 bg-neutral-50">
         <div className="flex items-center justify-between text-sm text-neutral-600">
-          <span>
-            {hasSignature ? 'Signature captured' : 'No signature yet'}
-          </span>
+          <span>{hasSignature ? "Signature captured" : "No signature yet"}</span>
           <div className="flex items-center space-x-2">
             <div className="flex items-center space-x-1">
               <div
@@ -269,7 +276,7 @@ export const DocumentSignature: React.FC<{
   onChange?: (signature: string) => void;
   readOnly?: boolean;
   className?: string;
-}> = ({ value, onChange, readOnly, className = '' }) => {
+}> = ({ value, onChange, readOnly, className = "" }) => {
   return (
     <SignatureInput
       value={value}
@@ -290,7 +297,7 @@ export const CompactSignature: React.FC<{
   onChange?: (signature: string) => void;
   readOnly?: boolean;
   className?: string;
-}> = ({ value, onChange, readOnly, className = '' }) => {
+}> = ({ value, onChange, readOnly, className = "" }) => {
   return (
     <SignatureInput
       value={value}

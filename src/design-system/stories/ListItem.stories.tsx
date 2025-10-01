@@ -1,35 +1,50 @@
-import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import { ListItem, UserListItem, FileListItem, NotificationListItem, SelectableListItem } from '../components/ListItem';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faFile, faBell, faCheck, faTimes, faDownload, faTrash } from '@fortawesome/free-solid-svg-icons';
+import React from "react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import {
+  ListItem,
+  UserListItem,
+  FileListItem,
+  NotificationListItem,
+  SelectableListItem,
+} from "../components/ListItem";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faUser,
+  faFile,
+  faBell,
+  faCheck,
+  faTimes,
+  faDownload,
+  faTrash,
+} from "@fortawesome/free-solid-svg-icons";
 
 const meta: Meta<typeof ListItem> = {
-  title: 'Content Display/ListItem',
+  title: "Content Display/ListItem",
   component: ListItem,
   parameters: {
-    layout: 'padded',
+    layout: "padded",
     docs: {
       description: {
-        component: 'A flexible list item component for displaying various types of content in lists with different variants and interactions.',
+        component:
+          "A flexible list item component for displaying various types of content in lists with different variants and interactions.",
       },
     },
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     variant: {
-      control: { type: 'select' },
-      options: ['default', 'single-line', 'multi-line', 'avatar', 'icon'],
+      control: { type: "select" },
+      options: ["default", "single-line", "multi-line", "avatar", "icon"],
     },
     size: {
-      control: { type: 'select' },
-      options: ['sm', 'md', 'lg'],
+      control: { type: "select" },
+      options: ["sm", "md", "lg"],
     },
     isSelected: {
-      control: { type: 'boolean' },
+      control: { type: "boolean" },
     },
     isClickable: {
-      control: { type: 'boolean' },
+      control: { type: "boolean" },
     },
   },
 };
@@ -39,34 +54,35 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    title: 'List Item Title',
-    subtitle: 'List item subtitle or description',
-    className: 'w-96',
+    title: "List Item Title",
+    subtitle: "List item subtitle or description",
+    className: "w-96",
   },
 };
 
 export const WithIcon: Story = {
   args: {
-    title: 'Item with Icon',
-    subtitle: 'This item has an icon on the left',
+    title: "Item with Icon",
+    subtitle: "This item has an icon on the left",
     icon: faUser,
-    className: 'w-96',
+    className: "w-96",
   },
 };
 
 export const WithAvatar: Story = {
   args: {
-    title: 'Item with Avatar',
-    subtitle: 'This item has an avatar image',
-    avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=40&h=40&fit=crop&crop=face',
-    className: 'w-96',
+    title: "Item with Avatar",
+    subtitle: "This item has an avatar image",
+    avatar:
+      "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=40&h=40&fit=crop&crop=face",
+    className: "w-96",
   },
 };
 
 export const WithActions: Story = {
   args: {
-    title: 'Item with Actions',
-    subtitle: 'This item has action buttons',
+    title: "Item with Actions",
+    subtitle: "This item has action buttons",
     actions: (
       <div className="flex space-x-2">
         <button className="p-1 text-neutral-400 hover:text-neutral-600 transition-colors">
@@ -77,7 +93,7 @@ export const WithActions: Story = {
         </button>
       </div>
     ),
-    className: 'w-96',
+    className: "w-96",
   },
 };
 
@@ -89,11 +105,7 @@ export const Variants: Story = {
         subtitle="Standard list item with title and subtitle"
         variant="default"
       />
-      <ListItem
-        title="Single Line"
-        subtitle="Compact single-line variant"
-        variant="single-line"
-      />
+      <ListItem title="Single Line" subtitle="Compact single-line variant" variant="single-line" />
       <ListItem
         title="Multi Line"
         subtitle="Multi-line variant with longer description that wraps to multiple lines for better readability"
@@ -118,21 +130,9 @@ export const Variants: Story = {
 export const Sizes: Story = {
   render: () => (
     <div className="space-y-4 w-96">
-      <ListItem
-        title="Small Size"
-        subtitle="Compact small size"
-        size="sm"
-      />
-      <ListItem
-        title="Medium Size"
-        subtitle="Standard medium size"
-        size="md"
-      />
-      <ListItem
-        title="Large Size"
-        subtitle="Spacious large size"
-        size="lg"
-      />
+      <ListItem title="Small Size" subtitle="Compact small size" size="sm" />
+      <ListItem title="Medium Size" subtitle="Standard medium size" size="md" />
+      <ListItem title="Large Size" subtitle="Spacious large size" size="lg" />
     </div>
   ),
 };
@@ -140,27 +140,20 @@ export const Sizes: Story = {
 export const States: Story = {
   render: () => (
     <div className="space-y-4 w-96">
-      <ListItem
-        title="Normal State"
-        subtitle="Default list item"
-      />
-      <ListItem
-        title="Selected State"
-        subtitle="This item is selected"
-        isSelected
-      />
+      <ListItem title="Normal State" subtitle="Default list item" />
+      <ListItem title="Selected State" subtitle="This item is selected" isSelected />
       <ListItem
         title="Clickable State"
         subtitle="This item is clickable (hover to see effect)"
         isClickable
-        onClick={() => alert('Item clicked!')}
+        onClick={() => alert("Item clicked!")}
       />
       <ListItem
         title="Selected & Clickable"
         subtitle="This item is both selected and clickable"
         isSelected
         isClickable
-        onClick={() => alert('Item clicked!')}
+        onClick={() => alert("Item clicked!")}
       />
     </div>
   ),
@@ -181,9 +174,9 @@ export const InteractiveExample: Story = {
     };
 
     const items = [
-      { id: '1', title: 'Project Alpha', subtitle: 'Web application development' },
-      { id: '2', title: 'Project Beta', subtitle: 'Mobile app design' },
-      { id: '3', title: 'Project Gamma', subtitle: 'API integration' },
+      { id: "1", title: "Project Alpha", subtitle: "Web application development" },
+      { id: "2", title: "Project Beta", subtitle: "Mobile app design" },
+      { id: "3", title: "Project Gamma", subtitle: "API integration" },
     ];
 
     return (
@@ -250,7 +243,7 @@ export const FileListItemExample: Story = {
         type="PDF"
         modifiedDate="2024-01-15"
         isShared
-        sharedWith={['Sarah Johnson', 'Michael Chen']}
+        sharedWith={["Sarah Johnson", "Michael Chen"]}
       />
       <FileListItem
         name="presentation.pptx"
@@ -265,7 +258,7 @@ export const FileListItemExample: Story = {
         type="Image"
         modifiedDate="2024-01-13"
         isShared
-        sharedWith={['Emma Wilson']}
+        sharedWith={["Emma Wilson"]}
       />
     </div>
   ),
@@ -302,7 +295,7 @@ export const NotificationListItemExample: Story = {
 
 export const SelectableListItemExample: Story = {
   render: () => {
-    const [selectedItems, setSelectedItems] = React.useState<Set<string>>(new Set(['1']));
+    const [selectedItems, setSelectedItems] = React.useState<Set<string>>(new Set(["1"]));
 
     const handleSelectionChange = (id: string, selected: boolean) => {
       const newSelected = new Set(selectedItems);
@@ -315,9 +308,9 @@ export const SelectableListItemExample: Story = {
     };
 
     const items = [
-      { id: '1', title: 'Marketing Campaign', subtitle: 'Q1 2024 campaign materials' },
-      { id: '2', title: 'Product Launch', subtitle: 'New feature release documentation' },
-      { id: '3', title: 'User Research', subtitle: 'Customer feedback and insights' },
+      { id: "1", title: "Marketing Campaign", subtitle: "Q1 2024 campaign materials" },
+      { id: "2", title: "Product Launch", subtitle: "New feature release documentation" },
+      { id: "3", title: "User Research", subtitle: "Customer feedback and insights" },
     ];
 
     return (

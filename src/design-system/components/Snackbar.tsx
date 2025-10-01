@@ -1,27 +1,39 @@
-import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheck, faTimes, faExclamation, faInfo, faXmark } from '@fortawesome/free-solid-svg-icons';
+import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faCheck,
+  faTimes,
+  faExclamation,
+  faInfo,
+  faXmark,
+} from "@fortawesome/free-solid-svg-icons";
 
 export interface SnackbarProps {
   message: string;
-  variant?: 'success' | 'error' | 'warning' | 'info';
+  variant?: "success" | "error" | "warning" | "info";
   isOpen: boolean;
   onClose: () => void;
   autoHideDuration?: number;
   showCloseButton?: boolean;
-  position?: 'top-left' | 'top-right' | 'top-center' | 'bottom-left' | 'bottom-right' | 'bottom-center';
+  position?:
+    | "top-left"
+    | "top-right"
+    | "top-center"
+    | "bottom-left"
+    | "bottom-right"
+    | "bottom-center";
   className?: string;
 }
 
 export const Snackbar: React.FC<SnackbarProps> = ({
   message,
-  variant = 'info',
+  variant = "info",
   isOpen,
   onClose,
   autoHideDuration = 5000,
   showCloseButton = true,
-  position = 'bottom-right',
-  className = '',
+  position = "bottom-right",
+  className = "",
 }) => {
   React.useEffect(() => {
     if (isOpen && autoHideDuration > 0) {
@@ -35,42 +47,42 @@ export const Snackbar: React.FC<SnackbarProps> = ({
 
   const variantStyles = {
     success: {
-      background: 'bg-success-50',
-      border: 'border-success-200',
-      text: 'text-success-800',
+      background: "bg-success-50",
+      border: "border-success-200",
+      text: "text-success-800",
       icon: faCheck,
-      iconColor: 'text-success-600',
+      iconColor: "text-success-600",
     },
     error: {
-      background: 'bg-error-50',
-      border: 'border-error-200',
-      text: 'text-error-800',
+      background: "bg-error-50",
+      border: "border-error-200",
+      text: "text-error-800",
       icon: faTimes,
-      iconColor: 'text-error-600',
+      iconColor: "text-error-600",
     },
     warning: {
-      background: 'bg-warning-50',
-      border: 'border-warning-200',
-      text: 'text-warning-800',
+      background: "bg-warning-50",
+      border: "border-warning-200",
+      text: "text-warning-800",
       icon: faExclamation,
-      iconColor: 'text-warning-600',
+      iconColor: "text-warning-600",
     },
     info: {
-      background: 'bg-info-50',
-      border: 'border-info-200',
-      text: 'text-info-800',
+      background: "bg-info-50",
+      border: "border-info-200",
+      text: "text-info-800",
       icon: faInfo,
-      iconColor: 'text-info-600',
+      iconColor: "text-info-600",
     },
   };
 
   const positionStyles = {
-    'top-left': 'top-4 left-4',
-    'top-right': 'top-4 right-4',
-    'top-center': 'top-4 left-1/2 transform -translate-x-1/2',
-    'bottom-left': 'bottom-4 left-4',
-    'bottom-right': 'bottom-4 right-4',
-    'bottom-center': 'bottom-4 left-1/2 transform -translate-x-1/2',
+    "top-left": "top-4 left-4",
+    "top-right": "top-4 right-4",
+    "top-center": "top-4 left-1/2 transform -translate-x-1/2",
+    "bottom-left": "bottom-4 left-4",
+    "bottom-right": "bottom-4 right-4",
+    "bottom-center": "bottom-4 left-1/2 transform -translate-x-1/2",
   };
 
   const currentVariant = variantStyles[variant];
@@ -92,9 +104,7 @@ export const Snackbar: React.FC<SnackbarProps> = ({
             icon={currentVariant.icon}
             className={`${currentVariant.iconColor} mt-0.5 flex-shrink-0`}
           />
-          <div className={`flex-1 ${currentVariant.text} text-sm`}>
-            {message}
-          </div>
+          <div className={`flex-1 ${currentVariant.text} text-sm`}>{message}</div>
           {showCloseButton && (
             <button
               onClick={onClose}

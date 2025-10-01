@@ -1,37 +1,38 @@
-import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Carousel, ImageCarousel, CardCarousel } from '../components/Carousel';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlay, faPause, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import React from "react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { Carousel, ImageCarousel, CardCarousel } from "../components/Carousel";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlay, faPause, faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
 const meta: Meta<typeof Carousel> = {
-  title: 'Content Display/Carousel',
+  title: "Content Display/Carousel",
   component: Carousel,
   parameters: {
-    layout: 'padded',
+    layout: "padded",
     docs: {
       description: {
-        component: 'A carousel component for displaying rotating content with navigation controls and auto-play functionality.',
+        component:
+          "A carousel component for displaying rotating content with navigation controls and auto-play functionality.",
       },
     },
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     variant: {
-      control: { type: 'select' },
-      options: ['default', 'cards', 'fullscreen'],
+      control: { type: "select" },
+      options: ["default", "cards", "fullscreen"],
     },
     showArrows: {
-      control: { type: 'boolean' },
+      control: { type: "boolean" },
     },
     showIndicators: {
-      control: { type: 'boolean' },
+      control: { type: "boolean" },
     },
     showPlayPause: {
-      control: { type: 'boolean' },
+      control: { type: "boolean" },
     },
     autoPlay: {
-      control: { type: 'boolean' },
+      control: { type: "boolean" },
     },
   },
 };
@@ -41,35 +42,35 @@ type Story = StoryObj<typeof meta>;
 
 const sampleItems = [
   {
-    id: '1',
-    title: 'Beautiful Landscape',
-    description: 'Stunning mountain views and natural scenery.',
-    image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=400&fit=crop',
+    id: "1",
+    title: "Beautiful Landscape",
+    description: "Stunning mountain views and natural scenery.",
+    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=400&fit=crop",
   },
   {
-    id: '2',
-    title: 'City Skyline',
-    description: 'Modern urban architecture and city lights.',
-    image: 'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=800&h=400&fit=crop',
+    id: "2",
+    title: "City Skyline",
+    description: "Modern urban architecture and city lights.",
+    image: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=800&h=400&fit=crop",
   },
   {
-    id: '3',
-    title: 'Ocean Waves',
-    description: 'Peaceful beach scenes and ocean tranquility.',
-    image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&h=400&fit=crop',
+    id: "3",
+    title: "Ocean Waves",
+    description: "Peaceful beach scenes and ocean tranquility.",
+    image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&h=400&fit=crop",
   },
   {
-    id: '4',
-    title: 'Forest Path',
-    description: 'Serene forest trails and natural beauty.',
-    image: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&h=400&fit=crop',
+    id: "4",
+    title: "Forest Path",
+    description: "Serene forest trails and natural beauty.",
+    image: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&h=400&fit=crop",
   },
 ];
 
 export const Default: Story = {
   args: {
     items: sampleItems,
-    className: 'w-full max-w-4xl',
+    className: "w-full max-w-4xl",
   },
 };
 
@@ -77,7 +78,7 @@ export const WithArrows: Story = {
   args: {
     items: sampleItems,
     showArrows: true,
-    className: 'w-full max-w-4xl',
+    className: "w-full max-w-4xl",
   },
 };
 
@@ -85,7 +86,7 @@ export const WithIndicators: Story = {
   args: {
     items: sampleItems,
     showIndicators: true,
-    className: 'w-full max-w-4xl',
+    className: "w-full max-w-4xl",
   },
 };
 
@@ -94,7 +95,7 @@ export const WithPlayPause: Story = {
     items: sampleItems,
     showPlayPause: true,
     autoPlay: true,
-    className: 'w-full max-w-4xl',
+    className: "w-full max-w-4xl",
   },
 };
 
@@ -103,7 +104,7 @@ export const AutoPlay: Story = {
     items: sampleItems,
     autoPlay: true,
     autoPlayInterval: 3000,
-    className: 'w-full max-w-4xl',
+    className: "w-full max-w-4xl",
   },
 };
 
@@ -192,32 +193,32 @@ export const ImageCarouselExample: Story = {
       <ImageCarousel
         images={[
           {
-            id: '1',
-            src: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=400&fit=crop',
-            alt: 'Mountain landscape',
-            title: 'Mountain Views',
-            description: 'Stunning mountain views and natural scenery.',
+            id: "1",
+            src: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=400&fit=crop",
+            alt: "Mountain landscape",
+            title: "Mountain Views",
+            description: "Stunning mountain views and natural scenery.",
           },
           {
-            id: '2',
-            src: 'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=800&h=400&fit=crop',
-            alt: 'City skyline',
-            title: 'Urban Architecture',
-            description: 'Modern urban architecture and city lights.',
+            id: "2",
+            src: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=800&h=400&fit=crop",
+            alt: "City skyline",
+            title: "Urban Architecture",
+            description: "Modern urban architecture and city lights.",
           },
           {
-            id: '3',
-            src: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&h=400&fit=crop',
-            alt: 'Ocean waves',
-            title: 'Beach Scene',
-            description: 'Peaceful beach scenes and ocean tranquility.',
+            id: "3",
+            src: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&h=400&fit=crop",
+            alt: "Ocean waves",
+            title: "Beach Scene",
+            description: "Peaceful beach scenes and ocean tranquility.",
           },
           {
-            id: '4',
-            src: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&h=400&fit=crop',
-            alt: 'Forest path',
-            title: 'Forest Trail',
-            description: 'Serene forest trails and natural beauty.',
+            id: "4",
+            src: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&h=400&fit=crop",
+            alt: "Forest path",
+            title: "Forest Trail",
+            description: "Serene forest trails and natural beauty.",
           },
         ]}
         showArrows
@@ -237,47 +238,52 @@ export const CardCarouselExample: Story = {
       <CardCarousel
         items={[
           {
-            id: '1',
-            title: 'Premium Wireless Headphones',
-            description: 'High-quality sound with noise cancellation.',
-            price: '$299.99',
-            image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=300&fit=crop',
+            id: "1",
+            title: "Premium Wireless Headphones",
+            description: "High-quality sound with noise cancellation.",
+            price: "$299.99",
+            image:
+              "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=300&fit=crop",
             rating: 4.5,
             reviewCount: 128,
           },
           {
-            id: '2',
-            title: 'Smart Watch Pro',
-            description: 'Advanced fitness tracking and notifications.',
-            price: '$199.99',
-            image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=300&fit=crop',
+            id: "2",
+            title: "Smart Watch Pro",
+            description: "Advanced fitness tracking and notifications.",
+            price: "$199.99",
+            image:
+              "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=300&fit=crop",
             rating: 4.2,
             reviewCount: 89,
           },
           {
-            id: '3',
-            title: 'Wireless Speaker',
-            description: 'Portable Bluetooth speaker with deep bass.',
-            price: '$149.99',
-            image: 'https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=400&h=300&fit=crop',
+            id: "3",
+            title: "Wireless Speaker",
+            description: "Portable Bluetooth speaker with deep bass.",
+            price: "$149.99",
+            image:
+              "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=400&h=300&fit=crop",
             rating: 4.7,
             reviewCount: 256,
           },
           {
-            id: '4',
-            title: 'Laptop Stand',
-            description: 'Ergonomic aluminum laptop stand.',
-            price: '$79.99',
-            image: 'https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=400&h=300&fit=crop',
+            id: "4",
+            title: "Laptop Stand",
+            description: "Ergonomic aluminum laptop stand.",
+            price: "$79.99",
+            image:
+              "https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=400&h=300&fit=crop",
             rating: 4.3,
             reviewCount: 67,
           },
           {
-            id: '5',
-            title: 'Mechanical Keyboard',
-            description: 'Premium mechanical switches for typing.',
-            price: '$129.99',
-            image: 'https://images.unsplash.com/photo-1541140532154-b024d705b90a?w=400&h=300&fit=crop',
+            id: "5",
+            title: "Mechanical Keyboard",
+            description: "Premium mechanical switches for typing.",
+            price: "$129.99",
+            image:
+              "https://images.unsplash.com/photo-1541140532154-b024d705b90a?w=400&h=300&fit=crop",
             rating: 4.6,
             reviewCount: 189,
           },
@@ -298,25 +304,31 @@ export const TestimonialCarousel: Story = {
       <Carousel
         items={[
           {
-            id: '1',
-            title: 'Sarah Johnson',
-            description: '"This product has completely transformed how I work. The quality is outstanding and the customer service is exceptional."',
-            image: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face',
-            subtitle: 'Senior Designer',
+            id: "1",
+            title: "Sarah Johnson",
+            description:
+              '"This product has completely transformed how I work. The quality is outstanding and the customer service is exceptional."',
+            image:
+              "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face",
+            subtitle: "Senior Designer",
           },
           {
-            id: '2',
-            title: 'Michael Chen',
-            description: '"I\'ve been using this for months now and I couldn\'t be happier. It\'s reliable, fast, and exactly what I needed."',
-            image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face',
-            subtitle: 'Product Manager',
+            id: "2",
+            title: "Michael Chen",
+            description:
+              "\"I've been using this for months now and I couldn't be happier. It's reliable, fast, and exactly what I needed.\"",
+            image:
+              "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face",
+            subtitle: "Product Manager",
           },
           {
-            id: '3',
-            title: 'Emma Wilson',
-            description: '"The best investment I\'ve made this year. The features are incredible and the user experience is seamless."',
-            image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face',
-            subtitle: 'Frontend Developer',
+            id: "3",
+            title: "Emma Wilson",
+            description:
+              '"The best investment I\'ve made this year. The features are incredible and the user experience is seamless."',
+            image:
+              "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face",
+            subtitle: "Frontend Developer",
           },
         ]}
         variant="default"
@@ -328,11 +340,7 @@ export const TestimonialCarousel: Story = {
         renderItem={(item) => (
           <div className="text-center p-8">
             <div className="w-20 h-20 mx-auto mb-4 rounded-full overflow-hidden">
-              <img
-                src={item.image}
-                alt={item.title}
-                className="w-full h-full object-cover"
-              />
+              <img src={item.image} alt={item.title} className="w-full h-full object-cover" />
             </div>
             <blockquote className="text-lg text-neutral-700 mb-4 italic">
               "{item.description}"
@@ -351,7 +359,7 @@ export const FullscreenCarousel: Story = {
     const [isFullscreen, setIsFullscreen] = React.useState(false);
 
     return (
-      <div className={isFullscreen ? 'fixed inset-0 z-50 bg-black' : 'w-full max-w-4xl'}>
+      <div className={isFullscreen ? "fixed inset-0 z-50 bg-black" : "w-full max-w-4xl"}>
         <Carousel
           items={sampleItems}
           variant="fullscreen"
@@ -360,7 +368,7 @@ export const FullscreenCarousel: Story = {
           showPlayPause
           autoPlay
           autoPlayInterval={4000}
-          className={isFullscreen ? 'h-full' : 'w-full'}
+          className={isFullscreen ? "h-full" : "w-full"}
         />
         {!isFullscreen && (
           <div className="mt-4 text-center">

@@ -1,6 +1,6 @@
-import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEllipsisV, faHeart, faShare, faBookmark } from '@fortawesome/free-solid-svg-icons';
+import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEllipsisV, faHeart, faShare, faBookmark } from "@fortawesome/free-solid-svg-icons";
 
 export interface CardProps {
   title?: string;
@@ -10,8 +10,8 @@ export interface CardProps {
   imageAlt?: string;
   actions?: React.ReactNode;
   footer?: React.ReactNode;
-  variant?: 'default' | 'elevated' | 'outlined' | 'interactive';
-  size?: 'sm' | 'md' | 'lg';
+  variant?: "default" | "elevated" | "outlined" | "interactive";
+  size?: "sm" | "md" | "lg";
   isHoverable?: boolean;
   isSelected?: boolean;
   isDisabled?: boolean;
@@ -28,31 +28,33 @@ export const Card: React.FC<CardProps> = ({
   imageAlt,
   actions,
   footer,
-  variant = 'default',
-  size = 'md',
+  variant = "default",
+  size = "md",
   isHoverable = false,
   isSelected = false,
   isDisabled = false,
   onClick,
-  className = '',
+  className = "",
   children,
 }) => {
   const variantStyles = {
-    default: 'bg-white border border-neutral-200',
-    elevated: 'bg-white shadow-md border border-neutral-200',
-    outlined: 'bg-white border-2 border-neutral-300',
-    interactive: 'bg-white border border-neutral-200 cursor-pointer',
+    default: "bg-white border border-neutral-200",
+    elevated: "bg-white shadow-md border border-neutral-200",
+    outlined: "bg-white border-2 border-neutral-300",
+    interactive: "bg-white border border-neutral-200 cursor-pointer",
   };
 
   const sizeStyles = {
-    sm: 'p-3',
-    md: 'p-4',
-    lg: 'p-6',
+    sm: "p-3",
+    md: "p-4",
+    lg: "p-6",
   };
 
-  const hoverStyles = isHoverable ? 'hover:shadow-lg hover:border-neutral-300 transition-all duration-200' : '';
-  const selectedStyles = isSelected ? 'ring-2 ring-primary-500 border-primary-500' : '';
-  const disabledStyles = isDisabled ? 'opacity-50 cursor-not-allowed' : '';
+  const hoverStyles = isHoverable
+    ? "hover:shadow-lg hover:border-neutral-300 transition-all duration-200"
+    : "";
+  const selectedStyles = isSelected ? "ring-2 ring-primary-500 border-primary-500" : "";
+  const disabledStyles = isDisabled ? "opacity-50 cursor-not-allowed" : "";
 
   const cardContent = (
     <>
@@ -60,46 +62,28 @@ export const Card: React.FC<CardProps> = ({
         <div className="relative">
           <img
             src={image}
-            alt={imageAlt || title || 'Card image'}
+            alt={imageAlt || title || "Card image"}
             className="w-full h-48 object-cover rounded-t-lg"
           />
-          {actions && (
-            <div className="absolute top-2 right-2">
-              {actions}
-            </div>
-          )}
+          {actions && <div className="absolute top-2 right-2">{actions}</div>}
         </div>
       )}
-      
+
       <div className={sizeStyles[size]}>
         {(title || subtitle) && (
           <div className="mb-3">
-            {title && (
-              <h3 className="text-lg font-semibold text-neutral-900 mb-1">
-                {title}
-              </h3>
-            )}
-            {subtitle && (
-              <p className="text-sm text-neutral-600">
-                {subtitle}
-              </p>
-            )}
+            {title && <h3 className="text-lg font-semibold text-neutral-900 mb-1">{title}</h3>}
+            {subtitle && <p className="text-sm text-neutral-600">{subtitle}</p>}
           </div>
         )}
-        
-        {content && (
-          <div className="mb-4">
-            {content}
-          </div>
-        )}
-        
+
+        {content && <div className="mb-4">{content}</div>}
+
         {children}
       </div>
-      
+
       {footer && (
-        <div className={`${sizeStyles[size]} pt-0 border-t border-neutral-100`}>
-          {footer}
-        </div>
+        <div className={`${sizeStyles[size]} pt-0 border-t border-neutral-100`}>{footer}</div>
       )}
     </>
   );
@@ -122,7 +106,7 @@ export const Card: React.FC<CardProps> = ({
         role="button"
         tabIndex={0}
         onKeyDown={(e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
+          if (e.key === "Enter" || e.key === " ") {
             e.preventDefault();
             onClick();
           }
@@ -133,11 +117,7 @@ export const Card: React.FC<CardProps> = ({
     );
   }
 
-  return (
-    <div className={cardClasses}>
-      {cardContent}
-    </div>
-  );
+  return <div className={cardClasses}>{cardContent}</div>;
 };
 
 // Predefined card components
@@ -150,7 +130,16 @@ export const ProductCard: React.FC<{
   onFavorite?: () => void;
   isFavorited?: boolean;
   className?: string;
-}> = ({ title, price, image, rating, onAddToCart, onFavorite, isFavorited = false, className = '' }) => {
+}> = ({
+  title,
+  price,
+  image,
+  rating,
+  onAddToCart,
+  onFavorite,
+  isFavorited = false,
+  className = "",
+}) => {
   const [isLiked, setIsLiked] = React.useState(isFavorited);
 
   const handleFavorite = () => {
@@ -175,7 +164,7 @@ export const ProductCard: React.FC<{
         >
           <FontAwesomeIcon
             icon={faHeart}
-            className={`w-4 h-4 ${isLiked ? 'text-red-500' : 'text-neutral-400'}`}
+            className={`w-4 h-4 ${isLiked ? "text-red-500" : "text-neutral-400"}`}
           />
         </button>
       }
@@ -213,18 +202,14 @@ export const UserCard: React.FC<{
   onMessage?: () => void;
   onViewProfile?: () => void;
   className?: string;
-}> = ({ name, role, avatar, email, onMessage, onViewProfile, className = '' }) => (
+}> = ({ name, role, avatar, email, onMessage, onViewProfile, className = "" }) => (
   <Card
     variant="interactive"
     isHoverable
     className={className}
     content={
       <div className="flex items-center space-x-3">
-        <img
-          src={avatar}
-          alt={name}
-          className="w-12 h-12 rounded-full object-cover"
-        />
+        <img src={avatar} alt={name} className="w-12 h-12 rounded-full object-cover" />
         <div className="flex-1">
           <h4 className="font-medium text-neutral-900">{name}</h4>
           <p className="text-sm text-neutral-600">{role}</p>
@@ -268,7 +253,18 @@ export const ArticleCard: React.FC<{
   onShare?: () => void;
   onBookmark?: () => void;
   className?: string;
-}> = ({ title, excerpt, author, date, image, readTime, onReadMore, onShare, onBookmark, className = '' }) => (
+}> = ({
+  title,
+  excerpt,
+  author,
+  date,
+  image,
+  readTime,
+  onReadMore,
+  onShare,
+  onBookmark,
+  className = "",
+}) => (
   <Card
     title={title}
     image={image}

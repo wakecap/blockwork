@@ -1,25 +1,32 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Snackbar } from '../components/Snackbar';
-import { useState } from 'react';
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { Snackbar } from "../components/Snackbar";
+import { useState } from "react";
 
 const meta: Meta<typeof Snackbar> = {
-  title: 'Components/Snackbar',
+  title: "Components/Snackbar",
   component: Snackbar,
   parameters: {
-    layout: 'padded',
+    layout: "padded",
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     variant: {
-      control: { type: 'select' },
-      options: ['success', 'error', 'warning', 'info'],
+      control: { type: "select" },
+      options: ["success", "error", "warning", "info"],
     },
     position: {
-      control: { type: 'select' },
-      options: ['top-left', 'top-right', 'top-center', 'bottom-left', 'bottom-right', 'bottom-center'],
+      control: { type: "select" },
+      options: [
+        "top-left",
+        "top-right",
+        "top-center",
+        "bottom-left",
+        "bottom-right",
+        "bottom-center",
+      ],
     },
     autoHideDuration: {
-      control: { type: 'number', min: 0, max: 10000, step: 500 },
+      control: { type: "number", min: 0, max: 10000, step: 500 },
     },
   },
 };
@@ -29,12 +36,24 @@ type Story = StoryObj<typeof meta>;
 
 // Interactive wrapper component
 const SnackbarWrapper: React.FC<{
-  variant?: 'success' | 'error' | 'warning' | 'info';
-  position?: 'top-left' | 'top-right' | 'top-center' | 'bottom-left' | 'bottom-right' | 'bottom-center';
+  variant?: "success" | "error" | "warning" | "info";
+  position?:
+    | "top-left"
+    | "top-right"
+    | "top-center"
+    | "bottom-left"
+    | "bottom-right"
+    | "bottom-center";
   autoHideDuration?: number;
   showCloseButton?: boolean;
   message: string;
-}> = ({ variant = 'info', position = 'bottom-right', autoHideDuration = 5000, showCloseButton = true, message }) => {
+}> = ({
+  variant = "info",
+  position = "bottom-right",
+  autoHideDuration = 5000,
+  showCloseButton = true,
+  message,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -59,74 +78,90 @@ const SnackbarWrapper: React.FC<{
 };
 
 export const Success: Story = {
-  render: (args) => <SnackbarWrapper {...args} variant="success" message="Success! Your changes have been saved." />,
+  render: (args) => (
+    <SnackbarWrapper {...args} variant="success" message="Success! Your changes have been saved." />
+  ),
   args: {
-    variant: 'success',
-    position: 'bottom-right',
+    variant: "success",
+    position: "bottom-right",
     autoHideDuration: 5000,
     showCloseButton: true,
   },
 };
 
 export const Error: Story = {
-  render: (args) => <SnackbarWrapper {...args} variant="error" message="Error! Failed to save your changes." />,
+  render: (args) => (
+    <SnackbarWrapper {...args} variant="error" message="Error! Failed to save your changes." />
+  ),
   args: {
-    variant: 'error',
-    position: 'bottom-right',
+    variant: "error",
+    position: "bottom-right",
     autoHideDuration: 5000,
     showCloseButton: true,
   },
 };
 
 export const Warning: Story = {
-  render: (args) => <SnackbarWrapper {...args} variant="warning" message="Warning! Please check your input." />,
+  render: (args) => (
+    <SnackbarWrapper {...args} variant="warning" message="Warning! Please check your input." />
+  ),
   args: {
-    variant: 'warning',
-    position: 'bottom-right',
+    variant: "warning",
+    position: "bottom-right",
     autoHideDuration: 5000,
     showCloseButton: true,
   },
 };
 
 export const Info: Story = {
-  render: (args) => <SnackbarWrapper {...args} variant="info" message="Info: New features are available." />,
+  render: (args) => (
+    <SnackbarWrapper {...args} variant="info" message="Info: New features are available." />
+  ),
   args: {
-    variant: 'info',
-    position: 'bottom-right',
+    variant: "info",
+    position: "bottom-right",
     autoHideDuration: 5000,
     showCloseButton: true,
   },
 };
 
 export const TopRight: Story = {
-  render: (args) => <SnackbarWrapper {...args} position="top-right" message="Top right notification" />,
+  render: (args) => (
+    <SnackbarWrapper {...args} position="top-right" message="Top right notification" />
+  ),
   args: {
-    position: 'top-right',
+    position: "top-right",
     autoHideDuration: 5000,
     showCloseButton: true,
   },
 };
 
 export const TopCenter: Story = {
-  render: (args) => <SnackbarWrapper {...args} position="top-center" message="Top center notification" />,
+  render: (args) => (
+    <SnackbarWrapper {...args} position="top-center" message="Top center notification" />
+  ),
   args: {
-    position: 'top-center',
+    position: "top-center",
     autoHideDuration: 5000,
     showCloseButton: true,
   },
 };
 
 export const BottomLeft: Story = {
-  render: (args) => <SnackbarWrapper {...args} position="bottom-left" message="Bottom left notification" />,
+  render: (args) => (
+    <SnackbarWrapper {...args} position="bottom-left" message="Bottom left notification" />
+  ),
   args: {
-    position: 'bottom-left',
+    position: "bottom-left",
     autoHideDuration: 5000,
     showCloseButton: true,
   },
 };
 
 export const NoAutoHide: Story = {
-  render: (args) => <SnackbarWrapper {...args} autoHideDuration={0} message="This won't auto-hide" />,
+  render: (args) => (
+    <SnackbarWrapper {...args} autoHideDuration={0} message="This won't auto-hide" />
+  ),
   args: {
     autoHideDuration: 0,
     showCloseButton: true,
@@ -153,5 +188,3 @@ export const LongMessage: Story = {
     showCloseButton: true,
   },
 };
-
-

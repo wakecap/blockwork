@@ -1,6 +1,12 @@
-import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faReply, faThumbsUp, faThumbsDown, faEllipsisH, faFlag } from '@fortawesome/free-solid-svg-icons';
+import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faReply,
+  faThumbsUp,
+  faThumbsDown,
+  faEllipsisH,
+  faFlag,
+} from "@fortawesome/free-solid-svg-icons";
 
 export interface Comment {
   id: string;
@@ -40,20 +46,20 @@ export const CommentThread: React.FC<CommentThreadProps> = ({
   onReport,
   maxReplies = 3,
   showReplies = true,
-  className = '',
+  className = "",
 }) => {
   const [replyingTo, setReplyingTo] = React.useState<string | null>(null);
   const [editingComment, setEditingComment] = React.useState<string | null>(null);
-  const [replyContent, setReplyContent] = React.useState('');
-  const [editContent, setEditContent] = React.useState('');
+  const [replyContent, setReplyContent] = React.useState("");
+  const [editContent, setEditContent] = React.useState("");
 
   const handleReply = (commentId: string) => {
     if (replyingTo === commentId) {
       setReplyingTo(null);
-      setReplyContent('');
+      setReplyContent("");
     } else {
       setReplyingTo(commentId);
-      setReplyContent('');
+      setReplyContent("");
     }
   };
 
@@ -61,14 +67,14 @@ export const CommentThread: React.FC<CommentThreadProps> = ({
     if (replyContent.trim() && onReply) {
       onReply(commentId, replyContent.trim());
       setReplyingTo(null);
-      setReplyContent('');
+      setReplyContent("");
     }
   };
 
   const handleEdit = (comment: Comment) => {
     if (editingComment === comment.id) {
       setEditingComment(null);
-      setEditContent('');
+      setEditContent("");
     } else {
       setEditingComment(comment.id);
       setEditContent(comment.content);
@@ -79,7 +85,7 @@ export const CommentThread: React.FC<CommentThreadProps> = ({
     if (editContent.trim() && onEdit) {
       onEdit(commentId, editContent.trim());
       setEditingComment(null);
-      setEditContent('');
+      setEditContent("");
     }
   };
 
@@ -90,7 +96,7 @@ export const CommentThread: React.FC<CommentThreadProps> = ({
     const hours = Math.floor(diff / 3600000);
     const days = Math.floor(diff / 86400000);
 
-    if (minutes < 1) return 'Just now';
+    if (minutes < 1) return "Just now";
     if (minutes < 60) return `${minutes}m ago`;
     if (hours < 24) return `${hours}h ago`;
     if (days < 7) return `${days}d ago`;
@@ -98,7 +104,7 @@ export const CommentThread: React.FC<CommentThreadProps> = ({
   };
 
   const renderComment = (comment: Comment, isReply = false) => (
-    <div key={comment.id} className={`${isReply ? 'ml-8 border-l-2 border-neutral-200 pl-4' : ''}`}>
+    <div key={comment.id} className={`${isReply ? "ml-8 border-l-2 border-neutral-200 pl-4" : ""}`}>
       <div className="flex space-x-3 mb-3">
         {/* Avatar */}
         <div className="flex-shrink-0">
@@ -123,20 +129,12 @@ export const CommentThread: React.FC<CommentThreadProps> = ({
             {/* Header */}
             <div className="flex items-center justify-between mb-2">
               <div className="flex items-center space-x-2">
-                <span className="text-sm font-medium text-neutral-900">
-                  {comment.author}
-                </span>
-                <span className="text-xs text-neutral-500">
-                  {formatTime(comment.timestamp)}
-                </span>
-                {comment.isEdited && (
-                  <span className="text-xs text-neutral-400">(edited)</span>
-                )}
-                {comment.isDeleted && (
-                  <span className="text-xs text-neutral-400">(deleted)</span>
-                )}
+                <span className="text-sm font-medium text-neutral-900">{comment.author}</span>
+                <span className="text-xs text-neutral-500">{formatTime(comment.timestamp)}</span>
+                {comment.isEdited && <span className="text-xs text-neutral-400">(edited)</span>}
+                {comment.isDeleted && <span className="text-xs text-neutral-400">(deleted)</span>}
               </div>
-              
+
               {/* Actions Menu */}
               <div className="relative">
                 <button className="p-1 text-neutral-400 hover:text-neutral-600 rounded">
@@ -190,7 +188,7 @@ export const CommentThread: React.FC<CommentThreadProps> = ({
                   <button
                     onClick={() => onLike?.(comment.id)}
                     className={`flex items-center space-x-1 text-xs transition-colors ${
-                      comment.isLiked ? 'text-blue-600' : 'text-neutral-500 hover:text-neutral-700'
+                      comment.isLiked ? "text-blue-600" : "text-neutral-500 hover:text-neutral-700"
                     }`}
                   >
                     <FontAwesomeIcon icon={faThumbsUp} className="w-3 h-3" />
@@ -201,7 +199,9 @@ export const CommentThread: React.FC<CommentThreadProps> = ({
                   <button
                     onClick={() => onDislike?.(comment.id)}
                     className={`flex items-center space-x-1 text-xs transition-colors ${
-                      comment.isDisliked ? 'text-red-600' : 'text-neutral-500 hover:text-neutral-700'
+                      comment.isDisliked
+                        ? "text-red-600"
+                        : "text-neutral-500 hover:text-neutral-700"
                     }`}
                   >
                     <FontAwesomeIcon icon={faThumbsDown} className="w-3 h-3" />

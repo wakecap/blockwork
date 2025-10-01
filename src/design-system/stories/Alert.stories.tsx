@@ -1,24 +1,24 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Alert } from '../components/Alert';
-import { useState } from 'react';
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { Alert } from "../components/Alert";
+import { useState } from "react";
 
 const meta: Meta<typeof Alert> = {
-  title: 'Components/Alert',
+  title: "Components/Alert",
   component: Alert,
   parameters: {
-    layout: 'padded',
+    layout: "padded",
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     variant: {
-      control: { type: 'select' },
-      options: ['success', 'error', 'warning', 'info'],
+      control: { type: "select" },
+      options: ["success", "error", "warning", "info"],
     },
     showIcon: {
-      control: 'boolean',
+      control: "boolean",
     },
     showCloseButton: {
-      control: 'boolean',
+      control: "boolean",
     },
   },
 };
@@ -28,12 +28,12 @@ type Story = StoryObj<typeof meta>;
 
 // Interactive wrapper for closeable alerts
 const AlertWrapper: React.FC<{
-  variant?: 'success' | 'error' | 'warning' | 'info';
+  variant?: "success" | "error" | "warning" | "info";
   showIcon?: boolean;
   showCloseButton?: boolean;
   title?: string;
   message: string;
-}> = ({ variant = 'info', showIcon = true, showCloseButton = false, title, message }) => {
+}> = ({ variant = "info", showIcon = true, showCloseButton = false, title, message }) => {
   const [isVisible, setIsVisible] = useState(true);
 
   if (!isVisible) {
@@ -61,9 +61,9 @@ const AlertWrapper: React.FC<{
 
 export const Success: Story = {
   args: {
-    title: 'Success!',
-    message: 'Your changes have been saved successfully.',
-    variant: 'success',
+    title: "Success!",
+    message: "Your changes have been saved successfully.",
+    variant: "success",
     showIcon: true,
     showCloseButton: false,
   },
@@ -71,9 +71,9 @@ export const Success: Story = {
 
 export const Error: Story = {
   args: {
-    title: 'Error!',
-    message: 'There was an error saving your changes. Please try again.',
-    variant: 'error',
+    title: "Error!",
+    message: "There was an error saving your changes. Please try again.",
+    variant: "error",
     showIcon: true,
     showCloseButton: false,
   },
@@ -81,9 +81,9 @@ export const Error: Story = {
 
 export const Warning: Story = {
   args: {
-    title: 'Warning!',
-    message: 'Please review your input before proceeding.',
-    variant: 'warning',
+    title: "Warning!",
+    message: "Please review your input before proceeding.",
+    variant: "warning",
     showIcon: true,
     showCloseButton: false,
   },
@@ -91,9 +91,9 @@ export const Warning: Story = {
 
 export const Info: Story = {
   args: {
-    title: 'Information',
-    message: 'New features are available in the latest update.',
-    variant: 'info',
+    title: "Information",
+    message: "New features are available in the latest update.",
+    variant: "info",
     showIcon: true,
     showCloseButton: false,
   },
@@ -101,8 +101,8 @@ export const Info: Story = {
 
 export const WithoutTitle: Story = {
   args: {
-    message: 'This alert doesn\'t have a title, just a message.',
-    variant: 'info',
+    message: "This alert doesn't have a title, just a message.",
+    variant: "info",
     showIcon: true,
     showCloseButton: false,
   },
@@ -110,9 +110,9 @@ export const WithoutTitle: Story = {
 
 export const WithoutIcon: Story = {
   args: {
-    title: 'No Icon',
-    message: 'This alert doesn\'t show an icon.',
-    variant: 'info',
+    title: "No Icon",
+    message: "This alert doesn't show an icon.",
+    variant: "info",
     showIcon: false,
     showCloseButton: false,
   },
@@ -121,9 +121,9 @@ export const WithoutIcon: Story = {
 export const Closeable: Story = {
   render: (args) => <AlertWrapper {...args} showCloseButton={true} />,
   args: {
-    title: 'Closeable Alert',
-    message: 'This alert can be closed by clicking the X button.',
-    variant: 'info',
+    title: "Closeable Alert",
+    message: "This alert can be closed by clicking the X button.",
+    variant: "info",
     showIcon: true,
     showCloseButton: true,
   },
@@ -131,9 +131,9 @@ export const Closeable: Story = {
 
 export const WithAction: Story = {
   args: {
-    title: 'Action Required',
-    message: 'Please complete the required action to continue.',
-    variant: 'warning',
+    title: "Action Required",
+    message: "Please complete the required action to continue.",
+    variant: "warning",
     showIcon: true,
     showCloseButton: false,
     children: (
@@ -151,9 +151,10 @@ export const WithAction: Story = {
 
 export const LongMessage: Story = {
   args: {
-    title: 'Important Notice',
-    message: 'This is a very long message that demonstrates how the alert component handles longer content. It should wrap properly and maintain good readability while providing clear information to the user about what they need to know or do.',
-    variant: 'info',
+    title: "Important Notice",
+    message:
+      "This is a very long message that demonstrates how the alert component handles longer content. It should wrap properly and maintain good readability while providing clear information to the user about what they need to know or do.",
+    variant: "info",
     showIcon: true,
     showCloseButton: false,
   },
@@ -162,28 +163,14 @@ export const LongMessage: Story = {
 export const AllVariants: Story = {
   render: () => (
     <div className="space-y-4">
-      <Alert
-        title="Success"
-        message="Operation completed successfully."
-        variant="success"
-      />
-      <Alert
-        title="Error"
-        message="Something went wrong. Please try again."
-        variant="error"
-      />
+      <Alert title="Success" message="Operation completed successfully." variant="success" />
+      <Alert title="Error" message="Something went wrong. Please try again." variant="error" />
       <Alert
         title="Warning"
         message="Please review your input before proceeding."
         variant="warning"
       />
-      <Alert
-        title="Information"
-        message="Here's some helpful information."
-        variant="info"
-      />
+      <Alert title="Information" message="Here's some helpful information." variant="info" />
     </div>
   ),
 };
-
-

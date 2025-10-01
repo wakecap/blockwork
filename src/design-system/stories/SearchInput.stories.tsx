@@ -1,16 +1,16 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import { SearchInput } from '../components/SearchInput';
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { SearchInput } from "../components/SearchInput";
 
 const meta: Meta<typeof SearchInput> = {
-  title: 'Components/SearchInput',
+  title: "Components/SearchInput",
   component: SearchInput,
   parameters: {
-    layout: 'padded',
+    layout: "padded",
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     showClearButton: {
-      control: 'boolean',
+      control: "boolean",
     },
   },
 };
@@ -20,61 +20,61 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    placeholder: 'Search...',
+    placeholder: "Search...",
   },
 };
 
 export const WithLabel: Story = {
   args: {
-    label: 'Search',
-    placeholder: 'Search for items...',
+    label: "Search",
+    placeholder: "Search for items...",
   },
 };
 
 export const WithValue: Story = {
   args: {
-    label: 'Search',
-    placeholder: 'Search for items...',
-    value: 'Sample search term',
+    label: "Search",
+    placeholder: "Search for items...",
+    value: "Sample search term",
   },
 };
 
 export const WithError: Story = {
   args: {
-    label: 'Search',
-    placeholder: 'Search for items...',
-    error: 'Search query is too short',
+    label: "Search",
+    placeholder: "Search for items...",
+    error: "Search query is too short",
   },
 };
 
 export const WithSuccess: Story = {
   args: {
-    label: 'Search',
-    placeholder: 'Search for items...',
-    success: 'Search completed successfully',
+    label: "Search",
+    placeholder: "Search for items...",
+    success: "Search completed successfully",
   },
 };
 
 export const WithoutClearButton: Story = {
   args: {
-    label: 'Search',
-    placeholder: 'Search for items...',
+    label: "Search",
+    placeholder: "Search for items...",
     showClearButton: false,
   },
 };
 
 export const Disabled: Story = {
   args: {
-    label: 'Search',
-    placeholder: 'This search is disabled',
+    label: "Search",
+    placeholder: "This search is disabled",
     disabled: true,
   },
 };
 
 export const Large: Story = {
   args: {
-    label: 'Large Search',
-    placeholder: 'Search in a larger input...',
-    className: 'w-full max-w-md',
+    label: "Large Search",
+    placeholder: "Search in a larger input...",
+    className: "w-full max-w-md",
   },
 };

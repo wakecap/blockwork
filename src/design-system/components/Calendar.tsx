@@ -1,7 +1,7 @@
-import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronLeft, faChevronRight, faCalendar } from '@fortawesome/free-solid-svg-icons';
-import { Button } from './Button';
+import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronLeft, faChevronRight, faCalendar } from "@fortawesome/free-solid-svg-icons";
+import { Button } from "./Button";
 
 export interface CalendarProps {
   value?: Date;
@@ -10,7 +10,7 @@ export interface CalendarProps {
   maxDate?: Date;
   disabledDates?: Date[];
   highlightedDates?: Date[];
-  variant?: 'single' | 'range' | 'multi-month';
+  variant?: "single" | "range" | "multi-month";
   rangeStart?: Date;
   rangeEnd?: Date;
   onRangeChange?: (start: Date, end: Date) => void;
@@ -36,14 +36,14 @@ export const Calendar: React.FC<CalendarProps> = ({
   maxDate,
   disabledDates = [],
   highlightedDates = [],
-  variant = 'single',
+  variant = "single",
   rangeStart,
   rangeEnd,
   onRangeChange,
   showToday = true,
   showWeekNumbers = false,
-  locale = 'en-US',
-  className = '',
+  locale = "en-US",
+  className = "",
   showClearButton = true,
   showSelectButton = true,
   onClear,
@@ -62,7 +62,7 @@ export const Calendar: React.FC<CalendarProps> = ({
     end: rangeEnd || null,
   });
 
-  const [selectedPredefinedRange, setSelectedPredefinedRange] = React.useState<string>('');
+  const [selectedPredefinedRange, setSelectedPredefinedRange] = React.useState<string>("");
   const [selectedMonth, setSelectedMonth] = React.useState<Date | null>(null);
   const [secondMonth, setSecondMonth] = React.useState(() => {
     const nextMonth = new Date(currentMonth);
@@ -70,21 +70,21 @@ export const Calendar: React.FC<CalendarProps> = ({
     return nextMonth;
   });
 
-  const weekdays = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
+  const weekdays = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
 
   const isDateDisabled = (date: Date): boolean => {
     if (minDate && date < minDate) return true;
     if (maxDate && date > maxDate) return true;
     if (!disabledDates || !Array.isArray(disabledDates)) return false;
-    return disabledDates.some(disabledDate => 
-      disabledDate.toDateString() === date.toDateString()
+    return disabledDates.some(
+      (disabledDate) => disabledDate.toDateString() === date.toDateString(),
     );
   };
 
   const isDateHighlighted = (date: Date): boolean => {
     if (!highlightedDates || !Array.isArray(highlightedDates)) return false;
-    return highlightedDates.some(highlightedDate => 
-      highlightedDate.toDateString() === date.toDateString()
+    return highlightedDates.some(
+      (highlightedDate) => highlightedDate.toDateString() === date.toDateString(),
     );
   };
 
@@ -106,21 +106,26 @@ export const Calendar: React.FC<CalendarProps> = ({
     return date > selectedRange.start && date < selectedRange.end;
   };
 
-  const getRangeBorderRadius = (date: Date, isRangeStart: boolean, isRangeEnd: boolean, isRangeMiddle: boolean) => {
+  const getRangeBorderRadius = (
+    date: Date,
+    isRangeStart: boolean,
+    isRangeEnd: boolean,
+    isRangeMiddle: boolean,
+  ) => {
     if (isRangeStart && isRangeEnd) {
       // Single date in range - fully rounded
-      return 'rounded-full';
+      return "rounded-full";
     } else if (isRangeStart) {
       // Start of range - rounded on left side only
-      return 'rounded-l-full';
+      return "rounded-l-full";
     } else if (isRangeEnd) {
       // End of range - rounded on right side only
-      return 'rounded-r-full';
+      return "rounded-r-full";
     } else if (isRangeMiddle) {
       // Middle of range - no border radius for seamless connection
-      return 'rounded-none';
+      return "rounded-none";
     }
-    return '';
+    return "";
   };
 
   const handleDateClick = (date: Date, month: Date) => {
@@ -129,7 +134,10 @@ export const Calendar: React.FC<CalendarProps> = ({
     // Track which month the date was selected in
     setSelectedMonth(month);
 
-    if (variant === 'range' || (variant === 'multi-month' && selectedPredefinedRange === 'custom')) {
+    if (
+      variant === "range" ||
+      (variant === "multi-month" && selectedPredefinedRange === "custom")
+    ) {
       if (!selectedRange.start || (selectedRange.start && selectedRange.end)) {
         setSelectedRange({ start: date, end: null });
       } else {
@@ -151,7 +159,7 @@ export const Calendar: React.FC<CalendarProps> = ({
   const goToPreviousMonth = () => {
     const newMonth = new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1, 1);
     setCurrentMonth(newMonth);
-    if (variant === 'multi-month') {
+    if (variant === "multi-month") {
       setSecondMonth(new Date(newMonth.getFullYear(), newMonth.getMonth() + 1, 1));
     }
   };
@@ -159,7 +167,7 @@ export const Calendar: React.FC<CalendarProps> = ({
   const goToNextMonth = () => {
     const newMonth = new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1, 1);
     setCurrentMonth(newMonth);
-    if (variant === 'multi-month') {
+    if (variant === "multi-month") {
       setSecondMonth(new Date(newMonth.getFullYear(), newMonth.getMonth() + 1, 1));
     }
   };
@@ -167,16 +175,16 @@ export const Calendar: React.FC<CalendarProps> = ({
   const goToToday = () => {
     const today = new Date();
     setCurrentMonth(new Date(today.getFullYear(), today.getMonth(), 1));
-    if (variant === 'single') {
+    if (variant === "single") {
       onChange?.(today);
     }
   };
 
   const handlePredefinedRange = (rangeValue: string) => {
     setSelectedPredefinedRange(rangeValue);
-    const range = predefinedRanges.find(r => r.value === rangeValue);
+    const range = predefinedRanges.find((r) => r.value === rangeValue);
     if (range) {
-      if (rangeValue === 'custom') {
+      if (rangeValue === "custom") {
         // For custom dates, clear the range and let user select manually
         setSelectedRange({ start: null, end: null });
         setSelectedMonth(null);
@@ -194,10 +202,10 @@ export const Calendar: React.FC<CalendarProps> = ({
   const handleClear = () => {
     setSelectedRange({ start: null, end: null });
     // Keep 'custom' selected when clearing custom dates
-    if (selectedPredefinedRange === 'custom') {
-      setSelectedPredefinedRange('custom');
+    if (selectedPredefinedRange === "custom") {
+      setSelectedPredefinedRange("custom");
     } else {
-      setSelectedPredefinedRange('');
+      setSelectedPredefinedRange("");
     }
     setSelectedMonth(null);
     onClear?.();
@@ -227,23 +235,24 @@ export const Calendar: React.FC<CalendarProps> = ({
   };
 
   const renderMonth = (month: Date, isMultiMonth: boolean = false) => {
-    const isSelectedMonth = selectedMonth && 
-      month.getFullYear() === selectedMonth.getFullYear() && 
+    const isSelectedMonth =
+      selectedMonth &&
+      month.getFullYear() === selectedMonth.getFullYear() &&
       month.getMonth() === selectedMonth.getMonth();
     const days = getDaysInMonth(month.getFullYear(), month.getMonth());
-    
+
     // Create a proper grid with empty cells for days before the first day of the month
     const firstDay = new Date(month.getFullYear(), month.getMonth(), 1);
     const firstDayOfWeek = firstDay.getDay();
     const weeks = [];
-    
+
     // Add empty cells for days before the first day of the month
     const paddedDays = [];
     for (let i = 0; i < firstDayOfWeek; i++) {
       paddedDays.push(null);
     }
     paddedDays.push(...days);
-    
+
     // Group into weeks
     for (let i = 0; i < paddedDays.length; i += 7) {
       weeks.push(paddedDays.slice(i, i + 7));
@@ -255,8 +264,11 @@ export const Calendar: React.FC<CalendarProps> = ({
 
         {/* Weekdays */}
         <div className="grid grid-cols-7 gap-px mb-1">
-          {weekdays.map(day => (
-            <div key={day} className="bg-white p-2 text-xs font-medium text-neutral-500 text-center">
+          {weekdays.map((day) => (
+            <div
+              key={day}
+              className="bg-white p-2 text-xs font-medium text-neutral-500 text-center"
+            >
               {day}
             </div>
           ))}
@@ -269,24 +281,35 @@ export const Calendar: React.FC<CalendarProps> = ({
               {week.map((date, dayIndex) => {
                 // Handle empty cells (null values)
                 if (date === null) {
-                  return (
-                    <div
-                      key={dayIndex}
-                      className="p-2 text-sm"
-                    />
-                  );
+                  return <div key={dayIndex} className="p-2 text-sm" />;
                 }
 
                 const isToday = date.toDateString() === new Date().toDateString();
-                const isPredefinedRange = variant === 'multi-month' && selectedPredefinedRange !== '';
-                const isCustomRange = variant === 'multi-month' && selectedPredefinedRange === 'custom';
-                const isSelected = variant === 'single' 
-                  ? value?.toDateString() === date.toDateString()
-                  : (isDateRangeStart(date) || isDateRangeEnd(date)) && (isSelectedMonth || isPredefinedRange);
-                const isInRange = (variant === 'range' || isPredefinedRange || isCustomRange) && isDateInRange(date) && (isSelectedMonth || isPredefinedRange || isCustomRange);
-                const isRangeStart = (variant === 'range' || isPredefinedRange || isCustomRange) && isDateRangeStart(date) && (isSelectedMonth || isPredefinedRange || isCustomRange);
-                const isRangeEnd = (variant === 'range' || isPredefinedRange || isCustomRange) && isDateRangeEnd(date) && (isSelectedMonth || isPredefinedRange || isCustomRange);
-                const isRangeMiddle = (variant === 'range' || isPredefinedRange || isCustomRange) && isDateRangeMiddle(date) && (isSelectedMonth || isPredefinedRange || isCustomRange);
+                const isPredefinedRange =
+                  variant === "multi-month" && selectedPredefinedRange !== "";
+                const isCustomRange =
+                  variant === "multi-month" && selectedPredefinedRange === "custom";
+                const isSelected =
+                  variant === "single"
+                    ? value?.toDateString() === date.toDateString()
+                    : (isDateRangeStart(date) || isDateRangeEnd(date)) &&
+                      (isSelectedMonth || isPredefinedRange);
+                const isInRange =
+                  (variant === "range" || isPredefinedRange || isCustomRange) &&
+                  isDateInRange(date) &&
+                  (isSelectedMonth || isPredefinedRange || isCustomRange);
+                const isRangeStart =
+                  (variant === "range" || isPredefinedRange || isCustomRange) &&
+                  isDateRangeStart(date) &&
+                  (isSelectedMonth || isPredefinedRange || isCustomRange);
+                const isRangeEnd =
+                  (variant === "range" || isPredefinedRange || isCustomRange) &&
+                  isDateRangeEnd(date) &&
+                  (isSelectedMonth || isPredefinedRange || isCustomRange);
+                const isRangeMiddle =
+                  (variant === "range" || isPredefinedRange || isCustomRange) &&
+                  isDateRangeMiddle(date) &&
+                  (isSelectedMonth || isPredefinedRange || isCustomRange);
                 const isDisabled = isDateDisabled(date);
                 const isHighlighted = isDateHighlighted(date);
                 const isCurrentMonth = date.getMonth() === month.getMonth();
@@ -298,15 +321,15 @@ export const Calendar: React.FC<CalendarProps> = ({
                     disabled={isDisabled}
                     className={`
                       relative p-2 text-sm transition-colors
-                      ${isCurrentMonth ? 'text-neutral-900' : 'text-neutral-400'}
-                      ${isToday ? 'font-bold' : ''}
-                      ${isSelected ? 'bg-neutral-700 text-white hover:bg-neutral-900' : ''}
+                      ${isCurrentMonth ? "text-neutral-900" : "text-neutral-400"}
+                      ${isToday ? "font-bold" : ""}
+                      ${isSelected ? "bg-neutral-700 text-white hover:bg-neutral-900" : ""}
                       ${getRangeBorderRadius(date, isRangeStart, isRangeEnd, isRangeMiddle)}
-                      ${isSelected && variant === 'single' ? 'rounded-full' : ''}
-                      ${isInRange && !isSelected ? 'bg-neutral-300' : ''}
-                      ${isHighlighted && !isSelected ? 'bg-yellow-100' : ''}
-                      ${isDisabled ? 'opacity-50 cursor-not-allowed' : 'hover:bg-neutral-100 cursor-pointer'}
-                      ${!isCurrentMonth ? 'opacity-50' : ''}
+                      ${isSelected && variant === "single" ? "rounded-full" : ""}
+                      ${isInRange && !isSelected ? "bg-neutral-300" : ""}
+                      ${isHighlighted && !isSelected ? "bg-yellow-100" : ""}
+                      ${isDisabled ? "opacity-50 cursor-not-allowed" : "hover:bg-neutral-100 cursor-pointer"}
+                      ${!isCurrentMonth ? "opacity-50" : ""}
                     `}
                   >
                     {date.getDate()}
@@ -323,7 +346,7 @@ export const Calendar: React.FC<CalendarProps> = ({
     );
   };
 
-  if (variant === 'multi-month') {
+  if (variant === "multi-month") {
     return (
       <div className={`bg-white border border-neutral-200 rounded-lg shadow-lg w-fit ${className}`}>
         <div className="flex">
@@ -334,7 +357,7 @@ export const Calendar: React.FC<CalendarProps> = ({
                 <Button
                   key={range.value}
                   onClick={() => handlePredefinedRange(range.value)}
-                  variant={selectedPredefinedRange === range.value ? 'primary' : 'ghost'}
+                  variant={selectedPredefinedRange === range.value ? "primary" : "ghost"}
                   size="sm"
                   className="w-full justify-start"
                 >
@@ -355,16 +378,16 @@ export const Calendar: React.FC<CalendarProps> = ({
                 icon={faChevronLeft}
                 ariaLabel="Previous month"
               />
-              
+
               <div className="flex items-center space-x-4">
                 <h2 className="text-lg font-semibold text-neutral-900">
-                  {currentMonth.toLocaleDateString(locale, { month: 'long', year: 'numeric' })}
+                  {currentMonth.toLocaleDateString(locale, { month: "long", year: "numeric" })}
                 </h2>
                 <h2 className="text-lg font-semibold text-neutral-900">
-                  {secondMonth.toLocaleDateString(locale, { month: 'long', year: 'numeric' })}
+                  {secondMonth.toLocaleDateString(locale, { month: "long", year: "numeric" })}
                 </h2>
               </div>
-              
+
               <Button
                 onClick={goToNextMonth}
                 variant="ghost"
@@ -389,17 +412,18 @@ export const Calendar: React.FC<CalendarProps> = ({
               onClick={handleClear}
               variant="secondary"
               size="sm"
-              disabled={!(selectedPredefinedRange === 'custom' && (selectedRange.start || selectedRange.end))}
+              disabled={
+                !(
+                  selectedPredefinedRange === "custom" &&
+                  (selectedRange.start || selectedRange.end)
+                )
+              }
             >
               Clear
             </Button>
           )}
           {showSelectButton && (
-            <Button
-              onClick={handleSelect}
-              variant="primary"
-              size="sm"
-            >
+            <Button onClick={handleSelect} variant="primary" size="sm">
               Select
             </Button>
           )}
@@ -419,11 +443,11 @@ export const Calendar: React.FC<CalendarProps> = ({
           icon={faChevronLeft}
           ariaLabel="Previous month"
         />
-        
+
         <h2 className="text-lg font-semibold text-neutral-900">
-          {currentMonth.toLocaleDateString(locale, { month: 'long', year: 'numeric' })}
+          {currentMonth.toLocaleDateString(locale, { month: "long", year: "numeric" })}
         </h2>
-        
+
         <Button
           onClick={goToNextMonth}
           variant="ghost"
@@ -434,27 +458,17 @@ export const Calendar: React.FC<CalendarProps> = ({
       </div>
 
       {/* Calendar Content */}
-      <div className="p-4">
-        {renderMonth(currentMonth, false)}
-      </div>
+      <div className="p-4">{renderMonth(currentMonth, false)}</div>
 
       {/* Footer */}
       <div className="flex justify-end space-x-2 p-4 border-t border-neutral-200">
         {showClearButton && (
-          <Button
-            onClick={handleClear}
-            variant="secondary"
-            size="sm"
-          >
+          <Button onClick={handleClear} variant="secondary" size="sm">
             Clear
           </Button>
         )}
         {showSelectButton && (
-          <Button
-            onClick={handleSelect}
-            variant="primary"
-            size="sm"
-          >
+          <Button onClick={handleSelect} variant="primary" size="sm">
             Select
           </Button>
         )}
@@ -476,15 +490,15 @@ export const DatePicker: React.FC<{
 }> = ({
   value,
   onChange,
-  placeholder = 'Select date',
-  format = 'MM/dd/yyyy',
+  placeholder = "Select date",
+  format = "MM/dd/yyyy",
   minDate,
   maxDate,
   disabled = false,
-  className = '',
+  className = "",
 }) => {
   const [isOpen, setIsOpen] = React.useState(false);
-  const [inputValue, setInputValue] = React.useState('');
+  const [inputValue, setInputValue] = React.useState("");
   const [tempSelectedDate, setTempSelectedDate] = React.useState<Date | null>(null);
   const datePickerRef = React.useRef<HTMLDivElement>(null);
 
@@ -503,8 +517,8 @@ export const DatePicker: React.FC<{
         setTempSelectedDate(null);
       }
     }
-    document.addEventListener('mousedown', handleClick);
-    return () => document.removeEventListener('mousedown', handleClick);
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
   }, [isOpen]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -544,12 +558,12 @@ export const DatePicker: React.FC<{
           className="w-full pl-3 pr-10 py-2 border border-neutral-300 rounded-sm focus:outline-none focus:border-black focus:border disabled:opacity-50 cursor-pointer"
           readOnly
         />
-        <FontAwesomeIcon 
-          icon={faCalendar} 
-          className="absolute right-3 top-1/2 transform -translate-y-1/2 text-neutral-400 w-4 h-4" 
+        <FontAwesomeIcon
+          icon={faCalendar}
+          className="absolute right-3 top-1/2 transform -translate-y-1/2 text-neutral-400 w-4 h-4"
         />
       </div>
-      
+
       {isOpen && (
         <div className="absolute top-full left-0 mt-1 z-1500">
           <Calendar
@@ -580,14 +594,14 @@ export const DateRangePicker: React.FC<{
   startDate,
   endDate,
   onChange,
-  placeholder = 'Select date range',
+  placeholder = "Select date range",
   minDate,
   maxDate,
   disabled = false,
-  className = '',
+  className = "",
 }) => {
   const [isOpen, setIsOpen] = React.useState(false);
-  const [inputValue, setInputValue] = React.useState('');
+  const [inputValue, setInputValue] = React.useState("");
 
   React.useEffect(() => {
     if (startDate && endDate) {
@@ -618,12 +632,12 @@ export const DateRangePicker: React.FC<{
           className="w-full pl-3 pr-10 py-2 border border-neutral-300 rounded-sm focus:outline-none focus:border-black focus:border disabled:opacity-50 cursor-pointer"
           readOnly
         />
-        <FontAwesomeIcon 
-          icon={faCalendar} 
-          className="absolute right-3 top-1/2 transform -translate-y-1/2 text-neutral-400 w-4 h-4" 
+        <FontAwesomeIcon
+          icon={faCalendar}
+          className="absolute right-3 top-1/2 transform -translate-y-1/2 text-neutral-400 w-4 h-4"
         />
       </div>
-      
+
       {isOpen && (
         <div className="absolute top-full left-0 mt-1 z-1500">
           <Calendar

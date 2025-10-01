@@ -1,13 +1,13 @@
-import React from 'react';
+import React from "react";
 
 export interface ProgressProps {
   value?: number;
   max?: number;
-  variant?: 'linear' | 'circular';
-  size?: 'sm' | 'md' | 'lg';
-  color?: 'primary' | 'success' | 'warning' | 'error';
+  variant?: "linear" | "circular";
+  size?: "sm" | "md" | "lg";
+  color?: "primary" | "success" | "warning" | "error";
   showLabel?: boolean;
-  labelPosition?: 'top' | 'bottom' | 'left' | 'right';
+  labelPosition?: "top" | "bottom" | "left" | "right";
   indeterminate?: boolean;
   className?: string;
 }
@@ -15,54 +15,54 @@ export interface ProgressProps {
 export const Progress: React.FC<ProgressProps> = ({
   value = 0,
   max = 100,
-  variant = 'linear',
-  size = 'md',
-  color = 'primary',
+  variant = "linear",
+  size = "md",
+  color = "primary",
   showLabel = false,
-  labelPosition = 'top',
+  labelPosition = "top",
   indeterminate = false,
-  className = '',
+  className = "",
 }) => {
   const percentage = Math.min(Math.max((value / max) * 100, 0), 100);
 
   const sizeClasses = {
     sm: {
-      linear: 'h-1',
-      circular: 'w-8 h-8',
-      label: 'text-xs',
+      linear: "h-1",
+      circular: "w-8 h-8",
+      label: "text-xs",
     },
     md: {
-      linear: 'h-2',
-      circular: 'w-12 h-12',
-      label: 'text-sm',
+      linear: "h-2",
+      circular: "w-12 h-12",
+      label: "text-sm",
     },
     lg: {
-      linear: 'h-3',
-      circular: 'w-16 h-16',
-      label: 'text-base',
+      linear: "h-3",
+      circular: "w-16 h-16",
+      label: "text-base",
     },
   };
 
   const colorClasses = {
     primary: {
-      background: 'bg-primary-200',
-      fill: 'bg-primary-600',
-      text: 'text-primary-600',
+      background: "bg-primary-200",
+      fill: "bg-primary-600",
+      text: "text-primary-600",
     },
     success: {
-      background: 'bg-success-200',
-      fill: 'bg-success-600',
-      text: 'text-success-600',
+      background: "bg-success-200",
+      fill: "bg-success-600",
+      text: "text-success-600",
     },
     warning: {
-      background: 'bg-warning-200',
-      fill: 'bg-warning-600',
-      text: 'text-warning-600',
+      background: "bg-warning-200",
+      fill: "bg-warning-600",
+      text: "text-warning-600",
     },
     error: {
-      background: 'bg-error-200',
-      fill: 'bg-error-600',
-      text: 'text-error-600',
+      background: "bg-error-200",
+      fill: "bg-error-600",
+      text: "text-error-600",
     },
   };
 
@@ -71,14 +71,16 @@ export const Progress: React.FC<ProgressProps> = ({
 
   const renderLinearProgress = () => (
     <div className="w-full">
-      <div className={`${currentSize.linear} ${currentColor.background} rounded-full overflow-hidden`}>
+      <div
+        className={`${currentSize.linear} ${currentColor.background} rounded-full overflow-hidden`}
+      >
         <div
           className={`${currentSize.linear} ${currentColor.fill} rounded-full transition-all duration-300 ease-out-quart ${
-            indeterminate ? 'animate-pulse' : ''
+            indeterminate ? "animate-pulse" : ""
           }`}
           style={{
-            width: indeterminate ? '100%' : `${percentage}%`,
-            animation: indeterminate ? 'progress-indeterminate 2s ease-in-out infinite' : undefined,
+            width: indeterminate ? "100%" : `${percentage}%`,
+            animation: indeterminate ? "progress-indeterminate 2s ease-in-out infinite" : undefined,
           }}
         />
       </div>
@@ -86,11 +88,13 @@ export const Progress: React.FC<ProgressProps> = ({
   );
 
   const renderCircularProgress = () => {
-    const radius = size === 'sm' ? 14 : size === 'md' ? 20 : 28;
-    const strokeWidth = size === 'sm' ? 2 : size === 'md' ? 3 : 4;
+    const radius = size === "sm" ? 14 : size === "md" ? 20 : 28;
+    const strokeWidth = size === "sm" ? 2 : size === "md" ? 3 : 4;
     const circumference = 2 * Math.PI * radius;
     const strokeDasharray = circumference;
-    const strokeDashoffset = indeterminate ? circumference * 0.25 : circumference - (percentage / 100) * circumference;
+    const strokeDashoffset = indeterminate
+      ? circumference * 0.25
+      : circumference - (percentage / 100) * circumference;
 
     return (
       <div className="relative inline-block">
@@ -103,7 +107,7 @@ export const Progress: React.FC<ProgressProps> = ({
             cx={radius + strokeWidth / 2}
             cy={radius + strokeWidth / 2}
             r={radius}
-            stroke={currentColor.background.replace('bg-', '')}
+            stroke={currentColor.background.replace("bg-", "")}
             strokeWidth={strokeWidth}
             fill="none"
             className="opacity-30"
@@ -113,17 +117,19 @@ export const Progress: React.FC<ProgressProps> = ({
             cx={radius + strokeWidth / 2}
             cy={radius + strokeWidth / 2}
             r={radius}
-            stroke={currentColor.fill.replace('bg-', '')}
+            stroke={currentColor.fill.replace("bg-", "")}
             strokeWidth={strokeWidth}
             fill="none"
             strokeLinecap="round"
             strokeDasharray={strokeDasharray}
             strokeDashoffset={strokeDashoffset}
             className={`transition-all duration-300 ease-out-quart ${
-              indeterminate ? 'animate-spin' : ''
+              indeterminate ? "animate-spin" : ""
             }`}
             style={{
-              animation: indeterminate ? 'progress-circular-indeterminate 1.5s linear infinite' : undefined,
+              animation: indeterminate
+                ? "progress-circular-indeterminate 1.5s linear infinite"
+                : undefined,
             }}
           />
         </svg>
@@ -142,16 +148,16 @@ export const Progress: React.FC<ProgressProps> = ({
     if (!showLabel) return null;
 
     const labelClasses = `${currentSize.label} ${currentColor.text} font-medium`;
-    const labelContent = indeterminate ? 'Loading...' : `${Math.round(percentage)}%`;
+    const labelContent = indeterminate ? "Loading..." : `${Math.round(percentage)}%`;
 
     switch (labelPosition) {
-      case 'top':
+      case "top":
         return <div className={`${labelClasses} mb-2`}>{labelContent}</div>;
-      case 'bottom':
+      case "bottom":
         return <div className={`${labelClasses} mt-2`}>{labelContent}</div>;
-      case 'left':
+      case "left":
         return <div className={`${labelClasses} mr-3`}>{labelContent}</div>;
-      case 'right':
+      case "right":
         return <div className={`${labelClasses} ml-3`}>{labelContent}</div>;
       default:
         return null;
@@ -160,19 +166,19 @@ export const Progress: React.FC<ProgressProps> = ({
 
   return (
     <div className={`${className}`}>
-      {labelPosition === 'top' && renderLabel()}
-      <div className={`flex items-center ${labelPosition === 'left' ? 'flex-row' : 'flex-col'}`}>
-        {labelPosition === 'left' && renderLabel()}
-        {variant === 'linear' ? renderLinearProgress() : renderCircularProgress()}
-        {labelPosition === 'right' && renderLabel()}
+      {labelPosition === "top" && renderLabel()}
+      <div className={`flex items-center ${labelPosition === "left" ? "flex-row" : "flex-col"}`}>
+        {labelPosition === "left" && renderLabel()}
+        {variant === "linear" ? renderLinearProgress() : renderCircularProgress()}
+        {labelPosition === "right" && renderLabel()}
       </div>
-      {labelPosition === 'bottom' && renderLabel()}
+      {labelPosition === "bottom" && renderLabel()}
     </div>
   );
 };
 
 // Add custom CSS for indeterminate animations
-const style = document.createElement('style');
+const style = document.createElement("style");
 style.textContent = `
   @keyframes progress-indeterminate {
     0% { transform: translateX(-100%); }
@@ -186,5 +192,3 @@ style.textContent = `
   }
 `;
 document.head.appendChild(style);
-
-
