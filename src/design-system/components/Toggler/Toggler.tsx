@@ -1,13 +1,13 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import type { IconDefinition } from "@fortawesome/fontawesome-common-types";
 
 export interface TogglerProps {
   checked: boolean;
   onChange: (checked: boolean) => void;
   disabled?: boolean;
   label?: string;
-  icon?: IconProp;
+  icon?: IconDefinition;
 }
 
 export const Toggler: React.FC<TogglerProps> = ({ checked, onChange, disabled, label, icon }) => (

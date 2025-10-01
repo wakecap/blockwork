@@ -1,6 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import type { IconDefinition } from "@fortawesome/fontawesome-common-types";
 // import { useFont } from './FontProvider';
 // import { getRTLClasses, getFontFamily } from '../utils/arabicLocalization';
 
@@ -8,8 +8,8 @@ export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> 
   label?: string;
   error?: string;
   success?: string;
-  iconLeft?: IconProp;
-  iconRight?: IconProp;
+  iconLeft?: IconDefinition;
+  iconRight?: IconDefinition;
   // Arabic support
   arabicLabel?: string;
   arabicPlaceholder?: string;

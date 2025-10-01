@@ -1,10 +1,10 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import type { IconDefinition } from "@fortawesome/fontawesome-common-types";
 
 export interface RadioProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label: string;
-  icon?: IconProp;
+  icon?: IconDefinition;
 }
 
 export const Radio: React.FC<RadioProps> = ({ label, icon, className, ...props }) => (

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo, useCallback } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
+import type { IconDefinition } from "@fortawesome/fontawesome-common-types";
 import { Button } from "../Button/Button";
 import { Badge } from "../Badge/Badge";
 import { faBookmark } from "@fortawesome/pro-regular-svg-icons";

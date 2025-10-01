@@ -1,13 +1,13 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import type { IconDefinition } from "@fortawesome/fontawesome-common-types";
 
 export interface TextAreaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
   label?: string;
   error?: string;
   success?: string;
-  iconLeft?: IconProp;
-  iconRight?: IconProp;
+  iconLeft?: IconDefinition;
+  iconRight?: IconDefinition;
   rows?: number;
   maxLength?: number;
   showCharacterCount?: boolean;

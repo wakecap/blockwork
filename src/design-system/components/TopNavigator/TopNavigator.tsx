@@ -21,7 +21,7 @@ import {
   faRocket,
 } from "@fortawesome/free-solid-svg-icons";
 
-import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
+import type { IconDefinition } from "@fortawesome/fontawesome-common-types";
 // Import regular (outlined) icons where available
 import {
   faMap,

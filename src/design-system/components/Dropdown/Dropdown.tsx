@@ -1,6 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import type { IconDefinition } from "@fortawesome/fontawesome-common-types";
 
 export interface DropdownOption {
   label: string;
@@ -12,8 +12,8 @@ export interface DropdownProps extends React.SelectHTMLAttributes<HTMLSelectElem
   options: DropdownOption[];
   value: string;
   onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
-  iconLeft?: IconProp;
-  iconRight?: IconProp;
+  iconLeft?: IconDefinition;
+  iconRight?: IconDefinition;
 }
 
 export const Dropdown: React.FC<DropdownProps> = ({
