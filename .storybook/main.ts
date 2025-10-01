@@ -1,8 +1,11 @@
 import type { StorybookConfig } from "@storybook/react-vite";
+import tailwindcss from "tailwindcss";
+import autoprefixer from "autoprefixer";
 
 const config: StorybookConfig = {
   stories: [
-    "../src/design-system/stories/**/*.stories.@(js|jsx|ts|tsx)",
+    "../src/design-system/components/**/*.stories.@(js|jsx|ts|tsx)",
+    "../src/design-system/foundations/**/*.stories.@(js|jsx|ts|tsx)",
     "../src/stories/**/*.stories.@(js|jsx|ts|tsx)",
   ],
   addons: ["@storybook/addon-docs", "@storybook/addon-a11y", "@storybook/addon-links"],
@@ -26,7 +29,7 @@ const config: StorybookConfig = {
     config.css = {
       ...config.css,
       postcss: {
-        plugins: [require("tailwindcss"), require("autoprefixer")],
+        plugins: [tailwindcss, autoprefixer],
       },
     };
 
