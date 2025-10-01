@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { Meta, StoryObj } from "@storybook/react-vite";
-import { MegaDropdown, MenuItem } from "./MegaDropdown";
+import { useState } from "react";
+import { type Meta, type StoryObj } from "@storybook/react-vite";
+import { MegaDropdown, type MenuItem } from "./MegaDropdown";
 import {
   faMap,
   faHardHat,

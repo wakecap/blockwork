@@ -1,4 +1,3 @@
-import React from "react";
 import { TopNavigator } from "./TopNavigator";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 

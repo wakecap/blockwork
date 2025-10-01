@@ -4,9 +4,9 @@ import autoprefixer from "autoprefixer";
 
 const config: StorybookConfig = {
   stories: [
-    "../src/design-system/components/**/*.stories.@(js|jsx|ts|tsx)",
-    "../src/design-system/foundations/**/*.stories.@(js|jsx|ts|tsx)",
-    "../src/stories/**/*.stories.@(js|jsx|ts|tsx)",
+    "../src/design-system/components/TopNavigator/TopNavigator.stories.tsx",
+    "../src/design-system/components/MegaDropdown/MegaDropdown.stories.tsx",
+    "../src/design-system/components/PageLoading/PageLoading.stories.tsx",
   ],
   addons: ["@storybook/addon-docs", "@storybook/addon-a11y", "@storybook/addon-links"],
   features: {},
