@@ -33,7 +33,10 @@ export default defineConfig({
   build: {
     lib: {
       entry: {
-        "design-system/components/TopNavigator": resolve(__dirname, "src/design-system/components/TopNavigator.tsx")
+        "design-system/components/TopNavigator": resolve(
+          __dirname,
+          "src/design-system/components/TopNavigator/TopNavigator.tsx",
+        ),
       },
       name: "WakeCapFrontendComponents",
       fileName: (format, entryName) => {
@@ -44,16 +47,12 @@ export default defineConfig({
       formats: ["es", "cjs"],
     },
     rollupOptions: {
-      external: [
-        "react",
-        "react-dom",
-        "react/jsx-runtime"
-      ],
+      external: ["react", "react-dom", "react/jsx-runtime"],
       output: {
         globals: {
           react: "React",
           "react-dom": "ReactDOM",
-          "react/jsx-runtime": "react/jsx-runtime"
+          "react/jsx-runtime": "react/jsx-runtime",
         },
         assetFileNames: (assetInfo) => {
           if (assetInfo.name && assetInfo.name.endsWith(".css")) {
