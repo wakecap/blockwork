@@ -1,65 +1,70 @@
-/// <reference types="vitest/config" />
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
-import path from 'path';
-import { fileURLToPath } from 'node:url';
-import { storybookTest } from '@storybook/addon-vitest/vitest-plugin';
-const dirname = typeof __dirname !== 'undefined' ? __dirname : path.dirname(fileURLToPath(import.meta.url));
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import { resolve } from "node:path";
+import path from "path";
+import dts from "vite-plugin-dts";
 
 // More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react(),
+    dts({
+      include: ["src/design-system/**/*"],
+      exclude: [
+        "src/**/*.stories.tsx",
+        "src/**/*.test.tsx",
+        "src/**/*.spec.tsx",
+        "src/design-system/utils/**/*",
+      ],
+      outDir: "dist",
+      insertTypesEntry: true,
+      copyDtsFiles: false,
+      tsconfigPath: "./tsconfig.lib.json",
+    }),
+  ],
   css: {
-    postcss: './postcss.config.js',
+    postcss: "./postcss.config.js",
   },
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, '.')
-    }
+      "@": path.resolve(__dirname, "."),
+    },
   },
   build: {
-    target: 'esnext',
-    minify: 'esbuild',
-    sourcemap: false,
+    lib: {
+      entry: {
+        "design-system/components/TopNavigator": resolve(__dirname, "src/design-system/components/TopNavigator.tsx")
+      },
+      name: "WakeCapFrontendComponents",
+      fileName: (format, entryName) => {
+        if (format === "es") return `${entryName}.js`;
+        if (format === "cjs") return `${entryName}.cjs`;
+        return `${entryName}.${format}.js`;
+      },
+      formats: ["es", "cjs"],
+    },
     rollupOptions: {
+      external: [
+        "react",
+        "react-dom",
+        "react/jsx-runtime"
+      ],
       output: {
-        manualChunks: {
-          'react-vendor': ['react', 'react-dom'],
-          'fontawesome': ['@fortawesome/fontawesome-svg-core', '@fortawesome/free-solid-svg-icons', '@fortawesome/pro-solid-svg-icons', '@fortawesome/pro-light-svg-icons', '@fortawesome/pro-duotone-svg-icons', '@fortawesome/react-fontawesome']
-        }
-      }
-    }
-  },
-  optimizeDeps: {
-    include: ['react', 'react-dom'],
-    exclude: ['@fortawesome/pro-solid-svg-icons', '@fortawesome/pro-light-svg-icons', '@fortawesome/pro-duotone-svg-icons']
-  },
-  server: {
-    hmr: {
-      overlay: false
-    }
-  },
-  test: {
-    projects: [{
-      extends: true,
-      plugins: [
-      // The plugin will run tests for the stories defined in your Storybook config
-      // See options at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon#storybooktest
-      storybookTest({
-        configDir: path.join(dirname, '.storybook')
-      })],
-      test: {
-        name: 'storybook',
-        browser: {
-          enabled: true,
-          headless: true,
-          provider: 'playwright',
-          instances: [{
-            browser: 'chromium'
-          }]
+        globals: {
+          react: "React",
+          "react-dom": "ReactDOM",
+          "react/jsx-runtime": "react/jsx-runtime"
         },
-        setupFiles: ['.storybook/vitest.setup.ts']
-      }
-    }]
-  }
+        assetFileNames: (assetInfo) => {
+          if (assetInfo.name && assetInfo.name.endsWith(".css")) {
+            return "styles.css";
+          }
+          return assetInfo.name || "assets/[name]-[hash][extname]";
+        },
+      },
+    },
+    sourcemap: true,
+    minify: true,
+    cssCodeSplit: false,
+  },
 });
