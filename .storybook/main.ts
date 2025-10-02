@@ -24,6 +24,8 @@ const config: StorybookConfig = {
     check: false,
   },
   viteFinal: async (config) => {
+    // Configure base URL for deployment
+    config.base = "/blockwork/";
     // Fix acorn parsing issues
     config.esbuild = {
       ...config.esbuild,
