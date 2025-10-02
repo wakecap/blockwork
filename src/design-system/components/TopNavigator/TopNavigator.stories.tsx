@@ -32,6 +32,7 @@ export const Default: Story = {
       onMenuItemClick={(item) => console.log("Menu item clicked:", item)}
       onSettingsMenuItemClick={(item) => console.log("Settings item clicked:", item)}
       onAvatarMenuItemClick={(item) => console.log("Avatar menu item clicked:", item)}
+      onPinnedItemClick={(item) => console.log("Pinned item clicked:", item)}
     />
   ),
 };
@@ -48,6 +49,7 @@ export const WithPageContent: Story = {
         onMenuItemClick={(item) => console.log("Menu item clicked:", item)}
         onSettingsMenuItemClick={(item) => console.log("Settings item clicked:", item)}
         onAvatarMenuItemClick={(item) => console.log("Avatar menu item clicked:", item)}
+        onPinnedItemClick={(item) => console.log("Pinned item clicked:", item)}
       />
       <div style={{ padding: "40px 20px", maxWidth: "1200px", margin: "0 auto" }}>
         <h1 style={{ fontSize: "2.5rem", marginBottom: "1rem", color: "#333" }}>
@@ -164,6 +166,10 @@ export const WithIdBasedCallbacks: Story = {
         console.log("Avatar menu item clicked:", item.id, item.label);
         alert(`Avatar menu item clicked: ${item.label} (ID: ${item.id})`);
       }}
+      onPinnedItemClick={(item) => {
+        console.log("Pinned item clicked:", item.id, item.label);
+        alert(`Pinned item clicked: ${item.label} (ID: ${item.id})`);
+      }}
     />
   ),
   parameters: {
@@ -196,6 +202,9 @@ export const WithSelectedStates: Story = {
       }}
       onAvatarMenuItemClick={(item) => {
         console.log("Avatar menu item clicked:", item.id, item.label);
+      }}
+      onPinnedItemClick={(item) => {
+        console.log("Pinned item clicked:", item.id, item.label);
       }}
     />
   ),
@@ -230,6 +239,9 @@ export const WithSelectedSettings: Story = {
       onAvatarMenuItemClick={(item) => {
         console.log("Avatar menu item clicked:", item.id, item.label);
       }}
+      onPinnedItemClick={(item) => {
+        console.log("Pinned item clicked:", item.id, item.label);
+      }}
     />
   ),
   parameters: {
@@ -261,6 +273,10 @@ export const WithInitialPinnedItems: Story = {
       }}
       onAvatarMenuItemClick={(item) => {
         console.log("Avatar menu item clicked:", item.id, item.label);
+      }}
+      onPinnedItemClick={(item) => {
+        console.log("Pinned item clicked:", item.id, item.label);
+        alert(`Pinned item clicked: ${item.label} (ID: ${item.id})`);
       }}
     />
   ),
@@ -298,6 +314,10 @@ export const WithPinnedItemsCallback: Story = {
       onAvatarMenuItemClick={(item) => {
         console.log("Avatar menu item clicked:", item.id, item.label);
       }}
+      onPinnedItemClick={(item) => {
+        console.log("Pinned item clicked:", item.id, item.label);
+        alert(`Pinned item clicked: ${item.label} (ID: ${item.id})`);
+      }}
     />
   ),
   parameters: {
@@ -305,6 +325,45 @@ export const WithPinnedItemsCallback: Story = {
       description: {
         story:
           "TopNavigator with pinned items callback to demonstrate the onPinnedItemsChange prop. Click the grid icon to pin/unpin items and see the callback in action. Check the browser console and alerts to see the pinned items change.",
+      },
+    },
+  },
+};
+
+export const WithPinnedItemClicks: Story = {
+  render: () => (
+    <TopNavigator
+      projectsData={projectsData}
+      menu={menu}
+      settingsMenu={settingsMenu}
+      avatarMenu={avatarMenu}
+      initialPinnedItems={["site-map", "workforce", "crew", "reports", "analytics", "safety"]}
+      maxVisibleItems={3}
+      onProjectSelect={(project) => {
+        console.log("Project selected:", project.id, project.name);
+      }}
+      onMenuItemClick={(item) => {
+        console.log("Menu item clicked:", item.id, item.label);
+      }}
+      onSettingsMenuItemClick={(item) => {
+        console.log("Settings item clicked:", item.id, item.label);
+      }}
+      onAvatarMenuItemClick={(item) => {
+        console.log("Avatar menu item clicked:", item.id, item.label);
+      }}
+      onPinnedItemClick={(item) => {
+        console.log("Pinned item clicked:", item.id, item.label);
+        alert(
+          `🚀 Pinned item clicked: ${item.label}\n\nID: ${item.id}\nIcon: ${item.icon.iconName}\n\nThis demonstrates the onPinnedItemClick callback functionality!`,
+        );
+      }}
+    />
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "TopNavigator specifically demonstrating the onPinnedItemClick functionality. This story has 6 pre-pinned items with maxVisibleItems set to 3, so you'll see 3 visible pinned items and a '+3' overflow button. Click any pinned item (visible or in overflow menu) to see the callback in action with detailed information about the clicked item.",
       },
     },
   },

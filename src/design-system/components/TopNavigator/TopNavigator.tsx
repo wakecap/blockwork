@@ -38,6 +38,7 @@ export interface TopNavigatorProps {
   onMenuItemClick?: (item: MenuItem) => void;
   onSettingsMenuItemClick?: (item: MenuItem) => void;
   onPinnedItemsChange?: (pinnedIds: string[]) => void; // Callback to get current pinned item IDs
+  onPinnedItemClick?: (item: { id: string; icon: IconDefinition; label: string }) => void; // Callback for pinned item clicks
 }
 
 export const TopNavigator = ({
@@ -54,6 +55,7 @@ export const TopNavigator = ({
   onMenuItemClick,
   onSettingsMenuItemClick,
   onPinnedItemsChange,
+  onPinnedItemClick,
 }: TopNavigatorProps) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [pinnedItems, setPinnedItems] = useState<
@@ -552,7 +554,7 @@ export const TopNavigator = ({
                   variant="ghost"
                   size="sm"
                   aria-label={item.label}
-                  onClick={() => {}}
+                  onClick={() => onPinnedItemClick?.(item)}
                 >
                   {item.label}
                 </Button>
@@ -611,7 +613,7 @@ export const TopNavigator = ({
                           onMouseOut={(e) => (e.currentTarget.style.background = "transparent")}
                           onClick={() => {
                             setOverflowMenuOpen(false);
-                            // Handle item click
+                            onPinnedItemClick?.(item);
                           }}
                         >
                           <span
