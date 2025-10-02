@@ -1,0 +1,113 @@
+name: Publish to GitHub Packages
+
+on:
+  push:
+    tags:
+      - "v*" # Trigger on version tags (e.g., v1.0.0, v1.2.3)
+  workflow_dispatch:
+    inputs:
+      version_type:
+        description: "Version type to bump"
+        required: true
+        default: "patch"
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
+      custom_version:
+        description: "Custom version (e.g., 1.2.3) - leave empty to use version_type"
+        required: false
+        type: string
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [22]
+
+    permissions:
+      contents: write
+      packages: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
+        with:
+          node-version: ${{ matrix.node-version }}
+          registry-url: "https://npm.pkg.github.com"
+          scope: "@wakecap"
+          cache: 'npm'
+
+      - name: Setup Git
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run linting
+        run: npm run lint
+
+      - name: Run format check
+        run: npm run format:check
+
+      - name: Build package
+        run: npm run build
+
+      - name: Determine version
+        id: version
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            if [ -n "${{ github.event.inputs.custom_version }}" ]; then
+              echo "version=${{ github.event.inputs.custom_version }}" >> $GITHUB_OUTPUT
+            else
+              # Get current version and bump it
+              CURRENT_VERSION=$(node -p "require('./package.json').version")
+              VERSION_TYPE="${{ github.event.inputs.version_type }}"
+
+              # Use npm version to bump and get new version
+              NEW_VERSION=$(npm version $VERSION_TYPE --no-git-tag-version --dry-run | sed 's/v//')
+              echo "version=$NEW_VERSION" >> $GITHUB_OUTPUT
+            fi
+          else
+            # Extract version from tag
+            TAG_VERSION=${GITHUB_REF#refs/tags/}
+            VERSION=${TAG_VERSION#v}
+            echo "version=$VERSION" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Update version in package.json
+        if: github.event_name == 'workflow_dispatch'
+        run: |
+          # Use node to directly update the version in package.json
+          node -e "
+            const fs = require('fs');
+            const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
+            pkg.version = '${{ steps.version.outputs.version }}';
+            fs.writeFileSync('package.json', JSON.stringify(pkg, null, 2) + '\n');
+          "
+          # Update package-lock.json to match the new version
+          npm install --package-lock-only
+          echo "Updated package.json to version ${{ steps.version.outputs.version }}"
+
+      - name: Create and push tag
+        if: github.event_name == 'workflow_dispatch'
+        run: |
+          git add package.json package-lock.json
+          git commit -m "chore: bump version to ${{ steps.version.outputs.version }}"
+          git tag v${{ steps.version.outputs.version }}
+          git push origin HEAD:${{ github.ref }}
+          git push origin v${{ steps.version.outputs.version }}
+
+      - name: Publish to GitHub Packages
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
