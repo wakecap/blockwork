@@ -1,6 +1,10 @@
 import { addons } from "storybook/manager-api";
 import { create } from "storybook/theming";
 
+// Determine if we're in production build (static deployment)
+const isProduction = process.env.NODE_ENV === "production";
+const baseUrl = isProduction ? "/blockwork" : "";
+
 // Custom Blockwork theme for Storybook 9.x
 const blockworkTheme = create({
   base: "light",
@@ -8,7 +12,7 @@ const blockworkTheme = create({
   // Brand configuration
   brandTitle: "Blockwork Design System",
   brandUrl: "https://github.com/wakecap/blockwork",
-  brandImage: "/assets/images/blockwork-logo-black.png",
+  brandImage: `${baseUrl}/assets/images/blockwork-logo-black.png`,
   brandTarget: "_self",
 
   // Core colors
