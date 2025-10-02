@@ -1,20 +1,19 @@
 import React, { useState, useRef, useEffect, useMemo, useCallback } from "react";
-import { Button } from "../Button/Button";
-import { Avatar } from "../Avatar/Avatar";
-import { SearchInput } from "../SearchInput/SearchInput";
-import { EmptyState } from "../EmptyState/EmptyState";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import type { ProjectsData } from "./projectsData";
-import type { MenuItem } from "./menuData";
-
 import {
   faCaretDown,
   faBars,
   faRocket as faRocketRegular,
 } from "@fortawesome/free-solid-svg-icons";
-
 import type { IconDefinition } from "@fortawesome/fontawesome-common-types";
+
 import { MegaDropdown } from "../MegaDropdown/MegaDropdown";
+import { Button } from "../Button/Button";
+import { Avatar } from "../Avatar/Avatar";
+import { SearchInput } from "../SearchInput/SearchInput";
+import { EmptyState } from "../EmptyState/EmptyState";
+import type { ProjectsData } from "./projectsData";
+import type { MenuItem } from "./menuData";
 
 const Logo = () => (
   <svg width="24" height="16" viewBox="0 0 24 16" fill="none" xmlns="http://www.w3.org/2000/svg">

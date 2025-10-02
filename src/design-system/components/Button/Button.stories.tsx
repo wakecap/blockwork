@@ -1,9 +1,7 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { FontProvider } from "../FontProvider/FontProvider";
-import { Button } from "./Button";
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Button, type SizeVariants, type Variants } from "./Button";
 
 import {
   faBell,
@@ -833,8 +831,8 @@ export const ArabicInteractive: Story = {
               {showArabic ? "Arabic (RTL) - IBM Plex Sans Arabic" : "English (LTR) - Figtree"}
             </p>
             <Button
-              variant={selectedVariant as any}
-              size={selectedSize as any}
+              variant={selectedVariant as Variants}
+              size={selectedSize as SizeVariants}
               icon={withIcon ? faDownload : undefined}
               iconPosition="left"
               arabicText={

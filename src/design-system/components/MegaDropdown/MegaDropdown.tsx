@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useMemo, useCallback } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { IconDefinition } from "@fortawesome/fontawesome-common-types";
-import { Button } from "../Button/Button";
-import { Badge } from "../Badge/Badge";
 import { faBookmark } from "@fortawesome/pro-regular-svg-icons";
 import { faBookmark as faBookmarkSolid } from "@fortawesome/free-solid-svg-icons";
+
+import { Button } from "../Button/Button";
+import { Badge } from "../Badge/Badge";
 
 export interface MenuItem {
   id: string;
@@ -73,8 +74,6 @@ export const MegaDropdown: React.FC<MegaDropdownProps> = ({
     return () => document.removeEventListener("mousedown", handleClick);
   }, [open, onClose]);
 
-  if (!open && !isVisible) return null;
-
   const handlePinClick = useCallback(
     (link: MenuItem) => {
       setPinned((prev) => {
@@ -112,6 +111,9 @@ export const MegaDropdown: React.FC<MegaDropdownProps> = ({
 
     return cols;
   }, [menu]);
+
+  // Don't render if not open and not visible (after all hooks have been called)
+  if (!open && !isVisible) return null;
 
   return (
     <>

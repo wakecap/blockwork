@@ -12,7 +12,7 @@ interface LanguageContextType {
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
-export const useLanguage = () => {
+const useLanguage = () => {
   const context = useContext(LanguageContext);
   if (context === undefined) {
     throw new Error("useLanguage must be used within a LanguageProvider");
@@ -25,7 +25,7 @@ interface LanguageProviderProps {
   defaultLanguage?: Language;
 }
 
-export const LanguageProvider: React.FC<LanguageProviderProps> = ({
+const LanguageProvider: React.FC<LanguageProviderProps> = ({
   children,
   defaultLanguage = "en",
 }) => {
@@ -73,17 +73,20 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({
 };
 
 // Utility functions for Arabic text handling
-export const getText = (englishText: string, arabicText?: string, showArabic?: boolean) => {
+const getText = (englishText: string, arabicText?: string, showArabic?: boolean) => {
   if (showArabic && arabicText) {
     return arabicText;
   }
   return englishText;
 };
 
-export const getRTLClasses = (isRTL: boolean) => {
+const getRTLClasses = (isRTL: boolean) => {
   return isRTL ? "rtl" : "ltr";
 };
 
-export const getFontFamily = (isRTL: boolean) => {
+const getFontFamily = (isRTL: boolean) => {
   return isRTL ? "font-arabic" : "font-sans";
 };
+
+// eslint-disable-next-line react-refresh/only-export-components
+export { LanguageProvider, useLanguage, getText, getRTLClasses, getFontFamily };

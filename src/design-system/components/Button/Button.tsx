@@ -5,57 +5,64 @@ import { cn } from "../../../utils/utils";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { IconDefinition } from "@fortawesome/fontawesome-common-types";
 
+const sizeVariants = {
+  // Responsive sizes with mobile-first approach and touch-friendly targets
+  xs: "h-7 px-2 py-1 text-xs gap-1 min-w-[44px] sm:h-6 sm:min-w-auto",
+  sm: "h-9 px-3 py-1.5 text-sm gap-1.5 min-w-[44px] sm:h-8 sm:min-w-auto",
+  md: "h-11 px-4 py-2 text-sm gap-2 min-w-[44px] sm:h-10 sm:min-w-auto",
+  lg: "h-12 px-6 py-3 text-base gap-2.5 min-w-[44px] sm:h-12 sm:min-w-auto",
+  xl: "h-14 px-8 py-4 text-lg gap-3 min-w-[44px] sm:h-14 sm:min-w-auto",
+  icon: "h-11 w-11 p-0 text-sm gap-0 sm:h-10 sm:w-10",
+  // Icon-only sizes - square buttons with proper scaling
+  iconXs: "h-6 w-6 p-0 text-xs gap-0 sm:h-6 sm:w-6",
+  iconSm: "h-8 w-8 p-0 text-sm gap-0 sm:h-8 sm:w-8",
+  iconMd: "h-10 w-10 p-0 text-sm gap-0 sm:h-10 sm:w-10",
+  iconLg: "h-12 w-12 p-0 text-base gap-0 sm:h-12 sm:w-12",
+  iconXl: "h-14 w-14 p-0 text-lg gap-0 sm:h-14 sm:w-14",
+};
+
+const variants = {
+  // Core variants (Black-based) with responsive hover states
+  primary:
+    "bg-neutral-900 text-white border border-neutral-900 hover:bg-neutral-800 hover:shadow-md active:bg-neutral-950 focus-visible:ring-neutral-500 active:scale-[0.98] sm:active:scale-100",
+  secondary:
+    "bg-neutral-100 text-neutral-900 border border-neutral-200 hover:border-secondary-200 active:bg-neutral-300 focus-visible:ring-neutral-500 active:scale-[0.98] sm:active:scale-100",
+  accent:
+    "bg-orange-600 text-white border border-orange-600 hover:bg-orange-700 hover:shadow-md active:bg-orange-800 focus-visible:ring-orange-500 active:scale-[0.98] sm:active:scale-100",
+  outline:
+    "bg-transparent text-neutral-900 border border-neutral-900 hover:bg-neutral-900 hover:text-white hover:shadow-sm focus-visible:ring-neutral-500 active:scale-[0.98] sm:active:scale-100",
+  ghost:
+    "bg-transparent text-neutral-600 border border-transparent hover:bg-neutral-100 hover:text-neutral-900 focus-visible:ring-neutral-500 active:scale-[0.98] sm:active:scale-100",
+  text: "bg-transparent text-neutral-900 border border-transparent hover:bg-neutral-50 hover:text-neutral-700 focus-visible:ring-neutral-500 active:scale-[0.98] sm:active:scale-100",
+
+  // Semantic variants with responsive interactions
+  success:
+    "bg-green-600 text-white border border-green-600 hover:bg-green-700 hover:shadow-md active:bg-green-800 focus-visible:ring-green-500 active:scale-[0.98] sm:active:scale-100",
+  warning:
+    "bg-yellow-500 text-white border border-yellow-500 hover:bg-yellow-600 hover:shadow-md active:bg-yellow-700 focus-visible:ring-yellow-500 active:scale-[0.98] sm:active:scale-100",
+  destructive:
+    "bg-red-600 text-white border border-red-600 hover:bg-red-700 hover:shadow-md active:bg-red-800 focus-visible:ring-red-500 active:scale-[0.98] sm:active:scale-100",
+  info: "bg-blue-600 text-white border border-blue-600 hover:bg-blue-700 hover:shadow-md active:bg-blue-800 focus-visible:ring-blue-500 active:scale-[0.98] sm:active:scale-100",
+
+  // Special variants with mobile optimizations
+  pin: "bg-transparent text-neutral-400 border border-transparent hover:bg-orange-50 hover:text-orange-600 focus-visible:ring-orange-500 active:scale-[0.95] sm:active:scale-100",
+  nav: "bg-neutral-800 text-white border border-neutral-800 hover:bg-neutral-700 hover:shadow-md active:bg-neutral-900 focus-visible:ring-neutral-500 active:scale-[0.98] sm:active:scale-100",
+  fab: "bg-orange-600 text-white border border-orange-600 hover:bg-orange-700 hover:shadow-xl active:bg-orange-800 focus-visible:ring-orange-500 rounded-full fixed bottom-4 right-4 sm:bottom-6 sm:right-6 shadow-lg z-50 active:scale-[0.95] sm:active:scale-100",
+  iconBtn:
+    "bg-transparent text-black border border-transparent hover:bg-gray-200 focus-visible:ring-neutral-500 active:scale-[0.95] sm:active:scale-100",
+};
+
+type SizeVariants = keyof typeof sizeVariants;
+type Variants = keyof typeof variants;
+
 // Button variants using CVA with black-primary design system and responsive enhancements
 const buttonVariants = cva(
   // Base classes with responsive touch targets, mobile optimizations, and RTL support
   "inline-flex items-center justify-center whitespace-nowrap rounded-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 relative overflow-hidden touch-manipulation select-none",
   {
     variants: {
-      variant: {
-        // Core variants (Black-based) with responsive hover states
-        primary:
-          "bg-neutral-900 text-white border border-neutral-900 hover:bg-neutral-800 hover:shadow-md active:bg-neutral-950 focus-visible:ring-neutral-500 active:scale-[0.98] sm:active:scale-100",
-        secondary:
-          "bg-neutral-100 text-neutral-900 border border-neutral-200 hover:border-secondary-200 active:bg-neutral-300 focus-visible:ring-neutral-500 active:scale-[0.98] sm:active:scale-100",
-        accent:
-          "bg-orange-600 text-white border border-orange-600 hover:bg-orange-700 hover:shadow-md active:bg-orange-800 focus-visible:ring-orange-500 active:scale-[0.98] sm:active:scale-100",
-        outline:
-          "bg-transparent text-neutral-900 border border-neutral-900 hover:bg-neutral-900 hover:text-white hover:shadow-sm focus-visible:ring-neutral-500 active:scale-[0.98] sm:active:scale-100",
-        ghost:
-          "bg-transparent text-neutral-600 border border-transparent hover:bg-neutral-100 hover:text-neutral-900 focus-visible:ring-neutral-500 active:scale-[0.98] sm:active:scale-100",
-        text: "bg-transparent text-neutral-900 border border-transparent hover:bg-neutral-50 hover:text-neutral-700 focus-visible:ring-neutral-500 active:scale-[0.98] sm:active:scale-100",
-
-        // Semantic variants with responsive interactions
-        success:
-          "bg-green-600 text-white border border-green-600 hover:bg-green-700 hover:shadow-md active:bg-green-800 focus-visible:ring-green-500 active:scale-[0.98] sm:active:scale-100",
-        warning:
-          "bg-yellow-500 text-white border border-yellow-500 hover:bg-yellow-600 hover:shadow-md active:bg-yellow-700 focus-visible:ring-yellow-500 active:scale-[0.98] sm:active:scale-100",
-        destructive:
-          "bg-red-600 text-white border border-red-600 hover:bg-red-700 hover:shadow-md active:bg-red-800 focus-visible:ring-red-500 active:scale-[0.98] sm:active:scale-100",
-        info: "bg-blue-600 text-white border border-blue-600 hover:bg-blue-700 hover:shadow-md active:bg-blue-800 focus-visible:ring-blue-500 active:scale-[0.98] sm:active:scale-100",
-
-        // Special variants with mobile optimizations
-        pin: "bg-transparent text-neutral-400 border border-transparent hover:bg-orange-50 hover:text-orange-600 focus-visible:ring-orange-500 active:scale-[0.95] sm:active:scale-100",
-        nav: "bg-neutral-800 text-white border border-neutral-800 hover:bg-neutral-700 hover:shadow-md active:bg-neutral-900 focus-visible:ring-neutral-500 active:scale-[0.98] sm:active:scale-100",
-        fab: "bg-orange-600 text-white border border-orange-600 hover:bg-orange-700 hover:shadow-xl active:bg-orange-800 focus-visible:ring-orange-500 rounded-full fixed bottom-4 right-4 sm:bottom-6 sm:right-6 shadow-lg z-50 active:scale-[0.95] sm:active:scale-100",
-        iconBtn:
-          "bg-transparent text-black border border-transparent hover:bg-gray-200 focus-visible:ring-neutral-500 active:scale-[0.95] sm:active:scale-100",
-      },
-      size: {
-        // Responsive sizes with mobile-first approach and touch-friendly targets
-        xs: "h-7 px-2 py-1 text-xs gap-1 min-w-[44px] sm:h-6 sm:min-w-auto",
-        sm: "h-9 px-3 py-1.5 text-sm gap-1.5 min-w-[44px] sm:h-8 sm:min-w-auto",
-        md: "h-11 px-4 py-2 text-sm gap-2 min-w-[44px] sm:h-10 sm:min-w-auto",
-        lg: "h-12 px-6 py-3 text-base gap-2.5 min-w-[44px] sm:h-12 sm:min-w-auto",
-        xl: "h-14 px-8 py-4 text-lg gap-3 min-w-[44px] sm:h-14 sm:min-w-auto",
-        icon: "h-11 w-11 p-0 text-sm gap-0 sm:h-10 sm:w-10",
-        // Icon-only sizes - square buttons with proper scaling
-        iconXs: "h-6 w-6 p-0 text-xs gap-0 sm:h-6 sm:w-6",
-        iconSm: "h-8 w-8 p-0 text-sm gap-0 sm:h-8 sm:w-8",
-        iconMd: "h-10 w-10 p-0 text-sm gap-0 sm:h-10 sm:w-10",
-        iconLg: "h-12 w-12 p-0 text-base gap-0 sm:h-12 sm:w-12",
-        iconXl: "h-14 w-14 p-0 text-lg gap-0 sm:h-14 sm:w-14",
-      },
+      variant: variants,
+      size: sizeVariants,
     },
     defaultVariants: {
       variant: "primary",
@@ -157,7 +164,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     ref,
   ) => {
     const [isPressed, setIsPressed] = React.useState(false);
-    const [isHovered, setIsHovered] = React.useState(false);
+    // const [isHovered, setIsHovered] = React.useState(false);
 
     // Handle button text with Arabic support
     const getButtonText = () => {
@@ -217,12 +224,12 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 
     const handleMouseLeave = () => {
       if (ripple) setIsPressed(false);
-      setIsHovered(false);
+      // setIsHovered(false);
     };
 
-    const handleMouseEnter = () => {
-      setIsHovered(true);
-    };
+    // const handleMouseEnter = () => {
+    //  setIsHovered(true);
+    // };
 
     // Determine if button is icon-only
     const isIconOnly = !children && !loadingText && !arabicText;
@@ -255,7 +262,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         onClick={handleClick}
         onMouseDown={handleMouseDown}
         onMouseUp={handleMouseUp}
-        onMouseEnter={handleMouseEnter}
+        // onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         aria-label={props.ariaLabel || (isIconOnly && icon ? "Button" : undefined)}
         aria-describedby={props.ariaDescribedBy}
@@ -286,4 +293,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 
 Button.displayName = "Button";
 
+// eslint-disable-next-line react-refresh/only-export-components
 export { Button, buttonVariants };
+
+export type { SizeVariants, Variants };

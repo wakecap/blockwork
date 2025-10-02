@@ -6,12 +6,13 @@ import {
   faFile,
   faUsers,
   faExclamation,
+  type IconDefinition,
 } from "@fortawesome/free-solid-svg-icons";
 
 export interface EmptyStateProps {
   title: string;
   description?: string;
-  icon?: any;
+  icon?: IconDefinition | string;
   variant?: "default" | "search" | "files" | "users" | "error";
   action?: React.ReactNode;
   size?: "sm" | "md" | "lg";
