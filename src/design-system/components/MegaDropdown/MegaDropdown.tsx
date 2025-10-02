@@ -7,17 +7,19 @@ import { faBookmark } from "@fortawesome/pro-regular-svg-icons";
 import { faBookmark as faBookmarkSolid } from "@fortawesome/free-solid-svg-icons";
 
 export interface MenuItem {
+  id: string;
   icon: IconDefinition;
   label: string;
   badge?: string;
   onClick?: () => void;
+  isActive?: boolean;
 }
 
 interface MegaDropdownProps {
   open: boolean;
   onClose: () => void;
   menu: MenuItem[];
-  onPinChange?: (pinnedItems: Array<{ icon: IconDefinition; label: string }>) => void;
+  onPinChange?: (pinnedItems: Array<{ id: string; icon: IconDefinition; label: string }>) => void;
   onPinStateChange?: (pinnedStates: Record<string, boolean>) => void;
   pinnedStates?: Record<string, boolean>;
 }
@@ -79,7 +81,13 @@ export const MegaDropdown: React.FC<MegaDropdownProps> = ({
         const newPinned = { ...prev, [link.label]: !prev[link.label] };
 
         // Get all pinned items
-        const pinnedItems = menu.filter((item) => newPinned[item.label]);
+        const pinnedItems = menu
+          .filter((item) => newPinned[item.label])
+          .map((item) => ({
+            id: item.id,
+            icon: item.icon,
+            label: item.label,
+          }));
 
         // Notify parent component of pinned items
         onPinChange?.(pinnedItems);
@@ -165,12 +173,22 @@ export const MegaDropdown: React.FC<MegaDropdownProps> = ({
                         borderRadius: 5,
                         transition: "background 0.15s",
                         padding: "3px 8px 3px 16px",
+                        background: link.isActive ? "var(--Primary-50, #EFF6FF)" : "",
+                        borderLeft: link.isActive
+                          ? "3px solid var(--Primary-500, #3B82F6)"
+                          : "3px solid transparent",
                       }}
                       onClick={link.onClick}
-                      onMouseOver={(e) =>
-                        (e.currentTarget.style.background = "var(--Secondary-50, #F9FAFB)")
-                      }
-                      onMouseOut={(e) => (e.currentTarget.style.background = "")}
+                      onMouseOver={(e) => {
+                        if (!link.isActive) {
+                          e.currentTarget.style.background = "var(--Secondary-50, #F9FAFB)";
+                        }
+                      }}
+                      onMouseOut={(e) => {
+                        if (!link.isActive) {
+                          e.currentTarget.style.background = "";
+                        }
+                      }}
                     >
                       <div
                         style={{

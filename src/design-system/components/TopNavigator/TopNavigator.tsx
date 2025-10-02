@@ -4,48 +4,16 @@ import { Avatar } from "../Avatar/Avatar";
 import { SearchInput } from "../SearchInput/SearchInput";
 import { EmptyState } from "../EmptyState/EmptyState";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import type { ProjectsData } from "./projectsData";
+import type { MenuItem } from "./menuData";
+
 import {
-  faBell,
-  faCog,
-  faThLarge,
-  faUsers,
-  faBuilding,
-  faPlus,
-  faDatabase,
-  faFileAlt,
-  faUserCog,
-  faSignOutAlt,
-  faArrowLeft,
   faCaretDown,
   faBars,
-  faRocket,
+  faRocket as faRocketRegular,
 } from "@fortawesome/free-solid-svg-icons";
 
 import type { IconDefinition } from "@fortawesome/fontawesome-common-types";
-// Import regular (outlined) icons where available
-import {
-  faMap,
-  faUser,
-  faBuilding as faBuildingRegular,
-  faFileAlt as faFileRegular,
-  faClock as faClockRegular,
-  faListAlt,
-  faRocket as faRocketRegular,
-} from "@fortawesome/pro-regular-svg-icons";
-// Import solid icons for those not available in regular
-import {
-  faHardHat,
-  faSitemap,
-  faMicrochip,
-  faChartColumn,
-  faUserShield,
-  faShield,
-  faVideo,
-  faCloudSun,
-  faHouseMedical,
-  faListCheck,
-  faClock,
-} from "@fortawesome/free-solid-svg-icons";
 import { MegaDropdown } from "../MegaDropdown/MegaDropdown";
 
 const Logo = () => (
@@ -57,116 +25,71 @@ const Logo = () => (
   </svg>
 );
 
-const menu = [
-  { icon: faMap, label: "Site Map" }, // Regular (outlined)
-  { icon: faHardHat, label: "Workforce" }, // Solid (not available in regular)
-  { icon: faUser, label: "Crew" }, // Regular (outlined)
-  { icon: faSitemap, label: "OBS" }, // Solid (not available in regular)
-  { icon: faMicrochip, label: "Hardware Management" }, // Solid (not available in regular)
-  { icon: faChartColumn, label: "Reports" }, // Solid (not available in regular)
-  { icon: faUserShield, label: "Observation Manager" }, // Solid (not available in regular)
-  { icon: faShield, label: "VerifyResponse" }, // Solid (not available in regular)
-  { icon: faVideo, label: "CCTV AI" }, // Solid (not available in regular)
-  { icon: faCloudSun, label: "Weather Station", badge: "Beta" }, // Solid (not available in regular)
-  { icon: faHouseMedical, label: "Digital Clinic" }, // Solid (not available in regular)
-  { icon: faListAlt, label: "VerifyProgress" }, // Regular (outlined)
-  { icon: faClockRegular, label: "VerifyTime" }, // Regular (outlined)
-  { icon: faListAlt, label: "Lookahead Planning" }, // Regular (outlined)
-];
+export interface TopNavigatorProps {
+  projectsData: ProjectsData;
+  maxVisibleItems?: number;
+  menu: MenuItem[];
+  settingsMenu: MenuItem[];
+  avatarMenu: MenuItem[];
+  selectedProject?: string; // ID of the selected project
+  selectedMenuItem?: string; // ID of the selected menu item
+  initialPinnedItems?: string[]; // Array of menu item IDs to pin initially
+  onProjectSelect?: (project: { id: string; name: string }) => void;
+  onAvatarMenuItemClick?: (item: MenuItem) => void;
+  onMenuItemClick?: (item: MenuItem) => void;
+  onSettingsMenuItemClick?: (item: MenuItem) => void;
+  onPinnedItemsChange?: (pinnedIds: string[]) => void; // Callback to get current pinned item IDs
+}
 
-const settingsMenu = [
-  { icon: faClock, label: "VerifyTime" },
-  { icon: faUsers, label: "Crews" },
-  { icon: faBuilding, label: "Directory" },
-  { icon: faPlus, label: "Resource Assignment" },
-  { icon: faDatabase, label: "Data & Lookups" },
-  { icon: faFileAlt, label: "Reports Settings" },
-  { icon: faUserCog, label: "Observation Settings" },
-];
-
-const avatarMenu = [
-  { icon: faSignOutAlt, label: "Logout" },
-  { icon: faArrowLeft, label: "Back to Organization" },
-];
-
-const projectsData = [
-  {
-    organization: "Wakecap Technologies",
-    projects: [
-      { name: "Construction Site Alpha", initial: "C" },
-      { name: "Building Project Beta", initial: "B" },
-      { name: "Infrastructure Gamma", initial: "I" },
-      { name: "Highway Extension", initial: "H" },
-      { name: "Metro Station Delta", initial: "M" },
-      { name: "Airport Terminal", initial: "A" },
-    ],
-  },
-  {
-    organization: "Smart Construction Ltd",
-    projects: [
-      { name: "Tower Development", initial: "T" },
-      { name: "Mall Construction", initial: "M" },
-      { name: "Parking Garage", initial: "P" },
-      { name: "Hotel Complex", initial: "H" },
-      { name: "Stadium Project", initial: "S" },
-    ],
-  },
-  {
-    organization: "Urban Builders Inc",
-    projects: [
-      { name: "Residential Complex", initial: "R" },
-      { name: "Office Building", initial: "O" },
-      { name: "Shopping Center", initial: "S" },
-      { name: "University Campus", initial: "U" },
-      { name: "Medical Center", initial: "M" },
-      { name: "Tech Park", initial: "T" },
-    ],
-  },
-  {
-    organization: "Global Infrastructure Corp",
-    projects: [
-      { name: "Bridge Construction", initial: "B" },
-      { name: "Water Treatment Plant", initial: "W" },
-      { name: "Power Station", initial: "P" },
-      { name: "Tunnel Project", initial: "T" },
-      { name: "Port Expansion", initial: "P" },
-    ],
-  },
-  {
-    organization: "Metropolitan Developers",
-    projects: [
-      { name: "City Center Plaza", initial: "C" },
-      { name: "Luxury Condominiums", initial: "L" },
-      { name: "Business District", initial: "B" },
-      { name: "Cultural Center", initial: "C" },
-      { name: "Sports Complex", initial: "S" },
-      { name: "Transportation Hub", initial: "T" },
-    ],
-  },
-  {
-    organization: "Industrial Solutions Ltd",
-    projects: [
-      { name: "Manufacturing Plant", initial: "M" },
-      { name: "Warehouse Facility", initial: "W" },
-      { name: "Distribution Center", initial: "D" },
-      { name: "Factory Expansion", initial: "F" },
-    ],
-  },
-];
-
-export const TopNavigator = () => {
+export const TopNavigator = ({
+  projectsData,
+  maxVisibleItems: initialMaxVisibleItems = 4,
+  menu,
+  settingsMenu,
+  avatarMenu,
+  selectedProject,
+  selectedMenuItem,
+  initialPinnedItems = [],
+  onProjectSelect,
+  onAvatarMenuItemClick,
+  onMenuItemClick,
+  onSettingsMenuItemClick,
+  onPinnedItemsChange,
+}: TopNavigatorProps) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [pinnedItems, setPinnedItems] = useState<Array<{ icon: IconDefinition; label: string }>>(
-    [],
-  );
+  const [pinnedItems, setPinnedItems] = useState<
+    Array<{ id: string; icon: IconDefinition; label: string }>
+  >([]);
   const [pinnedStates, setPinnedStates] = useState<Record<string, boolean>>({});
   const [overflowMenuOpen, setOverflowMenuOpen] = useState(false);
   const [settingsMenuOpen, setSettingsMenuOpen] = useState(false);
   const [avatarMenuOpen, setAvatarMenuOpen] = useState(false);
   const [projectMenuOpen, setProjectMenuOpen] = useState(false);
-  const [currentProject, setCurrentProject] = useState({
-    name: "Construction Site Alpha",
-    initial: "C",
+  // Find the selected project from projectsData
+  const findProjectById = useCallback(
+    (projectId: string) => {
+      for (const orgGroup of projectsData) {
+        const project = orgGroup.projects.find((p) => p.id === projectId);
+        if (project) {
+          return project;
+        }
+      }
+      return null;
+    },
+    [projectsData],
+  );
+
+  const [currentProject, setCurrentProject] = useState(() => {
+    if (selectedProject) {
+      const foundProject = findProjectById(selectedProject);
+      if (foundProject) {
+        return foundProject;
+      }
+    }
+    return {
+      id: "proj-1",
+      name: "Construction Site Alpha",
+    };
   });
   const [projectSearchQuery, setProjectSearchQuery] = useState("");
   const [maxVisibleItems, setMaxVisibleItems] = useState(4); // Default to 4 items
@@ -183,8 +106,52 @@ export const TopNavigator = () => {
     console.log("dropdownOpen state changed to:", dropdownOpen);
   }, [dropdownOpen]);
 
-  const handlePinChange = (items: Array<{ icon: IconDefinition; label: string }>) => {
+  useEffect(() => {
+    if (initialMaxVisibleItems) {
+      setMaxVisibleItems(initialMaxVisibleItems);
+    }
+  }, [initialMaxVisibleItems]);
+
+  // Update currentProject when selectedProject prop changes
+  useEffect(() => {
+    if (selectedProject) {
+      const foundProject = findProjectById(selectedProject);
+      if (foundProject) {
+        setCurrentProject(foundProject);
+      }
+    }
+  }, [selectedProject, findProjectById]);
+
+  // Initialize pinned items based on initialPinnedItems prop
+  useEffect(() => {
+    if (initialPinnedItems.length > 0) {
+      const pinnedItemsFromIds = menu
+        .filter((item) => initialPinnedItems.includes(item.id))
+        .map((item) => ({
+          id: item.id,
+          icon: item.icon,
+          label: item.label,
+        }));
+
+      setPinnedItems(pinnedItemsFromIds);
+
+      // Also set the pinned states
+      const initialPinnedStates = initialPinnedItems.reduce(
+        (acc, id) => {
+          acc[id] = true;
+          return acc;
+        },
+        {} as Record<string, boolean>,
+      );
+
+      setPinnedStates(initialPinnedStates);
+    }
+  }, [initialPinnedItems, menu]);
+
+  const handlePinChange = (items: Array<{ id: string; icon: IconDefinition; label: string }>) => {
     setPinnedItems(items);
+    // Call the callback with the current pinned item IDs
+    onPinnedItemsChange?.(items.map((item) => item.id));
   };
 
   const handlePinStateChange = (pinnedStates: Record<string, boolean>) => {
@@ -272,7 +239,7 @@ export const TopNavigator = () => {
         projects: orgGroup.projects.filter(
           (project) =>
             project.name.toLowerCase().includes(query) ||
-            orgGroup.organization.toLowerCase().includes(query),
+            orgGroup.organizationName.toLowerCase().includes(query),
         ),
       }))
       .filter((orgGroup) => orgGroup.projects.length > 0);
@@ -294,18 +261,40 @@ export const TopNavigator = () => {
     }
 
     return limitedResults;
-  }, [projectSearchQuery]);
+  }, [projectSearchQuery, projectsData]);
+
+  // Create menu with onClick handlers and active state
+  const menuWithCallbacks = useMemo(() => {
+    return menu.map((item) => ({
+      ...item,
+      onClick: () => onMenuItemClick?.(item),
+      isActive: selectedMenuItem === item.id,
+    }));
+  }, [menu, onMenuItemClick, selectedMenuItem]);
+
+  // Create settings menu with onClick handlers and active state
+  const settingsMenuWithCallbacks = useMemo(() => {
+    return settingsMenu.map((item) => ({
+      ...item,
+      onClick: () => onSettingsMenuItemClick?.(item),
+      isActive: selectedMenuItem === item.id,
+    }));
+  }, [settingsMenu, onSettingsMenuItemClick, selectedMenuItem]);
 
   // Memoized handlers for better performance
   const handleSearchChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     setProjectSearchQuery(e.target.value);
   }, []);
 
-  const handleProjectSelect = useCallback((project: { name: string; initial: string }) => {
-    setCurrentProject(project);
-    setProjectMenuOpen(false);
-    setProjectSearchQuery("");
-  }, []);
+  const handleProjectSelect = useCallback(
+    (project: { id: string; name: string }) => {
+      setCurrentProject(project);
+      setProjectMenuOpen(false);
+      setProjectSearchQuery("");
+      onProjectSelect?.(project);
+    },
+    [onProjectSelect],
+  );
 
   // Helper function to truncate project name to prevent button width changes
   const truncateProjectName = (name: string, maxLength: number = 20) => {
@@ -447,7 +436,7 @@ export const TopNavigator = () => {
                   ) : (
                     filteredProjectsData.map((orgGroup, orgIndex) => (
                       <div
-                        key={orgGroup.organization}
+                        key={orgGroup.organizationId}
                         style={{
                           marginBottom: orgIndex < filteredProjectsData.length - 1 ? 12 : 0,
                         }}
@@ -464,13 +453,13 @@ export const TopNavigator = () => {
                             paddingLeft: 8,
                           }}
                         >
-                          {orgGroup.organization}
+                          {orgGroup.organizationName}
                         </div>
 
                         {/* Projects in this organization */}
-                        {orgGroup.projects.map((project, projectIndex) => (
+                        {orgGroup.projects.map((project) => (
                           <button
-                            key={project.name}
+                            key={project.id}
                             style={{
                               display: "flex",
                               alignItems: "center",
@@ -479,7 +468,10 @@ export const TopNavigator = () => {
                               padding: "8px 12px",
                               border: "none",
                               background:
-                                currentProject.name === project.name ? "#f3f4f6" : "transparent",
+                                selectedProject === project.id ||
+                                currentProject.name === project.name
+                                  ? "#f3f4f6"
+                                  : "transparent",
                               borderRadius: 4,
                               cursor: "pointer",
                               fontSize: 14,
@@ -488,18 +480,24 @@ export const TopNavigator = () => {
                               whiteSpace: "nowrap",
                             }}
                             onMouseOver={(e) => {
-                              if (currentProject.name !== project.name) {
+                              if (
+                                selectedProject !== project.id &&
+                                currentProject.name !== project.name
+                              ) {
                                 e.currentTarget.style.background = "#f9fafb";
                               }
                             }}
                             onMouseOut={(e) => {
-                              if (currentProject.name !== project.name) {
+                              if (
+                                selectedProject !== project.id &&
+                                currentProject.name !== project.name
+                              ) {
                                 e.currentTarget.style.background = "transparent";
                               }
                             }}
                             onClick={() => handleProjectSelect(project)}
                           >
-                            <Avatar name={project.name} size="xs" />
+                            <Avatar name={orgGroup.organizationName} size="xs" />
                             <span style={{ whiteSpace: "nowrap" }}>{project.name}</span>
                           </button>
                         ))}
@@ -549,9 +547,9 @@ export const TopNavigator = () => {
               style={{ display: "flex", alignItems: "center", gap: 2, position: "relative" }}
             >
               {/* Visible pinned items */}
-              {visibleItems.map((item, index) => (
+              {visibleItems.map((item) => (
                 <Button
-                  key={item.label}
+                  key={item.id}
                   variant="ghost"
                   size="sm"
                   aria-label={item.label}
@@ -590,9 +588,9 @@ export const TopNavigator = () => {
                         width: 240,
                       }}
                     >
-                      {overflowItems.map((item, index) => (
+                      {overflowItems.map((item) => (
                         <button
-                          key={item.label}
+                          key={item.id}
                           style={{
                             display: "flex",
                             alignItems: "center",
@@ -664,9 +662,9 @@ export const TopNavigator = () => {
                   width: 220,
                 }}
               >
-                {settingsMenu.map((item, index) => (
+                {settingsMenuWithCallbacks.map((item) => (
                   <button
-                    key={item.label}
+                    key={item.id}
                     style={{
                       display: "flex",
                       alignItems: "center",
@@ -674,7 +672,8 @@ export const TopNavigator = () => {
                       width: "100%",
                       padding: "8px 12px",
                       border: "none",
-                      background: "transparent",
+                      background: item.isActive ? "#EFF6FF" : "transparent",
+                      borderLeft: item.isActive ? "3px solid #3B82F6" : "3px solid transparent",
                       borderRadius: 4,
                       cursor: "pointer",
                       fontSize: 14,
@@ -684,12 +683,19 @@ export const TopNavigator = () => {
                       overflow: "hidden",
                       textOverflow: "ellipsis",
                     }}
-                    onMouseOver={(e) => (e.currentTarget.style.background = "#f3f4f6")}
-                    onMouseOut={(e) => (e.currentTarget.style.background = "transparent")}
+                    onMouseOver={(e) => {
+                      if (!item.isActive) {
+                        e.currentTarget.style.background = "#f3f4f6";
+                      }
+                    }}
+                    onMouseOut={(e) => {
+                      if (!item.isActive) {
+                        e.currentTarget.style.background = "transparent";
+                      }
+                    }}
                     onClick={() => {
                       setSettingsMenuOpen(false);
-                      // Handle settings item click
-                      console.log("Settings item clicked:", item.label);
+                      onSettingsMenuItemClick?.(item);
                     }}
                   >
                     <div
@@ -737,6 +743,7 @@ export const TopNavigator = () => {
             {/* Project dropdown menu - right aligned */}
             {projectMenuOpen && (
               <div
+                ref={projectRef}
                 style={{
                   position: "absolute",
                   top: "100%",
@@ -827,11 +834,11 @@ export const TopNavigator = () => {
                             letterSpacing: "0.05em",
                           }}
                         >
-                          {orgGroup.organization}
+                          {orgGroup.organizationName}
                         </div>
-                        {orgGroup.projects.map((project, projectIndex) => (
+                        {orgGroup.projects.map((project) => (
                           <button
-                            key={projectIndex}
+                            key={project.id}
                             style={{
                               display: "flex",
                               alignItems: "center",
@@ -840,7 +847,10 @@ export const TopNavigator = () => {
                               padding: "8px 12px",
                               border: "none",
                               background:
-                                currentProject.name === project.name ? "#f3f4f6" : "transparent",
+                                selectedProject === project.id ||
+                                currentProject.name === project.name
+                                  ? "#f3f4f6"
+                                  : "transparent",
                               borderRadius: 4,
                               cursor: "pointer",
                               fontSize: 14,
@@ -849,18 +859,24 @@ export const TopNavigator = () => {
                               marginBottom: 2,
                             }}
                             onMouseOver={(e) => {
-                              if (currentProject.name !== project.name) {
+                              if (
+                                selectedProject !== project.id &&
+                                currentProject.name !== project.name
+                              ) {
                                 e.currentTarget.style.background = "#f9fafb";
                               }
                             }}
                             onMouseOut={(e) => {
-                              if (currentProject.name !== project.name) {
+                              if (
+                                selectedProject !== project.id &&
+                                currentProject.name !== project.name
+                              ) {
                                 e.currentTarget.style.background = "transparent";
                               }
                             }}
                             onClick={() => handleProjectSelect(project)}
                           >
-                            <Avatar name={project.name} size="xs" />
+                            <Avatar name={orgGroup.organizationName} size="xs" />
                             <span style={{ whiteSpace: "nowrap" }}>{project.name}</span>
                           </button>
                         ))}
@@ -930,9 +946,9 @@ export const TopNavigator = () => {
 
                 {/* Menu items */}
                 <div style={{ padding: 8 }}>
-                  {avatarMenu.map((item, index) => (
+                  {avatarMenu.map((item) => (
                     <button
-                      key={item.label}
+                      key={item.id}
                       style={{
                         display: "flex",
                         alignItems: "center",
@@ -952,8 +968,7 @@ export const TopNavigator = () => {
                       onMouseOut={(e) => (e.currentTarget.style.background = "transparent")}
                       onClick={() => {
                         setAvatarMenuOpen(false);
-                        // Handle avatar menu item click
-                        console.log("Avatar menu item clicked:", item.label);
+                        onAvatarMenuItemClick?.(item);
                       }}
                     >
                       <div
@@ -981,7 +996,7 @@ export const TopNavigator = () => {
       </nav>
       {dropdownOpen && (
         <MegaDropdown
-          menu={menu}
+          menu={menuWithCallbacks}
           open={dropdownOpen}
           onClose={() => {
             console.log("MegaDropdown onClose called");
