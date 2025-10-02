@@ -1,11 +1,6 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import {
-  FontProvider,
-  LanguageSwitcher,
-  EnglishText,
-  ArabicText,
-} from "./FontProvider";
+import { FontProvider, LanguageSwitcher, EnglishText, ArabicText } from "./FontProvider";
 
 const meta: Meta<typeof FontProvider> = {
   title: "Foundation/FontProvider",

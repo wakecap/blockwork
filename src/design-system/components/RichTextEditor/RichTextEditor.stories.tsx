@@ -1,11 +1,6 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import {
-  RichTextEditor,
-  WYSIWYGEditor,
-  MarkdownEditor,
-  SimpleEditor,
-} from "./RichTextEditor";
+import { RichTextEditor, WYSIWYGEditor, MarkdownEditor, SimpleEditor } from "./RichTextEditor";
 
 const meta: Meta<typeof RichTextEditor> = {
   title: "Forms and Data Entry/RichTextEditor",
