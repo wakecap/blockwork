@@ -1,11 +1,11 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta: Meta = {
-  title: 'Foundation/Typography',
+  title: "Foundation/Typography",
   parameters: {
     docs: {
       description: {
-        component: 'Typography system and font guidelines.',
+        component: "Typography system and font guidelines.",
       },
     },
   },
@@ -21,7 +21,7 @@ export const Overview: Story = {
       <p className="text-gray-600 mb-4">
         Typography system for consistent text styling across the design system.
       </p>
-      
+
       <div className="space-y-4 mb-6">
         <div>
           <h1 className="text-4xl font-bold">Heading 1</h1>
@@ -44,7 +44,7 @@ export const Overview: Story = {
           <p className="text-sm text-gray-500">text-sm</p>
         </div>
       </div>
-      
+
       <div className="bg-teal-50 border border-teal-200 rounded-lg p-4">
         <p className="text-teal-800">
           <strong>Current:</strong> Using Figtree and Inter fonts with Tailwind typography classes.

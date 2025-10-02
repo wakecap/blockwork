@@ -1,11 +1,11 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta: Meta = {
-  title: 'Text/TextWithHighlight',
+  title: "Text/TextWithHighlight",
   parameters: {
     docs: {
       description: {
-        component: 'Text component with highlighting capabilities.',
+        component: "Text component with highlighting capabilities.",
       },
     },
   },
@@ -21,7 +21,7 @@ export const Overview: Story = {
       <p className="text-gray-600 mb-4">
         Text component with highlighting capabilities for search results and emphasis.
       </p>
-      
+
       <div className="bg-orange-50 border border-orange-200 rounded-lg p-4">
         <p className="text-orange-800">
           <strong>Coming Soon:</strong> TextWithHighlight component implementation.

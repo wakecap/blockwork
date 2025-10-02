@@ -1,11 +1,11 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta: Meta = {
-  title: 'Foundation/Colors',
+  title: "Foundation/Colors",
   parameters: {
     docs: {
       description: {
-        component: 'Color palette and usage guidelines for the design system.',
+        component: "Color palette and usage guidelines for the design system.",
       },
     },
   },
@@ -19,9 +19,10 @@ export const Overview: Story = {
     <div className="p-6">
       <h1 className="text-2xl font-bold mb-4">Colors</h1>
       <p className="text-gray-600 mb-4">
-        Our color system provides a comprehensive palette for creating consistent and accessible interfaces.
+        Our color system provides a comprehensive palette for creating consistent and accessible
+        interfaces.
       </p>
-      
+
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
         <div className="bg-orange-600 h-20 rounded-lg flex items-center justify-center text-white font-semibold">
           Primary
@@ -36,10 +37,11 @@ export const Overview: Story = {
           Error
         </div>
       </div>
-      
+
       <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
         <p className="text-blue-800">
-          <strong>Coming Soon:</strong> Complete color documentation with hex codes, usage guidelines, and accessibility considerations.
+          <strong>Coming Soon:</strong> Complete color documentation with hex codes, usage
+          guidelines, and accessibility considerations.
         </p>
       </div>
     </div>

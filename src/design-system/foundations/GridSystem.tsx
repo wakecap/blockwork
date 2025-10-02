@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 // Grid System Showcase
 export const GridShowcase: React.FC = () => {
@@ -8,7 +8,10 @@ export const GridShowcase: React.FC = () => {
         <h3 className="text-lg font-semibold mb-4 text-neutral-900">12-Column Grid</h3>
         <div className="grid grid-cols-12 gap-4">
           {Array.from({ length: 12 }, (_, i) => (
-            <div key={i} className="bg-primary-100 border border-primary-300 rounded p-2 text-center text-xs font-mono text-primary-700">
+            <div
+              key={i}
+              className="bg-primary-100 border border-primary-300 rounded p-2 text-center text-xs font-mono text-primary-700"
+            >
               {i + 1}
             </div>
           ))}
@@ -19,10 +22,15 @@ export const GridShowcase: React.FC = () => {
         <h3 className="text-lg font-semibold mb-4 text-neutral-900">Responsive Columns</h3>
         <div className="space-y-4">
           <div>
-            <p className="text-sm text-neutral-600 mb-2">1 column on mobile, 2 on tablet, 4 on desktop</p>
+            <p className="text-sm text-neutral-600 mb-2">
+              1 column on mobile, 2 on tablet, 4 on desktop
+            </p>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
               {Array.from({ length: 8 }, (_, i) => (
-                <div key={i} className="bg-info-100 border border-info-300 rounded p-4 text-center text-sm text-info-700">
+                <div
+                  key={i}
+                  className="bg-info-100 border border-info-300 rounded p-4 text-center text-sm text-info-700"
+                >
                   Item {i + 1}
                 </div>
               ))}
@@ -30,10 +38,15 @@ export const GridShowcase: React.FC = () => {
           </div>
 
           <div>
-            <p className="text-sm text-neutral-600 mb-2">2 columns on mobile, 3 on tablet, 6 on desktop</p>
+            <p className="text-sm text-neutral-600 mb-2">
+              2 columns on mobile, 3 on tablet, 6 on desktop
+            </p>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
               {Array.from({ length: 12 }, (_, i) => (
-                <div key={i} className="bg-success-100 border border-success-300 rounded p-4 text-center text-sm text-success-700">
+                <div
+                  key={i}
+                  className="bg-success-100 border border-success-300 rounded p-4 text-center text-sm text-success-700"
+                >
                   {i + 1}
                 </div>
               ))}
@@ -93,9 +106,15 @@ export const FlexboxShowcase: React.FC = () => {
           <div>
             <p className="text-sm text-neutral-600 mb-2">flex-col</p>
             <div className="flex flex-col gap-2 p-4 bg-neutral-50 rounded w-32">
-              <div className="bg-primary-500 text-white px-3 py-2 rounded text-sm text-center">1</div>
-              <div className="bg-primary-500 text-white px-3 py-2 rounded text-sm text-center">2</div>
-              <div className="bg-primary-500 text-white px-3 py-2 rounded text-sm text-center">3</div>
+              <div className="bg-primary-500 text-white px-3 py-2 rounded text-sm text-center">
+                1
+              </div>
+              <div className="bg-primary-500 text-white px-3 py-2 rounded text-sm text-center">
+                2
+              </div>
+              <div className="bg-primary-500 text-white px-3 py-2 rounded text-sm text-center">
+                3
+              </div>
             </div>
           </div>
         </div>
@@ -146,24 +165,54 @@ export const FlexboxShowcase: React.FC = () => {
             <p className="text-sm text-neutral-600 mb-2">items-start</p>
             <div className="flex items-start gap-2 p-4 bg-neutral-50 rounded h-24">
               <div className="bg-success-500 text-white px-3 py-2 rounded text-sm">Short</div>
-              <div className="bg-success-500 text-white px-3 py-2 rounded text-sm">Medium<br/>height</div>
-              <div className="bg-success-500 text-white px-3 py-2 rounded text-sm">Tall<br/>content<br/>here</div>
+              <div className="bg-success-500 text-white px-3 py-2 rounded text-sm">
+                Medium
+                <br />
+                height
+              </div>
+              <div className="bg-success-500 text-white px-3 py-2 rounded text-sm">
+                Tall
+                <br />
+                content
+                <br />
+                here
+              </div>
             </div>
           </div>
           <div>
             <p className="text-sm text-neutral-600 mb-2">items-center</p>
             <div className="flex items-center gap-2 p-4 bg-neutral-50 rounded h-24">
               <div className="bg-success-500 text-white px-3 py-2 rounded text-sm">Short</div>
-              <div className="bg-success-500 text-white px-3 py-2 rounded text-sm">Medium<br/>height</div>
-              <div className="bg-success-500 text-white px-3 py-2 rounded text-sm">Tall<br/>content<br/>here</div>
+              <div className="bg-success-500 text-white px-3 py-2 rounded text-sm">
+                Medium
+                <br />
+                height
+              </div>
+              <div className="bg-success-500 text-white px-3 py-2 rounded text-sm">
+                Tall
+                <br />
+                content
+                <br />
+                here
+              </div>
             </div>
           </div>
           <div>
             <p className="text-sm text-neutral-600 mb-2">items-end</p>
             <div className="flex items-end gap-2 p-4 bg-neutral-50 rounded h-24">
               <div className="bg-success-500 text-white px-3 py-2 rounded text-sm">Short</div>
-              <div className="bg-success-500 text-white px-3 py-2 rounded text-sm">Medium<br/>height</div>
-              <div className="bg-success-500 text-white px-3 py-2 rounded text-sm">Tall<br/>content<br/>here</div>
+              <div className="bg-success-500 text-white px-3 py-2 rounded text-sm">
+                Medium
+                <br />
+                height
+              </div>
+              <div className="bg-success-500 text-white px-3 py-2 rounded text-sm">
+                Tall
+                <br />
+                content
+                <br />
+                here
+              </div>
             </div>
           </div>
         </div>
@@ -175,17 +224,17 @@ export const FlexboxShowcase: React.FC = () => {
 // Container and Max Width Examples
 export const ContainerShowcase: React.FC = () => {
   const maxWidths = [
-    { name: 'max-w-xs', size: '20rem (320px)' },
-    { name: 'max-w-sm', size: '24rem (384px)' },
-    { name: 'max-w-md', size: '28rem (448px)' },
-    { name: 'max-w-lg', size: '32rem (512px)' },
-    { name: 'max-w-xl', size: '36rem (576px)' },
-    { name: 'max-w-2xl', size: '42rem (672px)' },
-    { name: 'max-w-3xl', size: '48rem (768px)' },
-    { name: 'max-w-4xl', size: '56rem (896px)' },
-    { name: 'max-w-5xl', size: '64rem (1024px)' },
-    { name: 'max-w-6xl', size: '72rem (1152px)' },
-    { name: 'max-w-7xl', size: '80rem (1280px)' },
+    { name: "max-w-xs", size: "20rem (320px)" },
+    { name: "max-w-sm", size: "24rem (384px)" },
+    { name: "max-w-md", size: "28rem (448px)" },
+    { name: "max-w-lg", size: "32rem (512px)" },
+    { name: "max-w-xl", size: "36rem (576px)" },
+    { name: "max-w-2xl", size: "42rem (672px)" },
+    { name: "max-w-3xl", size: "48rem (768px)" },
+    { name: "max-w-4xl", size: "56rem (896px)" },
+    { name: "max-w-5xl", size: "64rem (1024px)" },
+    { name: "max-w-6xl", size: "72rem (1152px)" },
+    { name: "max-w-7xl", size: "80rem (1280px)" },
   ];
 
   return (
@@ -194,7 +243,8 @@ export const ContainerShowcase: React.FC = () => {
         <h3 className="text-lg font-semibold mb-4 text-neutral-900">Container</h3>
         <div className="container bg-primary-50 border border-primary-200 rounded p-4">
           <p className="text-sm text-primary-700">
-            This container is centered and has responsive padding. It adjusts its max-width based on the current breakpoint.
+            This container is centered and has responsive padding. It adjusts its max-width based on
+            the current breakpoint.
           </p>
         </div>
       </div>
@@ -209,9 +259,7 @@ export const ContainerShowcase: React.FC = () => {
                 <span className="text-sm text-neutral-500">{width.size}</span>
               </div>
               <div className={`${width.name} bg-neutral-100 border border-neutral-300 rounded p-3`}>
-                <div className="text-sm text-neutral-700">
-                  Content constrained to {width.name}
-                </div>
+                <div className="text-sm text-neutral-700">Content constrained to {width.name}</div>
               </div>
             </div>
           ))}
@@ -272,5 +320,3 @@ export const LayoutPatterns: React.FC = () => {
     </div>
   );
 };
-
-

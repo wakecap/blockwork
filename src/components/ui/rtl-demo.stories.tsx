@@ -1,23 +1,23 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import { LanguageProvider } from './language-provider';
-import { RTLButton } from './rtl-button';
-import { RTLInput } from './rtl-input';
-import { LanguageToggle, LanguageSelector } from './language-toggle';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './card';
-import { Badge } from './badge';
-import { Search, Mail, Lock, User } from 'lucide-react';
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { LanguageProvider } from "./language-provider";
+import { RTLButton } from "./rtl-button";
+import { RTLInput } from "./rtl-input";
+import { LanguageToggle, LanguageSelector } from "./language-toggle";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./card";
+import { Badge } from "./badge";
+import { Search, Mail, Lock, User } from "lucide-react";
 
 const meta: Meta = {
-  title: 'Components/RTL Support',
+  title: "Components/RTL Support",
   parameters: {
-    layout: 'centered',
+    layout: "centered",
     docs: {
       description: {
-        component: 'Demonstration of Arabic/RTL support in WakeCap design system components.',
+        component: "Demonstration of Arabic/RTL support in WakeCap design system components.",
       },
     },
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   decorators: [
     (Story) => (
       <LanguageProvider>
@@ -41,31 +41,16 @@ export const RTLButtons: Story = {
     <div className="space-y-4">
       <h4 className="text-md font-medium">Buttons with Arabic Text</h4>
       <div className="flex flex-wrap gap-2">
-        <RTLButton
-          arabicText="حفظ"
-          showArabicText={true}
-        >
+        <RTLButton arabicText="حفظ" showArabicText={true}>
           Save
         </RTLButton>
-        <RTLButton
-          variant="outline"
-          arabicText="إلغاء"
-          showArabicText={true}
-        >
+        <RTLButton variant="outline" arabicText="إلغاء" showArabicText={true}>
           Cancel
         </RTLButton>
-        <RTLButton
-          variant="wakecap"
-          arabicText="تسجيل الدخول"
-          showArabicText={true}
-        >
+        <RTLButton variant="wakecap" arabicText="تسجيل الدخول" showArabicText={true}>
           Login
         </RTLButton>
-        <RTLButton
-          variant="destructive"
-          arabicText="حذف"
-          showArabicText={true}
-        >
+        <RTLButton variant="destructive" arabicText="حذف" showArabicText={true}>
           Delete
         </RTLButton>
       </div>
@@ -77,7 +62,7 @@ export const RTLInputs: Story = {
   render: () => (
     <div className="space-y-4 w-full max-w-md">
       <h4 className="text-md font-medium">Inputs with Arabic Labels</h4>
-      
+
       <RTLInput
         label="Username"
         placeholder="Enter username"
@@ -86,7 +71,7 @@ export const RTLInputs: Story = {
         showArabicText={true}
         iconLeft={<User className="h-4 w-4" />}
       />
-      
+
       <RTLInput
         label="Email"
         placeholder="Enter email"
@@ -96,7 +81,7 @@ export const RTLInputs: Story = {
         showArabicText={true}
         iconLeft={<Mail className="h-4 w-4" />}
       />
-      
+
       <RTLInput
         label="Password"
         placeholder="Enter password"
@@ -106,7 +91,7 @@ export const RTLInputs: Story = {
         showArabicText={true}
         iconLeft={<Lock className="h-4 w-4" />}
       />
-      
+
       <RTLInput
         label="Search"
         placeholder="Search..."
@@ -135,7 +120,7 @@ export const RTLForm: Story = {
           showArabicText={true}
           iconLeft={<User className="h-4 w-4" />}
         />
-        
+
         <RTLInput
           label="Email Address"
           placeholder="Enter email"
@@ -145,7 +130,7 @@ export const RTLForm: Story = {
           showArabicText={true}
           iconLeft={<Mail className="h-4 w-4" />}
         />
-        
+
         <RTLInput
           label="Password"
           placeholder="Create password"
@@ -155,7 +140,7 @@ export const RTLForm: Story = {
           showArabicText={true}
           iconLeft={<Lock className="h-4 w-4" />}
         />
-        
+
         <div className="flex gap-2 pt-2">
           <RTLButton
             className="flex-1"
@@ -165,12 +150,7 @@ export const RTLForm: Story = {
           >
             Create Account
           </RTLButton>
-          <RTLButton
-            variant="outline"
-            className="flex-1"
-            arabicText="إلغاء"
-            showArabicText={true}
-          >
+          <RTLButton variant="outline" className="flex-1" arabicText="إلغاء" showArabicText={true}>
             Cancel
           </RTLButton>
         </div>
@@ -183,7 +163,7 @@ export const RTLWithErrors: Story = {
   render: () => (
     <div className="space-y-4 w-full max-w-md">
       <h4 className="text-md font-medium">Inputs with Error States</h4>
-      
+
       <RTLInput
         label="Email"
         placeholder="Enter email"
@@ -194,7 +174,7 @@ export const RTLWithErrors: Story = {
         showArabicText={true}
         iconLeft={<Mail className="h-4 w-4" />}
       />
-      
+
       <RTLInput
         label="Password"
         placeholder="Enter password"
@@ -220,7 +200,7 @@ export const RTLDashboard: Story = {
           <LanguageToggle />
         </div>
       </div>
-      
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <Card>
           <CardHeader>
@@ -254,7 +234,7 @@ export const RTLDashboard: Story = {
             </RTLButton>
           </CardContent>
         </Card>
-        
+
         <Card>
           <CardHeader>
             <CardTitle>Search</CardTitle>

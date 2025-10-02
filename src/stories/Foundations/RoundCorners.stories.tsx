@@ -1,11 +1,11 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta: Meta = {
-  title: 'Foundation/Round Corners',
+  title: "Foundation/Round Corners",
   parameters: {
     docs: {
       description: {
-        component: 'Border radius and corner rounding guidelines.',
+        component: "Border radius and corner rounding guidelines.",
       },
     },
   },
@@ -21,7 +21,7 @@ export const Overview: Story = {
       <p className="text-gray-600 mb-4">
         Consistent border radius values for creating cohesive visual hierarchy.
       </p>
-      
+
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
         <div className="bg-gray-100 h-16 rounded-sm flex items-center justify-center text-sm">
           rounded-sm
@@ -36,7 +36,7 @@ export const Overview: Story = {
           rounded-xl
         </div>
       </div>
-      
+
       <div className="bg-green-50 border border-green-200 rounded-lg p-4">
         <p className="text-green-800">
           <strong>Current:</strong> Using rounded-sm as the default border radius across components.

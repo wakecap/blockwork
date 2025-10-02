@@ -1,11 +1,11 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta: Meta = {
-  title: 'Components/AlertBanner',
+  title: "Components/AlertBanner",
   parameters: {
     docs: {
       description: {
-        component: 'AlertBanner component for displaying important messages.',
+        component: "AlertBanner component for displaying important messages.",
       },
     },
   },
@@ -21,7 +21,7 @@ export const Overview: Story = {
       <p className="text-gray-600 mb-4">
         AlertBanner component for displaying important messages and notifications.
       </p>
-      
+
       <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
         <p className="text-yellow-800">
           <strong>Coming Soon:</strong> AlertBanner component implementation.

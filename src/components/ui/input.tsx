@@ -1,37 +1,39 @@
-import * as React from "react"
-import { cn } from "../../utils/utils"
+import * as React from "react";
+import { cn } from "../../utils/utils";
 
-export interface InputProps
-  extends React.InputHTMLAttributes<HTMLInputElement> {
-  label?: string
-  error?: string
-  success?: string
-  iconLeft?: React.ReactNode
-  iconRight?: React.ReactNode
+export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  label?: string;
+  error?: string;
+  success?: string;
+  iconLeft?: React.ReactNode;
+  iconRight?: React.ReactNode;
   // Arabic support
-  arabicLabel?: string
-  arabicPlaceholder?: string
-  arabicError?: string
-  arabicSuccess?: string
-  showArabicText?: boolean
+  arabicLabel?: string;
+  arabicPlaceholder?: string;
+  arabicError?: string;
+  arabicSuccess?: string;
+  showArabicText?: boolean;
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ 
-    className, 
-    type, 
-    label,
-    error,
-    success,
-    iconLeft,
-    iconRight,
-    arabicLabel,
-    arabicPlaceholder,
-    arabicError,
-    arabicSuccess,
-    showArabicText = false,
-    ...props 
-  }, ref) => {
+  (
+    {
+      className,
+      type,
+      label,
+      error,
+      success,
+      iconLeft,
+      iconRight,
+      arabicLabel,
+      arabicPlaceholder,
+      arabicError,
+      arabicSuccess,
+      showArabicText = false,
+      ...props
+    },
+    ref,
+  ) => {
     // Get text based on showArabicText
     const getLabelText = () => {
       if (showArabicText && arabicLabel) {
@@ -64,15 +66,11 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     return (
       <div className="w-full">
         {getLabelText() && (
-          <label className="block mb-1 text-sm font-medium text-foreground">
-            {getLabelText()}
-          </label>
+          <label className="block mb-1 text-sm font-medium text-foreground">{getLabelText()}</label>
         )}
         <div className="relative flex items-center">
           {iconLeft && (
-            <span className="absolute left-3 text-muted-foreground z-10">
-              {iconLeft}
-            </span>
+            <span className="absolute left-3 text-muted-foreground z-10">{iconLeft}</span>
           )}
           <input
             type={type}
@@ -81,29 +79,27 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
               iconLeft && "pl-9",
               iconRight && "pr-9",
               getErrorText() && "border-destructive focus-visible:ring-destructive",
-              getSuccessText() && !getErrorText() && "border-green-500 focus-visible:ring-green-500",
-              className
+              getSuccessText() &&
+                !getErrorText() &&
+                "border-green-500 focus-visible:ring-green-500",
+              className,
             )}
             placeholder={getPlaceholderText()}
             ref={ref}
             {...props}
           />
           {iconRight && (
-            <span className="absolute right-3 text-muted-foreground z-10">
-              {iconRight}
-            </span>
+            <span className="absolute right-3 text-muted-foreground z-10">{iconRight}</span>
           )}
         </div>
-        {getErrorText() && (
-          <p className="mt-1 text-xs text-destructive">{getErrorText()}</p>
-        )}
+        {getErrorText() && <p className="mt-1 text-xs text-destructive">{getErrorText()}</p>}
         {getSuccessText() && !getErrorText() && (
           <p className="mt-1 text-xs text-green-600">{getSuccessText()}</p>
         )}
       </div>
-    )
-  }
-)
-Input.displayName = "Input"
+    );
+  },
+);
+Input.displayName = "Input";
 
-export { Input }
+export { Input };
