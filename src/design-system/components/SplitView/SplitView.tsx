@@ -194,7 +194,7 @@ export const SplitView: React.FC<SplitViewProps> = ({
           <i
             className={cn(
               "text-neutral-400 fa-solid fa-grip-vertical",
-              isHorizontal ? "" : "rotate-90"
+              isHorizontal ? "" : "rotate-90",
             )}
           />
         </div>

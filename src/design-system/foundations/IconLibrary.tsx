@@ -1,7 +1,6 @@
 import React from "react";
 import { cn } from "../../utils/utils";
 
-
 // Icon component with size and color variants
 export interface IconProps {
   icon: string;

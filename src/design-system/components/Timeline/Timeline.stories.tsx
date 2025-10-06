@@ -1,5 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Timeline, ActivityTimeline, ProjectTimeline, EventTimeline, type TimelineItem } from "./Timeline";
+import {
+  Timeline,
+  ActivityTimeline,
+  ProjectTimeline,
+  EventTimeline,
+  type TimelineItem,
+} from "./Timeline";
 
 const meta: Meta<typeof Timeline> = {
   title: "Content Display/Timeline",
@@ -104,7 +110,11 @@ export const Variants: Story = {
       </div>
       <div>
         <h3 className="text-sm font-medium text-neutral-700 mb-4">Horizontal Variant</h3>
-        <Timeline items={sampleItems.slice(0, 3)} variant="horizontal" className="w-full max-w-2xl" />
+        <Timeline
+          items={sampleItems.slice(0, 3)}
+          variant="horizontal"
+          className="w-full max-w-2xl"
+        />
       </div>
     </div>
   ),
@@ -357,27 +367,15 @@ export const InteractiveExample: Story = {
         <div className="space-y-6">
           <div>
             <h3 className="text-sm font-medium text-neutral-700 mb-2">Small Size</h3>
-            <Timeline
-              items={sampleItems.slice(0, 3)}
-              size="sm"
-              className="w-full max-w-2xl"
-            />
+            <Timeline items={sampleItems.slice(0, 3)} size="sm" className="w-full max-w-2xl" />
           </div>
           <div>
             <h3 className="text-sm font-medium text-neutral-700 mb-2">Medium Size</h3>
-            <Timeline
-              items={sampleItems.slice(0, 3)}
-              size="md"
-              className="w-full max-w-2xl"
-            />
+            <Timeline items={sampleItems.slice(0, 3)} size="md" className="w-full max-w-2xl" />
           </div>
           <div>
             <h3 className="text-sm font-medium text-neutral-700 mb-2">Large Size</h3>
-            <Timeline
-              items={sampleItems.slice(0, 3)}
-              size="lg"
-              className="w-full max-w-2xl"
-            />
+            <Timeline items={sampleItems.slice(0, 3)} size="lg" className="w-full max-w-2xl" />
           </div>
         </div>
       </div>

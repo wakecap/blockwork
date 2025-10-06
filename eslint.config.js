@@ -14,6 +14,7 @@ export default tseslint.config(
       "build", 
       "node_modules", 
       ".storybook/static", 
+      "storybook-static",
       "coverage",
       // Ignore all components except the ones in main.ts (TopNavigator, MegaDropdown, PageLoading, Avatar, Button, Badge, SearchInput, EmptyState)
       "src/design-system/components/!(TopNavigator|MegaDropdown|PageLoading|Avatar|Button|Badge|SearchInput|EmptyState)/**",

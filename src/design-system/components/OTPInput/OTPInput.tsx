@@ -185,7 +185,9 @@ export const OTPInput: React.FC<OTPInputProps> = ({
           className="p-2 text-neutral-500 hover:text-neutral-700 transition-colors"
           disabled={disabled}
         >
-          <i className={cn("w-4 h-4", showPassword ? "fa-solid fa-eye-slash" : "fa-solid fa-eye")} />
+          <i
+            className={cn("w-4 h-4", showPassword ? "fa-solid fa-eye-slash" : "fa-solid fa-eye")}
+          />
         </button>
       )}
     </div>

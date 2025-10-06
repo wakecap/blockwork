@@ -37,10 +37,18 @@ export const RichTextEditor: React.FC<RichTextEditorProps> = ({
     bold: { icon: "fa-solid fa-bold", label: "Bold", command: "bold" },
     italic: { icon: "fa-solid fa-italic", label: "Italic", command: "italic" },
     underline: { icon: "fa-solid fa-underline", label: "Underline", command: "underline" },
-    strikethrough: { icon: "fa-solid fa-strikethrough", label: "Strikethrough", command: "strikeThrough" },
+    strikethrough: {
+      icon: "fa-solid fa-strikethrough",
+      label: "Strikethrough",
+      command: "strikeThrough",
+    },
     heading: { icon: "fa-solid fa-heading", label: "Heading", command: "formatBlock" },
     list: { icon: "fa-solid fa-list-ul", label: "List", command: "insertUnorderedList" },
-    orderedList: { icon: "fa-solid fa-list-ol", label: "Ordered List", command: "insertOrderedList" },
+    orderedList: {
+      icon: "fa-solid fa-list-ol",
+      label: "Ordered List",
+      command: "insertOrderedList",
+    },
     quote: { icon: "fa-solid fa-quote-left", label: "Quote", command: "formatBlock" },
     code: { icon: "fa-solid fa-code", label: "Code", command: "formatBlock" },
     link: { icon: "fa-solid fa-link", label: "Link", command: "createLink" },
@@ -156,7 +164,12 @@ export const RichTextEditor: React.FC<RichTextEditorProps> = ({
               className="p-2 text-neutral-600 hover:text-neutral-900 hover:bg-neutral-200 rounded transition-colors"
               title={isMarkdownPreview ? "Edit" : "Preview"}
             >
-              <i className={cn("w-4 h-4", isMarkdownPreview ? "fa-solid fa-eye-slash" : "fa-solid fa-eye")} />
+              <i
+                className={cn(
+                  "w-4 h-4",
+                  isMarkdownPreview ? "fa-solid fa-eye-slash" : "fa-solid fa-eye",
+                )}
+              />
             </button>
             <span className="text-xs text-neutral-500">
               {isMarkdownPreview ? "Preview" : "Markdown"}

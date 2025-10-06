@@ -161,7 +161,12 @@ export const ProductCard: React.FC<{
           }}
           className="p-2 bg-white rounded-full shadow-md hover:bg-neutral-50 transition-colors"
         >
-          <i className={cn("w-4 h-4 fa-solid fa-heart", isLiked ? "text-red-500" : "text-neutral-400")} />
+          <i
+            className={cn(
+              "w-4 h-4 fa-solid fa-heart",
+              isLiked ? "text-red-500" : "text-neutral-400",
+            )}
+          />
         </button>
       }
       footer={

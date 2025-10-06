@@ -172,9 +172,7 @@ export const FileUpload: React.FC<FileUploadProps> = ({
               >
                 {/* File Icon */}
                 <div className="flex-shrink-0">
-                  <i
-                    className={cn("w-5 h-5 text-neutral-500", getFileIcon(file.type))}
-                  />
+                  <i className={cn("w-5 h-5 text-neutral-500", getFileIcon(file.type))} />
                 </div>
 
                 {/* File Info */}

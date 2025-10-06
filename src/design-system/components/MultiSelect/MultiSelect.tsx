@@ -117,7 +117,7 @@ export const MultiSelect: React.FC<MultiSelectProps> = ({
         <i
           className={cn(
             "absolute right-3 top-1/2 transform -translate-y-1/2 text-neutral-400 transition-transform fa-solid fa-chevron-down",
-            isOpen ? "rotate-180" : ""
+            isOpen ? "rotate-180" : "",
           )}
         />
       </div>

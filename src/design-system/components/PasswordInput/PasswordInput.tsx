@@ -90,7 +90,9 @@ export const PasswordInput: React.FC<PasswordInputProps> = ({
             onClick={togglePasswordVisibility}
             className="absolute right-3 text-neutral-400 hover:text-neutral-600 transition-colors"
           >
-            <i className={cn("w-4 h-4", showPassword ? "fa-solid fa-eye-slash" : "fa-solid fa-eye")} />
+            <i
+              className={cn("w-4 h-4", showPassword ? "fa-solid fa-eye-slash" : "fa-solid fa-eye")}
+            />
           </button>
         )}
       </div>

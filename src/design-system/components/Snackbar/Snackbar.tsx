@@ -94,10 +94,7 @@ export const Snackbar: React.FC<SnackbarProps> = ({
       >
         <div className="flex items-start gap-3">
           <i
-            className={cn(
-              `${currentVariant.iconColor} mt-0.5 flex-shrink-0`,
-              currentVariant.icon
-            )}
+            className={cn(`${currentVariant.iconColor} mt-0.5 flex-shrink-0`, currentVariant.icon)}
           />
           <div className={`flex-1 ${currentVariant.text} text-sm`}>{message}</div>
           {showCloseButton && (

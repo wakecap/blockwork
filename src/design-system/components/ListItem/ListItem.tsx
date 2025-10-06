@@ -98,7 +98,9 @@ export const ListItem: React.FC<ListItemProps> = ({
           <i
             className={cn(
               "w-4 h-4",
-              isSelected ? "text-success-500 fa-solid fa-check" : "text-neutral-400 fa-solid fa-times"
+              isSelected
+                ? "text-success-500 fa-solid fa-check"
+                : "text-neutral-400 fa-solid fa-times",
             )}
           />
         </div>
@@ -285,13 +287,7 @@ export const NotificationListItem: React.FC<{
     className={`${className} ${!isRead ? "bg-blue-50" : ""}`}
     leading={
       <div className="relative">
-        <i
-          className={cn(
-            "w-5 h-5",
-            isRead ? "text-neutral-500" : "text-blue-500",
-            icon
-          )}
-        />
+        <i className={cn("w-5 h-5", isRead ? "text-neutral-500" : "text-blue-500", icon)} />
         {!isRead && <div className="absolute -top-1 -right-1 w-2 h-2 bg-blue-500 rounded-full" />}
       </div>
     }
