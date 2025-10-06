@@ -1,6 +1,5 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import { cn } from "../../../utils/utils";
 
 export interface ModalProps {
   isOpen: boolean;
@@ -94,7 +93,7 @@ export const Modal: React.FC<ModalProps> = ({
                 className="p-2 text-neutral-400 hover:text-neutral-600 transition-colors"
                 aria-label="Close modal"
               >
-                <FontAwesomeIcon icon={faTimes} className="w-5 h-5" />
+                <i className="w-5 h-5 fa-solid fa-times" />
               </button>
             )}
           </div>

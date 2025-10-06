@@ -1,12 +1,4 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faReply,
-  faThumbsUp,
-  faThumbsDown,
-  faEllipsisH,
-  faFlag,
-} from "@fortawesome/free-solid-svg-icons";
 
 export interface Comment {
   id: string;
@@ -138,7 +130,7 @@ export const CommentThread: React.FC<CommentThreadProps> = ({
               {/* Actions Menu */}
               <div className="relative">
                 <button className="p-1 text-neutral-400 hover:text-neutral-600 rounded">
-                  <FontAwesomeIcon icon={faEllipsisH} className="w-4 h-4" />
+                  <i className="w-4 h-4 fa-solid fa-ellipsis-h" />
                 </button>
               </div>
             </div>
@@ -191,7 +183,7 @@ export const CommentThread: React.FC<CommentThreadProps> = ({
                       comment.isLiked ? "text-blue-600" : "text-neutral-500 hover:text-neutral-700"
                     }`}
                   >
-                    <FontAwesomeIcon icon={faThumbsUp} className="w-3 h-3" />
+                    <i className="w-3 h-3 fa-solid fa-thumbs-up" />
                     <span>{comment.likes}</span>
                   </button>
 
@@ -204,7 +196,7 @@ export const CommentThread: React.FC<CommentThreadProps> = ({
                         : "text-neutral-500 hover:text-neutral-700"
                     }`}
                   >
-                    <FontAwesomeIcon icon={faThumbsDown} className="w-3 h-3" />
+                    <i className="w-3 h-3 fa-solid fa-thumbs-down" />
                     <span>{comment.dislikes}</span>
                   </button>
 
@@ -214,7 +206,7 @@ export const CommentThread: React.FC<CommentThreadProps> = ({
                       onClick={() => handleReply(comment.id)}
                       className="flex items-center space-x-1 text-xs text-neutral-500 hover:text-neutral-700 transition-colors"
                     >
-                      <FontAwesomeIcon icon={faReply} className="w-3 h-3" />
+                      <i className="w-3 h-3 fa-solid fa-reply" />
                       <span>Reply</span>
                     </button>
                   )}
@@ -243,7 +235,7 @@ export const CommentThread: React.FC<CommentThreadProps> = ({
                       onClick={() => onReport(comment.id)}
                       className="text-xs text-neutral-500 hover:text-neutral-700 transition-colors"
                     >
-                      <FontAwesomeIcon icon={faFlag} className="w-3 h-3" />
+                      <i className="w-3 h-3 fa-solid fa-flag" />
                     </button>
                   )}
                 </div>

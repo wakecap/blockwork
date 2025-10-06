@@ -1,6 +1,4 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronLeft, faChevronRight, faCalendar } from "@fortawesome/free-solid-svg-icons";
 import { Button } from "../Button/Button";
 
 export interface CalendarProps {
@@ -375,7 +373,7 @@ export const Calendar: React.FC<CalendarProps> = ({
                 onClick={goToPreviousMonth}
                 variant="ghost"
                 size="iconSm"
-                icon={faChevronLeft}
+                icon="fa-solid fa-chevron-left"
                 ariaLabel="Previous month"
               />
 
@@ -392,7 +390,7 @@ export const Calendar: React.FC<CalendarProps> = ({
                 onClick={goToNextMonth}
                 variant="ghost"
                 size="iconSm"
-                icon={faChevronRight}
+                icon="fa-solid fa-chevron-right"
                 ariaLabel="Next month"
               />
             </div>
@@ -440,7 +438,7 @@ export const Calendar: React.FC<CalendarProps> = ({
           onClick={goToPreviousMonth}
           variant="ghost"
           size="iconSm"
-          icon={faChevronLeft}
+          icon="fa-solid fa-chevron-left"
           ariaLabel="Previous month"
         />
 
@@ -452,7 +450,7 @@ export const Calendar: React.FC<CalendarProps> = ({
           onClick={goToNextMonth}
           variant="ghost"
           size="iconSm"
-          icon={faChevronRight}
+          icon="fa-solid fa-chevron-right"
           ariaLabel="Next month"
         />
       </div>
@@ -558,10 +556,7 @@ export const DatePicker: React.FC<{
           className="w-full pl-3 pr-10 py-2 border border-neutral-300 rounded-sm focus:outline-none focus:border-black focus:border disabled:opacity-50 cursor-pointer"
           readOnly
         />
-        <FontAwesomeIcon
-          icon={faCalendar}
-          className="absolute right-3 top-1/2 transform -translate-y-1/2 text-neutral-400 w-4 h-4"
-        />
+        <i className="absolute right-3 top-1/2 transform -translate-y-1/2 text-neutral-400 w-4 h-4 fa-solid fa-calendar" />
       </div>
 
       {isOpen && (
@@ -632,10 +627,7 @@ export const DateRangePicker: React.FC<{
           className="w-full pl-3 pr-10 py-2 border border-neutral-300 rounded-sm focus:outline-none focus:border-black focus:border disabled:opacity-50 cursor-pointer"
           readOnly
         />
-        <FontAwesomeIcon
-          icon={faCalendar}
-          className="absolute right-3 top-1/2 transform -translate-y-1/2 text-neutral-400 w-4 h-4"
-        />
+        <i className="absolute right-3 top-1/2 transform -translate-y-1/2 text-neutral-400 w-4 h-4 fa-solid fa-calendar" />
       </div>
 
       {isOpen && (

@@ -2,9 +2,6 @@ import React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "../../../utils/utils";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import type { IconDefinition } from "@fortawesome/fontawesome-common-types";
-
 const sizeVariants = {
   // Responsive sizes with mobile-first approach and touch-friendly targets
   xs: "h-7 px-2 py-1 text-xs gap-1 min-w-[44px] sm:h-6 sm:min-w-auto",
@@ -110,7 +107,7 @@ export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
   // Icon props
-  icon?: IconDefinition;
+  icon?: string;
   iconPosition?: "left" | "right";
 
   // Loading state
@@ -276,7 +273,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 
         {/* Left icon */}
         {displayIcon && getIconPosition() === "left" && (
-          <FontAwesomeIcon icon={displayIcon} className={cn(iconSizeMap[effectiveSize || "md"])} />
+          <i className={cn(displayIcon, iconSizeMap[effectiveSize || "md"])} />
         )}
 
         {/* Button text */}
@@ -284,7 +281,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 
         {/* Right icon */}
         {displayIcon && getIconPosition() === "right" && (
-          <FontAwesomeIcon icon={displayIcon} className={cn(iconSizeMap[effectiveSize || "md"])} />
+          <i className={cn(displayIcon, iconSizeMap[effectiveSize || "md"])} />
         )}
       </button>
     );

@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { IconShowcase, IconSizes, IconColors, Icon } from "../foundations/IconLibrary";
-import { faHeart, faUser, faCog, faSearch, faBell } from "@fortawesome/free-solid-svg-icons";
 
 const meta: Meta = {
   title: "Foundation/Icon Library",
@@ -81,7 +80,7 @@ const IconMeta: Meta<typeof Icon> = {
 export const IconComponent: StoryObj<typeof Icon> = {
   ...IconMeta,
   args: {
-    icon: faHeart,
+    icon: "fa-solid fa-heart",
     size: "base",
     color: "primary",
   },
@@ -90,7 +89,7 @@ export const IconComponent: StoryObj<typeof Icon> = {
 export const SmallIcon: StoryObj<typeof Icon> = {
   ...IconMeta,
   args: {
-    icon: faUser,
+    icon: "fa-solid fa-user",
     size: "sm",
     color: "neutral",
   },
@@ -99,7 +98,7 @@ export const SmallIcon: StoryObj<typeof Icon> = {
 export const LargeIcon: StoryObj<typeof Icon> = {
   ...IconMeta,
   args: {
-    icon: faCog,
+    icon: "fa-solid fa-cog",
     size: "2xl",
     color: "primary",
   },
@@ -108,7 +107,7 @@ export const LargeIcon: StoryObj<typeof Icon> = {
 export const SuccessIcon: StoryObj<typeof Icon> = {
   ...IconMeta,
   args: {
-    icon: faSearch,
+    icon: "fa-solid fa-search",
     size: "lg",
     color: "success",
   },
@@ -117,7 +116,7 @@ export const SuccessIcon: StoryObj<typeof Icon> = {
 export const ErrorIcon: StoryObj<typeof Icon> = {
   ...IconMeta,
   args: {
-    icon: faBell,
+    icon: "fa-solid fa-bell",
     size: "lg",
     color: "error",
   },
@@ -131,11 +130,11 @@ export const UsageExamples: StoryObj = {
         <h3 className="text-lg font-semibold text-neutral-900">In Buttons</h3>
         <div className="flex gap-3">
           <button className="flex items-center gap-2 px-4 py-2 bg-primary-600 text-white rounded hover:bg-primary-700 transition-colors">
-            <Icon icon={faSearch} size="sm" color="neutral" className="text-white" />
+            <Icon icon="fa-solid fa-search" size="sm" color="neutral" className="text-white" />
             Search
           </button>
           <button className="flex items-center gap-2 px-4 py-2 border border-neutral-300 rounded hover:bg-neutral-50 transition-colors">
-            <Icon icon={faCog} size="sm" color="neutral" />
+            <Icon icon="fa-solid fa-cog" size="sm" color="neutral" />
             Settings
           </button>
         </div>
@@ -145,15 +144,15 @@ export const UsageExamples: StoryObj = {
         <h3 className="text-lg font-semibold text-neutral-900">Status Indicators</h3>
         <div className="space-y-2">
           <div className="flex items-center gap-2">
-            <Icon icon={faHeart} size="sm" color="success" />
+            <Icon icon="fa-solid fa-heart" size="sm" color="success" />
             <span className="text-sm text-neutral-700">Online</span>
           </div>
           <div className="flex items-center gap-2">
-            <Icon icon={faHeart} size="sm" color="warning" />
+            <Icon icon="fa-solid fa-heart" size="sm" color="warning" />
             <span className="text-sm text-neutral-700">Away</span>
           </div>
           <div className="flex items-center gap-2">
-            <Icon icon={faHeart} size="sm" color="error" />
+            <Icon icon="fa-solid fa-heart" size="sm" color="error" />
             <span className="text-sm text-neutral-700">Offline</span>
           </div>
         </div>
@@ -163,15 +162,15 @@ export const UsageExamples: StoryObj = {
         <h3 className="text-lg font-semibold text-neutral-900">Navigation</h3>
         <div className="flex items-center gap-4 text-sm text-neutral-600">
           <div className="flex items-center gap-1">
-            <Icon icon={faUser} size="sm" color="neutral" />
+            <Icon icon="fa-solid fa-user" size="sm" color="neutral" />
             Profile
           </div>
           <div className="flex items-center gap-1">
-            <Icon icon={faCog} size="sm" color="neutral" />
+            <Icon icon="fa-solid fa-cog" size="sm" color="neutral" />
             Settings
           </div>
           <div className="flex items-center gap-1">
-            <Icon icon={faBell} size="sm" color="neutral" />
+            <Icon icon="fa-solid fa-bell" size="sm" color="neutral" />
             Notifications
           </div>
         </div>

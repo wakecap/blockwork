@@ -1,7 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Card, ProductCard, UserCard, ArticleCard } from "./Card";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart, faShare, faBookmark, faEllipsisV } from "@fortawesome/free-solid-svg-icons";
 
 const meta: Meta<typeof Card> = {
   title: "Content Display/Card",
@@ -70,13 +68,13 @@ export const WithActions: Story = {
     actions: (
       <div className="flex space-x-2">
         <button className="p-2 bg-white bg-opacity-80 rounded-full hover:bg-opacity-100 transition-all">
-          <FontAwesomeIcon icon={faHeart} className="w-4 h-4 text-red-500" />
+          <i className="w-4 h-4 text-red-500 fa-solid fa-heart" />
         </button>
         <button className="p-2 bg-white bg-opacity-80 rounded-full hover:bg-opacity-100 transition-all">
-          <FontAwesomeIcon icon={faShare} className="w-4 h-4 text-blue-500" />
+          <i className="w-4 h-4 text-blue-500 fa-solid fa-share" />
         </button>
         <button className="p-2 bg-white bg-opacity-80 rounded-full hover:bg-opacity-100 transition-all">
-          <FontAwesomeIcon icon={faBookmark} className="w-4 h-4 text-yellow-500" />
+          <i className="w-4 h-4 text-yellow-500 fa-solid fa-bookmark" />
         </button>
       </div>
     ),

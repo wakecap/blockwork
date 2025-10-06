@@ -1,10 +1,9 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import type { IconDefinition } from "@fortawesome/fontawesome-common-types";
+import { cn } from "../../../utils/utils";
 
 export interface RadioProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label: string;
-  icon?: IconDefinition;
+  icon?: string;
 }
 
 export const Radio: React.FC<RadioProps> = ({ label, icon, className, ...props }) => (
@@ -22,7 +21,7 @@ export const Radio: React.FC<RadioProps> = ({ label, icon, className, ...props }
       }
       {...props}
     />
-    {icon && <FontAwesomeIcon icon={icon} className="w-4 h-4 text-neutral-400" />}
+    {icon && <i className={cn("w-4 h-4 text-neutral-400", icon)} />}
     <span>{label}</span>
   </label>
 );

@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Toggler } from "./Toggler";
-import { faPowerOff } from "@fortawesome/free-solid-svg-icons";
 
 const meta: Meta<typeof Toggler> = {
   title: "Components/Toggler",
@@ -46,6 +45,6 @@ export const WithIcon: Story = {
   args: {
     checked: false,
     label: "Power",
-    icon: faPowerOff,
+    icon: "fa-solid fa-power-off",
   },
 };

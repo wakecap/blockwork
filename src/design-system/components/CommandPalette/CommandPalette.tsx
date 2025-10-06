@@ -1,12 +1,4 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faSearch,
-  faKeyboard,
-  faArrowUp,
-  faArrowDown,
-  faTimes,
-} from "@fortawesome/free-solid-svg-icons";
 
 export interface CommandAction {
   id: string;
@@ -128,7 +120,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
                 onClick={onClose}
                 className="rounded-lg p-2 text-neutral-400 hover:text-neutral-600 hover:bg-neutral-100 transition-colors"
               >
-                <FontAwesomeIcon icon={faTimes} className="w-5 h-5" />
+                <i className="w-5 h-5 fa-solid fa-times" />
               </button>
             </div>
           </div>
@@ -136,10 +128,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
           {/* Search Input */}
           <div className="border-b border-neutral-200 px-6 py-4">
             <div className="relative">
-              <FontAwesomeIcon
-                icon={faSearch}
-                className="absolute left-3 top-1/2 transform -translate-y-1/2 text-neutral-400 w-4 h-4"
-              />
+              <i className="absolute left-3 top-1/2 transform -translate-y-1/2 text-neutral-400 w-4 h-4 fa-solid fa-search" />
               <input
                 ref={inputRef}
                 type="text"
@@ -155,10 +144,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
           <div className="max-h-96 overflow-y-auto">
             {filteredActions.length === 0 ? (
               <div className="px-6 py-12 text-center">
-                <FontAwesomeIcon
-                  icon={faSearch}
-                  className="w-12 h-12 text-neutral-300 mx-auto mb-4"
-                />
+                <i className="w-12 h-12 text-neutral-300 mx-auto mb-4 fa-solid fa-search" />
                 <p className="text-neutral-500 text-lg">No commands found</p>
                 <p className="text-neutral-400 text-sm">Try a different search term</p>
               </div>
@@ -175,7 +161,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
                     <div className="flex items-center space-x-3">
                       {/* Icon */}
                       <div className="flex-shrink-0 w-8 h-8 flex items-center justify-center text-neutral-500">
-                        {action.icon || <FontAwesomeIcon icon={faKeyboard} className="w-4 h-4" />}
+                        {action.icon || <i className="w-4 h-4 fa-solid fa-keyboard" />}
                       </div>
 
                       {/* Content */}
@@ -218,8 +204,8 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
             <div className="flex items-center justify-between text-xs text-neutral-500">
               <div className="flex items-center space-x-4">
                 <span className="flex items-center space-x-1">
-                  <FontAwesomeIcon icon={faArrowUp} className="w-3 h-3" />
-                  <FontAwesomeIcon icon={faArrowDown} className="w-3 h-3" />
+                  <i className="w-3 h-3 fa-solid fa-arrow-up" />
+                  <i className="w-3 h-3 fa-solid fa-arrow-down" />
                   <span>Navigate</span>
                 </span>
                 <span>Enter to select</span>
@@ -287,7 +273,7 @@ export const QuickActionsPalette: React.FC<{
         onClick={open}
         className="inline-flex items-center px-4 py-2 bg-neutral-100 text-neutral-700 rounded-sm hover:bg-neutral-200 transition-colors"
       >
-        <FontAwesomeIcon icon={faKeyboard} className="w-4 h-4 mr-2" />
+        <i className="w-4 h-4 mr-2 fa-solid fa-keyboard" />
         Quick Actions
       </button>
 

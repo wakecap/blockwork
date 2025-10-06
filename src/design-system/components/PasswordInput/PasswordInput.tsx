@@ -1,14 +1,12 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-import type { IconDefinition } from "@fortawesome/fontawesome-common-types";
+import { cn } from "../../../utils/utils";
 
 export interface PasswordInputProps
   extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "type"> {
   label?: string;
   error?: string;
   success?: string;
-  iconLeft?: IconDefinition;
+  iconLeft?: string;
   showToggle?: boolean;
   strengthIndicator?: boolean;
 }
@@ -67,7 +65,7 @@ export const PasswordInput: React.FC<PasswordInputProps> = ({
       <div className="relative flex items-center">
         {iconLeft && (
           <span className="absolute left-3 text-neutral-400 z-10">
-            <FontAwesomeIcon icon={iconLeft} className="w-4 h-4" />
+            <i className={cn("w-4 h-4", iconLeft)} />
           </span>
         )}
         <input
@@ -92,7 +90,7 @@ export const PasswordInput: React.FC<PasswordInputProps> = ({
             onClick={togglePasswordVisibility}
             className="absolute right-3 text-neutral-400 hover:text-neutral-600 transition-colors"
           >
-            <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} className="w-4 h-4" />
+            <i className={cn("w-4 h-4", showPassword ? "fa-solid fa-eye-slash" : "fa-solid fa-eye")} />
           </button>
         )}
       </div>

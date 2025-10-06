@@ -1,6 +1,5 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEllipsisV, faHeart, faShare, faBookmark } from "@fortawesome/free-solid-svg-icons";
+import { cn } from "../../../utils/utils";
 
 export interface CardProps {
   title?: string;
@@ -162,10 +161,7 @@ export const ProductCard: React.FC<{
           }}
           className="p-2 bg-white rounded-full shadow-md hover:bg-neutral-50 transition-colors"
         >
-          <FontAwesomeIcon
-            icon={faHeart}
-            className={`w-4 h-4 ${isLiked ? "text-red-500" : "text-neutral-400"}`}
-          />
+          <i className={cn("w-4 h-4 fa-solid fa-heart", isLiked ? "text-red-500" : "text-neutral-400")} />
         </button>
       }
       footer={
@@ -290,7 +286,7 @@ export const ArticleCard: React.FC<{
           }}
           className="p-2 bg-white rounded-full shadow-md hover:bg-neutral-50 transition-colors"
         >
-          <FontAwesomeIcon icon={faBookmark} className="w-4 h-4 text-neutral-400" />
+          <i className="w-4 h-4 text-neutral-400 fa-solid fa-bookmark" />
         </button>
         <button
           onClick={(e) => {
@@ -299,7 +295,7 @@ export const ArticleCard: React.FC<{
           }}
           className="p-2 bg-white rounded-full shadow-md hover:bg-neutral-50 transition-colors"
         >
-          <FontAwesomeIcon icon={faShare} className="w-4 h-4 text-neutral-400" />
+          <i className="w-4 h-4 text-neutral-400 fa-solid fa-share" />
         </button>
       </div>
     }

@@ -1,13 +1,12 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEllipsisV, faChevronRight, faCheck, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { cn } from "../../../utils/utils";
 
 export interface ListItemProps {
   title: string;
   subtitle?: string;
   description?: string;
   avatar?: string;
-  icon?: any;
+  icon?: string;
   actions?: React.ReactNode;
   leading?: React.ReactNode;
   trailing?: React.ReactNode;
@@ -82,7 +81,7 @@ export const ListItem: React.FC<ListItemProps> = ({
     if (icon) {
       return (
         <div className="flex-shrink-0 mr-3">
-          <FontAwesomeIcon icon={icon} className="w-5 h-5 text-neutral-500" />
+          <i className={cn("w-5 h-5 text-neutral-500", icon)} />
         </div>
       );
     }
@@ -96,9 +95,11 @@ export const ListItem: React.FC<ListItemProps> = ({
     if (onSelect !== undefined) {
       return (
         <div className="flex-shrink-0 ml-3">
-          <FontAwesomeIcon
-            icon={isSelected ? faCheck : faTimes}
-            className={`w-4 h-4 ${isSelected ? "text-success-500" : "text-neutral-400"}`}
+          <i
+            className={cn(
+              "w-4 h-4",
+              isSelected ? "text-success-500 fa-solid fa-check" : "text-neutral-400 fa-solid fa-times"
+            )}
           />
         </div>
       );
@@ -107,7 +108,7 @@ export const ListItem: React.FC<ListItemProps> = ({
     if (isClickable || onClick) {
       return (
         <div className="flex-shrink-0 ml-3">
-          <FontAwesomeIcon icon={faChevronRight} className="w-4 h-4 text-neutral-400" />
+          <i className="w-4 h-4 text-neutral-400 fa-solid fa-chevron-right" />
         </div>
       );
     }
@@ -214,7 +215,7 @@ export const UserListItem: React.FC<{
           }}
           className="p-1 text-neutral-400 hover:text-primary-600 transition-colors"
         >
-          <FontAwesomeIcon icon={faEllipsisV} className="w-4 h-4" />
+          <i className="w-4 h-4 fa-solid fa-ellipsis-v" />
         </button>
       </div>
     }
@@ -225,7 +226,7 @@ export const FileListItem: React.FC<{
   name: string;
   size: string;
   modified: string;
-  icon: any;
+  icon: string;
   onDownload?: () => void;
   onDelete?: () => void;
   className?: string;
@@ -270,7 +271,7 @@ export const NotificationListItem: React.FC<{
   message: string;
   time: string;
   isRead: boolean;
-  icon: any;
+  icon: string;
   onMarkAsRead?: () => void;
   onDelete?: () => void;
   className?: string;
@@ -284,9 +285,12 @@ export const NotificationListItem: React.FC<{
     className={`${className} ${!isRead ? "bg-blue-50" : ""}`}
     leading={
       <div className="relative">
-        <FontAwesomeIcon
-          icon={icon}
-          className={`w-5 h-5 ${isRead ? "text-neutral-500" : "text-blue-500"}`}
+        <i
+          className={cn(
+            "w-5 h-5",
+            isRead ? "text-neutral-500" : "text-blue-500",
+            icon
+          )}
         />
         {!isRead && <div className="absolute -top-1 -right-1 w-2 h-2 bg-blue-500 rounded-full" />}
       </div>

@@ -1,12 +1,5 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCheck,
-  faTimes,
-  faExclamation,
-  faInfo,
-  faXmark,
-} from "@fortawesome/free-solid-svg-icons";
+import { cn } from "../../../utils/utils";
 
 export interface SnackbarProps {
   message: string;
@@ -50,28 +43,28 @@ export const Snackbar: React.FC<SnackbarProps> = ({
       background: "bg-success-50",
       border: "border-success-200",
       text: "text-success-800",
-      icon: faCheck,
+      icon: "fa-solid fa-check",
       iconColor: "text-success-600",
     },
     error: {
       background: "bg-error-50",
       border: "border-error-200",
       text: "text-error-800",
-      icon: faTimes,
+      icon: "fa-solid fa-times",
       iconColor: "text-error-600",
     },
     warning: {
       background: "bg-warning-50",
       border: "border-warning-200",
       text: "text-warning-800",
-      icon: faExclamation,
+      icon: "fa-solid fa-exclamation",
       iconColor: "text-warning-600",
     },
     info: {
       background: "bg-info-50",
       border: "border-info-200",
       text: "text-info-800",
-      icon: faInfo,
+      icon: "fa-solid fa-info",
       iconColor: "text-info-600",
     },
   };
@@ -100,9 +93,11 @@ export const Snackbar: React.FC<SnackbarProps> = ({
         className={`${currentVariant.background} ${currentVariant.border} border rounded-lg shadow-lg p-4 transition-all duration-300 ease-out-quart animate-slide-in-from-bottom`}
       >
         <div className="flex items-start gap-3">
-          <FontAwesomeIcon
-            icon={currentVariant.icon}
-            className={`${currentVariant.iconColor} mt-0.5 flex-shrink-0`}
+          <i
+            className={cn(
+              `${currentVariant.iconColor} mt-0.5 flex-shrink-0`,
+              currentVariant.icon
+            )}
           />
           <div className={`flex-1 ${currentVariant.text} text-sm`}>{message}</div>
           {showCloseButton && (
@@ -111,7 +106,7 @@ export const Snackbar: React.FC<SnackbarProps> = ({
               className={`${currentVariant.text} hover:opacity-70 transition-opacity flex-shrink-0`}
               aria-label="Close notification"
             >
-              <FontAwesomeIcon icon={faXmark} className="w-4 h-4" />
+              <i className="w-4 h-4 fa-solid fa-xmark" />
             </button>
           )}
         </div>

@@ -1,6 +1,5 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faKey, faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import { cn } from "../../../utils/utils";
 
 export interface OTPInputProps {
   value: string;
@@ -186,7 +185,7 @@ export const OTPInput: React.FC<OTPInputProps> = ({
           className="p-2 text-neutral-500 hover:text-neutral-700 transition-colors"
           disabled={disabled}
         >
-          <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} className="w-4 h-4" />
+          <i className={cn("w-4 h-4", showPassword ? "fa-solid fa-eye-slash" : "fa-solid fa-eye")} />
         </button>
       )}
     </div>

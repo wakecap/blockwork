@@ -1,6 +1,5 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimes, faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import { cn } from "../../../utils/utils";
 
 export interface BottomSheetProps {
   isOpen: boolean;
@@ -125,7 +124,7 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({
                 className="p-2 text-neutral-400 hover:text-neutral-600 transition-colors"
                 aria-label="Close bottom sheet"
               >
-                <FontAwesomeIcon icon={faTimes} className="w-5 h-5" />
+                <i className={cn("fa-solid fa-times", "w-5 h-5")} />
               </button>
             )}
           </div>
@@ -145,7 +144,7 @@ export const ActionSheet: React.FC<{
   title?: string;
   actions: Array<{
     label: string;
-    icon?: any;
+    icon?: string;
     onClick: () => void;
     variant?: "default" | "danger" | "cancel";
     disabled?: boolean;
@@ -188,7 +187,7 @@ export const ActionSheet: React.FC<{
               action.disabled ? "opacity-50 cursor-not-allowed" : "cursor-pointer"
             } ${getActionStyles(action.variant || "default")}`}
           >
-            {action.icon && <FontAwesomeIcon icon={action.icon} className="w-5 h-5" />}
+            {action.icon && <i className={cn(action.icon, "w-5 h-5")} />}
             <span className="font-medium">{action.label}</span>
           </button>
         ))}

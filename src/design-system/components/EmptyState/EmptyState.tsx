@@ -1,18 +1,10 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faInbox,
-  faSearch,
-  faFile,
-  faUsers,
-  faExclamation,
-  type IconDefinition,
-} from "@fortawesome/free-solid-svg-icons";
+import { cn } from "../../../utils/utils";
 
 export interface EmptyStateProps {
   title: string;
   description?: string;
-  icon?: IconDefinition | string;
+  icon?: string;
   variant?: "default" | "search" | "files" | "users" | "error";
   action?: React.ReactNode;
   size?: "sm" | "md" | "lg";
@@ -29,11 +21,11 @@ export const EmptyState: React.FC<EmptyStateProps> = ({
   className = "",
 }) => {
   const defaultIcons = {
-    default: faInbox,
-    search: faSearch,
-    files: faFile,
-    users: faUsers,
-    error: faExclamation,
+    default: "fa-solid fa-inbox",
+    search: "fa-solid fa-search",
+    files: "fa-solid fa-file",
+    users: "fa-solid fa-users",
+    error: "fa-solid fa-exclamation",
   };
 
   const sizeClasses = {
@@ -64,7 +56,7 @@ export const EmptyState: React.FC<EmptyStateProps> = ({
     <div className={`text-center ${currentSize.container} ${className}`}>
       <div className="flex flex-col items-center space-y-4">
         <div className={`${currentSize.icon} text-neutral-400`}>
-          <FontAwesomeIcon icon={currentIcon} className="w-full h-full" />
+          <i className={cn("w-full h-full", currentIcon)} />
         </div>
 
         <div className="space-y-2">

@@ -1,6 +1,4 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPalette, faEyeDropper, faCheck } from "@fortawesome/free-solid-svg-icons";
 
 export interface ColorPickerProps {
   value: string;
@@ -172,7 +170,7 @@ export const ColorPicker: React.FC<ColorPickerProps> = ({
             style={{ backgroundColor: value }}
           />
         )}
-        <FontAwesomeIcon icon={faPalette} className="w-4 h-4 text-neutral-500" />
+        <i className="w-4 h-4 text-neutral-500 fa-solid fa-palette" />
         <span className="text-sm text-neutral-700">{formatColor(value, format)}</span>
       </button>
 
@@ -221,9 +219,8 @@ export const ColorPicker: React.FC<ColorPickerProps> = ({
                     title={color}
                   >
                     {value === color && (
-                      <FontAwesomeIcon
-                        icon={faCheck}
-                        className="w-3 h-3"
+                      <i
+                        className="w-3 h-3 fa-solid fa-check"
                         style={{ color: getContrastColor(color) }}
                       />
                     )}

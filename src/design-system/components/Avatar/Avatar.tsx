@@ -1,6 +1,5 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser, faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import { cn } from "../../../utils/utils";
 
 export interface AvatarProps {
   src?: string;
@@ -151,9 +150,8 @@ export const Avatar: React.FC<AvatarProps> = ({
           <div className="flex items-center gap-1">
             <span>{userInitials}</span>
             {showChevron && (
-              <FontAwesomeIcon
-                icon={faChevronDown}
-                className="text-black"
+              <i
+                className="fa-solid fa-chevron-down text-black"
                 style={{
                   fontSize: size === "xs" ? "6px" : size === "sm" ? "8px" : "10px",
                 }}
@@ -168,7 +166,7 @@ export const Avatar: React.FC<AvatarProps> = ({
       <div
         className={`w-full h-full flex items-center justify-center bg-neutral-200 text-neutral-600 ${shapeClass}`}
       >
-        {fallbackIcon || <FontAwesomeIcon icon={faUser} className={currentSize.text} />}
+        {fallbackIcon || <i className={cn(currentSize.text, "fa-solid fa-user")} />}
       </div>
     );
   };

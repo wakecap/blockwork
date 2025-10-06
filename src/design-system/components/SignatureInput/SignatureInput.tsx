@@ -1,13 +1,4 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faPen,
-  faEraser,
-  faUndo,
-  faRedo,
-  faDownload,
-  faTrash,
-} from "@fortawesome/free-solid-svg-icons";
 
 export interface SignatureInputProps {
   value?: string;
@@ -198,7 +189,7 @@ export const SignatureInput: React.FC<SignatureInputProps> = ({
             className="p-2 text-neutral-600 hover:text-red-600 hover:bg-neutral-200 rounded transition-colors"
             title="Clear"
           >
-            <FontAwesomeIcon icon={faTrash} className="w-4 h-4" />
+            <i className="w-4 h-4 fa-solid fa-trash" />
           </button>
           <button
             onClick={undo}
@@ -206,7 +197,7 @@ export const SignatureInput: React.FC<SignatureInputProps> = ({
             className="p-2 text-neutral-600 hover:text-neutral-900 hover:bg-neutral-200 rounded transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             title="Undo"
           >
-            <FontAwesomeIcon icon={faUndo} className="w-4 h-4" />
+            <i className="w-4 h-4 fa-solid fa-undo" />
           </button>
           <button
             onClick={redo}
@@ -214,7 +205,7 @@ export const SignatureInput: React.FC<SignatureInputProps> = ({
             className="p-2 text-neutral-600 hover:text-neutral-900 hover:bg-neutral-200 rounded transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             title="Redo"
           >
-            <FontAwesomeIcon icon={faRedo} className="w-4 h-4" />
+            <i className="w-4 h-4 fa-solid fa-redo" />
           </button>
           <div className="flex-1" />
           <button
@@ -223,7 +214,7 @@ export const SignatureInput: React.FC<SignatureInputProps> = ({
             className="p-2 text-neutral-600 hover:text-neutral-900 hover:bg-neutral-200 rounded transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             title="Download"
           >
-            <FontAwesomeIcon icon={faDownload} className="w-4 h-4" />
+            <i className="w-4 h-4 fa-solid fa-download" />
           </button>
         </div>
       )}

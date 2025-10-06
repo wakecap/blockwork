@@ -1,6 +1,4 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch, faTimes } from "@fortawesome/free-solid-svg-icons";
 
 export interface SearchInputProps
   extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "type"> {
@@ -69,7 +67,7 @@ export const SearchInput: React.FC<SearchInputProps> = ({
       </style>
       <div className="relative flex items-center">
         <span className="absolute left-3 text-neutral-400">
-          <FontAwesomeIcon icon={faSearch} className="w-4 h-4" />
+          <i className="w-4 h-4 fa-solid fa-search" />
         </span>
         <input
           type="text"
@@ -95,7 +93,7 @@ export const SearchInput: React.FC<SearchInputProps> = ({
             onClick={handleClear}
             className="absolute right-3 text-neutral-400 hover:text-neutral-600 transition-colors"
           >
-            <FontAwesomeIcon icon={faTimes} className="w-4 h-4" />
+            <i className="w-4 h-4 fa-solid fa-times" />
           </button>
         )}
       </div>

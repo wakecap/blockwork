@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { FontProvider } from "../FontProvider/FontProvider";
 import { Input } from "./Input";
-import { faSearch, faEye } from "@fortawesome/free-solid-svg-icons";
 
 const meta: Meta<typeof Input> = {
   title: "Forms and Data Entry/Input",
@@ -74,7 +73,7 @@ export const WithLeftIcon: Story = {
   args: {
     label: "Search",
     placeholder: "Search...",
-    iconLeft: faSearch,
+    iconLeft: "fa-solid fa-search",
   },
 };
 
@@ -82,7 +81,7 @@ export const WithRightIcon: Story = {
   args: {
     label: "Show Password",
     placeholder: "Password",
-    iconRight: faEye,
+    iconRight: "fa-solid fa-eye",
     type: "password",
   },
 };
@@ -91,8 +90,8 @@ export const WithBothIcons: Story = {
   args: {
     label: "Search & Show",
     placeholder: "Search...",
-    iconLeft: faSearch,
-    iconRight: faEye,
+    iconLeft: "fa-solid fa-search",
+    iconRight: "fa-solid fa-eye",
   },
 };
 
@@ -128,7 +127,7 @@ export const ArabicSupport: Story = {
           label="Password"
           placeholder="Enter password"
           type="password"
-          iconRight={faEye}
+          iconRight="fa-solid fa-eye"
           arabicLabel="كلمة المرور"
           arabicPlaceholder="أدخل كلمة المرور"
           showArabicText={true}
@@ -137,7 +136,7 @@ export const ArabicSupport: Story = {
         <Input
           label="Search"
           placeholder="Search for anything..."
-          iconLeft={faSearch}
+          iconLeft="fa-solid fa-search"
           arabicLabel="بحث"
           arabicPlaceholder="ابحث عن أي شيء..."
           showArabicText={true}

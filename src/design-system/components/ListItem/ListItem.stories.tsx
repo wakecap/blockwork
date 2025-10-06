@@ -7,16 +7,6 @@ import {
   NotificationListItem,
   SelectableListItem,
 } from "./ListItem";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faUser,
-  faFile,
-  faBell,
-  faCheck,
-  faTimes,
-  faDownload,
-  faTrash,
-} from "@fortawesome/free-solid-svg-icons";
 
 const meta: Meta<typeof ListItem> = {
   title: "Content Display/ListItem",
@@ -64,7 +54,7 @@ export const WithIcon: Story = {
   args: {
     title: "Item with Icon",
     subtitle: "This item has an icon on the left",
-    icon: faUser,
+    icon: "fa-solid fa-user",
     className: "w-96",
   },
 };
@@ -86,10 +76,10 @@ export const WithActions: Story = {
     actions: (
       <div className="flex space-x-2">
         <button className="p-1 text-neutral-400 hover:text-neutral-600 transition-colors">
-          <FontAwesomeIcon icon={faDownload} className="w-4 h-4" />
+          <i className="w-4 h-4 fa-solid fa-download" />
         </button>
         <button className="p-1 text-neutral-400 hover:text-red-500 transition-colors">
-          <FontAwesomeIcon icon={faTrash} className="w-4 h-4" />
+          <i className="w-4 h-4 fa-solid fa-trash" />
         </button>
       </div>
     ),
@@ -120,7 +110,7 @@ export const Variants: Story = {
       <ListItem
         title="With Icon"
         subtitle="Icon variant with FontAwesome icon"
-        icon={faFile}
+        icon="fa-solid fa-file"
         variant="icon"
       />
     </div>

@@ -1,13 +1,12 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import type { IconDefinition } from "@fortawesome/fontawesome-common-types";
 
+import { cn } from "../../../utils/utils";
 export interface TogglerProps {
   checked: boolean;
   onChange: (checked: boolean) => void;
   disabled?: boolean;
   label?: string;
-  icon?: IconDefinition;
+  icon?: string;
 }
 
 export const Toggler: React.FC<TogglerProps> = ({ checked, onChange, disabled, label, icon }) => (
@@ -38,7 +37,7 @@ export const Toggler: React.FC<TogglerProps> = ({ checked, onChange, disabled, l
         }
       />
     </span>
-    {icon && <FontAwesomeIcon icon={icon} className="w-4 h-4 text-neutral-400" />}
+    {icon && <i className={cn(icon, "w-4 h-4 text-neutral-400")} />}
     {label && <span>{label}</span>}
   </label>
 );

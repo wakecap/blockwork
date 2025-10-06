@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Checkbox } from "./Checkbox";
-import { faCheck } from "@fortawesome/free-solid-svg-icons";
 
 const meta: Meta<typeof Checkbox> = {
   title: "Forms and Data Entry/Checkbox",
@@ -67,6 +66,6 @@ export const WithIcon: Story = {
   args: {
     label: "With Icon",
     checked: false,
-    icon: faCheck,
+    icon: "fa-solid fa-check",
   },
 };

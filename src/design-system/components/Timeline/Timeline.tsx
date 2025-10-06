@@ -1,6 +1,6 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircle, faCheck, faTimes, faExclamation } from "@fortawesome/free-solid-svg-icons";
+
+import { cn } from "../../../utils/utils";
 
 export interface TimelineItem {
   id: string;
@@ -8,7 +8,7 @@ export interface TimelineItem {
   description?: string;
   date: string;
   status?: "completed" | "pending" | "error" | "warning";
-  icon?: any;
+  icon?: string;
   color?: string;
   children?: TimelineItem[];
 }
@@ -62,25 +62,25 @@ export const Timeline: React.FC<TimelineProps> = ({
 
   const statusStyles = {
     completed: {
-      icon: faCheck,
+      icon: "fa-solid fa-check",
       color: "text-success-600",
       bg: "bg-success-100",
       border: "border-success-200",
     },
     pending: {
-      icon: faCircle,
+      icon: "fa-solid fa-circle",
       color: "text-neutral-400",
       bg: "bg-neutral-100",
       border: "border-neutral-200",
     },
     error: {
-      icon: faTimes,
+      icon: "fa-solid fa-times",
       color: "text-error-600",
       bg: "bg-error-100",
       border: "border-error-200",
     },
     warning: {
-      icon: faExclamation,
+      icon: "fa-solid fa-exclamation",
       color: "text-warning-600",
       bg: "bg-warning-100",
       border: "border-warning-200",
@@ -89,7 +89,7 @@ export const Timeline: React.FC<TimelineProps> = ({
 
   const currentSize = sizeStyles[size];
 
-  const renderTimelineItem = (item: TimelineItem, index: number, isLast: boolean) => {
+  const renderTimelineItem = (item: TimelineItem, isLast: boolean) => {
     const status = item.status || "pending";
     const statusConfig = statusStyles[status];
     const IconComponent = item.icon || statusConfig.icon;
@@ -102,7 +102,7 @@ export const Timeline: React.FC<TimelineProps> = ({
             <div
               className={`${currentSize.icon} ${statusConfig.bg} ${statusConfig.border} border-2 rounded-full flex items-center justify-center ${statusConfig.color}`}
             >
-              <FontAwesomeIcon icon={IconComponent} className="w-3 h-3" />
+              <i className={cn(IconComponent, "w-3 h-3")} />
             </div>
           </div>
 
@@ -146,7 +146,7 @@ export const Timeline: React.FC<TimelineProps> = ({
 
   const renderVerticalTimeline = () => (
     <div className={`${currentSize.container} ${className}`}>
-      {items.map((item, index) => renderTimelineItem(item, index, index === items.length - 1))}
+      {items.map((item, index) => renderTimelineItem(item, index === items.length - 1))}
     </div>
   );
 
@@ -165,7 +165,7 @@ export const Timeline: React.FC<TimelineProps> = ({
                 <div
                   className={`${currentSize.icon} ${statusConfig.bg} ${statusConfig.border} border-2 rounded-full flex items-center justify-center ${statusConfig.color}`}
                 >
-                  <FontAwesomeIcon icon={IconComponent} className="w-3 h-3" />
+                  <i className={cn(IconComponent, "w-3 h-3")} />
                 </div>
               </div>
 
@@ -208,9 +208,11 @@ export const Timeline: React.FC<TimelineProps> = ({
 export const ActivityTimeline: React.FC<{
   activities: Array<{
     id: string;
-    action: string;
     user: string;
+    action: string;
+    target: string;
     date: string;
+    avatar: string;
     status: "completed" | "pending" | "error";
   }>;
   className?: string;

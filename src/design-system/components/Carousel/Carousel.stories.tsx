@@ -1,8 +1,6 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Carousel, ImageCarousel, CardCarousel } from "./Carousel";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlay, faPause, faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
 const meta: Meta<typeof Carousel> = {
   title: "Content Display/Carousel",

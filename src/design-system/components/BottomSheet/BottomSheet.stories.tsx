@@ -2,15 +2,6 @@ import React from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { BottomSheet, ActionSheet, FormBottomSheet } from "./BottomSheet";
 import { Button } from "../Button/Button";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCamera,
-  faImage,
-  faFile,
-  faTrash,
-  faEdit,
-  faShare,
-} from "@fortawesome/free-solid-svg-icons";
 
 const meta: Meta<typeof BottomSheet> = {
   title: "Content Display/BottomSheet",
@@ -304,7 +295,7 @@ export const ActionSheetExample: Story = {
     const actions = [
       {
         label: "Take Photo",
-        icon: faCamera,
+        icon: "fa-solid fa-camera",
         onClick: () => {
           alert("Take photo action");
           setIsOpen(false);
@@ -312,7 +303,7 @@ export const ActionSheetExample: Story = {
       },
       {
         label: "Choose from Library",
-        icon: faImage,
+        icon: "fa-solid fa-image",
         onClick: () => {
           alert("Choose from library action");
           setIsOpen(false);
@@ -320,7 +311,7 @@ export const ActionSheetExample: Story = {
       },
       {
         label: "Upload File",
-        icon: faFile,
+        icon: "fa-solid fa-file",
         onClick: () => {
           alert("Upload file action");
           setIsOpen(false);
@@ -405,7 +396,7 @@ export const PhotoPickerExample: Story = {
     const photoActions = [
       {
         label: "Camera",
-        icon: faCamera,
+        icon: "fa-solid fa-camera",
         onClick: () => {
           alert("Opening camera...");
           setIsOpen(false);
@@ -413,7 +404,7 @@ export const PhotoPickerExample: Story = {
       },
       {
         label: "Photo Library",
-        icon: faImage,
+        icon: "fa-solid fa-image",
         onClick: () => {
           alert("Opening photo library...");
           setIsOpen(false);
@@ -421,7 +412,7 @@ export const PhotoPickerExample: Story = {
       },
       {
         label: "Browse Files",
-        icon: faFile,
+        icon: "fa-solid fa-file",
         onClick: () => {
           alert("Opening file browser...");
           setIsOpen(false);

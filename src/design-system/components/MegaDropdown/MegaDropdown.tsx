@@ -1,15 +1,11 @@
 import React, { useState, useEffect, useMemo, useCallback } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import type { IconDefinition } from "@fortawesome/fontawesome-common-types";
-import { faBookmark } from "@fortawesome/pro-regular-svg-icons";
-import { faBookmark as faBookmarkSolid } from "@fortawesome/free-solid-svg-icons";
 
 import { Button } from "../Button/Button";
 import { Badge } from "../Badge/Badge";
 
 export interface MenuItem {
   id: string;
-  icon: IconDefinition;
+  icon: string;
   label: string;
   badge?: string;
   onClick?: () => void;
@@ -20,7 +16,7 @@ interface MegaDropdownProps {
   open: boolean;
   onClose: () => void;
   menu: MenuItem[];
-  onPinChange?: (pinnedItems: Array<{ id: string; icon: IconDefinition; label: string }>) => void;
+  onPinChange?: (pinnedItems: Array<{ id: string; icon: string; label: string }>) => void;
   onPinStateChange?: (pinnedStates: Record<string, boolean>) => void;
   pinnedStates?: Record<string, boolean>;
 }
@@ -201,7 +197,7 @@ export const MegaDropdown: React.FC<MegaDropdownProps> = ({
                           flexShrink: 0,
                         }}
                       >
-                        <FontAwesomeIcon icon={link.icon} style={{ fontSize: 16, color: "#444" }} />
+                        <i className={link.icon} style={{ fontSize: 16, color: "#444" }} />
                       </div>
                       <span style={{ fontSize: 14, color: "#222", fontWeight: 500 }}>
                         {link.label}
@@ -224,8 +220,10 @@ export const MegaDropdown: React.FC<MegaDropdownProps> = ({
                           handlePinClick(link);
                         }}
                       >
-                        <FontAwesomeIcon
-                          icon={pinned[link.label] ? faBookmarkSolid : faBookmark}
+                        <i
+                          className={
+                            pinned[link.label] ? "fa-solid fa-bookmark" : "fa-regular fa-bookmark"
+                          }
                           style={{
                             fontSize: 16,
                             color: pinned[link.label] ? "#6b7280" : "#444",

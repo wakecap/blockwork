@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { TextArea } from "./TextArea";
-import { faUser, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 
 const meta: Meta<typeof TextArea> = {
   title: "Components/TextArea",
@@ -43,8 +42,8 @@ export const WithLabel: Story = {
 export const WithIcons: Story = {
   args: {
     label: "Description",
-    iconLeft: faUser,
-    iconRight: faEnvelope,
+    iconLeft: "fa-solid fa-user",
+    iconRight: "fa-solid fa-envelope",
     placeholder: "Enter description with icons...",
     rows: 3,
   },

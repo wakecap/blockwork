@@ -1,6 +1,5 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar, faCircle } from "@fortawesome/free-solid-svg-icons";
+import { cn } from "../../../utils/utils";
 
 export interface RatingStarsProps {
   value: number;
@@ -41,12 +40,12 @@ export const RatingStars: React.FC<RatingStarsProps> = ({
     const isHalf = !isFilled && currentValue > index && currentValue < index + 1;
 
     if (variant === "filled") {
-      return faStar;
+      return "fa-solid fa-star";
     } else if (variant === "outlined") {
-      return isFilled ? faStar : faCircle;
+      return isFilled ? "fa-solid fa-star" : "fa-solid fa-circle";
     } else {
       // Default variant
-      return isFilled ? faStar : faCircle;
+      return isFilled ? "fa-solid fa-star" : "fa-solid fa-circle";
     }
   };
 
@@ -104,7 +103,7 @@ export const RatingStars: React.FC<RatingStarsProps> = ({
             `}
             style={{ color: getStarColor(index) }}
           >
-            <FontAwesomeIcon icon={getStarIcon(index)} className="w-full h-full" />
+            <i className={cn("w-full h-full", getStarIcon(index))} />
           </button>
         ))}
       </div>

@@ -1,6 +1,5 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronDown, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { cn } from "../../../utils/utils";
 
 export interface MultiSelectOption {
   label: string;
@@ -104,7 +103,7 @@ export const MultiSelect: React.FC<MultiSelectProps> = ({
                       }}
                       className="hover:text-primary-600"
                     >
-                      <FontAwesomeIcon icon={faTimes} className="w-3 h-3" />
+                      <i className="w-3 h-3 fa-solid fa-times" />
                     </button>
                   )}
                 </span>
@@ -115,11 +114,11 @@ export const MultiSelect: React.FC<MultiSelectProps> = ({
           </div>
         </div>
 
-        <FontAwesomeIcon
-          icon={faChevronDown}
-          className={`absolute right-3 top-1/2 transform -translate-y-1/2 text-neutral-400 transition-transform ${
+        <i
+          className={cn(
+            "absolute right-3 top-1/2 transform -translate-y-1/2 text-neutral-400 transition-transform fa-solid fa-chevron-down",
             isOpen ? "rotate-180" : ""
-          }`}
+          )}
         />
       </div>
 

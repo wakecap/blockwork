@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Dropdown, DropdownOption } from "./Dropdown";
-import { faChevronDown, faSearch } from "@fortawesome/free-solid-svg-icons";
+import { Dropdown, type DropdownOption } from "./Dropdown";
 
 const options: DropdownOption[] = [
   { label: "Option 1", value: "option1" },
@@ -56,7 +55,7 @@ export const WithLeftIcon: Story = {
     label: "Search",
     options,
     value: "option1",
-    iconLeft: faSearch,
+    iconLeft: "fa-solid fa-search",
   },
 };
 
@@ -65,7 +64,7 @@ export const WithRightIcon: Story = {
     label: "Dropdown",
     options,
     value: "option1",
-    iconRight: faChevronDown,
+    iconRight: "fa-solid fa-chevron-down",
   },
 };
 
@@ -74,7 +73,7 @@ export const WithBothIcons: Story = {
     label: "Search Dropdown",
     options,
     value: "option1",
-    iconLeft: faSearch,
-    iconRight: faChevronDown,
+    iconLeft: "fa-solid fa-search",
+    iconRight: "fa-solid fa-chevron-down",
   },
 };

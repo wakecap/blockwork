@@ -1,6 +1,5 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronLeft, faChevronRight, faPlay, faPause } from "@fortawesome/free-solid-svg-icons";
+import { cn } from "../../../utils/utils";
 
 export interface CarouselItem {
   id: string;
@@ -114,14 +113,14 @@ export const Carousel: React.FC<CarouselProps> = ({
               className="absolute left-4 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-black/30 hover:bg-black/50 text-white rounded-full flex items-center justify-center transition-colors"
               aria-label="Previous slide"
             >
-              <FontAwesomeIcon icon={faChevronLeft} className="w-4 h-4" />
+              <i className="w-4 h-4 fa-solid fa-chevron-left" />
             </button>
             <button
               onClick={goToNext}
               className="absolute right-4 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-black/30 hover:bg-black/50 text-white rounded-full flex items-center justify-center transition-colors"
               aria-label="Next slide"
             >
-              <FontAwesomeIcon icon={faChevronRight} className="w-4 h-4" />
+              <i className="w-4 h-4 fa-solid fa-chevron-right" />
             </button>
           </>
         )}
@@ -149,7 +148,7 @@ export const Carousel: React.FC<CarouselProps> = ({
             className="absolute top-4 right-4 w-10 h-10 bg-black/30 hover:bg-black/50 text-white rounded-full flex items-center justify-center transition-colors"
             aria-label={isPlaying ? "Pause" : "Play"}
           >
-            <FontAwesomeIcon icon={isPlaying ? faPause : faPlay} className="w-4 h-4" />
+            <i className={cn("w-4 h-4", isPlaying ? "fa-solid fa-pause" : "fa-solid fa-play")} />
           </button>
         )}
 

@@ -1,12 +1,5 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCheck,
-  faTimes,
-  faExclamation,
-  faInfo,
-  faXmark,
-} from "@fortawesome/free-solid-svg-icons";
+import { cn } from "../../../utils/utils";
 
 export interface AlertProps {
   title?: string;
@@ -35,7 +28,7 @@ export const Alert: React.FC<AlertProps> = ({
       border: "border-success-200",
       title: "text-success-800",
       message: "text-success-700",
-      icon: faCheck,
+      icon: "fa-solid fa-check",
       iconColor: "text-success-600",
     },
     error: {
@@ -43,7 +36,7 @@ export const Alert: React.FC<AlertProps> = ({
       border: "border-error-200",
       title: "text-error-800",
       message: "text-error-700",
-      icon: faTimes,
+      icon: "fa-solid fa-times",
       iconColor: "text-error-600",
     },
     warning: {
@@ -51,7 +44,7 @@ export const Alert: React.FC<AlertProps> = ({
       border: "border-warning-200",
       title: "text-warning-800",
       message: "text-warning-700",
-      icon: faExclamation,
+      icon: "fa-solid fa-exclamation",
       iconColor: "text-warning-600",
     },
     info: {
@@ -59,7 +52,7 @@ export const Alert: React.FC<AlertProps> = ({
       border: "border-info-200",
       title: "text-info-800",
       message: "text-info-700",
-      icon: faInfo,
+      icon: "fa-solid fa-info",
       iconColor: "text-info-600",
     },
   };
@@ -73,9 +66,8 @@ export const Alert: React.FC<AlertProps> = ({
     >
       <div className="flex items-start gap-3">
         {showIcon && (
-          <FontAwesomeIcon
-            icon={currentVariant.icon}
-            className={`${currentVariant.iconColor} mt-0.5 flex-shrink-0`}
+          <i
+            className={cn(`${currentVariant.iconColor} mt-0.5 flex-shrink-0`, currentVariant.icon)}
           />
         )}
         <div className="flex-1 min-w-0">
@@ -89,7 +81,7 @@ export const Alert: React.FC<AlertProps> = ({
             className={`${currentVariant.message} hover:opacity-70 transition-opacity flex-shrink-0`}
             aria-label="Close alert"
           >
-            <FontAwesomeIcon icon={faXmark} className="w-4 h-4" />
+            <i className="fa-solid fa-xmark w-4 h-4" />
           </button>
         )}
       </div>

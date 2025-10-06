@@ -1,11 +1,4 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCheck,
-  faCheckDouble,
-  faClock,
-  faExclamationTriangle,
-} from "@fortawesome/free-solid-svg-icons";
 
 export interface ChatBubbleProps {
   message: string;
@@ -35,15 +28,15 @@ export const ChatBubble: React.FC<ChatBubbleProps> = ({
   const getStatusIcon = () => {
     switch (status) {
       case "sending":
-        return <FontAwesomeIcon icon={faClock} className="w-3 h-3 text-neutral-400" />;
+        return <i className="w-3 h-3 text-neutral-400 fa-solid fa-clock" />;
       case "sent":
-        return <FontAwesomeIcon icon={faCheck} className="w-3 h-3 text-neutral-400" />;
+        return <i className="w-3 h-3 text-neutral-400 fa-solid fa-check" />;
       case "delivered":
-        return <FontAwesomeIcon icon={faCheckDouble} className="w-3 h-3 text-neutral-400" />;
+        return <i className="w-3 h-3 text-neutral-400 fa-solid fa-check-double" />;
       case "read":
-        return <FontAwesomeIcon icon={faCheckDouble} className="w-3 h-3 text-blue-500" />;
+        return <i className="w-3 h-3 text-blue-500 fa-solid fa-check-double" />;
       case "error":
-        return <FontAwesomeIcon icon={faExclamationTriangle} className="w-3 h-3 text-red-500" />;
+        return <i className="w-3 h-3 text-red-500 fa-solid fa-exclamation-triangle" />;
       default:
         return null;
     }

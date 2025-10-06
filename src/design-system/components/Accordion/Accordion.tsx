@@ -1,6 +1,5 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronDown, faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import { cn } from "../../../utils/utils";
 
 export interface AccordionItemProps {
   title: string;
@@ -102,18 +101,17 @@ export const Accordion: React.FC<AccordionProps> = ({
               } transition-colors duration-150`}
             >
               <div className="flex items-center space-x-3">
-                {item.icon && (
-                  <FontAwesomeIcon icon={item.icon} className="w-4 h-4 text-neutral-500" />
-                )}
+                {item.icon && <i className={cn("w-4 h-4 text-neutral-500", item.icon)} />}
                 <h3 className={`font-medium text-neutral-900 ${currentSize.title} text-center`}>
                   {item.title}
                 </h3>
               </div>
-              <FontAwesomeIcon
-                icon={isOpen ? faChevronDown : faChevronRight}
-                className={`w-4 h-4 text-neutral-500 transition-transform duration-200 ${
-                  isOpen ? "rotate-0" : "-rotate-90"
-                }`}
+              <i
+                className={cn(
+                  "w-4 h-4 text-neutral-500 transition-transform duration-200",
+                  isOpen ? "rotate-0" : "-rotate-90",
+                  isOpen ? "fa-solid fa-chevron-down" : "fa-solid fa-chevron-up",
+                )}
               />
             </button>
 
@@ -139,7 +137,7 @@ export const AccordionItem: React.FC<{
   children: React.ReactNode;
   isOpen?: boolean;
   isDisabled?: boolean;
-  icon?: any;
+  icon?: string;
   onToggle?: (isOpen: boolean) => void;
   className?: string;
 }> = ({ title, children, isOpen = false, isDisabled = false, icon, onToggle, className = "" }) => {
@@ -163,14 +161,15 @@ export const AccordionItem: React.FC<{
         } transition-colors duration-150`}
       >
         <div className="flex items-center space-x-3">
-          {icon && <FontAwesomeIcon icon={icon} className="w-4 h-4 text-neutral-500" />}
+          {icon && <i className={cn("w-4 h-4 text-neutral-500", icon)} />}
           <h3 className="font-medium text-neutral-900 text-center">{title}</h3>
         </div>
-        <FontAwesomeIcon
-          icon={isExpanded ? faChevronDown : faChevronRight}
-          className={`w-4 h-4 text-neutral-500 transition-transform duration-200 ${
-            isExpanded ? "rotate-0" : "-rotate-90"
-          }`}
+        <i
+          className={cn(
+            "w-4 h-4 text-neutral-500 transition-transform duration-200",
+            isExpanded ? "rotate-0" : "-rotate-90",
+            isExpanded ? "fa-solid fa-chevron-down" : "fa-solid fa-chevron-up",
+          )}
         />
       </button>
 

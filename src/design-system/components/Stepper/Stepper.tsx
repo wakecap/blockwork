@@ -1,6 +1,4 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck } from "@fortawesome/free-solid-svg-icons";
 
 export interface StepperStep {
   id: string;
@@ -90,7 +88,7 @@ export const Stepper: React.FC<StepperProps> = ({
     switch (status) {
       case "completed":
         statusClasses = "bg-primary-600 border-primary-600 text-white";
-        content = <FontAwesomeIcon icon={faCheck} />;
+        content = <i className="fa-solid fa-check" />;
         break;
       case "current":
         statusClasses = "bg-white border-primary-600 text-primary-600";

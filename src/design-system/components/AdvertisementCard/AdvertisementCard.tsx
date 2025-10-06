@@ -1,7 +1,5 @@
 import React from "react";
 import { Button } from "../Button/Button";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck } from "@fortawesome/free-solid-svg-icons";
 
 interface AdvertisementCardProps {
   banner: string | React.ReactNode;
@@ -121,7 +119,7 @@ export const AdvertisementCard: React.FC<AdvertisementCardProps> = ({
                 width: 16,
               }}
             >
-              <FontAwesomeIcon icon={faCheck} />
+              <i className="fa-solid fa-check" />
             </span>
             <span
               style={{

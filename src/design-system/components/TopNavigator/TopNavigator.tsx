@@ -1,11 +1,4 @@
 import React, { useState, useRef, useEffect, useMemo, useCallback } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCaretDown,
-  faBars,
-  faRocket as faRocketRegular,
-} from "@fortawesome/free-solid-svg-icons";
-import type { IconDefinition } from "@fortawesome/fontawesome-common-types";
 
 import { MegaDropdown } from "../MegaDropdown/MegaDropdown";
 import { Button } from "../Button/Button";
@@ -38,7 +31,7 @@ export interface TopNavigatorProps {
   onMenuItemClick?: (item: MenuItem) => void;
   onSettingsMenuItemClick?: (item: MenuItem) => void;
   onPinnedItemsChange?: (pinnedIds: string[]) => void; // Callback to get current pinned item IDs
-  onPinnedItemClick?: (item: { id: string; icon: IconDefinition; label: string }) => void; // Callback for pinned item clicks
+  onPinnedItemClick?: (item: { id: string; icon: string; label: string }) => void; // Callback for pinned item clicks
 }
 
 export const TopNavigator = ({
@@ -59,7 +52,7 @@ export const TopNavigator = ({
 }: TopNavigatorProps) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [pinnedItems, setPinnedItems] = useState<
-    Array<{ id: string; icon: IconDefinition; label: string }>
+    Array<{ id: string; icon: string; label: string }>
   >([]);
   const [pinnedStates, setPinnedStates] = useState<Record<string, boolean>>({});
   const [overflowMenuOpen, setOverflowMenuOpen] = useState(false);
@@ -149,7 +142,7 @@ export const TopNavigator = ({
     }
   }, [initialPinnedItems, menu]);
 
-  const handlePinChange = (items: Array<{ id: string; icon: IconDefinition; label: string }>) => {
+  const handlePinChange = (items: Array<{ id: string; icon: string; label: string }>) => {
     setPinnedItems(items);
     // Call the callback with the current pinned item IDs
     onPinnedItemsChange?.(items.map((item) => item.id));
@@ -344,7 +337,7 @@ export const TopNavigator = ({
             <Button
               variant="secondary"
               size="sm"
-              icon={faCaretDown}
+              icon="fa-solid fa-caret-down"
               iconPosition="right"
               onClick={() => setProjectMenuOpen(!projectMenuOpen)}
               style={{ minWidth: "140px" }}
@@ -512,7 +505,7 @@ export const TopNavigator = ({
 
           <Button
             variant="iconBtn"
-            icon={faBars}
+            icon="fa-solid fa-bars"
             size="iconSm"
             aria-label="Dashboard menu"
             onClick={(e) => {
@@ -640,7 +633,7 @@ export const TopNavigator = ({
           <div ref={settingsRef} style={{ position: "relative" }}>
             <Button
               variant="iconBtn"
-              icon={faRocketRegular}
+              icon="fa-solid fa-rocket"
               size="iconSm"
               aria-label="Settings"
               onClick={() => setSettingsMenuOpen(!settingsMenuOpen)}
@@ -708,10 +701,7 @@ export const TopNavigator = ({
                         flexShrink: 0,
                       }}
                     >
-                      <FontAwesomeIcon
-                        icon={item.icon}
-                        style={{ fontSize: 12, color: "#6b7280" }}
-                      />
+                      <i className={item.icon} style={{ fontSize: 12, color: "#6b7280" }} />
                     </div>
                     <span
                       style={{
@@ -733,7 +723,7 @@ export const TopNavigator = ({
             <Button
               variant="secondary"
               size="sm"
-              icon={faCaretDown}
+              icon="fa-solid fa-caret-down"
               iconPosition="right"
               onClick={() => setProjectMenuOpen(!projectMenuOpen)}
               style={{ minWidth: "140px" }}
@@ -981,10 +971,7 @@ export const TopNavigator = ({
                           flexShrink: 0,
                         }}
                       >
-                        <FontAwesomeIcon
-                          icon={item.icon}
-                          style={{ fontSize: 12, color: "#6b7280" }}
-                        />
+                        <i className={item.icon} style={{ fontSize: 12, color: "#6b7280" }} />
                       </div>
                       <span style={{ whiteSpace: "nowrap" }}>{item.label}</span>
                     </button>

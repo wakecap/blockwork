@@ -2,15 +2,6 @@ import React from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Popover, MenuPopover, InfoPopover, FormPopover } from "./Popover";
 import { Button } from "../Button/Button";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faUser,
-  faCog,
-  faSignOutAlt,
-  faInfo,
-  faEdit,
-  faTrash,
-} from "@fortawesome/free-solid-svg-icons";
 
 const meta: Meta<typeof Popover> = {
   title: "Content Display/Popover",
@@ -242,7 +233,7 @@ export const MenuPopoverExample: Story = {
     const menuItems = [
       {
         label: "Profile",
-        icon: faUser,
+        icon: "fa-solid fa-user",
         onClick: () => {
           alert("Profile clicked");
           setIsOpen(false);
@@ -250,7 +241,7 @@ export const MenuPopoverExample: Story = {
       },
       {
         label: "Settings",
-        icon: faCog,
+        icon: "fa-solid fa-cog",
         onClick: () => {
           alert("Settings clicked");
           setIsOpen(false);
@@ -258,7 +249,7 @@ export const MenuPopoverExample: Story = {
       },
       {
         label: "Sign Out",
-        icon: faSignOutAlt,
+        icon: "fa-solid fa-sign-out-alt",
         onClick: () => {
           alert("Sign out clicked");
           setIsOpen(false);
@@ -286,7 +277,7 @@ export const InfoPopoverExample: Story = {
         onClose={() => setIsOpen(false)}
       >
         <Button variant="ghost" size="sm" onClick={() => setIsOpen(!isOpen)}>
-          <FontAwesomeIcon icon={faInfo} className="w-4 h-4" />
+          <i className="w-4 h-4 fa-solid fa-info" />
         </Button>
       </InfoPopover>
     );
@@ -302,7 +293,7 @@ export const FormPopoverExample: Story = {
         title="Edit User"
         trigger={
           <Button variant="outline" onClick={() => setIsOpen(!isOpen)}>
-            <FontAwesomeIcon icon={faEdit} className="w-4 h-4 mr-2" />
+            <i className="w-4 h-4 mr-2 fa-solid fa-edit" />
             Edit User
           </Button>
         }
@@ -356,7 +347,7 @@ export const ComplexContent: Story = {
           <div className="p-6 max-w-sm">
             <div className="flex items-center space-x-3 mb-4">
               <div className="w-10 h-10 bg-primary-100 rounded-full flex items-center justify-center">
-                <FontAwesomeIcon icon={faUser} className="w-5 h-5 text-primary-600" />
+                <i className="w-5 h-5 text-primary-600 fa-solid fa-user" />
               </div>
               <div>
                 <h3 className="font-medium text-neutral-900">Sarah Johnson</h3>
@@ -383,7 +374,7 @@ export const ComplexContent: Story = {
 
             <div className="flex space-x-2 mt-4 pt-4 border-t border-neutral-200">
               <Button size="sm" variant="outline" className="flex-1">
-                <FontAwesomeIcon icon={faEdit} className="w-3 h-3 mr-1" />
+                <i className="w-3 h-3 mr-1 fa-solid fa-edit" />
                 Edit
               </Button>
               <Button
@@ -391,7 +382,7 @@ export const ComplexContent: Story = {
                 variant="outline"
                 className="flex-1 text-red-600 hover:text-red-700"
               >
-                <FontAwesomeIcon icon={faTrash} className="w-3 h-3 mr-1" />
+                <i className="w-3 h-3 mr-1 fa-solid fa-trash" />
                 Delete
               </Button>
             </div>

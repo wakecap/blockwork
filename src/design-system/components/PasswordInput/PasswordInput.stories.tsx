@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { PasswordInput } from "./PasswordInput";
-import { faLock } from "@fortawesome/free-solid-svg-icons";
 
 const meta: Meta<typeof PasswordInput> = {
   title: "Components/PasswordInput",
@@ -38,7 +37,7 @@ export const WithLabel: Story = {
 export const WithIcon: Story = {
   args: {
     label: "Password",
-    iconLeft: faLock,
+    iconLeft: "fa-solid fa-lock",
     placeholder: "Enter your password",
   },
 };

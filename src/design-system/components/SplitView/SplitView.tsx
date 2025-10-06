@@ -1,6 +1,5 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGripVertical } from "@fortawesome/free-solid-svg-icons";
+import { cn } from "../../../utils/utils";
 
 export interface SplitViewProps {
   children: [React.ReactNode, React.ReactNode];
@@ -192,9 +191,11 @@ export const SplitView: React.FC<SplitViewProps> = ({
             userSelect: "none",
           }}
         >
-          <FontAwesomeIcon
-            icon={faGripVertical}
-            className={`text-neutral-400 ${isHorizontal ? "" : "rotate-90"}`}
+          <i
+            className={cn(
+              "text-neutral-400 fa-solid fa-grip-vertical",
+              isHorizontal ? "" : "rotate-90"
+            )}
           />
         </div>
       )}

@@ -1,6 +1,5 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import { cn } from "../../../utils/utils";
 
 export interface PopoverProps {
   content: React.ReactNode;
@@ -114,7 +113,7 @@ export const Popover: React.FC<PopoverProps> = ({
             className="absolute top-2 right-2 p-1 text-neutral-400 hover:text-neutral-600 transition-colors"
             aria-label="Close"
           >
-            <FontAwesomeIcon icon={faTimes} className="w-4 h-4" />
+            <i className="w-4 h-4 fa-solid fa-times" />
           </button>
         )}
 
@@ -159,7 +158,7 @@ export const MenuPopover: React.FC<{
               item.disabled ? "opacity-50 cursor-not-allowed" : "cursor-pointer"
             }`}
           >
-            {item.icon && <FontAwesomeIcon icon={item.icon} className="w-4 h-4 text-neutral-500" />}
+            {item.icon && <i className={cn("w-4 h-4 text-neutral-500", item.icon)} />}
             <span>{item.label}</span>
           </button>
         ))}
@@ -218,7 +217,7 @@ export const FormPopover: React.FC<{
             onClick={onClose}
             className="p-1 text-neutral-400 hover:text-neutral-600 transition-colors"
           >
-            <FontAwesomeIcon icon={faTimes} className="w-4 h-4" />
+            <i className="w-4 h-4 fa-solid fa-times" />
           </button>
         </div>
         {children}

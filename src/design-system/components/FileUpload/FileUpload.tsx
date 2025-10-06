@@ -1,14 +1,5 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faUpload,
-  faFile,
-  faImage,
-  faVideo,
-  faMusic,
-  faTimes,
-  faCheck,
-} from "@fortawesome/free-solid-svg-icons";
+import { cn } from "../../../utils/utils";
 
 export interface FileUploadFile {
   id: string;
@@ -91,10 +82,10 @@ export const FileUpload: React.FC<FileUploadProps> = ({
   };
 
   const getFileIcon = (fileType: string) => {
-    if (fileType.startsWith("image/")) return faImage;
-    if (fileType.startsWith("video/")) return faVideo;
-    if (fileType.startsWith("audio/")) return faMusic;
-    return faFile;
+    if (fileType.startsWith("image/")) return "fa-solid fa-image";
+    if (fileType.startsWith("video/")) return "fa-solid fa-video";
+    if (fileType.startsWith("audio/")) return "fa-solid fa-music";
+    return "fa-solid fa-file";
   };
 
   const formatFileSize = (bytes: number) => {
@@ -108,9 +99,9 @@ export const FileUpload: React.FC<FileUploadProps> = ({
   const getStatusIcon = (status: FileUploadFile["status"]) => {
     switch (status) {
       case "completed":
-        return <FontAwesomeIcon icon={faCheck} className="w-4 h-4 text-green-500" />;
+        return <i className="w-4 h-4 text-green-500 fa-solid fa-check" />;
       case "error":
-        return <FontAwesomeIcon icon={faTimes} className="w-4 h-4 text-red-500" />;
+        return <i className="w-4 h-4 text-red-500 fa-solid fa-times" />;
       default:
         return null;
     }
@@ -138,7 +129,7 @@ export const FileUpload: React.FC<FileUploadProps> = ({
         onDrop={handleDrop}
       >
         <div className="text-center">
-          <FontAwesomeIcon icon={faUpload} className="w-8 h-8 text-neutral-400 mb-4" />
+          <i className="w-8 h-8 text-neutral-400 mb-4 fa-solid fa-upload" />
           <h3 className="text-lg font-medium text-neutral-900 mb-2">
             {dragActive ? "Drop files here" : "Upload files"}
           </h3>
@@ -181,9 +172,8 @@ export const FileUpload: React.FC<FileUploadProps> = ({
               >
                 {/* File Icon */}
                 <div className="flex-shrink-0">
-                  <FontAwesomeIcon
-                    icon={getFileIcon(file.type)}
-                    className="w-5 h-5 text-neutral-500"
+                  <i
+                    className={cn("w-5 h-5 text-neutral-500", getFileIcon(file.type))}
                   />
                 </div>
 
@@ -200,7 +190,7 @@ export const FileUpload: React.FC<FileUploadProps> = ({
                         onClick={() => onFileRemove(file.id)}
                         className="p-1 text-neutral-400 hover:text-red-500 transition-colors"
                       >
-                        <FontAwesomeIcon icon={faTimes} className="w-4 h-4" />
+                        <i className="w-4 h-4 fa-solid fa-times" />
                       </button>
                     </div>
                   </div>

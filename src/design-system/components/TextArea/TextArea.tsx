@@ -1,13 +1,12 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import type { IconDefinition } from "@fortawesome/fontawesome-common-types";
+import { cn } from "../../../utils/utils";
 
 export interface TextAreaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
   label?: string;
   error?: string;
   success?: string;
-  iconLeft?: IconDefinition;
-  iconRight?: IconDefinition;
+  iconLeft?: string;
+  iconRight?: string;
   rows?: number;
   maxLength?: number;
   showCharacterCount?: boolean;
@@ -40,7 +39,7 @@ export const TextArea: React.FC<TextAreaProps> = ({
       <div className="relative">
         {iconLeft && (
           <span className="absolute left-3 top-3 text-neutral-400 z-10">
-            <FontAwesomeIcon icon={iconLeft} className="w-4 h-4" />
+            <i className={cn("w-4 h-4", iconLeft)} />
           </span>
         )}
         <textarea
@@ -62,7 +61,7 @@ export const TextArea: React.FC<TextAreaProps> = ({
         />
         {iconRight && (
           <span className="absolute right-3 top-3 text-neutral-400 pointer-events-none">
-            <FontAwesomeIcon icon={iconRight} className="w-4 h-4" />
+            <i className={cn("w-4 h-4", iconRight)} />
           </span>
         )}
       </div>

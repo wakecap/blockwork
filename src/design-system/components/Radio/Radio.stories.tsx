@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Radio } from "./Radio";
-import { faDotCircle } from "@fortawesome/free-solid-svg-icons";
 
 const meta: Meta<typeof Radio> = {
   title: "Forms and Data Entry/Radio",
@@ -69,6 +68,6 @@ export const WithIcon: Story = {
   args: {
     label: "With Icon",
     checked: false,
-    icon: faDotCircle,
+    icon: "fa-solid fa-dot-circle",
   },
 };

@@ -1,7 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Avatar } from "./Avatar";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser, faRobot } from "@fortawesome/free-solid-svg-icons";
 
 const meta: Meta<typeof Avatar> = {
   title: "Components/Avatar",
@@ -54,13 +52,13 @@ export const WithName: Story = {
 
 export const WithFallbackIcon: Story = {
   args: {
-    fallbackIcon: <FontAwesomeIcon icon={faUser} />,
+    fallbackIcon: <i className="fa-solid fa-user" />,
   },
 };
 
 export const WithCustomIcon: Story = {
   args: {
-    fallbackIcon: <FontAwesomeIcon icon={faRobot} />,
+    fallbackIcon: <i className="fa-solid fa-robot" />,
   },
 };
 

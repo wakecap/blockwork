@@ -1,33 +1,10 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faHeart,
-  faUser,
-  faCog,
-  faSearch,
-  faBell,
-  faHome,
-  faEnvelope,
-  faPhone,
-  faCheck,
-  faTimes,
-  faExclamation,
-  faInfo,
-  faPlus,
-  faMinus,
-  faEdit,
-  faTrash,
-  faSave,
-  faDownload,
-  faUpload,
-  faPrint,
-  faShare,
-  faCopy,
-} from "@fortawesome/free-solid-svg-icons";
+import { cn } from "../../utils/utils";
+
 
 // Icon component with size and color variants
 export interface IconProps {
-  icon: any;
+  icon: string;
   size?: "xs" | "sm" | "base" | "lg" | "xl" | "2xl" | "3xl" | "4xl";
   color?: "neutral" | "primary" | "success" | "error" | "warning" | "info";
   className?: string;
@@ -59,12 +36,7 @@ export const Icon: React.FC<IconProps> = ({
     info: "text-blue-600",
   };
 
-  return (
-    <FontAwesomeIcon
-      icon={icon}
-      className={`${sizeClasses[size]} ${colorClasses[color]} ${className}`}
-    />
-  );
+  return <i className={cn(icon, `${sizeClasses[size]} ${colorClasses[color]} ${className}`)} />;
 };
 
 // Icon showcase component
@@ -73,47 +45,47 @@ export const IconShowcase: React.FC = () => {
     {
       title: "Navigation",
       icons: [
-        { icon: faHome, name: "Home" },
-        { icon: faUser, name: "User" },
-        { icon: faCog, name: "Settings" },
-        { icon: faSearch, name: "Search" },
+        { icon: "fa-solid fa-home", name: "Home" },
+        { icon: "fa-solid fa-user", name: "User" },
+        { icon: "fa-solid fa-cog", name: "Settings" },
+        { icon: "fa-solid fa-search", name: "Search" },
       ],
     },
     {
       title: "Actions",
       icons: [
-        { icon: faPlus, name: "Add" },
-        { icon: faMinus, name: "Remove" },
-        { icon: faEdit, name: "Edit" },
-        { icon: faTrash, name: "Delete" },
-        { icon: faSave, name: "Save" },
-        { icon: faCopy, name: "Copy" },
+        { icon: "fa-solid fa-plus", name: "Add" },
+        { icon: "fa-solid fa-minus", name: "Remove" },
+        { icon: "fa-solid fa-edit", name: "Edit" },
+        { icon: "fa-solid fa-trash", name: "Delete" },
+        { icon: "fa-solid fa-save", name: "Save" },
+        { icon: "fa-solid fa-copy", name: "Copy" },
       ],
     },
     {
       title: "Status",
       icons: [
-        { icon: faCheck, name: "Success" },
-        { icon: faTimes, name: "Error" },
-        { icon: faExclamation, name: "Warning" },
-        { icon: faInfo, name: "Info" },
+        { icon: "fa-solid fa-check", name: "Success" },
+        { icon: "fa-solid fa-times", name: "Error" },
+        { icon: "fa-solid fa-exclamation", name: "Warning" },
+        { icon: "fa-solid fa-info", name: "Info" },
       ],
     },
     {
       title: "Communication",
       icons: [
-        { icon: faEnvelope, name: "Email" },
-        { icon: faPhone, name: "Phone" },
-        { icon: faBell, name: "Notification" },
-        { icon: faShare, name: "Share" },
+        { icon: "fa-solid fa-envelope", name: "Email" },
+        { icon: "fa-solid fa-phone", name: "Phone" },
+        { icon: "fa-solid fa-bell", name: "Notification" },
+        { icon: "fa-solid fa-share", name: "Share" },
       ],
     },
     {
       title: "Files",
       icons: [
-        { icon: faDownload, name: "Download" },
-        { icon: faUpload, name: "Upload" },
-        { icon: faPrint, name: "Print" },
+        { icon: "fa-solid fa-download", name: "Download" },
+        { icon: "fa-solid fa-upload", name: "Upload" },
+        { icon: "fa-solid fa-print", name: "Print" },
       ],
     },
   ];
@@ -157,7 +129,7 @@ export const IconSizes: React.FC = () => {
     <div className="space-y-4">
       {sizes.map(({ size, label }) => (
         <div key={size} className="flex items-center gap-4">
-          <Icon icon={faHeart} size={size} color="primary" />
+          <Icon icon="fa-solid fa-heart" size={size} color="primary" />
           <span className="text-sm text-neutral-700">{label}</span>
         </div>
       ))}
@@ -183,7 +155,7 @@ export const IconColors: React.FC = () => {
           key={color}
           className="flex items-center gap-3 p-3 border border-neutral-200 rounded-lg"
         >
-          <Icon icon={faHeart} size="lg" color={color} />
+          <Icon icon="fa-solid fa-heart" size="lg" color={color} />
           <span className="text-sm text-neutral-700">{label}</span>
         </div>
       ))}

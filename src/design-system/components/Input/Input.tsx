@@ -1,6 +1,5 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import type { IconDefinition } from "@fortawesome/fontawesome-common-types";
+import { cn } from "../../../utils/utils";
 // import { useFont } from './FontProvider';
 // import { getRTLClasses, getFontFamily } from '../utils/arabicLocalization';
 
@@ -8,8 +7,8 @@ export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> 
   label?: string;
   error?: string;
   success?: string;
-  iconLeft?: IconDefinition;
-  iconRight?: IconDefinition;
+  iconLeft?: string;
+  iconRight?: string;
   // Arabic support
   arabicLabel?: string;
   arabicPlaceholder?: string;
@@ -71,7 +70,7 @@ export const Input: React.FC<InputProps> = ({
       <div className="relative flex items-center">
         {iconLeft && (
           <span className="absolute left-3 text-neutral-400">
-            <FontAwesomeIcon icon={iconLeft} className="w-4 h-4" />
+            <i className={cn("w-4 h-4", iconLeft)} />
           </span>
         )}
         <input
@@ -91,7 +90,7 @@ export const Input: React.FC<InputProps> = ({
         />
         {iconRight && (
           <span className="absolute right-3 text-neutral-400">
-            <FontAwesomeIcon icon={iconRight} className="w-4 h-4" />
+            <i className={cn("w-4 h-4", iconRight)} />
           </span>
         )}
       </div>

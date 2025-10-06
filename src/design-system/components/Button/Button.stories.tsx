@@ -3,21 +3,6 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { FontProvider } from "../FontProvider/FontProvider";
 import { Button, type SizeVariants, type Variants } from "./Button";
 
-import {
-  faBell,
-  faArrowRight,
-  faCog,
-  faUser,
-  faStar,
-  faTh,
-  faDownload,
-  faUpload,
-  faCheck,
-  faTimes,
-  faExclamation,
-  faInfo,
-} from "@fortawesome/free-solid-svg-icons";
-
 const meta: Meta<typeof Button> = {
   title: "Components/Button",
   component: Button,
@@ -90,18 +75,18 @@ const meta: Meta<typeof Button> = {
       control: "select",
       options: {
         None: null,
-        Bell: faBell,
-        "Arrow Right": faArrowRight,
-        Settings: faCog,
-        User: faUser,
-        Star: faStar,
-        Grid: faTh,
-        Download: faDownload,
-        Upload: faUpload,
-        Check: faCheck,
-        Times: faTimes,
-        Exclamation: faExclamation,
-        Info: faInfo,
+        Bell: "fa-solid fa-bell",
+        "Arrow Right": "fa-solid fa-arrow-right",
+        Settings: "fa-solid fa-cog",
+        User: "fa-solid fa-user",
+        Star: "fa-solid fa-star",
+        Grid: "fa-solid fa-th",
+        Download: "fa-solid fa-download",
+        Upload: "fa-solid fa-upload",
+        Check: "fa-solid fa-check",
+        Times: "fa-solid fa-times",
+        Exclamation: "fa-solid fa-exclamation",
+        Info: "fa-solid fa-info",
       },
       description: "FontAwesome icon to display",
       table: {
@@ -242,7 +227,7 @@ export const Playground: Story = {
     children: "Interactive Button",
     variant: "primary",
     size: "md",
-    icon: faBell,
+    icon: "fa-solid fa-bell",
     iconPosition: "left",
     loading: false,
     loadingText: "Loading...",
@@ -269,22 +254,22 @@ export const Playground: Story = {
 // Icon showcase with better controls
 export const IconShowcase: Story = {
   render: () => {
-    const [selectedIcon, setSelectedIcon] = React.useState(faBell);
+    const [selectedIcon, setSelectedIcon] = React.useState("fa-solid fa-bell");
     const [iconPosition, setIconPosition] = React.useState<"left" | "right">("left");
 
     const icons = [
-      { name: "Bell", icon: faBell },
-      { name: "Arrow Right", icon: faArrowRight },
-      { name: "Settings", icon: faCog },
-      { name: "User", icon: faUser },
-      { name: "Star", icon: faStar },
-      { name: "Grid", icon: faTh },
-      { name: "Download", icon: faDownload },
-      { name: "Upload", icon: faUpload },
-      { name: "Check", icon: faCheck },
-      { name: "Times", icon: faTimes },
-      { name: "Exclamation", icon: faExclamation },
-      { name: "Info", icon: faInfo },
+      { name: "Bell", icon: "fa-solid fa-bell" },
+      { name: "Arrow Right", icon: "fa-solid fa-arrow-right" },
+      { name: "Settings", icon: "fa-solid fa-cog" },
+      { name: "User", icon: "fa-solid fa-user" },
+      { name: "Star", icon: "fa-solid fa-star" },
+      { name: "Grid", icon: "fa-solid fa-th" },
+      { name: "Download", icon: "fa-solid fa-download" },
+      { name: "Upload", icon: "fa-solid fa-upload" },
+      { name: "Check", icon: "fa-solid fa-check" },
+      { name: "Times", icon: "fa-solid fa-times" },
+      { name: "Exclamation", icon: "fa-solid fa-exclamation" },
+      { name: "Info", icon: "fa-solid fa-info" },
     ];
 
     return (
@@ -409,7 +394,7 @@ export const StateCombinations: Story = {
 
           <Button
             variant="pin"
-            icon={faStar}
+            icon="fa-solid fa-star"
             isPinned={pinned}
             isActive={active}
             disabled={disabled}
@@ -491,16 +476,16 @@ export const CoreVariants: Story = {
 export const SemanticVariants: Story = {
   render: () => (
     <div className="flex flex-wrap gap-4">
-      <Button variant="success" icon={faCheck}>
+      <Button variant="success" icon="fa-solid fa-check">
         Success
       </Button>
-      <Button variant="warning" icon={faExclamation}>
+      <Button variant="warning" icon="fa-solid fa-exclamation">
         Warning
       </Button>
-      <Button variant="destructive" icon={faTimes}>
+      <Button variant="destructive" icon="fa-solid fa-times">
         Destructive
       </Button>
-      <Button variant="info" icon={faInfo}>
+      <Button variant="info" icon="fa-solid fa-info">
         Info
       </Button>
     </div>
@@ -539,16 +524,16 @@ export const Sizes: Story = {
 export const WithIcons: Story = {
   render: () => (
     <div className="flex flex-wrap gap-4">
-      <Button icon={faDownload} iconPosition="left">
+      <Button icon="fa-solid fa-download" iconPosition="left">
         Download
       </Button>
-      <Button icon={faUpload} iconPosition="right">
+      <Button icon="fa-solid fa-upload" iconPosition="right">
         Upload
       </Button>
-      <Button variant="accent" icon={faArrowRight} iconPosition="right">
+      <Button variant="accent" icon="fa-solid fa-arrow-right" iconPosition="right">
         Continue
       </Button>
-      <Button variant="outline" icon={faCog} iconPosition="left">
+      <Button variant="outline" icon="fa-solid fa-cog" iconPosition="left">
         Settings
       </Button>
     </div>
@@ -570,65 +555,75 @@ export const IconOnly: Story = {
       {/* Different icon-only sizes */}
       <div className="flex items-center gap-4">
         <span className="text-sm font-medium w-24">Extra Small:</span>
-        <Button size="iconXs" icon={faBell} variant="iconBtn" aria-label="XS Icon" />
-        <Button size="iconXs" icon={faCog} variant="secondary" aria-label="XS Settings" />
-        <Button size="iconXs" icon={faUser} variant="outline" aria-label="XS Profile" />
+        <Button size="iconXs" icon="fa-solid fa-bell" variant="iconBtn" aria-label="XS Icon" />
+        <Button size="iconXs" icon="fa-solid fa-cog" variant="secondary" aria-label="XS Settings" />
+        <Button size="iconXs" icon="fa-solid fa-user" variant="outline" aria-label="XS Profile" />
       </div>
 
       <div className="flex items-center gap-4">
         <span className="text-sm font-medium w-24">Small:</span>
-        <Button size="iconSm" icon={faBell} variant="iconBtn" aria-label="SM Icon" />
-        <Button size="iconSm" icon={faCog} variant="secondary" aria-label="SM Settings" />
-        <Button size="iconSm" icon={faUser} variant="outline" aria-label="SM Profile" />
+        <Button size="iconSm" icon="fa-solid fa-bell" variant="iconBtn" aria-label="SM Icon" />
+        <Button size="iconSm" icon="fa-solid fa-cog" variant="secondary" aria-label="SM Settings" />
+        <Button size="iconSm" icon="fa-solid fa-user" variant="outline" aria-label="SM Profile" />
       </div>
 
       <div className="flex items-center gap-4">
         <span className="text-sm font-medium w-24">Medium:</span>
-        <Button size="iconMd" icon={faBell} variant="iconBtn" aria-label="MD Icon" />
-        <Button size="iconMd" icon={faCog} variant="secondary" aria-label="MD Settings" />
-        <Button size="iconMd" icon={faUser} variant="outline" aria-label="MD Profile" />
+        <Button size="iconMd" icon="fa-solid fa-bell" variant="iconBtn" aria-label="MD Icon" />
+        <Button size="iconMd" icon="fa-solid fa-cog" variant="secondary" aria-label="MD Settings" />
+        <Button size="iconMd" icon="fa-solid fa-user" variant="outline" aria-label="MD Profile" />
       </div>
 
       <div className="flex items-center gap-4">
         <span className="text-sm font-medium w-24">Large:</span>
-        <Button size="iconLg" icon={faBell} variant="iconBtn" aria-label="LG Icon" />
-        <Button size="iconLg" icon={faCog} variant="secondary" aria-label="LG Settings" />
-        <Button size="iconLg" icon={faUser} variant="outline" aria-label="LG Profile" />
+        <Button size="iconLg" icon="fa-solid fa-bell" variant="iconBtn" aria-label="LG Icon" />
+        <Button size="iconLg" icon="fa-solid fa-cog" variant="secondary" aria-label="LG Settings" />
+        <Button size="iconLg" icon="fa-solid fa-user" variant="outline" aria-label="LG Profile" />
       </div>
 
       <div className="flex items-center gap-4">
         <span className="text-sm font-medium w-24">Extra Large:</span>
-        <Button size="iconXl" icon={faBell} variant="iconBtn" aria-label="XL Icon" />
-        <Button size="iconXl" icon={faCog} variant="secondary" aria-label="XL Settings" />
-        <Button size="iconXl" icon={faUser} variant="outline" aria-label="XL Profile" />
+        <Button size="iconXl" icon="fa-solid fa-bell" variant="iconBtn" aria-label="XL Icon" />
+        <Button size="iconXl" icon="fa-solid fa-cog" variant="secondary" aria-label="XL Settings" />
+        <Button size="iconXl" icon="fa-solid fa-user" variant="outline" aria-label="XL Profile" />
       </div>
 
       {/* Different variants with medium size */}
       <div className="flex items-center gap-4">
         <span className="text-sm font-medium w-24">Variants:</span>
-        <Button size="iconMd" icon={faBell} variant="primary" aria-label="Primary" />
-        <Button size="iconMd" icon={faCog} variant="secondary" aria-label="Secondary" />
-        <Button size="iconMd" icon={faUser} variant="outline" aria-label="Outline" />
-        <Button size="iconMd" icon={faStar} variant="accent" aria-label="Accent" />
-        <Button size="iconMd" icon={faBell} variant="ghost" aria-label="Ghost" />
-        <Button size="iconMd" icon={faCog} variant="text" aria-label="Text" />
+        <Button size="iconMd" icon="fa-solid fa-bell" variant="primary" aria-label="Primary" />
+        <Button size="iconMd" icon="fa-solid fa-cog" variant="secondary" aria-label="Secondary" />
+        <Button size="iconMd" icon="fa-solid fa-user" variant="outline" aria-label="Outline" />
+        <Button size="iconMd" icon="fa-solid fa-star" variant="accent" aria-label="Accent" />
+        <Button size="iconMd" icon="fa-solid fa-bell" variant="ghost" aria-label="Ghost" />
+        <Button size="iconMd" icon="fa-solid fa-cog" variant="text" aria-label="Text" />
       </div>
 
       {/* Semantic variants */}
       <div className="flex items-center gap-4">
         <span className="text-sm font-medium w-24">Semantic:</span>
-        <Button size="iconMd" icon={faCheck} variant="success" aria-label="Success" />
-        <Button size="iconMd" icon={faExclamation} variant="warning" aria-label="Warning" />
-        <Button size="iconMd" icon={faTimes} variant="destructive" aria-label="Destructive" />
-        <Button size="iconMd" icon={faInfo} variant="info" aria-label="Info" />
+        <Button size="iconMd" icon="fa-solid fa-check" variant="success" aria-label="Success" />
+        <Button
+          size="iconMd"
+          icon="fa-solid fa-exclamation"
+          variant="warning"
+          aria-label="Warning"
+        />
+        <Button
+          size="iconMd"
+          icon="fa-solid fa-times"
+          variant="destructive"
+          aria-label="Destructive"
+        />
+        <Button size="iconMd" icon="fa-solid fa-info" variant="info" aria-label="Info" />
       </div>
 
       {/* Special variants */}
       <div className="flex items-center gap-4">
         <span className="text-sm font-medium w-24">Special:</span>
-        <Button size="iconMd" icon={faStar} variant="pin" aria-label="Pin" />
-        <Button size="iconMd" icon={faUser} variant="nav" aria-label="Nav" />
-        <Button size="iconMd" icon={faBell} variant="iconBtn" aria-label="IconBtn" />
+        <Button size="iconMd" icon="fa-solid fa-star" variant="pin" aria-label="Pin" />
+        <Button size="iconMd" icon="fa-solid fa-user" variant="nav" aria-label="Nav" />
+        <Button size="iconMd" icon="fa-solid fa-bell" variant="iconBtn" aria-label="IconBtn" />
       </div>
     </div>
   ),
@@ -697,13 +692,13 @@ export const DisabledStates: Story = {
 export const SpecialVariants: Story = {
   render: () => (
     <div className="flex flex-wrap gap-4">
-      <Button variant="pin" icon={faStar} isPinned={false}>
+      <Button variant="pin" icon="fa-solid fa-star" isPinned={false}>
         Pin
       </Button>
-      <Button variant="pin" icon={faStar} isPinned={true}>
+      <Button variant="pin" icon="fa-solid fa-star" isPinned={true}>
         Pinned
       </Button>
-      <Button variant="nav" icon={faTh}>
+      <Button variant="nav" icon="fa-solid fa-th">
         Navigation
       </Button>
     </div>
@@ -833,7 +828,7 @@ export const ArabicInteractive: Story = {
             <Button
               variant={selectedVariant as Variants}
               size={selectedSize as SizeVariants}
-              icon={withIcon ? faDownload : undefined}
+              icon={withIcon ? "fa-solid fa-download" : undefined}
               iconPosition="left"
               arabicText={
                 showArabic ? arabicTexts[selectedVariant as keyof typeof arabicTexts] : undefined
@@ -931,19 +926,29 @@ export const ArabicSupport: Story = {
       <div>
         <h4 className="text-md font-medium mb-3">Semantic Variants (Arabic)</h4>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <Button variant="success" arabicText="نجح" showArabicText={true} icon={faCheck}>
+          <Button variant="success" arabicText="نجح" showArabicText={true} icon="fa-solid fa-check">
             Success
           </Button>
 
-          <Button variant="warning" arabicText="تحذير" showArabicText={true} icon={faExclamation}>
+          <Button
+            variant="warning"
+            arabicText="تحذير"
+            showArabicText={true}
+            icon="fa-solid fa-exclamation"
+          >
             Warning
           </Button>
 
-          <Button variant="destructive" arabicText="حذف" showArabicText={true} icon={faTimes}>
+          <Button
+            variant="destructive"
+            arabicText="حذف"
+            showArabicText={true}
+            icon="fa-solid fa-times"
+          >
             Delete
           </Button>
 
-          <Button variant="info" arabicText="معلومات" showArabicText={true} icon={faInfo}>
+          <Button variant="info" arabicText="معلومات" showArabicText={true} icon="fa-solid fa-info">
             Info
           </Button>
         </div>
@@ -957,7 +962,7 @@ export const ArabicSupport: Story = {
             variant="primary"
             arabicText="تحميل"
             showArabicText={true}
-            icon={faDownload}
+            icon="fa-solid fa-download"
             iconPosition="left"
           >
             Download
@@ -967,7 +972,7 @@ export const ArabicSupport: Story = {
             variant="accent"
             arabicText="رفع"
             showArabicText={true}
-            icon={faUpload}
+            icon="fa-solid fa-upload"
             iconPosition="right"
           >
             Upload
@@ -977,7 +982,7 @@ export const ArabicSupport: Story = {
             variant="outline"
             arabicText="إعدادات"
             showArabicText={true}
-            icon={faCog}
+            icon="fa-solid fa-cog"
             iconPosition="left"
           >
             Settings
@@ -1085,13 +1090,13 @@ export const RealWorldExamples: Story = {
       <div>
         <h3 className="text-lg font-semibold mb-4">Navigation</h3>
         <div className="flex gap-3">
-          <Button variant="nav" icon={faTh}>
+          <Button variant="nav" icon="fa-solid fa-th">
             Menu
           </Button>
-          <Button variant="ghost" icon={faUser}>
+          <Button variant="ghost" icon="fa-solid fa-user">
             Profile
           </Button>
-          <Button variant="ghost" icon={faCog}>
+          <Button variant="ghost" icon="fa-solid fa-cog">
             Settings
           </Button>
         </div>
@@ -1101,13 +1106,13 @@ export const RealWorldExamples: Story = {
       <div>
         <h3 className="text-lg font-semibold mb-4">Status Actions</h3>
         <div className="flex gap-3">
-          <Button variant="success" icon={faCheck}>
+          <Button variant="success" icon="fa-solid fa-check">
             Approve
           </Button>
-          <Button variant="warning" icon={faExclamation}>
+          <Button variant="warning" icon="fa-solid fa-exclamation">
             Review
           </Button>
-          <Button variant="info" icon={faInfo}>
+          <Button variant="info" icon="fa-solid fa-info">
             Details
           </Button>
         </div>
@@ -1117,13 +1122,13 @@ export const RealWorldExamples: Story = {
       <div>
         <h3 className="text-lg font-semibold mb-4">File Actions</h3>
         <div className="flex gap-3">
-          <Button variant="accent" icon={faDownload}>
+          <Button variant="accent" icon="fa-solid fa-download">
             Download
           </Button>
-          <Button variant="outline" icon={faUpload}>
+          <Button variant="outline" icon="fa-solid fa-upload">
             Upload
           </Button>
-          <Button variant="ghost" icon={faStar}>
+          <Button variant="ghost" icon="fa-solid fa-star">
             Favorite
           </Button>
         </div>
@@ -1195,9 +1200,9 @@ export const ResponsiveDesign: Story = {
           Icon buttons scale appropriately across devices.
         </p>
         <div className="flex gap-3">
-          <Button size="icon" icon={faBell} aria-label="Notifications" />
-          <Button size="icon" icon={faCog} variant="secondary" aria-label="Settings" />
-          <Button size="icon" icon={faUser} variant="accent" aria-label="Profile" />
+          <Button size="icon" icon="fa-solid fa-bell" aria-label="Notifications" />
+          <Button size="icon" icon="fa-solid fa-cog" variant="secondary" aria-label="Settings" />
+          <Button size="icon" icon="fa-solid fa-user" variant="accent" aria-label="Profile" />
         </div>
       </div>
     </div>
@@ -1231,13 +1236,13 @@ export const RTLShowcase: Story = {
           <div className="p-4 border border-neutral-200 rounded-lg">
             <h5 className="text-sm font-medium mb-3 text-neutral-700">English (LTR)</h5>
             <div className="space-y-3">
-              <Button variant="primary" icon={faDownload} iconPosition="left">
+              <Button variant="primary" icon="fa-solid fa-download" iconPosition="left">
                 Download File
               </Button>
-              <Button variant="accent" icon={faUpload} iconPosition="right">
+              <Button variant="accent" icon="fa-solid fa-upload" iconPosition="right">
                 Upload File
               </Button>
-              <Button variant="outline" icon={faCog} iconPosition="left">
+              <Button variant="outline" icon="fa-solid fa-cog" iconPosition="left">
                 Settings
               </Button>
             </div>
@@ -1248,7 +1253,7 @@ export const RTLShowcase: Story = {
             <div className="space-y-3">
               <Button
                 variant="primary"
-                icon={faDownload}
+                icon="fa-solid fa-download"
                 iconPosition="left"
                 arabicText="تحميل الملف"
                 showArabicText={true}
@@ -1257,7 +1262,7 @@ export const RTLShowcase: Story = {
               </Button>
               <Button
                 variant="accent"
-                icon={faUpload}
+                icon="fa-solid fa-upload"
                 iconPosition="right"
                 arabicText="رفع الملف"
                 showArabicText={true}
@@ -1266,7 +1271,7 @@ export const RTLShowcase: Story = {
               </Button>
               <Button
                 variant="outline"
-                icon={faCog}
+                icon="fa-solid fa-cog"
                 iconPosition="left"
                 arabicText="الإعدادات"
                 showArabicText={true}
@@ -1327,7 +1332,7 @@ export const RTLShowcase: Story = {
                 variant="primary"
                 arabicText="تحميل"
                 showArabicText={true}
-                icon={faDownload}
+                icon="fa-solid fa-download"
                 iconPosition="left"
               >
                 Download
@@ -1336,7 +1341,7 @@ export const RTLShowcase: Story = {
                 variant="secondary"
                 arabicText="رفع"
                 showArabicText={true}
-                icon={faUpload}
+                icon="fa-solid fa-upload"
                 iconPosition="right"
               >
                 Upload
@@ -1345,7 +1350,7 @@ export const RTLShowcase: Story = {
                 variant="accent"
                 arabicText="بحث"
                 showArabicText={true}
-                icon={faBell}
+                icon="fa-solid fa-bell"
                 iconPosition="left"
               >
                 Search
@@ -1425,9 +1430,9 @@ export const Accessibility: Story = {
           Icon-only buttons include proper aria-labels for screen readers.
         </p>
         <div className="flex gap-3">
-          <Button size="icon" icon={faBell} aria-label="Notifications" />
-          <Button size="icon" icon={faCog} aria-label="Settings" />
-          <Button size="icon" icon={faUser} aria-label="User Profile" />
+          <Button size="icon" icon="fa-solid fa-bell" aria-label="Notifications" />
+          <Button size="icon" icon="fa-solid fa-cog" aria-label="Settings" />
+          <Button size="icon" icon="fa-solid fa-user" aria-label="User Profile" />
         </div>
       </div>
 

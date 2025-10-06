@@ -1,37 +1,22 @@
 import { useState } from "react";
 import { type Meta, type StoryObj } from "@storybook/react-vite";
 import { MegaDropdown, type MenuItem } from "./MegaDropdown";
-import {
-  faMap,
-  faHardHat,
-  faUsers,
-  faSitemap,
-  faMicrochip,
-  faChartColumn,
-  faUserShield,
-  faShield,
-  faVideo,
-  faCloudSun,
-  faHouseMedical,
-  faListCheck,
-  faClock,
-} from "@fortawesome/free-solid-svg-icons";
 
 const menu: MenuItem[] = [
-  { icon: faMap, label: "Site Map" },
-  { icon: faHardHat, label: "Workforce" },
-  { icon: faUsers, label: "Crew" },
-  { icon: faSitemap, label: "OBS" },
-  { icon: faMicrochip, label: "Hardware Management" },
-  { icon: faChartColumn, label: "Reports" },
-  { icon: faUserShield, label: "Observation Manager" },
-  { icon: faShield, label: "VerifyResponse" },
-  { icon: faVideo, label: "CCTV AI" },
-  { icon: faCloudSun, label: "Weather Station", badge: "Beta" },
-  { icon: faHouseMedical, label: "Digital Clinic" },
-  { icon: faListCheck, label: "VerifyProgress" },
-  { icon: faClock, label: "VerifyTime" },
-  { icon: faListCheck, label: "Lookahead Planning" },
+  { id: "site-map", icon: "fa-solid fa-map", label: "Site Map" },
+  { id: "workforce", icon: "fa-solid fa-hard-hat", label: "Workforce" },
+  { id: "crew", icon: "fa-solid fa-users", label: "Crew" },
+  { id: "obs", icon: "fa-solid fa-sitemap", label: "OBS" },
+  { id: "hardware", icon: "fa-solid fa-microchip", label: "Hardware Management" },
+  { id: "reports", icon: "fa-solid fa-chart-column", label: "Reports" },
+  { id: "observation-manager", icon: "fa-solid fa-user-shield", label: "Observation Manager" },
+  { id: "verify-response", icon: "fa-solid fa-shield", label: "VerifyResponse" },
+  { id: "cctv-ai", icon: "fa-solid fa-video", label: "CCTV AI" },
+  { id: "weather-station", icon: "fa-solid fa-cloud-sun", label: "Weather Station", badge: "Beta" },
+  { id: "digital-clinic", icon: "fa-solid fa-house-medical", label: "Digital Clinic" },
+  { id: "verify-progress", icon: "fa-solid fa-list-check", label: "VerifyProgress" },
+  { id: "verify-time", icon: "fa-solid fa-clock", label: "VerifyTime" },
+  { id: "lookahead-planning", icon: "fa-solid fa-list-check", label: "Lookahead Planning" },
 ];
 
 const meta: Meta<typeof MegaDropdown> = {
@@ -62,20 +47,40 @@ export const BadgeVariants: Story = {
   render: () => {
     const [open, setOpen] = useState(true);
     const badgeMenu: MenuItem[] = [
-      { icon: faMap, label: "Site Map" },
-      { icon: faHardHat, label: "Workforce", badge: "Beta" },
-      { icon: faUsers, label: "Crew" },
-      { icon: faSitemap, label: "OBS", badge: "Beta" },
-      { icon: faMicrochip, label: "Hardware Management" },
-      { icon: faChartColumn, label: "Reports" },
-      { icon: faUserShield, label: "Observation Manager", badge: "Beta" },
-      { icon: faShield, label: "VerifyResponse" },
-      { icon: faVideo, label: "CCTV AI", badge: "Beta" },
-      { icon: faCloudSun, label: "Weather Station", badge: "Beta" },
-      { icon: faHouseMedical, label: "Digital Clinic" },
-      { icon: faListCheck, label: "VerifyProgress", badge: "Beta" },
-      { icon: faClock, label: "VerifyTime" },
-      { icon: faListCheck, label: "Lookahead Planning", badge: "Beta" },
+      { id: "site-map", icon: "fa-solid fa-map", label: "Site Map" },
+      { id: "workforce", icon: "fa-solid fa-hard-hat", label: "Workforce", badge: "Beta" },
+      { id: "crew", icon: "fa-solid fa-users", label: "Crew" },
+      { id: "obs", icon: "fa-solid fa-sitemap", label: "OBS", badge: "Beta" },
+      { id: "hardware", icon: "fa-solid fa-microchip", label: "Hardware Management" },
+      { id: "reports", icon: "fa-solid fa-chart-column", label: "Reports" },
+      {
+        id: "observation-manager",
+        icon: "fa-solid fa-user-shield",
+        label: "Observation Manager",
+        badge: "Beta",
+      },
+      { id: "verify-response", icon: "fa-solid fa-shield", label: "VerifyResponse" },
+      { id: "cctv-ai", icon: "fa-solid fa-video", label: "CCTV AI", badge: "Beta" },
+      {
+        id: "weather-station",
+        icon: "fa-solid fa-cloud-sun",
+        label: "Weather Station",
+        badge: "Beta",
+      },
+      { id: "digital-clinic", icon: "fa-solid fa-house-medical", label: "Digital Clinic" },
+      {
+        id: "verify-progress",
+        icon: "fa-solid fa-list-check",
+        label: "VerifyProgress",
+        badge: "Beta",
+      },
+      { id: "verify-time", icon: "fa-solid fa-clock", label: "VerifyTime" },
+      {
+        id: "lookahead-planning",
+        icon: "fa-solid fa-list-check",
+        label: "Lookahead Planning",
+        badge: "Beta",
+      },
     ];
 
     return (

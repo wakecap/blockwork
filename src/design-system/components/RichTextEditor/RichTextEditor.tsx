@@ -1,20 +1,5 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faBold,
-  faItalic,
-  faUnderline,
-  faStrikethrough,
-  faListUl,
-  faListOl,
-  faQuoteLeft,
-  faCode,
-  faLink,
-  faHeading,
-  faParagraph,
-  faEye,
-  faEyeSlash,
-} from "@fortawesome/free-solid-svg-icons";
+import { cn } from "../../../utils/utils";
 
 export interface RichTextEditorProps {
   value: string;
@@ -49,16 +34,16 @@ export const RichTextEditor: React.FC<RichTextEditorProps> = ({
   const editorRef = React.useRef<HTMLDivElement>(null);
 
   const toolbarItems = {
-    bold: { icon: faBold, label: "Bold", command: "bold" },
-    italic: { icon: faItalic, label: "Italic", command: "italic" },
-    underline: { icon: faUnderline, label: "Underline", command: "underline" },
-    strikethrough: { icon: faStrikethrough, label: "Strikethrough", command: "strikeThrough" },
-    heading: { icon: faHeading, label: "Heading", command: "formatBlock" },
-    list: { icon: faListUl, label: "List", command: "insertUnorderedList" },
-    orderedList: { icon: faListOl, label: "Ordered List", command: "insertOrderedList" },
-    quote: { icon: faQuoteLeft, label: "Quote", command: "formatBlock" },
-    code: { icon: faCode, label: "Code", command: "formatBlock" },
-    link: { icon: faLink, label: "Link", command: "createLink" },
+    bold: { icon: "fa-solid fa-bold", label: "Bold", command: "bold" },
+    italic: { icon: "fa-solid fa-italic", label: "Italic", command: "italic" },
+    underline: { icon: "fa-solid fa-underline", label: "Underline", command: "underline" },
+    strikethrough: { icon: "fa-solid fa-strikethrough", label: "Strikethrough", command: "strikeThrough" },
+    heading: { icon: "fa-solid fa-heading", label: "Heading", command: "formatBlock" },
+    list: { icon: "fa-solid fa-list-ul", label: "List", command: "insertUnorderedList" },
+    orderedList: { icon: "fa-solid fa-list-ol", label: "Ordered List", command: "insertOrderedList" },
+    quote: { icon: "fa-solid fa-quote-left", label: "Quote", command: "formatBlock" },
+    code: { icon: "fa-solid fa-code", label: "Code", command: "formatBlock" },
+    link: { icon: "fa-solid fa-link", label: "Link", command: "createLink" },
   };
 
   const handleToolbarClick = (command: string, value?: string) => {
@@ -159,7 +144,7 @@ export const RichTextEditor: React.FC<RichTextEditorProps> = ({
               title={toolbarItem.label}
               disabled={readOnly}
             >
-              <FontAwesomeIcon icon={toolbarItem.icon} className="w-4 h-4" />
+              <i className={cn("w-4 h-4", toolbarItem.icon)} />
             </button>
           );
         })}
@@ -171,7 +156,7 @@ export const RichTextEditor: React.FC<RichTextEditorProps> = ({
               className="p-2 text-neutral-600 hover:text-neutral-900 hover:bg-neutral-200 rounded transition-colors"
               title={isMarkdownPreview ? "Edit" : "Preview"}
             >
-              <FontAwesomeIcon icon={isMarkdownPreview ? faEyeSlash : faEye} className="w-4 h-4" />
+              <i className={cn("w-4 h-4", isMarkdownPreview ? "fa-solid fa-eye-slash" : "fa-solid fa-eye")} />
             </button>
             <span className="text-xs text-neutral-500">
               {isMarkdownPreview ? "Preview" : "Markdown"}
@@ -188,7 +173,6 @@ export const RichTextEditor: React.FC<RichTextEditorProps> = ({
             onInput={(e) => onChange(e.currentTarget.innerHTML)}
             onBlur={(e) => onChange(e.currentTarget.innerHTML)}
             dangerouslySetInnerHTML={{ __html: value }}
-            placeholder={placeholder}
             className="p-4 focus:outline-none min-h-48"
             style={{ minHeight: "12rem" }}
           />

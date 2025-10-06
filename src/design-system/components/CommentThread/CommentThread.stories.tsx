@@ -1,6 +1,5 @@
-import React from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { CommentThread, Comment } from "./CommentThread";
+import { CommentThread, type Comment } from "./CommentThread";
 
 const meta: Meta<typeof CommentThread> = {
   title: "Components/CommentThread",

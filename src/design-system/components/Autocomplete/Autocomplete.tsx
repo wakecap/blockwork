@@ -1,7 +1,5 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronDown, faSearch } from "@fortawesome/free-solid-svg-icons";
-
+import { cn } from "../../../utils/utils";
 export interface AutocompleteOption {
   label: string;
   value: string;
@@ -131,10 +129,7 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
 
       <div className="relative">
         <div className="relative">
-          <FontAwesomeIcon
-            icon={faSearch}
-            className="absolute left-3 top-1/2 transform -translate-y-1/2 text-neutral-400 w-4 h-4"
-          />
+          <i className="fa-solid fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-neutral-400 w-4 h-4" />
           <input
             ref={inputRef}
             type="text"
@@ -153,11 +148,11 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
               focus:outline-none
             `}
           />
-          <FontAwesomeIcon
-            icon={faChevronDown}
-            className={`absolute right-3 top-1/2 transform -translate-y-1/2 text-neutral-400 transition-transform ${
-              isOpen ? "rotate-180" : ""
-            }`}
+          <i
+            className={cn(
+              "fa-solid fa-chevron-down absolute right-3 top-1/2 transform -translate-y-1/2 text-neutral-400 transition-transform",
+              isOpen ? "rotate-180" : "",
+            )}
           />
         </div>
 

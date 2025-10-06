@@ -1,6 +1,5 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import type { IconDefinition } from "@fortawesome/fontawesome-common-types";
+import { cn } from "../../../utils/utils";
 
 export interface DropdownOption {
   label: string;
@@ -12,8 +11,8 @@ export interface DropdownProps extends React.SelectHTMLAttributes<HTMLSelectElem
   options: DropdownOption[];
   value: string;
   onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
-  iconLeft?: IconDefinition;
-  iconRight?: IconDefinition;
+  iconLeft?: string;
+  iconRight?: string;
 }
 
 export const Dropdown: React.FC<DropdownProps> = ({
@@ -32,7 +31,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
     <div className="relative flex items-center">
       {iconLeft && (
         <span className="absolute left-3 text-neutral-400">
-          <FontAwesomeIcon icon={iconLeft} className="w-4 h-4" />
+          <i className={cn("w-4 h-4", iconLeft)} />
         </span>
       )}
       <select
@@ -57,7 +56,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
       </select>
       {iconRight && (
         <span className="absolute right-3 text-neutral-400 pointer-events-none">
-          <FontAwesomeIcon icon={iconRight} className="w-4 h-4" />
+          <i className={cn("w-4 h-4", iconRight)} />
         </span>
       )}
     </div>
