@@ -18,11 +18,11 @@ const Logo = () => (
 );
 
 export interface TopNavigatorProps {
-  projectsData: ProjectsData;
-  maxVisibleItems?: number;
   menu: MenuItem[];
-  settingsMenu: MenuItem[];
   avatarMenu: MenuItem[];
+  projectsData?: ProjectsData;
+  maxVisibleItems?: number;
+  settingsMenu?: MenuItem[];
   selectedProject?: string; // ID of the selected project
   selectedMenuItem?: string; // ID of the selected menu item
   initialPinnedItems?: string[]; // Array of menu item IDs to pin initially
@@ -33,6 +33,8 @@ export interface TopNavigatorProps {
   onPinnedItemsChange?: (pinnedIds: string[]) => void; // Callback to get current pinned item IDs
   onPinnedItemClick?: (item: { id: string; icon: string; label: string }) => void; // Callback for pinned item clicks
 }
+
+export { type MenuItem, type ProjectsData };
 
 export const TopNavigator = ({
   projectsData,
@@ -62,6 +64,7 @@ export const TopNavigator = ({
   // Find the selected project from projectsData
   const findProjectById = useCallback(
     (projectId: string) => {
+      if (!projectsData) return null;
       for (const orgGroup of projectsData) {
         const project = orgGroup.projects.find((p) => p.id === projectId);
         if (project) {
@@ -222,6 +225,7 @@ export const TopNavigator = ({
 
   // Filter projects based on search query (memoized for performance)
   const filteredProjectsData = useMemo(() => {
+    if (!projectsData) return [];
     if (!projectSearchQuery.trim()) {
       return projectsData;
     }
@@ -268,6 +272,7 @@ export const TopNavigator = ({
 
   // Create settings menu with onClick handlers and active state
   const settingsMenuWithCallbacks = useMemo(() => {
+    if (!settingsMenu) return [];
     return settingsMenu.map((item) => ({
       ...item,
       onClick: () => onSettingsMenuItemClick?.(item),
@@ -630,130 +635,133 @@ export const TopNavigator = ({
         </div>
         {/* Right side: Settings, Project, Profile */}
         <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-          <div ref={settingsRef} style={{ position: "relative" }}>
-            <Button
-              variant="iconBtn"
-              icon="fa-solid fa-rocket"
-              size="iconSm"
-              aria-label="Settings"
-              onClick={() => setSettingsMenuOpen(!settingsMenuOpen)}
-            />
+          {settingsMenu && settingsMenu.length > 0 && (
+            <div ref={settingsRef} style={{ position: "relative" }}>
+              <Button
+                variant="iconBtn"
+                icon="fa-solid fa-rocket"
+                size="iconSm"
+                aria-label="Settings"
+                onClick={() => setSettingsMenuOpen(!settingsMenuOpen)}
+              />
 
-            {/* Settings dropdown menu */}
-            {settingsMenuOpen && (
-              <div
-                style={{
-                  position: "absolute",
-                  top: "100%",
-                  right: 0,
-                  marginTop: 4,
-                  background: "white",
-                  border: "1px solid #e5e7eb",
-                  borderRadius: 6,
-                  boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
-                  zIndex: 1000,
-                  padding: 8,
-                  width: 220,
-                }}
-              >
-                {settingsMenuWithCallbacks.map((item) => (
-                  <button
-                    key={item.id}
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: 8,
-                      width: "100%",
-                      padding: "8px 12px",
-                      border: "none",
-                      background: item.isActive ? "#EFF6FF" : "transparent",
-                      borderLeft: item.isActive ? "3px solid #3B82F6" : "3px solid transparent",
-                      borderRadius: 4,
-                      cursor: "pointer",
-                      fontSize: 14,
-                      color: "#374151",
-                      textAlign: "left",
-                      whiteSpace: "nowrap",
-                      overflow: "hidden",
-                      textOverflow: "ellipsis",
-                    }}
-                    onMouseOver={(e) => {
-                      if (!item.isActive) {
-                        e.currentTarget.style.background = "#f3f4f6";
-                      }
-                    }}
-                    onMouseOut={(e) => {
-                      if (!item.isActive) {
-                        e.currentTarget.style.background = "transparent";
-                      }
-                    }}
-                    onClick={() => {
-                      setSettingsMenuOpen(false);
-                      onSettingsMenuItemClick?.(item);
-                    }}
-                  >
-                    <div
+              {/* Settings dropdown menu */}
+              {settingsMenuOpen && (
+                <div
+                  style={{
+                    position: "absolute",
+                    top: "100%",
+                    right: 0,
+                    marginTop: 4,
+                    background: "white",
+                    border: "1px solid #e5e7eb",
+                    borderRadius: 6,
+                    boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
+                    zIndex: 1000,
+                    padding: 8,
+                    width: 220,
+                  }}
+                >
+                  {settingsMenuWithCallbacks.map((item) => (
+                    <button
+                      key={item.id}
                       style={{
-                        width: 16,
                         display: "flex",
-                        justifyContent: "center",
                         alignItems: "center",
-                        flexShrink: 0,
-                      }}
-                    >
-                      <i className={item.icon} style={{ fontSize: 12, color: "#6b7280" }} />
-                    </div>
-                    <span
-                      style={{
+                        gap: 8,
+                        width: "100%",
+                        padding: "8px 12px",
+                        border: "none",
+                        background: item.isActive ? "#EFF6FF" : "transparent",
+                        borderLeft: item.isActive ? "3px solid #3B82F6" : "3px solid transparent",
+                        borderRadius: 4,
+                        cursor: "pointer",
+                        fontSize: 14,
+                        color: "#374151",
+                        textAlign: "left",
                         whiteSpace: "nowrap",
                         overflow: "hidden",
                         textOverflow: "ellipsis",
-                        flex: 1,
+                      }}
+                      onMouseOver={(e) => {
+                        if (!item.isActive) {
+                          e.currentTarget.style.background = "#f3f4f6";
+                        }
+                      }}
+                      onMouseOut={(e) => {
+                        if (!item.isActive) {
+                          e.currentTarget.style.background = "transparent";
+                        }
+                      }}
+                      onClick={() => {
+                        setSettingsMenuOpen(false);
+                        onSettingsMenuItemClick?.(item);
                       }}
                     >
-                      {item.label}
-                    </span>
-                  </button>
-                ))}
-              </div>
-            )}
-          </div>
+                      <div
+                        style={{
+                          width: 16,
+                          display: "flex",
+                          justifyContent: "center",
+                          alignItems: "center",
+                          flexShrink: 0,
+                        }}
+                      >
+                        <i className={item.icon} style={{ fontSize: 12, color: "#6b7280" }} />
+                      </div>
+                      <span
+                        style={{
+                          whiteSpace: "nowrap",
+                          overflow: "hidden",
+                          textOverflow: "ellipsis",
+                          flex: 1,
+                        }}
+                      >
+                        {item.label}
+                      </span>
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
           {/* Project Selector - Right Side */}
-          <div style={{ position: "relative" }}>
-            <Button
-              variant="secondary"
-              size="sm"
-              icon="fa-solid fa-caret-down"
-              iconPosition="right"
-              onClick={() => setProjectMenuOpen(!projectMenuOpen)}
-              style={{ minWidth: "140px" }}
-            >
-              {truncateProjectName(currentProject.name)}
-            </Button>
-
-            {/* Project dropdown menu - right aligned */}
-            {projectMenuOpen && (
-              <div
-                ref={projectRef}
-                style={{
-                  position: "absolute",
-                  top: "100%",
-                  right: 0,
-                  marginTop: 4,
-                  background: "white",
-                  border: "1px solid #e5e7eb",
-                  borderRadius: 6,
-                  boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
-                  zIndex: 1000,
-                  width: 320,
-                  maxHeight: 400,
-                  display: "flex",
-                  flexDirection: "column",
-                }}
-                className="project-dropdown"
+          {projectsData && projectsData.length > 0 && (
+            <div style={{ position: "relative" }}>
+              <Button
+                variant="secondary"
+                size="sm"
+                icon="fa-solid fa-caret-down"
+                iconPosition="right"
+                onClick={() => setProjectMenuOpen(!projectMenuOpen)}
+                style={{ minWidth: "140px" }}
               >
-                <style>
-                  {`
+                {truncateProjectName(currentProject.name)}
+              </Button>
+
+              {/* Project dropdown menu - right aligned */}
+              {projectMenuOpen && (
+                <div
+                  ref={projectRef}
+                  style={{
+                    position: "absolute",
+                    top: "100%",
+                    right: 0,
+                    marginTop: 4,
+                    background: "white",
+                    border: "1px solid #e5e7eb",
+                    borderRadius: 6,
+                    boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
+                    zIndex: 1000,
+                    width: 320,
+                    maxHeight: 400,
+                    display: "flex",
+                    flexDirection: "column",
+                  }}
+                  className="project-dropdown"
+                >
+                  <style>
+                    {`
                     .project-dropdown .scrollable-content::-webkit-scrollbar {
                       width: 6px;
                     }
@@ -769,115 +777,116 @@ export const TopNavigator = ({
                       background: #9ca3af;
                     }
                   `}
-                </style>
+                  </style>
 
-                {/* Fixed Search Input */}
-                <div
-                  style={{
-                    padding: 8,
-                    paddingBottom: 8,
-                    borderBottom: "1px solid #e5e7eb",
-                    flexShrink: 0,
-                  }}
-                >
-                  <SearchInput
-                    placeholder="Search projects or organizations..."
-                    value={projectSearchQuery}
-                    onChange={handleSearchChange}
-                    onClear={() => setProjectSearchQuery("")}
-                    showClearButton={true}
-                  />
-                </div>
+                  {/* Fixed Search Input */}
+                  <div
+                    style={{
+                      padding: 8,
+                      paddingBottom: 8,
+                      borderBottom: "1px solid #e5e7eb",
+                      flexShrink: 0,
+                    }}
+                  >
+                    <SearchInput
+                      placeholder="Search projects or organizations..."
+                      value={projectSearchQuery}
+                      onChange={handleSearchChange}
+                      onClear={() => setProjectSearchQuery("")}
+                      showClearButton={true}
+                    />
+                  </div>
 
-                {/* Scrollable Content */}
-                <div
-                  className="scrollable-content"
-                  style={{
-                    flex: 1,
-                    overflowY: "auto",
-                    padding: 8,
-                    scrollbarWidth: "thin",
-                    scrollbarColor: "#d1d5db #f9fafb",
-                  }}
-                >
-                  {filteredProjectsData.length === 0 ? (
-                    <div style={{ maxWidth: "100%", overflow: "hidden" }}>
-                      <EmptyState
-                        title="No projects found"
-                        description={
-                          projectSearchQuery
-                            ? `No results found for "${projectSearchQuery}". Try adjusting your search terms.`
-                            : "No projects match your current search."
-                        }
-                        size="sm"
-                      />
-                    </div>
-                  ) : (
-                    filteredProjectsData.map((orgGroup, orgIndex) => (
-                      <div key={orgIndex} style={{ marginBottom: 16 }}>
-                        <div
-                          style={{
-                            fontSize: 12,
-                            fontWeight: 600,
-                            color: "#6b7280",
-                            marginBottom: 8,
-                            textTransform: "uppercase",
-                            letterSpacing: "0.05em",
-                          }}
-                        >
-                          {orgGroup.organizationName}
-                        </div>
-                        {orgGroup.projects.map((project) => (
-                          <button
-                            key={project.id}
-                            style={{
-                              display: "flex",
-                              alignItems: "center",
-                              gap: 8,
-                              width: "100%",
-                              padding: "8px 12px",
-                              border: "none",
-                              background:
-                                selectedProject === project.id ||
-                                currentProject.name === project.name
-                                  ? "#f3f4f6"
-                                  : "transparent",
-                              borderRadius: 4,
-                              cursor: "pointer",
-                              fontSize: 14,
-                              color: "#374151",
-                              textAlign: "left",
-                              marginBottom: 2,
-                            }}
-                            onMouseOver={(e) => {
-                              if (
-                                selectedProject !== project.id &&
-                                currentProject.name !== project.name
-                              ) {
-                                e.currentTarget.style.background = "#f9fafb";
-                              }
-                            }}
-                            onMouseOut={(e) => {
-                              if (
-                                selectedProject !== project.id &&
-                                currentProject.name !== project.name
-                              ) {
-                                e.currentTarget.style.background = "transparent";
-                              }
-                            }}
-                            onClick={() => handleProjectSelect(project)}
-                          >
-                            <Avatar name={orgGroup.organizationName} size="xs" />
-                            <span style={{ whiteSpace: "nowrap" }}>{project.name}</span>
-                          </button>
-                        ))}
+                  {/* Scrollable Content */}
+                  <div
+                    className="scrollable-content"
+                    style={{
+                      flex: 1,
+                      overflowY: "auto",
+                      padding: 8,
+                      scrollbarWidth: "thin",
+                      scrollbarColor: "#d1d5db #f9fafb",
+                    }}
+                  >
+                    {filteredProjectsData.length === 0 ? (
+                      <div style={{ maxWidth: "100%", overflow: "hidden" }}>
+                        <EmptyState
+                          title="No projects found"
+                          description={
+                            projectSearchQuery
+                              ? `No results found for "${projectSearchQuery}". Try adjusting your search terms.`
+                              : "No projects match your current search."
+                          }
+                          size="sm"
+                        />
                       </div>
-                    ))
-                  )}
+                    ) : (
+                      filteredProjectsData.map((orgGroup, orgIndex) => (
+                        <div key={orgIndex} style={{ marginBottom: 16 }}>
+                          <div
+                            style={{
+                              fontSize: 12,
+                              fontWeight: 600,
+                              color: "#6b7280",
+                              marginBottom: 8,
+                              textTransform: "uppercase",
+                              letterSpacing: "0.05em",
+                            }}
+                          >
+                            {orgGroup.organizationName}
+                          </div>
+                          {orgGroup.projects.map((project) => (
+                            <button
+                              key={project.id}
+                              style={{
+                                display: "flex",
+                                alignItems: "center",
+                                gap: 8,
+                                width: "100%",
+                                padding: "8px 12px",
+                                border: "none",
+                                background:
+                                  selectedProject === project.id ||
+                                  currentProject.name === project.name
+                                    ? "#f3f4f6"
+                                    : "transparent",
+                                borderRadius: 4,
+                                cursor: "pointer",
+                                fontSize: 14,
+                                color: "#374151",
+                                textAlign: "left",
+                                marginBottom: 2,
+                              }}
+                              onMouseOver={(e) => {
+                                if (
+                                  selectedProject !== project.id &&
+                                  currentProject.name !== project.name
+                                ) {
+                                  e.currentTarget.style.background = "#f9fafb";
+                                }
+                              }}
+                              onMouseOut={(e) => {
+                                if (
+                                  selectedProject !== project.id &&
+                                  currentProject.name !== project.name
+                                ) {
+                                  e.currentTarget.style.background = "transparent";
+                                }
+                              }}
+                              onClick={() => handleProjectSelect(project)}
+                            >
+                              <Avatar name={orgGroup.organizationName} size="xs" />
+                              <span style={{ whiteSpace: "nowrap" }}>{project.name}</span>
+                            </button>
+                          ))}
+                        </div>
+                      ))
+                    )}
+                  </div>
                 </div>
-              </div>
-            )}
-          </div>
+              )}
+            </div>
+          )}
           <div ref={avatarRef} style={{ position: "relative" }}>
             <Avatar
               name="Admin User"
