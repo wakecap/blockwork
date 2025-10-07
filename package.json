@@ -102,17 +102,25 @@
     "node": ">=22.0.0"
   },
   "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
     "./styles.css": "./dist/styles.css",
     "./components/TopNavigator": {
-      "types": "./dist/components/TopNavigator.d.ts",
-      "import": "./dist/components/TopNavigator.js",
-      "require": "./dist/components/TopNavigator.cjs"
+      "types": "./dist/design-system/components/TopNavigator.d.ts",
+      "import": "./dist/design-system/components/TopNavigator.js",
+      "require": "./dist/design-system/components/TopNavigator.cjs"
     }
   },
   "typesVersions": {
     "*": {
+      "*": [
+        "./dist/index.d.ts"
+      ],
       "./components/TopNavigator": [
-        "./dist/components/TopNavigator.d.ts"
+        "./dist/design-system/components/TopNavigator.d.ts"
       ]
     }
   }

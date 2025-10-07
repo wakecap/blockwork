@@ -1,7 +1,6 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import { resolve } from "node:path";
-import path from "path";
 import dts from "vite-plugin-dts";
 
 // More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
@@ -22,23 +21,16 @@ export default defineConfig({
       tsconfigPath: "./tsconfig.lib.json",
     }),
   ],
-  css: {
-    postcss: "./postcss.config.js",
-  },
-  resolve: {
-    alias: {
-      "@": path.resolve(__dirname, "."),
-    },
-  },
   build: {
     lib: {
       entry: {
+        index: resolve(__dirname, "src/design-system/index.ts"),
         "design-system/components/TopNavigator": resolve(
           __dirname,
           "src/design-system/components/TopNavigator/TopNavigator.tsx",
         ),
       },
-      name: "WakeCapFrontendComponents",
+      name: "BlockworkUI",
       fileName: (format, entryName) => {
         if (format === "es") return `${entryName}.js`;
         if (format === "cjs") return `${entryName}.cjs`;
