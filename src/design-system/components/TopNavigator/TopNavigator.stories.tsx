@@ -354,7 +354,7 @@ export const WithPinnedItemClicks: Story = {
       onPinnedItemClick={(item) => {
         console.log("Pinned item clicked:", item.id, item.label);
         alert(
-          `🚀 Pinned item clicked: ${item.label}\n\nID: ${item.id}\nIcon: ${item.icon.iconName}\n\nThis demonstrates the onPinnedItemClick callback functionality!`,
+          `🚀 Pinned item clicked: ${item.label}\n\nID: ${item.id}\nIcon: ${item.icon}\n\nThis demonstrates the onPinnedItemClick callback functionality!`,
         );
       }}
     />
@@ -364,6 +364,91 @@ export const WithPinnedItemClicks: Story = {
       description: {
         story:
           "TopNavigator specifically demonstrating the onPinnedItemClick functionality. This story has 6 pre-pinned items with maxVisibleItems set to 3, so you'll see 3 visible pinned items and a '+3' overflow button. Click any pinned item (visible or in overflow menu) to see the callback in action with detailed information about the clicked item.",
+      },
+    },
+  },
+};
+
+export const WithoutSettingsMenu: Story = {
+  render: () => (
+    <TopNavigator
+      projectsData={projectsData}
+      menu={menu}
+      avatarMenu={avatarMenu}
+      onProjectSelect={(project) => console.log("Project selected:", project)}
+      onMenuItemClick={(item) => console.log("Menu item clicked:", item)}
+      onAvatarMenuItemClick={(item) => console.log("Avatar menu item clicked:", item)}
+      onPinnedItemClick={(item) => console.log("Pinned item clicked:", item)}
+    />
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "TopNavigator without settings menu. The settings/rocket icon is not displayed when settingsMenu is not provided, making the component more flexible for simpler navigation needs.",
+      },
+    },
+  },
+};
+
+export const WithoutProjectSelector: Story = {
+  render: () => (
+    <TopNavigator
+      menu={menu}
+      settingsMenu={settingsMenu}
+      avatarMenu={avatarMenu}
+      onMenuItemClick={(item) => console.log("Menu item clicked:", item)}
+      onSettingsMenuItemClick={(item) => console.log("Settings item clicked:", item)}
+      onAvatarMenuItemClick={(item) => console.log("Avatar menu item clicked:", item)}
+      onPinnedItemClick={(item) => console.log("Pinned item clicked:", item)}
+    />
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "TopNavigator without project selector. The project dropdown is not displayed when projectsData is not provided, useful for applications that don't need project switching functionality.",
+      },
+    },
+  },
+};
+
+export const MinimalConfiguration: Story = {
+  render: () => (
+    <TopNavigator
+      menu={menu}
+      avatarMenu={avatarMenu}
+      onMenuItemClick={(item) => console.log("Menu item clicked:", item)}
+      onAvatarMenuItemClick={(item) => console.log("Avatar menu item clicked:", item)}
+      onPinnedItemClick={(item) => console.log("Pinned item clicked:", item)}
+    />
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "TopNavigator with minimal configuration - only required props (menu and avatarMenu). No settings menu or project selector, demonstrating the most basic usage of the component.",
+      },
+    },
+  },
+};
+
+export const MinimalWithPinnedItems: Story = {
+  render: () => (
+    <TopNavigator
+      menu={menu}
+      avatarMenu={avatarMenu}
+      initialPinnedItems={["site-map", "workforce", "reports"]}
+      onMenuItemClick={(item) => console.log("Menu item clicked:", item)}
+      onAvatarMenuItemClick={(item) => console.log("Avatar menu item clicked:", item)}
+      onPinnedItemClick={(item) => console.log("Pinned item clicked:", item)}
+    />
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "TopNavigator with minimal configuration plus pinned items. Shows how the component can be used with just the essential menu and avatar functionality, but still support pinned shortcuts.",
       },
     },
   },
