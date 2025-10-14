@@ -24,36 +24,36 @@ export const Alert: React.FC<AlertProps> = ({
 }) => {
   const variantStyles = {
     success: {
-      background: "bg-success-50",
-      border: "border-success-200",
-      title: "text-success-800",
-      message: "text-success-700",
+      background: "bg-bw-positive-selected",
+      border: "border-bw-positive",
+      title: "text-bw-positive",
+      message: "text-bw-positive",
       icon: "fa-solid fa-check",
-      iconColor: "text-success-600",
+      iconColor: "text-bw-positive",
     },
     error: {
-      background: "bg-error-50",
-      border: "border-error-200",
-      title: "text-error-800",
-      message: "text-error-700",
+      background: "bg-bw-negative-selected",
+      border: "border-bw-negative",
+      title: "text-bw-negative",
+      message: "text-bw-negative",
       icon: "fa-solid fa-times",
-      iconColor: "text-error-600",
+      iconColor: "text-bw-negative",
     },
     warning: {
-      background: "bg-warning-50",
-      border: "border-warning-200",
-      title: "text-warning-800",
-      message: "text-warning-700",
+      background: "bg-bw-warning-selected",
+      border: "border-bw-warning",
+      title: "text-bw-warning",
+      message: "text-bw-warning",
       icon: "fa-solid fa-exclamation",
-      iconColor: "text-warning-600",
+      iconColor: "text-bw-warning",
     },
     info: {
-      background: "bg-info-50",
-      border: "border-info-200",
-      title: "text-info-800",
-      message: "text-info-700",
+      background: "bg-bw-primary-selected",
+      border: "border-bw-primary",
+      title: "text-bw-primary",
+      message: "text-bw-primary",
       icon: "fa-solid fa-info",
-      iconColor: "text-info-600",
+      iconColor: "text-bw-primary",
     },
   };
 
@@ -71,8 +71,8 @@ export const Alert: React.FC<AlertProps> = ({
           />
         )}
         <div className="flex-1 min-w-0">
-          {title && <h3 className={`${currentVariant.title} font-medium text-sm mb-1`}>{title}</h3>}
-          <div className={`${currentVariant.message} text-sm`}>{message}</div>
+          {title && <h3 className={`${currentVariant.title} font-medium text-sm mb-1 font-heading`}>{title}</h3>}
+          <div className={`${currentVariant.message} text-sm font-sans`}>{message}</div>
           {children && <div className="mt-3">{children}</div>}
         </div>
         {showCloseButton && onClose && (

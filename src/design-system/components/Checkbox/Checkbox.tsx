@@ -1,27 +1,78 @@
-import React from "react";
+import React, { useState } from "react";
 import { cn } from "../../../utils/utils";
 
-export interface CheckboxProps extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface CheckboxProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange'> {
   label: string;
-  icon?: string;
+  checked?: boolean;
+  disabled?: boolean;
+  onChange?: (checked: boolean) => void;
 }
 
-export const Checkbox: React.FC<CheckboxProps> = ({ label, icon, className, ...props }) => (
-  <label
-    className={
-      "inline-flex items-center gap-2 cursor-pointer font-sans text-base " +
-      (props.disabled ? "opacity-50 cursor-not-allowed" : "")
+export const Checkbox: React.FC<CheckboxProps> = ({ 
+  label, 
+  checked: controlledChecked, 
+  disabled = false,
+  onChange,
+  className,
+  ...props 
+}) => {
+  const [internalChecked, setInternalChecked] = useState(false);
+  
+  // Use controlled checked if provided, otherwise use internal state
+  const isChecked = controlledChecked !== undefined ? controlledChecked : internalChecked;
+
+  const handleClick = () => {
+    if (disabled) return;
+    
+    const newChecked = !isChecked;
+    
+    // Update internal state if uncontrolled
+    if (controlledChecked === undefined) {
+      setInternalChecked(newChecked);
     }
-  >
-    <input
-      type="checkbox"
-      className={
-        "form-checkbox h-4 w-4 text-primary-600 border-neutral-300 focus:ring-primary-500 " +
-        (className || "")
-      }
-      {...props}
-    />
-    {icon && <i className={cn("w-4 h-4 text-neutral-400", icon)} />}
-    <span>{label}</span>
-  </label>
-);
+    
+    // Call onChange callback
+    onChange?.(newChecked);
+  };
+
+  // Determine icon and color based on state
+  const getIconClasses = () => {
+    if (disabled && isChecked) {
+      // Disabled checked: checked icon with disabled color
+      return "fa-solid fa-square-check text-bw-text-disabled";
+    }
+    if (disabled) {
+      // Disabled unchecked: square-minus with disabled color
+      return "fa-regular fa-square-minus text-bw-text-disabled";
+    }
+    if (isChecked) {
+      // Checked: checked icon with primary color
+      return "fa-solid fa-square-check text-bw-primary";
+    }
+    // Unchecked: regular square with placeholder color
+    return "fa-regular fa-square text-bw-text-placeholder";
+  };
+
+  return (
+    <label
+      className={cn(
+        "inline-flex items-center gap-2 font-sans text-base select-none",
+        disabled ? "cursor-not-allowed opacity-60" : "cursor-pointer",
+        className
+      )}
+      onClick={handleClick}
+    >
+      <i className={cn("text-xl transition-colors duration-200", getIconClasses())} />
+      <span className={cn("text-bw-text-secondary", disabled && "text-bw-text-disabled")}>{label}</span>
+      {/* Hidden input for form compatibility */}
+      <input
+        type="checkbox"
+        checked={isChecked}
+        disabled={disabled}
+        className="sr-only"
+        onChange={() => {}} // Prevent React warning
+        {...props}
+      />
+    </label>
+  );
+};

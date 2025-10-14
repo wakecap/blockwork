@@ -33,6 +33,186 @@
     --wakecap-accent: 24 100% 50%;
     --wakecap-accent-foreground: 0 0% 100%;
 
+    /* Blockwork Semantic Colors */
+    /* Primary Colors - Slate Palette */
+    --primary-color: 215 20% 34%;        /* slate-600 #475569 */
+    --primary-hover-color: 217 33% 27%;   /* slate-700 #334155 */
+    --primary-selected-color: 214 32% 91%; /* slate-200 #e2e8f0 */
+    --primary-selected-hover-color: 213 27% 84%; /* slate-300 #cbd5e1 */
+    --primary-highlighted-color: 210 40% 98%; /* slate-100 #f1f5f9 */
+    --primary-surface-color: 0 0% 100%;
+
+    /* Positive Colors (Success/Green) */
+    --positive-color: 145 63% 42%;
+    --positive-color-hover: 145 63% 37%;
+    --positive-color-selected: 145 50% 85%;
+    --positive-color-selected-hover: 145 50% 80%;
+
+    /* Negative Colors (Error/Red) */
+    --negative-color: 351 95% 71%;
+    --negative-color-hover: 351 95% 66%;
+    --negative-color-selected: 351 80% 90%;
+    --negative-color-selected-hover: 351 80% 85%;
+
+    /* Warning Colors (Yellow/Orange) */
+    --warning-color: 45 100% 51%;
+    --warning-color-hover: 36 100% 50%;
+    --warning-color-selected: 45 100% 88%;
+    --warning-color-selected-hover: 45 100% 83%;
+
+    /* Inverted Colors */
+    --inverted-color-background: 222 47% 11%;
+    
+    /* Icon and Fixed Colors */
+    --icon-color: 215 16% 47%;          /* slate-500 #64748b */
+    --fixed-light-color: 0 0% 100%;
+    --fixed-dark-color: 0 0% 0%;
+
+    /* Background Colors */
+    --primary-background-color: 0 0% 100%;
+    --secondary-background-color: 210 40% 98%;
+    --primary-background-hover-color: 220 13% 95%;
+    --grey-background-color: 220 13% 95%;
+    --allgrey-background-color: 220 13% 95%;
+    --ui-background-color: 210 17% 98%;
+
+    /* Text Colors */
+    --primary-text-color: 215 25% 17%;           /* slate-800 #1e293b */
+    --secondary-text-color: 215 20% 34%;         /* slate-600 #475569 */
+    --secondary-text-on-secondary-color: 215 16% 47%; /* slate-500 #64748b */
+    --text-color-on-inverted: 0 0% 100%;
+    --text-color-on-primary: 0 0% 100%;
+    --disabled-text-color: 214 20% 69%;          /* slate-400 #94a3b8 */
+    --placeholder-color: 215 16% 47%;            /* slate-500 #64748b */
+    --link-color: 215 20% 34%;                   /* slate-600 matching primary */
+
+    /* Border Colors */
+    --ui-border-color: 213 27% 84%;             /* slate-300 #cbd5e1 */
+    --layout-border-color: 214 32% 91%;         /* slate-200 #e2e8f0 */
+
+    /* Content Colors - Default States */
+    --color-grass-green: 145 63% 42%;
+    --color-done-green: 162 73% 46%;
+    --color-bright-green: 85 77% 59%;
+    --color-saladish: 66 70% 54%;
+    --color-egg-yolk: 48 100% 67%;
+    --color-working-orange: 36 100% 50%;
+    --color-dark-orange: 16 100% 66%;
+    --color-peach: 14 100% 80%;
+    --color-sunset: 351 95% 71%;
+    --color-stuck-red: 348 83% 47%;
+    --color-dark-red: 349 58% 38%;
+    --color-sofia-pink: 330 81% 60%;
+    --color-lipstick: 335 78% 67%;
+    --color-bubble: 326 66% 77%;
+    --color-purple: 271 81% 71%;
+    --color-dark-purple: 271 55% 55%;
+    --color-berry: 251 58% 64%;
+    --color-dark-indigo: 244 58% 51%;
+    --color-indigo: 230 100% 69%;
+    --color-navy: 211 90% 48%;
+    --color-bright-blue: 199 100% 67%;
+    --color-dark-blue: 199 92% 46%;
+    --color-aquamarine: 174 62% 59%;
+    --color-chili-blue: 189 65% 72%;
+    --color-river: 199 37% 61%;
+    --color-winter: 201 25% 71%;
+    --color-explosive: 210 11% 71%;
+    --color-american-gray: 240 6% 50%;
+    --color-blackish: 240 7% 20%;
+    --color-brown: 14 26% 57%;
+    --color-orchid: 300 29% 75%;
+    --color-tan: 28 42% 69%;
+    --color-sky: 189 53% 80%;
+    --color-coffee: 19 23% 49%;
+    --color-royal: 230 57% 50%;
+    --color-teal: 174 72% 32%;
+    --color-lavender: 251 49% 75%;
+    --color-steel: 210 13% 59%;
+    --color-lilac: 251 41% 86%;
+
+    /* Content Colors - Hover States */
+    --color-grass-green-hover: 145 63% 37%;
+    --color-done-green-hover: 162 73% 41%;
+    --color-bright-green-hover: 85 77% 54%;
+    --color-saladish-hover: 66 70% 49%;
+    --color-egg-yolk-hover: 48 100% 62%;
+    --color-working-orange-hover: 36 100% 45%;
+    --color-dark-orange-hover: 16 100% 61%;
+    --color-peach-hover: 14 100% 75%;
+    --color-sunset-hover: 351 95% 66%;
+    --color-stuck-red-hover: 348 83% 42%;
+    --color-dark-red-hover: 349 58% 33%;
+    --color-sofia-pink-hover: 330 81% 55%;
+    --color-lipstick-hover: 335 78% 62%;
+    --color-bubble-hover: 326 66% 72%;
+    --color-purple-hover: 271 81% 66%;
+    --color-dark-purple-hover: 271 55% 50%;
+    --color-berry-hover: 251 58% 59%;
+    --color-dark-indigo-hover: 244 58% 46%;
+    --color-indigo-hover: 230 100% 64%;
+    --color-navy-hover: 211 90% 43%;
+    --color-bright-blue-hover: 199 100% 62%;
+    --color-dark-blue-hover: 199 92% 41%;
+    --color-aquamarine-hover: 174 62% 54%;
+    --color-chili-blue-hover: 189 65% 67%;
+    --color-river-hover: 199 37% 56%;
+    --color-winter-hover: 201 25% 66%;
+    --color-explosive-hover: 210 11% 66%;
+    --color-american-gray-hover: 240 6% 45%;
+    --color-blackish-hover: 240 7% 15%;
+    --color-brown-hover: 14 26% 52%;
+    --color-orchid-hover: 300 29% 70%;
+    --color-tan-hover: 28 42% 64%;
+    --color-sky-hover: 189 53% 75%;
+    --color-coffee-hover: 19 23% 44%;
+    --color-royal-hover: 230 57% 45%;
+    --color-teal-hover: 174 72% 27%;
+    --color-lavender-hover: 251 49% 70%;
+    --color-steel-hover: 210 13% 54%;
+    --color-lilac-hover: 251 41% 81%;
+
+    /* Content Colors - Selected States */
+    --color-grass-green-selected: 145 50% 85%;
+    --color-done-green-selected: 162 60% 85%;
+    --color-bright-green-selected: 85 70% 88%;
+    --color-saladish-selected: 66 65% 88%;
+    --color-egg-yolk-selected: 48 100% 90%;
+    --color-working-orange-selected: 36 100% 88%;
+    --color-dark-orange-selected: 16 100% 90%;
+    --color-peach-selected: 14 100% 92%;
+    --color-sunset-selected: 351 80% 90%;
+    --color-stuck-red-selected: 348 70% 85%;
+    --color-dark-red-selected: 349 50% 85%;
+    --color-sofia-pink-selected: 330 70% 88%;
+    --color-lipstick-selected: 335 70% 90%;
+    --color-bubble-selected: 326 60% 90%;
+    --color-purple-selected: 271 70% 90%;
+    --color-dark-purple-selected: 271 50% 88%;
+    --color-berry-selected: 251 50% 88%;
+    --color-dark-indigo-selected: 244 50% 85%;
+    --color-indigo-selected: 230 100% 90%;
+    --color-navy-selected: 211 80% 85%;
+    --color-bright-blue-selected: 199 100% 90%;
+    --color-dark-blue-selected: 199 80% 85%;
+    --color-aquamarine-selected: 174 55% 88%;
+    --color-chili-blue-selected: 189 60% 90%;
+    --color-river-selected: 199 35% 88%;
+    --color-winter-selected: 201 25% 90%;
+    --color-explosive-selected: 210 11% 90%;
+    --color-american-gray-selected: 240 6% 85%;
+    --color-blackish-selected: 240 7% 85%;
+    --color-brown-selected: 14 26% 88%;
+    --color-orchid-selected: 300 29% 90%;
+    --color-tan-selected: 28 42% 90%;
+    --color-sky-selected: 189 53% 92%;
+    --color-coffee-selected: 19 23% 85%;
+    --color-royal-selected: 230 57% 85%;
+    --color-teal-selected: 174 60% 85%;
+    --color-lavender-selected: 251 49% 92%;
+    --color-steel-selected: 210 13% 88%;
+    --color-lilac-selected: 251 41% 93%;
+
     /* Arabic Font Support */
     --font-arabic: "IBM Plex Sans Arabic", "Figtree", ui-sans-serif, system-ui;
   }
@@ -61,6 +241,22 @@
     /* WakeCap Dark Theme */
     --wakecap-primary: 24 100% 50%;
     --wakecap-primary-foreground: 0 0% 100%;
+
+    /* Blockwork Dark Mode Overrides - Slate Palette */
+    --primary-background-color: 222 47% 11%;    /* slate-950 #020617 */
+    --secondary-background-color: 215 28% 17%;  /* slate-800 #1e293b */
+    --primary-background-hover-color: 217 33% 27%; /* slate-700 #334155 */
+    --grey-background-color: 215 28% 17%;       /* slate-800 #1e293b */
+    --allgrey-background-color: 215 28% 17%;    /* slate-800 #1e293b */
+    --ui-background-color: 217 33% 27%;         /* slate-700 #334155 */
+    
+    --primary-text-color: 210 40% 98%;          /* slate-100 #f1f5f9 */
+    --secondary-text-color: 214 20% 69%;        /* slate-400 #94a3b8 */
+    --text-color-on-inverted: 210 40% 98%;      /* slate-100 #f1f5f9 */
+    --disabled-text-color: 215 16% 47%;         /* slate-500 #64748b */
+    
+    --ui-border-color: 215 20% 34%;             /* slate-600 #475569 */
+    --layout-border-color: 217 33% 27%;         /* slate-700 #334155 */
   }
 }
 
@@ -68,8 +264,84 @@
   * {
     @apply border-border;
   }
+  
   body {
-    @apply bg-background text-foreground;
+    @apply bg-bw-bg-primary text-bw-text-primary;
+    font-family: 'Figtree', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  }
+
+  /* Base Typography Inheritance */
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-bw-text-primary font-heading;
+  }
+
+  p, div {
+    @apply text-bw-text-primary;
+  }
+  
+  /* Spans inherit color from parent - don't override button text colors */
+
+  /* Link Defaults */
+  a {
+    @apply text-bw-text-link;
+  }
+
+  a:hover {
+    @apply text-bw-primary-hover;
+  }
+
+  /* Form Elements Base */
+  input, textarea, select {
+    @apply bg-bw-bg-primary text-bw-text-primary border-bw-border-ui;
+  }
+
+  input::placeholder, textarea::placeholder {
+    @apply text-bw-text-placeholder;
+  }
+
+  input:disabled, textarea:disabled, select:disabled {
+    @apply bg-bw-bg-secondary text-bw-text-disabled cursor-not-allowed;
+  }
+
+  /* Button Base */
+  button {
+    @apply text-bw-text-primary;
+  }
+
+  button:disabled {
+    @apply text-bw-text-disabled cursor-not-allowed;
+  }
+
+  /* Code Elements */
+  code {
+    @apply text-bw-text-secondary bg-bw-bg-secondary px-1 py-0.5 rounded text-sm;
+  }
+
+  pre {
+    @apply bg-bw-bg-secondary text-bw-text-primary p-4 rounded-lg overflow-auto;
+  }
+
+  /* Table Elements */
+  table {
+    @apply border-bw-border-layout;
+  }
+
+  th {
+    @apply bg-bw-bg-secondary text-bw-text-primary font-semibold;
+  }
+
+  td {
+    @apply border-bw-border-layout text-bw-text-primary;
+  }
+
+  /* HR Separator */
+  hr {
+    @apply border-bw-border-layout;
+  }
+
+  /* Blockquote */
+  blockquote {
+    @apply border-l-4 border-bw-primary bg-bw-primary-highlighted text-bw-text-secondary pl-4 py-2;
   }
 
   /* Arabic RTL Support */
@@ -105,6 +377,22 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
+  }
+
+  /* FontAwesome icon alignment fixes */
+  button i[class*="fa-"],
+  button i[class*="fa "] {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    line-height: 1;
+  }
+
+  button i[class*="fa-"]::before,
+  button i[class*="fa "]::before {
+    display: block;
+    line-height: 1;
   }
 }
 
@@ -234,5 +522,35 @@
 
   .rtl-pr-4 {
     @apply pr-4 rtl:pl-4 rtl:pr-0;
+  }
+
+  /* Blockwork Color Utilities */
+  .bw-status-badge {
+    @apply px-3 py-1 rounded-full text-sm font-medium text-white transition-colors;
+  }
+
+  .bw-status-badge-sm {
+    @apply px-2 py-0.5 rounded-full text-xs font-medium text-white transition-colors;
+  }
+
+  .bw-status-badge-lg {
+    @apply px-4 py-2 rounded-full text-base font-medium text-white transition-colors;
+  }
+
+  /* Interactive color utilities */
+  .bw-interactive-primary {
+    @apply bg-bw-primary hover:bg-bw-primary-hover active:bg-bw-primary-selected transition-colors;
+  }
+
+  .bw-interactive-positive {
+    @apply bg-bw-positive hover:bg-bw-positive-hover active:bg-bw-positive-selected transition-colors;
+  }
+
+  .bw-interactive-negative {
+    @apply bg-bw-negative hover:bg-bw-negative-hover active:bg-bw-negative-selected transition-colors;
+  }
+
+  .bw-interactive-warning {
+    @apply bg-bw-warning hover:bg-bw-warning-hover active:bg-bw-warning-selected transition-colors;
   }
 }

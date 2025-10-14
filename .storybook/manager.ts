@@ -1,5 +1,7 @@
 import { addons } from "storybook/manager-api";
 import { create } from "storybook/theming";
+// Import renderLabel from tag-badges addon to enable sidebar badges
+import { renderLabel } from "storybook-addon-tag-badges";
 
 // Determine if we're in production build (static deployment)
 const isProduction = process.env.NODE_ENV === "production";
@@ -16,13 +18,13 @@ const blockworkTheme = create({
   brandTarget: "_self",
 
   // Core colors
-  colorPrimary: "#ea580c",
+  colorPrimary: "#101628",
   colorSecondary: "#171717",
 
   // Basic UI colors
-  appBg: "#ffffff",
-  appContentBg: "#ffffff",
-  appBorderColor: "#e5e5e5",
+  appBg: "#F1F2F4",
+  appContentBg: "#F1F2F4",
+  appBorderColor: "#000000",
   appBorderRadius: 12,
 
   // Text colors
@@ -31,8 +33,8 @@ const blockworkTheme = create({
   textMutedColor: "#737373",
 
   // Toolbar colors
-  barTextColor: "#ffffff",
-  barSelectedColor: "#ea580c",
+  barTextColor: "#D1D6E0",
+  barSelectedColor: "#000000",
   barBg: "#171717",
 
   // Form colors
@@ -42,20 +44,20 @@ const blockworkTheme = create({
   inputBorderRadius: 12,
 
   // Button colors
-  buttonBg: "#ea580c",
-  buttonBorder: "#ea580c",
+  buttonBg: "#101628",
+  buttonBorder: "#101628",
   booleanBg: "#f5f5f5",
-  booleanSelectedBg: "#ea580c",
+  booleanSelectedBg: "#101628",
 
   // Typography
   fontBase: '"Figtree", "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif',
   fontCode: '"JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace',
 
   // Sidebar colors
-  sidebarBg: "#fafafa",
+  sidebarBg: "#E5E5E5",
   sidebarTextColor: "#171717",
-  sidebarSelectedColor: "#C03131",
-  sidebarHoverColor: "#f0f0f0",
+  sidebarSelectedColor: "#D1D6E0",
+  sidebarHoverColor: "#D1D6E0",
   sidebarBorder: "#e5e5e5",
   sidebarBorderRadius: 0,
 });
@@ -71,6 +73,11 @@ addons.setConfig({
   enableShortcuts: true,
   showCanvas: true,
   showDocsPage: true,
+  // Integrate tag-badges addon's renderLabel for sidebar badges
+  sidebar: {
+    renderLabel,
+  },
 });
 
 console.log("Blockwork theme loaded:", blockworkTheme);
+console.log("Tag badges addon renderLabel integrated");

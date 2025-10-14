@@ -83,7 +83,7 @@ export const Modal: React.FC<ModalProps> = ({
         {(title || showCloseButton) && (
           <div className="flex items-center justify-between p-6 border-b border-neutral-200">
             {title && (
-              <h2 id="modal-title" className="text-lg font-semibold text-neutral-900">
+              <h2 id="modal-title" className="text-lg font-semibold text-neutral-900 font-heading">
                 {title}
               </h2>
             )}
@@ -166,7 +166,7 @@ export const ConfirmationModal: React.FC<{
       className={className}
     >
       <div className="space-y-4">
-        <p className="text-neutral-600">{message}</p>
+        <p className="text-neutral-600 font-sans">{message}</p>
 
         <div className="flex space-x-3 justify-end">
           <button

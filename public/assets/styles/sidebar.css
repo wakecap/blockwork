@@ -1,0 +1,47 @@
+/* Simple sidebar styling - minimal customizations only */
+
+/* Basic sidebar hover effects */
+[data-testid="sidebar-root"] a,
+[data-testid="sidebar-root"] button,
+[data-testid="sidebar-root"] [role="menuitem"],
+[data-testid="sidebar-root"] [role="treeitem"],
+[data-testid="sidebar-root"] [role="button"] {
+  transition: all 0.2s ease !important;
+  border-radius: 6px !important;
+  padding: 8px 12px !important;
+  display: block !important;
+  text-decoration: none !important;
+  color: inherit !important;
+  cursor: pointer !important;
+}
+
+[data-testid="sidebar-root"] a:hover,
+[data-testid="sidebar-root"] button:hover,
+[data-testid="sidebar-root"] [role="menuitem"]:hover,
+[data-testid="sidebar-root"] [role="treeitem"]:hover,
+[data-testid="sidebar-root"] [role="button"]:hover {
+  background: #f8f8f8 !important;
+  color: #ea580c !important;
+  transform: translateX(2px) !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Focus states for accessibility */
+[data-testid="sidebar-root"] a:focus,
+[data-testid="sidebar-root"] button:focus,
+[data-testid="sidebar-root"] [role="menuitem"]:focus,
+[data-testid="sidebar-root"] [role="treeitem"]:focus,
+[data-testid="sidebar-root"] [role="button"]:focus {
+  outline: 2px solid #ea580c !important;
+  outline-offset: 2px !important;
+}
+
+/* Active states */
+[data-testid="sidebar-root"] a:active,
+[data-testid="sidebar-root"] button:active,
+[data-testid="sidebar-root"] [role="menuitem"]:active,
+[data-testid="sidebar-root"] [role="treeitem"]:active,
+[data-testid="sidebar-root"] [role="button"]:active {
+  transform: translateX(1px) !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) !important;
+}

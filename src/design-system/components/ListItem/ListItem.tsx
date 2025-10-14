@@ -126,17 +126,17 @@ export const ListItem: React.FC<ListItemProps> = ({
         <div className="flex items-center justify-between">
           <div className="min-w-0 flex-1">
             <h3
-              className={`font-medium text-neutral-900 truncate ${
+              className={`font-medium text-neutral-900 truncate font-heading ${
                 variant === "multi-line" ? "mb-1" : ""
               }`}
             >
               {title}
             </h3>
 
-            {subtitle && <p className="text-sm text-neutral-600 truncate">{subtitle}</p>}
+            {subtitle && <p className="text-sm text-neutral-600 truncate font-sans">{subtitle}</p>}
 
             {description && variant === "multi-line" && (
-              <p className="text-sm text-neutral-500 mt-1 line-clamp-2">{description}</p>
+              <p className="text-sm text-neutral-500 mt-1 line-clamp-2 font-sans">{description}</p>
             )}
           </div>
 

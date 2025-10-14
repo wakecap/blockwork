@@ -64,24 +64,13 @@ export const DateRangeSelection: Story = {
 export const MultiMonthWithPredefinedRanges: Story = {
   args: {
     variant: "multi-month",
-    rangeStart: new Date("2024-03-23"),
-    rangeEnd: new Date("2024-03-26"),
     predefinedRanges: [
       {
-        label: "Today",
-        value: "today",
+        label: "Single Date",
+        value: "singledate",
         getValue: () => {
           const today = new Date();
           return { start: today, end: today };
-        },
-      },
-      {
-        label: "Yesterday",
-        value: "yesterday",
-        getValue: () => {
-          const yesterday = new Date();
-          yesterday.setDate(yesterday.getDate() - 1);
-          return { start: yesterday, end: yesterday };
         },
       },
       {
@@ -122,7 +111,6 @@ export const MultiMonthWithPredefinedRanges: Story = {
         },
       },
     ],
-    className: "w-full max-w-4xl",
   },
 };
 
@@ -193,8 +181,15 @@ export const DatePickerExample: Story = {
 
 export const DateRangePickerExample: Story = {
   render: () => {
-    const [startDate, setStartDate] = React.useState<Date | undefined>(new Date("2024-09-14"));
-    const [endDate, setEndDate] = React.useState<Date | undefined>(new Date("2024-09-14"));
+    // Default to yesterday through today
+    const getYesterday = () => {
+      const date = new Date();
+      date.setDate(date.getDate() - 1);
+      return date;
+    };
+
+    const [startDate, setStartDate] = React.useState<Date | undefined>(getYesterday());
+    const [endDate, setEndDate] = React.useState<Date | undefined>(new Date());
 
     const handleRangeChange = (start: Date, end: Date) => {
       setStartDate(start);
@@ -212,6 +207,158 @@ export const DateRangePickerExample: Story = {
           onChange={handleRangeChange}
           placeholder="Select date range"
           className="w-80"
+        />
+      </div>
+    );
+  },
+};
+
+export const SingleDateWithTimePicker: Story = {
+  render: () => {
+    const [startDate, setStartDate] = React.useState<Date | undefined>(
+      new Date("2024-09-14 00:00"),
+    );
+    const [endDate, setEndDate] = React.useState<Date | undefined>(
+      new Date("2024-09-14 23:59"),
+    );
+
+    const handleTimeRangeChange = (start: Date, end: Date) => {
+      setStartDate(start);
+      setEndDate(end);
+    };
+
+    return (
+      <div className="space-y-4">
+        <div className="text-sm text-neutral-600">
+          From: {startDate ? startDate.toLocaleString() : "None"}
+          <br />
+          To: {endDate ? endDate.toLocaleString() : "None"}
+        </div>
+        <DatePicker
+          value={startDate}
+          endValue={endDate}
+          onRangeChange={handleTimeRangeChange}
+          placeholder="Select date with time range"
+          className="w-80"
+          showTimePicker={true}
+        />
+      </div>
+    );
+  },
+};
+
+export const DateRangeWithTimePicker: Story = {
+  render: () => {
+    // Default to yesterday at 00:00 through today at 23:59
+    const getYesterday = () => {
+      const date = new Date();
+      date.setDate(date.getDate() - 1);
+      date.setHours(0, 0, 0, 0);
+      return date;
+    };
+
+    const getToday = () => {
+      const date = new Date();
+      date.setHours(23, 59, 0, 0);
+      return date;
+    };
+
+    const [startDate, setStartDate] = React.useState<Date | undefined>(getYesterday());
+    const [endDate, setEndDate] = React.useState<Date | undefined>(getToday());
+
+    const handleRangeChange = (start: Date, end: Date) => {
+      setStartDate(start);
+      setEndDate(end);
+    };
+
+    return (
+      <div className="space-y-4">
+        <div className="text-sm text-neutral-600">
+          Range: {startDate?.toLocaleString()} - {endDate?.toLocaleString()}
+        </div>
+        <DateRangePicker
+          startDate={startDate}
+          endDate={endDate}
+          onChange={handleRangeChange}
+          placeholder="Select date range with time"
+          className="w-80"
+          showTimePicker={true}
+        />
+      </div>
+    );
+  },
+};
+
+export const MultiMonthWithPredefinedRangesAndTime: Story = {
+  render: () => {
+    const [startDate, setStartDate] = React.useState<Date | undefined>(new Date());
+    const [endDate, setEndDate] = React.useState<Date | undefined>(new Date());
+
+    const handleRangeChange = (start: Date, end: Date) => {
+      setStartDate(start);
+      setEndDate(end);
+    };
+
+    return (
+      <div className="space-y-4">
+        <div className="text-sm text-neutral-600">
+          From: {startDate?.toLocaleString()}
+          <br />
+          To: {endDate?.toLocaleString()}
+        </div>
+        <Calendar
+          variant="multi-month"
+          rangeStart={startDate}
+          rangeEnd={endDate}
+          onRangeChange={handleRangeChange}
+          showTimePicker={true}
+          predefinedRanges={[
+            {
+              label: "Single Date",
+              value: "singledate",
+              getValue: () => {
+                const today = new Date();
+                return { start: today, end: today };
+              },
+            },
+            {
+              label: "Last 7 days",
+              value: "last7days",
+              getValue: () => {
+                const end = new Date();
+                const start = new Date();
+                start.setDate(start.getDate() - 6);
+                return { start, end };
+              },
+            },
+            {
+              label: "Last 15 days",
+              value: "last15days",
+              getValue: () => {
+                const end = new Date();
+                const start = new Date();
+                start.setDate(start.getDate() - 14);
+                return { start, end };
+              },
+            },
+            {
+              label: "Last 30 days",
+              value: "last30days",
+              getValue: () => {
+                const end = new Date();
+                const start = new Date();
+                start.setDate(start.getDate() - 29);
+                return { start, end };
+              },
+            },
+            {
+              label: "Custom Dates",
+              value: "custom",
+              getValue: () => {
+                return { start: new Date("2024-03-23"), end: new Date("2024-03-26") };
+              },
+            },
+          ]}
         />
       </div>
     );

@@ -35,78 +35,58 @@ export const Avatar: React.FC<AvatarProps> = ({
     xs: {
       container: "w-[24px] h-[24px]", // 24px × 24px
       text: "text-xs",
-      status: "w-1.5 h-1.5",
-      statusOffset: "translate-x-0.5 -translate-y-0.5",
     },
     sm: {
       container: "w-[32px] h-[32px]", // 32px × 32px
       text: "text-sm",
-      status: "w-2 h-2",
-      statusOffset: "translate-x-0.5 -translate-y-0.5",
     },
     md: {
       container: "w-[40px] h-[40px]", // 40px × 40px
       text: "text-base",
-      status: "w-2.5 h-2.5",
-      statusOffset: "translate-x-0.5 -translate-y-0.5",
     },
     lg: {
       container: "w-[48px] h-[48px]", // 48px × 48px
       text: "text-lg",
-      status: "w-3 h-3",
-      statusOffset: "translate-x-1 -translate-y-1",
     },
     xl: {
       container: "w-[56px] h-[56px]", // 56px × 56px
       text: "text-xl",
-      status: "w-4 h-4",
-      statusOffset: "translate-x-1 -translate-y-1",
     },
     // Icon-only sizes - exact pixel dimensions using custom styles
     iconXs: {
       container: "w-[24px] h-[24px]", // 24px × 24px
       text: "text-xs",
-      status: "w-1.5 h-1.5",
-      statusOffset: "translate-x-0.5 -translate-y-0.5",
     },
     iconSm: {
       container: "w-[32px] h-[32px]", // 32px × 32px
       text: "text-sm",
-      status: "w-2 h-2",
-      statusOffset: "translate-x-0.5 -translate-y-0.5",
     },
     iconMd: {
       container: "w-[40px] h-[40px]", // 40px × 40px
       text: "text-base",
-      status: "w-2.5 h-2.5",
-      statusOffset: "translate-x-0.5 -translate-y-0.5",
     },
     iconLg: {
       container: "w-[48px] h-[48px]", // 48px × 48px
       text: "text-lg",
-      status: "w-3 h-3",
-      statusOffset: "translate-x-1 -translate-y-1",
     },
     iconXl: {
       container: "w-[56px] h-[56px]", // 56px × 56px
       text: "text-xl",
-      status: "w-4 h-4",
-      statusOffset: "translate-x-1 -translate-y-1",
     },
   };
 
   const statusColors = {
-    online: "bg-green-500",
-    offline: "bg-neutral-400",
-    away: "bg-yellow-500",
-    busy: "bg-red-500",
+    online: "bg-bw-positive",
+    offline: "bg-bw-text-disabled",
+    away: "bg-bw-warning",
+    busy: "bg-bw-negative",
   };
 
   const statusPositionClasses = {
-    "top-right": "top-0 right-0",
-    "top-left": "top-0 left-0",
-    "bottom-right": "bottom-0 right-0",
-    "bottom-left": "bottom-0 left-0",
+    "top-right": "top-[-6px] right-[-6px]",
+    "top-left": "top-[-6px] left-[-6px]",
+    "bottom-right": "bottom-[-6px] right-[-6px]",
+    "bottom-left": "bottom-[-6px] left-[-6px]",
   };
 
   const currentSize = sizeClasses[size];
@@ -145,13 +125,13 @@ export const Avatar: React.FC<AvatarProps> = ({
     if (userInitials) {
       return (
         <div
-          className={`w-full h-full flex items-center justify-center bg-neutral-300 text-black font-medium ${currentSize.text} ${shapeClass}`}
+          className={`w-full h-full flex items-center justify-center bg-bw-bg-secondary text-bw-text-primary font-medium ${currentSize.text} ${shapeClass}`}
         >
           <div className="flex items-center gap-1">
             <span>{userInitials}</span>
             {showChevron && (
               <i
-                className="fa-solid fa-chevron-down text-black"
+                className="fa-solid fa-chevron-down text-bw-text-primary"
                 style={{
                   fontSize: size === "xs" ? "6px" : size === "sm" ? "8px" : "10px",
                 }}
@@ -164,7 +144,7 @@ export const Avatar: React.FC<AvatarProps> = ({
 
     return (
       <div
-        className={`w-full h-full flex items-center justify-center bg-neutral-200 text-neutral-600 ${shapeClass}`}
+        className={`w-full h-full flex items-center justify-center bg-bw-bg-grey text-bw-text-secondary ${shapeClass}`}
       >
         {fallbackIcon || <i className={cn(currentSize.text, "fa-solid fa-user")} />}
       </div>
@@ -181,9 +161,9 @@ export const Avatar: React.FC<AvatarProps> = ({
       {status && (
         <div
           className={`
-            absolute ${statusPositionClasses[statusPosition]} ${currentSize.statusOffset}
-            ${currentSize.status} ${statusColors[status]} ${shapeClass}
-            border-2 border-white
+            absolute ${statusPositionClasses[statusPosition]}
+            w-[12px] h-[12px] ${statusColors[status]} rounded-full
+            border-[3px] border-bw-fixed-light box-content
           `}
         />
       )}

@@ -159,7 +159,7 @@ export const MenuPopover: React.FC<{
             }`}
           >
             {item.icon && <i className={cn("w-4 h-4 text-neutral-500", item.icon)} />}
-            <span>{item.label}</span>
+            <span className="font-sans">{item.label}</span>
           </button>
         ))}
       </div>
@@ -185,8 +185,8 @@ export const InfoPopover: React.FC<{
   <Popover
     content={
       <div className="space-y-2">
-        <h3 className="font-medium text-neutral-900">{title}</h3>
-        <p className="text-sm text-neutral-600">{content}</p>
+        <h3 className="font-medium text-neutral-900 font-heading">{title}</h3>
+        <p className="text-sm text-neutral-600 font-sans">{content}</p>
       </div>
     }
     isOpen={isOpen}
@@ -212,7 +212,7 @@ export const FormPopover: React.FC<{
     content={
       <div className="space-y-4">
         <div className="flex items-center justify-between">
-          <h3 className="font-medium text-neutral-900">{title}</h3>
+          <h3 className="font-medium text-neutral-900 font-heading">{title}</h3>
           <button
             onClick={onClose}
             className="p-1 text-neutral-400 hover:text-neutral-600 transition-colors"

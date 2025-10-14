@@ -60,9 +60,9 @@ export const EmptyState: React.FC<EmptyStateProps> = ({
         </div>
 
         <div className="space-y-2">
-          <h3 className={`${currentSize.title} font-medium text-neutral-900`}>{title}</h3>
+          <h3 className={`${currentSize.title} font-medium text-neutral-900 font-heading`}>{title}</h3>
           {description && (
-            <p className={`${currentSize.description} text-neutral-600 max-w-md mx-auto`}>
+            <p className={`${currentSize.description} text-neutral-600 max-w-md mx-auto font-sans`}>
               {description}
             </p>
           )}

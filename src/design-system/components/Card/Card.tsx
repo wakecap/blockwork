@@ -37,10 +37,10 @@ export const Card: React.FC<CardProps> = ({
   children,
 }) => {
   const variantStyles = {
-    default: "bg-white border border-neutral-200",
-    elevated: "bg-white shadow-md border border-neutral-200",
-    outlined: "bg-white border-2 border-neutral-300",
-    interactive: "bg-white border border-neutral-200 cursor-pointer",
+    default: "bg-bw-bg-primary border border-bw-border-ui",
+    elevated: "bg-bw-bg-primary shadow-md border border-bw-border-ui",
+    outlined: "bg-bw-bg-primary border-2 border-bw-border-layout",
+    interactive: "bg-bw-bg-primary border border-bw-border-ui cursor-pointer",
   };
 
   const sizeStyles = {
@@ -50,9 +50,9 @@ export const Card: React.FC<CardProps> = ({
   };
 
   const hoverStyles = isHoverable
-    ? "hover:shadow-lg hover:border-neutral-300 transition-all duration-200"
+    ? "hover:shadow-lg hover:border-bw-primary-hover transition-all duration-200"
     : "";
-  const selectedStyles = isSelected ? "ring-2 ring-primary-500 border-primary-500" : "";
+  const selectedStyles = isSelected ? "ring-2 ring-bw-primary border-bw-primary" : "";
   const disabledStyles = isDisabled ? "opacity-50 cursor-not-allowed" : "";
 
   const cardContent = (
@@ -71,8 +71,8 @@ export const Card: React.FC<CardProps> = ({
       <div className={sizeStyles[size]}>
         {(title || subtitle) && (
           <div className="mb-3">
-            {title && <h3 className="text-lg font-semibold text-neutral-900 mb-1">{title}</h3>}
-            {subtitle && <p className="text-sm text-neutral-600">{subtitle}</p>}
+            {title && <h3 className="text-lg font-semibold text-bw-text-primary mb-1 font-heading">{title}</h3>}
+            {subtitle && <p className="text-sm text-bw-text-secondary font-sans">{subtitle}</p>}
           </div>
         )}
 
@@ -82,7 +82,7 @@ export const Card: React.FC<CardProps> = ({
       </div>
 
       {footer && (
-        <div className={`${sizeStyles[size]} pt-0 border-t border-neutral-100`}>{footer}</div>
+        <div className={`${sizeStyles[size]} pt-0 border-t border-bw-border-layout`}>{footer}</div>
       )}
     </>
   );
@@ -159,12 +159,12 @@ export const ProductCard: React.FC<{
             e.stopPropagation();
             handleFavorite();
           }}
-          className="p-2 bg-white rounded-full shadow-md hover:bg-neutral-50 transition-colors"
+          className="p-2 bg-bw-bg-primary rounded-full shadow-md hover:bg-bw-bg-secondary transition-colors"
         >
           <i
             className={cn(
               "w-4 h-4 fa-solid fa-heart",
-              isLiked ? "text-red-500" : "text-neutral-400",
+              isLiked ? "text-bw-negative" : "text-bw-text-disabled",
             )}
           />
         </button>
@@ -172,11 +172,11 @@ export const ProductCard: React.FC<{
       footer={
         <div className="flex items-center justify-between">
           <div>
-            <span className="text-lg font-bold text-neutral-900">{price}</span>
+            <span className="text-lg font-bold text-bw-text-primary">{price}</span>
             {rating && (
               <div className="flex items-center mt-1">
-                <span className="text-yellow-400">★</span>
-                <span className="text-sm text-neutral-600 ml-1">{rating}</span>
+                <span className="text-bw-warning">★</span>
+                <span className="text-sm text-bw-text-secondary ml-1">{rating}</span>
               </div>
             )}
           </div>
@@ -185,7 +185,7 @@ export const ProductCard: React.FC<{
               e.stopPropagation();
               onAddToCart?.();
             }}
-            className="px-4 py-2 bg-primary-600 text-white rounded-sm hover:bg-primary-700 transition-colors"
+            className="px-4 py-2 bg-bw-primary text-bw-on-primary rounded-sm hover:bg-bw-primary-hover transition-colors"
           >
             Add to Cart
           </button>
@@ -209,12 +209,12 @@ export const UserCard: React.FC<{
     isHoverable
     className={className}
     content={
-      <div className="flex items-center space-x-3">
+        <div className="flex items-center space-x-3">
         <img src={avatar} alt={name} className="w-12 h-12 rounded-full object-cover" />
         <div className="flex-1">
-          <h4 className="font-medium text-neutral-900">{name}</h4>
-          <p className="text-sm text-neutral-600">{role}</p>
-          <p className="text-sm text-neutral-500">{email}</p>
+          <h4 className="font-medium text-bw-text-primary font-heading">{name}</h4>
+          <p className="text-sm text-bw-text-secondary font-sans">{role}</p>
+          <p className="text-sm text-bw-text-placeholder font-sans">{email}</p>
         </div>
       </div>
     }
@@ -225,7 +225,7 @@ export const UserCard: React.FC<{
             e.stopPropagation();
             onMessage?.();
           }}
-          className="flex-1 px-3 py-2 bg-primary-600 text-white text-sm rounded hover:bg-primary-700 transition-colors"
+          className="flex-1 px-3 py-2 bg-bw-primary text-bw-on-primary text-sm rounded hover:bg-bw-primary-hover transition-colors"
         >
           Message
         </button>
@@ -234,7 +234,7 @@ export const UserCard: React.FC<{
             e.stopPropagation();
             onViewProfile?.();
           }}
-          className="flex-1 px-3 py-2 bg-neutral-200 text-neutral-700 text-sm rounded hover:bg-neutral-300 transition-colors"
+          className="flex-1 px-3 py-2 bg-bw-bg-secondary text-bw-text-primary text-sm rounded hover:bg-bw-bg-primary-hover transition-colors"
         >
           View Profile
         </button>
@@ -274,8 +274,8 @@ export const ArticleCard: React.FC<{
     className={className}
     content={
       <div>
-        <p className="text-neutral-700 mb-3 line-clamp-3">{excerpt}</p>
-        <div className="flex items-center justify-between text-sm text-neutral-500">
+        <p className="text-bw-text-secondary mb-3 line-clamp-3 font-sans">{excerpt}</p>
+        <div className="flex items-center justify-between text-sm text-bw-text-placeholder font-sans">
           <span>{author}</span>
           <span>{date}</span>
           {readTime && <span>{readTime} read</span>}
@@ -289,18 +289,18 @@ export const ArticleCard: React.FC<{
             e.stopPropagation();
             onBookmark?.();
           }}
-          className="p-2 bg-white rounded-full shadow-md hover:bg-neutral-50 transition-colors"
+          className="p-2 bg-bw-bg-primary rounded-full shadow-md hover:bg-bw-bg-secondary transition-colors"
         >
-          <i className="w-4 h-4 text-neutral-400 fa-solid fa-bookmark" />
+          <i className="w-4 h-4 text-bw-text-disabled fa-solid fa-bookmark" />
         </button>
         <button
           onClick={(e) => {
             e.stopPropagation();
             onShare?.();
           }}
-          className="p-2 bg-white rounded-full shadow-md hover:bg-neutral-50 transition-colors"
+          className="p-2 bg-bw-bg-primary rounded-full shadow-md hover:bg-bw-bg-secondary transition-colors"
         >
-          <i className="w-4 h-4 text-neutral-400 fa-solid fa-share" />
+          <i className="w-4 h-4 text-bw-text-disabled fa-solid fa-share" />
         </button>
       </div>
     }
@@ -310,7 +310,7 @@ export const ArticleCard: React.FC<{
           e.stopPropagation();
           onReadMore?.();
         }}
-        className="w-full px-4 py-2 bg-primary-600 text-white rounded-sm hover:bg-primary-700 transition-colors"
+        className="w-full px-4 py-2 bg-bw-primary text-bw-on-primary rounded-sm hover:bg-bw-primary-hover transition-colors"
       >
         Read More
       </button>

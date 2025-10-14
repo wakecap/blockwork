@@ -84,11 +84,11 @@ export const FormLayout: React.FC<FormLayoutProps> = ({
       {groups.map((group, groupIndex) => (
         <div key={group.id} className={groupVariantStyles[group.variant || "default"]}>
           <div className="mb-6">
-            <h2 className="text-xl font-semibold text-neutral-900 mb-2">
+            <h2 className="text-xl font-semibold text-neutral-900 mb-2 font-heading">
               {showSectionNumbers && `${groupIndex + 1}. `}
               {group.title}
             </h2>
-            {group.description && <p className="text-sm text-neutral-600">{group.description}</p>}
+            {group.description && <p className="text-sm text-neutral-600 font-sans">{group.description}</p>}
           </div>
 
           <div className="space-y-6">
@@ -135,10 +135,10 @@ export const FormLayout: React.FC<FormLayoutProps> = ({
                             {groupIndex + 1}.{sectionIndex + 1}
                           </span>
                         )}
-                        <h3 className="font-medium text-neutral-900">{section.title}</h3>
+                        <h3 className="font-medium text-neutral-900 font-heading">{section.title}</h3>
                       </div>
                       {section.description && (
-                        <p className="text-sm text-neutral-600 mt-1">{section.description}</p>
+                        <p className="text-sm text-neutral-600 mt-1 font-sans">{section.description}</p>
                       )}
                     </div>
                   )}
@@ -150,16 +150,16 @@ export const FormLayout: React.FC<FormLayoutProps> = ({
                           <div key={field.id} className="space-y-2">
                             <label
                               htmlFor={field.id}
-                              className="block text-sm font-medium text-neutral-700"
+                              className="block text-sm font-medium text-neutral-700 font-sans"
                             >
                               {field.label}
                               {field.required && <span className="text-red-500 ml-1">*</span>}
                             </label>
                             {field.children}
                             {field.helpText && (
-                              <p className="text-sm text-neutral-500">{field.helpText}</p>
+                              <p className="text-sm text-neutral-500 font-sans">{field.helpText}</p>
                             )}
-                            {field.error && <p className="text-sm text-red-600">{field.error}</p>}
+                            {field.error && <p className="text-sm text-red-600 font-sans">{field.error}</p>}
                           </div>
                         ))}
                       </div>

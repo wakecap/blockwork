@@ -19,34 +19,34 @@ const sizeVariants = {
 };
 
 const variants = {
-  // Core variants (Black-based) with responsive hover states
+  // Core variants with Blockwork Slate palette
   primary:
-    "bg-neutral-900 text-white border border-neutral-900 hover:bg-neutral-800 hover:shadow-md active:bg-neutral-950 focus-visible:ring-neutral-500 active:scale-[0.98] sm:active:scale-100",
+    "bg-bw-primary text-bw-on-primary border border-bw-primary hover:bg-bw-primary-hover hover:shadow-md active:bg-bw-primary-selected focus-visible:ring-bw-primary active:scale-[0.98] sm:active:scale-100",
   secondary:
-    "bg-neutral-100 text-neutral-900 border border-neutral-200 hover:border-secondary-200 active:bg-neutral-300 focus-visible:ring-neutral-500 active:scale-[0.98] sm:active:scale-100",
+    "bg-bw-bg-secondary text-bw-text-primary border border-bw-border-ui hover:bg-bw-bg-primary-hover active:bg-bw-primary-selected focus-visible:ring-bw-primary active:scale-[0.98] sm:active:scale-100",
   accent:
-    "bg-orange-600 text-white border border-orange-600 hover:bg-orange-700 hover:shadow-md active:bg-orange-800 focus-visible:ring-orange-500 active:scale-[0.98] sm:active:scale-100",
+    "bg-bw-warning text-bw-on-primary border border-bw-warning hover:bg-bw-warning-hover hover:shadow-md active:bg-bw-warning-selected focus-visible:ring-bw-warning active:scale-[0.98] sm:active:scale-100",
   outline:
-    "bg-transparent text-neutral-900 border border-neutral-900 hover:bg-neutral-900 hover:text-white hover:shadow-sm focus-visible:ring-neutral-500 active:scale-[0.98] sm:active:scale-100",
+    "bg-transparent text-bw-primary border border-bw-primary hover:bg-bw-primary hover:text-bw-on-primary hover:shadow-sm focus-visible:ring-bw-primary active:scale-[0.98] sm:active:scale-100",
   ghost:
-    "bg-transparent text-neutral-600 border border-transparent hover:bg-neutral-100 hover:text-neutral-900 focus-visible:ring-neutral-500 active:scale-[0.98] sm:active:scale-100",
-  text: "bg-transparent text-neutral-900 border border-transparent hover:bg-neutral-50 hover:text-neutral-700 focus-visible:ring-neutral-500 active:scale-[0.98] sm:active:scale-100",
+    "bg-transparent text-bw-text-secondary border border-transparent hover:bg-bw-bg-secondary hover:text-bw-text-primary focus-visible:ring-bw-primary active:scale-[0.98] sm:active:scale-100",
+  text: "bg-transparent text-bw-text-primary border border-transparent hover:bg-bw-primary-highlighted hover:text-bw-text-secondary focus-visible:ring-bw-primary active:scale-[0.98] sm:active:scale-100",
 
-  // Semantic variants with responsive interactions
+  // Semantic variants with Blockwork colors
   success:
-    "bg-green-600 text-white border border-green-600 hover:bg-green-700 hover:shadow-md active:bg-green-800 focus-visible:ring-green-500 active:scale-[0.98] sm:active:scale-100",
+    "bg-bw-positive text-bw-on-primary border border-bw-positive hover:bg-bw-positive-hover hover:shadow-md active:bg-bw-positive-selected focus-visible:ring-bw-positive active:scale-[0.98] sm:active:scale-100",
   warning:
-    "bg-yellow-500 text-white border border-yellow-500 hover:bg-yellow-600 hover:shadow-md active:bg-yellow-700 focus-visible:ring-yellow-500 active:scale-[0.98] sm:active:scale-100",
+    "bg-bw-warning text-bw-on-primary border border-bw-warning hover:bg-bw-warning-hover hover:shadow-md active:bg-bw-warning-selected focus-visible:ring-bw-warning active:scale-[0.98] sm:active:scale-100",
   destructive:
-    "bg-red-600 text-white border border-red-600 hover:bg-red-700 hover:shadow-md active:bg-red-800 focus-visible:ring-red-500 active:scale-[0.98] sm:active:scale-100",
-  info: "bg-blue-600 text-white border border-blue-600 hover:bg-blue-700 hover:shadow-md active:bg-blue-800 focus-visible:ring-blue-500 active:scale-[0.98] sm:active:scale-100",
+    "bg-bw-negative text-bw-on-primary border border-bw-negative hover:bg-bw-negative-hover hover:shadow-md active:bg-bw-negative-selected focus-visible:ring-bw-negative active:scale-[0.98] sm:active:scale-100",
+  info: "bg-bw-primary text-bw-on-primary border border-bw-primary hover:bg-bw-primary-hover hover:shadow-md active:bg-bw-primary-selected focus-visible:ring-bw-primary active:scale-[0.98] sm:active:scale-100",
 
-  // Special variants with mobile optimizations
-  pin: "bg-transparent text-neutral-400 border border-transparent hover:bg-orange-50 hover:text-orange-600 focus-visible:ring-orange-500 active:scale-[0.95] sm:active:scale-100",
-  nav: "bg-neutral-800 text-white border border-neutral-800 hover:bg-neutral-700 hover:shadow-md active:bg-neutral-900 focus-visible:ring-neutral-500 active:scale-[0.98] sm:active:scale-100",
-  fab: "bg-orange-600 text-white border border-orange-600 hover:bg-orange-700 hover:shadow-xl active:bg-orange-800 focus-visible:ring-orange-500 rounded-full fixed bottom-4 right-4 sm:bottom-6 sm:right-6 shadow-lg z-50 active:scale-[0.95] sm:active:scale-100",
+  // Special variants with Blockwork colors
+  pin: "bg-transparent text-bw-text-disabled border border-transparent hover:bg-bw-warning-selected hover:text-bw-warning focus-visible:ring-bw-warning active:scale-[0.95] sm:active:scale-100",
+  nav: "bg-bw-primary text-bw-on-primary border border-bw-primary hover:bg-bw-primary-hover hover:shadow-md active:bg-bw-primary-selected focus-visible:ring-bw-primary active:scale-[0.98] sm:active:scale-100",
+  fab: "bg-bw-warning text-bw-on-primary border border-bw-warning hover:bg-bw-warning-hover hover:shadow-xl active:bg-bw-warning-selected focus-visible:ring-bw-warning rounded-full fixed bottom-4 right-4 sm:bottom-6 sm:right-6 shadow-lg z-50 active:scale-[0.95] sm:active:scale-100",
   iconBtn:
-    "bg-transparent text-black border border-transparent hover:bg-gray-200 focus-visible:ring-neutral-500 active:scale-[0.95] sm:active:scale-100",
+    "bg-transparent text-bw-text-primary border border-transparent hover:bg-bw-bg-grey focus-visible:ring-bw-primary active:scale-[0.95] sm:active:scale-100",
 };
 
 type SizeVariants = keyof typeof sizeVariants;
@@ -55,7 +55,7 @@ type Variants = keyof typeof variants;
 // Button variants using CVA with black-primary design system and responsive enhancements
 const buttonVariants = cva(
   // Base classes with responsive touch targets, mobile optimizations, and RTL support
-  "inline-flex items-center justify-center whitespace-nowrap rounded-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 relative overflow-hidden touch-manipulation select-none",
+  "inline-flex items-center justify-center whitespace-nowrap rounded-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 relative overflow-hidden touch-manipulation select-none leading-none",
   {
     variants: {
       variant: variants,
@@ -250,8 +250,8 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           fullWidth && "w-full",
           fullWidthOnMobile && "w-full sm:w-auto",
           // Additional state classes
-          isActive && "ring-2 ring-offset-2 ring-neutral-500",
-          isPinned && variant === "pin" && "bg-orange-100 text-orange-700",
+          isActive && "ring-2 ring-offset-2 ring-bw-primary",
+          isPinned && variant === "pin" && "bg-bw-warning-selected text-bw-warning",
         )}
         dir={getTextDirection()}
         ref={ref}
@@ -273,15 +273,15 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 
         {/* Left icon */}
         {displayIcon && getIconPosition() === "left" && (
-          <i className={cn(displayIcon, iconSizeMap[effectiveSize || "md"])} />
+          <i className={cn(displayIcon, iconSizeMap[effectiveSize || "md"], "flex items-center justify-center shrink-0")} />
         )}
 
         {/* Button text */}
-        {getButtonText() && <span className="relative z-10">{getButtonText()}</span>}
+        {getButtonText() && <span className="relative z-10 flex items-center">{getButtonText()}</span>}
 
         {/* Right icon */}
         {displayIcon && getIconPosition() === "right" && (
-          <i className={cn(displayIcon, iconSizeMap[effectiveSize || "md"])} />
+          <i className={cn(displayIcon, iconSizeMap[effectiveSize || "md"], "flex items-center justify-center shrink-0")} />
         )}
       </button>
     );

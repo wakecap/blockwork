@@ -10,12 +10,10 @@ const meta: Meta<typeof Button> = {
     layout: "centered",
     docs: {
       description: {
-        component:
-          "A modern, unified button component with black-primary design system. Supports multiple variants, sizes, loading states, and RTL/LTR layouts.",
+        component: "A modern, unified button component with black-primary design system. Supports multiple variants, sizes, loading states, and RTL/LTR layouts.",
       },
     },
   },
-  tags: ["autodocs"],
   argTypes: {
     children: {
       control: "text",
@@ -340,6 +338,8 @@ export const IconShowcase: Story = {
 
 // State combinations showcase
 export const StateCombinations: Story = {
+  // Example: Work in progress badge
+  tags: ["wip"],
   render: () => {
     const [loading, setLoading] = React.useState(false);
     const [pinned, setPinned] = React.useState(false);

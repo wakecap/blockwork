@@ -76,6 +76,270 @@ export default {
           accent: "hsl(var(--wakecap-accent))",
           "accent-foreground": "hsl(var(--wakecap-accent-foreground))",
         },
+
+        // Blockwork Semantic Colors
+        'bw-primary': {
+          DEFAULT: "hsl(var(--primary-color))",
+          hover: "hsl(var(--primary-hover-color))",
+          selected: "hsl(var(--primary-selected-color))",
+          'selected-hover': "hsl(var(--primary-selected-hover-color))",
+          highlighted: "hsl(var(--primary-highlighted-color))",
+          surface: "hsl(var(--primary-surface-color))",
+        },
+        'bw-positive': {
+          DEFAULT: "hsl(var(--positive-color))",
+          hover: "hsl(var(--positive-color-hover))",
+          selected: "hsl(var(--positive-color-selected))",
+          'selected-hover': "hsl(var(--positive-color-selected-hover))",
+        },
+        'bw-negative': {
+          DEFAULT: "hsl(var(--negative-color))",
+          hover: "hsl(var(--negative-color-hover))",
+          selected: "hsl(var(--negative-color-selected))",
+          'selected-hover': "hsl(var(--negative-color-selected-hover))",
+        },
+        'bw-warning': {
+          DEFAULT: "hsl(var(--warning-color))",
+          hover: "hsl(var(--warning-color-hover))",
+          selected: "hsl(var(--warning-color-selected))",
+          'selected-hover': "hsl(var(--warning-color-selected-hover))",
+        },
+        'bw-inverted': {
+          background: "hsl(var(--inverted-color-background))",
+        },
+        'bw-icon': "hsl(var(--icon-color))",
+        'bw-fixed': {
+          light: "hsl(var(--fixed-light-color))",
+          dark: "hsl(var(--fixed-dark-color))",
+        },
+        
+        // Dedicated text-on-primary token for better Tailwind JIT support
+        'bw-on-primary': "hsl(var(--text-color-on-primary))",
+
+        // Blockwork Background Colors
+        'bw-bg': {
+          primary: "hsl(var(--primary-background-color))",
+          secondary: "hsl(var(--secondary-background-color))",
+          'primary-hover': "hsl(var(--primary-background-hover-color))",
+          grey: "hsl(var(--grey-background-color))",
+          allgrey: "hsl(var(--allgrey-background-color))",
+          ui: "hsl(var(--ui-background-color))",
+        },
+
+        // Blockwork Text Colors
+        'bw-text': {
+          primary: "hsl(var(--primary-text-color))",
+          secondary: "hsl(var(--secondary-text-color))",
+          'on-secondary': "hsl(var(--secondary-text-on-secondary-color))",
+          'on-inverted': "hsl(var(--text-color-on-inverted))",
+          'on-primary': "hsl(var(--text-color-on-primary))",
+          disabled: "hsl(var(--disabled-text-color))",
+          placeholder: "hsl(var(--placeholder-color))",
+          link: "hsl(var(--link-color))",
+        },
+
+        // Blockwork Border Colors
+        'bw-border': {
+          ui: "hsl(var(--ui-border-color))",
+          layout: "hsl(var(--layout-border-color))",
+        },
+
+        // Blockwork Content Colors (for visual coding)
+        'bw-grass-green': {
+          DEFAULT: "hsl(var(--color-grass-green))",
+          hover: "hsl(var(--color-grass-green-hover))",
+          selected: "hsl(var(--color-grass-green-selected))",
+        },
+        'bw-done-green': {
+          DEFAULT: "hsl(var(--color-done-green))",
+          hover: "hsl(var(--color-done-green-hover))",
+          selected: "hsl(var(--color-done-green-selected))",
+        },
+        'bw-bright-green': {
+          DEFAULT: "hsl(var(--color-bright-green))",
+          hover: "hsl(var(--color-bright-green-hover))",
+          selected: "hsl(var(--color-bright-green-selected))",
+        },
+        'bw-saladish': {
+          DEFAULT: "hsl(var(--color-saladish))",
+          hover: "hsl(var(--color-saladish-hover))",
+          selected: "hsl(var(--color-saladish-selected))",
+        },
+        'bw-egg-yolk': {
+          DEFAULT: "hsl(var(--color-egg-yolk))",
+          hover: "hsl(var(--color-egg-yolk-hover))",
+          selected: "hsl(var(--color-egg-yolk-selected))",
+        },
+        'bw-working-orange': {
+          DEFAULT: "hsl(var(--color-working-orange))",
+          hover: "hsl(var(--color-working-orange-hover))",
+          selected: "hsl(var(--color-working-orange-selected))",
+        },
+        'bw-dark-orange': {
+          DEFAULT: "hsl(var(--color-dark-orange))",
+          hover: "hsl(var(--color-dark-orange-hover))",
+          selected: "hsl(var(--color-dark-orange-selected))",
+        },
+        'bw-peach': {
+          DEFAULT: "hsl(var(--color-peach))",
+          hover: "hsl(var(--color-peach-hover))",
+          selected: "hsl(var(--color-peach-selected))",
+        },
+        'bw-sunset': {
+          DEFAULT: "hsl(var(--color-sunset))",
+          hover: "hsl(var(--color-sunset-hover))",
+          selected: "hsl(var(--color-sunset-selected))",
+        },
+        'bw-stuck-red': {
+          DEFAULT: "hsl(var(--color-stuck-red))",
+          hover: "hsl(var(--color-stuck-red-hover))",
+          selected: "hsl(var(--color-stuck-red-selected))",
+        },
+        'bw-dark-red': {
+          DEFAULT: "hsl(var(--color-dark-red))",
+          hover: "hsl(var(--color-dark-red-hover))",
+          selected: "hsl(var(--color-dark-red-selected))",
+        },
+        'bw-sofia-pink': {
+          DEFAULT: "hsl(var(--color-sofia-pink))",
+          hover: "hsl(var(--color-sofia-pink-hover))",
+          selected: "hsl(var(--color-sofia-pink-selected))",
+        },
+        'bw-lipstick': {
+          DEFAULT: "hsl(var(--color-lipstick))",
+          hover: "hsl(var(--color-lipstick-hover))",
+          selected: "hsl(var(--color-lipstick-selected))",
+        },
+        'bw-bubble': {
+          DEFAULT: "hsl(var(--color-bubble))",
+          hover: "hsl(var(--color-bubble-hover))",
+          selected: "hsl(var(--color-bubble-selected))",
+        },
+        'bw-purple': {
+          DEFAULT: "hsl(var(--color-purple))",
+          hover: "hsl(var(--color-purple-hover))",
+          selected: "hsl(var(--color-purple-selected))",
+        },
+        'bw-dark-purple': {
+          DEFAULT: "hsl(var(--color-dark-purple))",
+          hover: "hsl(var(--color-dark-purple-hover))",
+          selected: "hsl(var(--color-dark-purple-selected))",
+        },
+        'bw-berry': {
+          DEFAULT: "hsl(var(--color-berry))",
+          hover: "hsl(var(--color-berry-hover))",
+          selected: "hsl(var(--color-berry-selected))",
+        },
+        'bw-dark-indigo': {
+          DEFAULT: "hsl(var(--color-dark-indigo))",
+          hover: "hsl(var(--color-dark-indigo-hover))",
+          selected: "hsl(var(--color-dark-indigo-selected))",
+        },
+        'bw-indigo': {
+          DEFAULT: "hsl(var(--color-indigo))",
+          hover: "hsl(var(--color-indigo-hover))",
+          selected: "hsl(var(--color-indigo-selected))",
+        },
+        'bw-navy': {
+          DEFAULT: "hsl(var(--color-navy))",
+          hover: "hsl(var(--color-navy-hover))",
+          selected: "hsl(var(--color-navy-selected))",
+        },
+        'bw-bright-blue': {
+          DEFAULT: "hsl(var(--color-bright-blue))",
+          hover: "hsl(var(--color-bright-blue-hover))",
+          selected: "hsl(var(--color-bright-blue-selected))",
+        },
+        'bw-dark-blue': {
+          DEFAULT: "hsl(var(--color-dark-blue))",
+          hover: "hsl(var(--color-dark-blue-hover))",
+          selected: "hsl(var(--color-dark-blue-selected))",
+        },
+        'bw-aquamarine': {
+          DEFAULT: "hsl(var(--color-aquamarine))",
+          hover: "hsl(var(--color-aquamarine-hover))",
+          selected: "hsl(var(--color-aquamarine-selected))",
+        },
+        'bw-chili-blue': {
+          DEFAULT: "hsl(var(--color-chili-blue))",
+          hover: "hsl(var(--color-chili-blue-hover))",
+          selected: "hsl(var(--color-chili-blue-selected))",
+        },
+        'bw-river': {
+          DEFAULT: "hsl(var(--color-river))",
+          hover: "hsl(var(--color-river-hover))",
+          selected: "hsl(var(--color-river-selected))",
+        },
+        'bw-winter': {
+          DEFAULT: "hsl(var(--color-winter))",
+          hover: "hsl(var(--color-winter-hover))",
+          selected: "hsl(var(--color-winter-selected))",
+        },
+        'bw-explosive': {
+          DEFAULT: "hsl(var(--color-explosive))",
+          hover: "hsl(var(--color-explosive-hover))",
+          selected: "hsl(var(--color-explosive-selected))",
+        },
+        'bw-american-gray': {
+          DEFAULT: "hsl(var(--color-american-gray))",
+          hover: "hsl(var(--color-american-gray-hover))",
+          selected: "hsl(var(--color-american-gray-selected))",
+        },
+        'bw-blackish': {
+          DEFAULT: "hsl(var(--color-blackish))",
+          hover: "hsl(var(--color-blackish-hover))",
+          selected: "hsl(var(--color-blackish-selected))",
+        },
+        'bw-brown': {
+          DEFAULT: "hsl(var(--color-brown))",
+          hover: "hsl(var(--color-brown-hover))",
+          selected: "hsl(var(--color-brown-selected))",
+        },
+        'bw-orchid': {
+          DEFAULT: "hsl(var(--color-orchid))",
+          hover: "hsl(var(--color-orchid-hover))",
+          selected: "hsl(var(--color-orchid-selected))",
+        },
+        'bw-tan': {
+          DEFAULT: "hsl(var(--color-tan))",
+          hover: "hsl(var(--color-tan-hover))",
+          selected: "hsl(var(--color-tan-selected))",
+        },
+        'bw-sky': {
+          DEFAULT: "hsl(var(--color-sky))",
+          hover: "hsl(var(--color-sky-hover))",
+          selected: "hsl(var(--color-sky-selected))",
+        },
+        'bw-coffee': {
+          DEFAULT: "hsl(var(--color-coffee))",
+          hover: "hsl(var(--color-coffee-hover))",
+          selected: "hsl(var(--color-coffee-selected))",
+        },
+        'bw-royal': {
+          DEFAULT: "hsl(var(--color-royal))",
+          hover: "hsl(var(--color-royal-hover))",
+          selected: "hsl(var(--color-royal-selected))",
+        },
+        'bw-teal': {
+          DEFAULT: "hsl(var(--color-teal))",
+          hover: "hsl(var(--color-teal-hover))",
+          selected: "hsl(var(--color-teal-selected))",
+        },
+        'bw-lavender': {
+          DEFAULT: "hsl(var(--color-lavender))",
+          hover: "hsl(var(--color-lavender-hover))",
+          selected: "hsl(var(--color-lavender-selected))",
+        },
+        'bw-steel': {
+          DEFAULT: "hsl(var(--color-steel))",
+          hover: "hsl(var(--color-steel-hover))",
+          selected: "hsl(var(--color-steel-selected))",
+        },
+        'bw-lilac': {
+          DEFAULT: "hsl(var(--color-lilac))",
+          hover: "hsl(var(--color-lilac-hover))",
+          selected: "hsl(var(--color-lilac-selected))",
+        },
         // Base Colors
         base: {
           white: '#ffffff',
@@ -253,6 +517,7 @@ export default {
       // Typography System
       fontFamily: {
         sans: ['Figtree', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', '"Helvetica Neue"', 'Arial', '"Noto Sans"', 'sans-serif'],
+        heading: ['Poppins', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', '"Helvetica Neue"', 'Arial', '"Noto Sans"', 'sans-serif'],
         arabic: ['"IBM Plex Sans Arabic"', 'Figtree', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', '"Helvetica Neue"', 'Arial', '"Noto Sans"', 'sans-serif'],
         mono: ['ui-monospace', 'SFMono-Regular', '"SF Mono"', 'Consolas', '"Liberation Mono"', 'Menlo', 'monospace'],
         serif: ['ui-serif', 'Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif'],

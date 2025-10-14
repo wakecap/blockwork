@@ -130,10 +130,10 @@ export const FileUpload: React.FC<FileUploadProps> = ({
       >
         <div className="text-center">
           <i className="w-8 h-8 text-neutral-400 mb-4 fa-solid fa-upload" />
-          <h3 className="text-lg font-medium text-neutral-900 mb-2">
+          <h3 className="text-lg font-medium text-neutral-900 mb-2 font-heading">
             {dragActive ? "Drop files here" : "Upload files"}
           </h3>
-          <p className="text-sm text-neutral-600 mb-4">
+          <p className="text-sm text-neutral-600 mb-4 font-sans">
             Drag and drop files here, or{" "}
             <button
               type="button"
@@ -143,7 +143,7 @@ export const FileUpload: React.FC<FileUploadProps> = ({
               browse
             </button>
           </p>
-          <div className="text-xs text-neutral-500">
+          <div className="text-xs text-neutral-500 font-sans">
             {multiple ? `Up to ${maxFiles} files` : "Single file"} • Max size:{" "}
             {formatFileSize(maxFileSize)}
           </div>
@@ -163,7 +163,7 @@ export const FileUpload: React.FC<FileUploadProps> = ({
       {/* File List */}
       {files.length > 0 && (
         <div className="space-y-2">
-          <h4 className="text-sm font-medium text-neutral-900">Files ({files.length})</h4>
+          <h4 className="text-sm font-medium text-neutral-900 font-heading">Files ({files.length})</h4>
           <div className="space-y-2">
             {files.map((file) => (
               <div
@@ -179,8 +179,8 @@ export const FileUpload: React.FC<FileUploadProps> = ({
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center justify-between">
                     <div className="min-w-0 flex-1">
-                      <p className="text-sm font-medium text-neutral-900 truncate">{file.name}</p>
-                      <p className="text-xs text-neutral-500">{formatFileSize(file.size)}</p>
+                      <p className="text-sm font-medium text-neutral-900 truncate font-sans">{file.name}</p>
+                      <p className="text-xs text-neutral-500 font-sans">{formatFileSize(file.size)}</p>
                     </div>
                     <div className="flex items-center space-x-2">
                       {getStatusIcon(file.status)}

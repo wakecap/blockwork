@@ -117,7 +117,7 @@ export const Stepper: React.FC<StepperProps> = ({
         {renderStepIcon(step, stepIndex, status)}
         <div className="ml-3 flex-1">
           <div
-            className={`font-medium ${currentSize.title} ${
+            className={`font-medium ${currentSize.title} font-heading ${
               status === "completed"
                 ? "text-primary-600"
                 : status === "current"
@@ -128,7 +128,7 @@ export const Stepper: React.FC<StepperProps> = ({
             {step.title}
           </div>
           {showStepDescriptions && step.description && (
-            <div className={`${currentSize.description} text-neutral-500 mt-1`}>
+            <div className={`${currentSize.description} text-neutral-500 mt-1 font-sans`}>
               {step.description}
             </div>
           )}

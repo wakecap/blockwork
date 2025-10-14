@@ -117,7 +117,7 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({
         {/* Header */}
         {(title || showCloseButton) && (
           <div className="flex items-center justify-between px-4 py-3 border-b border-neutral-200">
-            {title && <h2 className="text-lg font-semibold text-neutral-900">{title}</h2>}
+            {title && <h2 className="text-lg font-semibold text-neutral-900 font-heading">{title}</h2>}
             {showCloseButton && (
               <button
                 onClick={onClose}
@@ -188,7 +188,7 @@ export const ActionSheet: React.FC<{
             } ${getActionStyles(action.variant || "default")}`}
           >
             {action.icon && <i className={cn(action.icon, "w-5 h-5")} />}
-            <span className="font-medium">{action.label}</span>
+            <span className="font-medium font-sans">{action.label}</span>
           </button>
         ))}
       </div>

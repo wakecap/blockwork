@@ -102,7 +102,7 @@ export const Accordion: React.FC<AccordionProps> = ({
             >
               <div className="flex items-center space-x-3">
                 {item.icon && <i className={cn("w-4 h-4 text-neutral-500", item.icon)} />}
-                <h3 className={`font-medium text-neutral-900 ${currentSize.title} text-center`}>
+                <h3 className={`font-medium text-neutral-900 ${currentSize.title} text-center font-heading`}>
                   {item.title}
                 </h3>
               </div>
@@ -120,7 +120,7 @@ export const Accordion: React.FC<AccordionProps> = ({
                 isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
               }`}
             >
-              <div className={`${currentSize.content} text-neutral-700 text-left`}>
+              <div className={`${currentSize.content} text-neutral-700 text-left font-sans`}>
                 {item.content}
               </div>
             </div>
@@ -162,7 +162,7 @@ export const AccordionItem: React.FC<{
       >
         <div className="flex items-center space-x-3">
           {icon && <i className={cn("w-4 h-4 text-neutral-500", icon)} />}
-          <h3 className="font-medium text-neutral-900 text-center">{title}</h3>
+          <h3 className="font-medium text-neutral-900 text-center font-heading">{title}</h3>
         </div>
         <i
           className={cn(
@@ -178,7 +178,7 @@ export const AccordionItem: React.FC<{
           isExpanded ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <div className="px-4 pb-3 text-neutral-700 text-left">{children}</div>
+        <div className="px-4 pb-3 text-neutral-700 text-left font-sans">{children}</div>
       </div>
     </div>
   );
@@ -194,7 +194,7 @@ export const FAQAccordion: React.FC<{
 }> = ({ questions, className = "" }) => {
   const items = questions.map(({ question, answer }) => ({
     title: question,
-    content: <p className="text-neutral-600 leading-relaxed">{answer}</p>,
+    content: <p className="text-neutral-600 leading-relaxed font-sans">{answer}</p>,
   }));
 
   return <Accordion items={items} variant="separated" allowMultiple={true} className={className} />;

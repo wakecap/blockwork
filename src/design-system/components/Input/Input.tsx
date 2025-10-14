@@ -65,38 +65,38 @@ export const Input: React.FC<InputProps> = ({
   return (
     <div className="w-full">
       {getLabelText() && (
-        <label className="block mb-1 text-sm font-medium text-neutral-700">{getLabelText()}</label>
+        <label className="block mb-1 text-sm font-medium text-bw-text-secondary">{getLabelText()}</label>
       )}
       <div className="relative flex items-center">
         {iconLeft && (
-          <span className="absolute left-3 text-neutral-400">
+          <span className="absolute left-3 text-bw-text-disabled">
             <i className={cn("w-4 h-4", iconLeft)} />
           </span>
         )}
         <input
           className={
-            `block w-full rounded border px-3 py-2 text-base focus:outline-none focus:ring-2 transition ` +
+            `block w-full rounded border px-3 py-2 text-base text-bw-text-primary bg-bw-bg-primary focus:outline-none focus:ring-2 transition placeholder:text-bw-text-placeholder ` +
             (iconLeft ? "pl-9 " : "") +
             (iconRight ? "pr-9 " : "") +
             (getErrorText()
-              ? "border-red-500 focus:ring-red-500"
+              ? "border-bw-negative focus:ring-bw-negative"
               : getSuccessText()
-                ? "border-green-500 focus:ring-green-500"
-                : "border-neutral-300 focus:ring-primary-500") +
+                ? "border-bw-positive focus:ring-bw-positive"
+                : "border-bw-border-ui focus:ring-bw-primary") +
             (className ? " " + className : "")
           }
           placeholder={getPlaceholderText()}
           {...props}
         />
         {iconRight && (
-          <span className="absolute right-3 text-neutral-400">
+          <span className="absolute right-3 text-bw-text-disabled">
             <i className={cn("w-4 h-4", iconRight)} />
           </span>
         )}
       </div>
-      {getErrorText() && <p className="mt-1 text-xs text-red-600">{getErrorText()}</p>}
+      {getErrorText() && <p className="mt-1 text-xs text-bw-negative">{getErrorText()}</p>}
       {getSuccessText() && !getErrorText() && (
-        <p className="mt-1 text-xs text-green-600">{getSuccessText()}</p>
+        <p className="mt-1 text-xs text-bw-positive">{getSuccessText()}</p>
       )}
     </div>
   );
