@@ -17,7 +17,7 @@ type Story = StoryObj;
 export const Overview: Story = {
   render: () => (
     <div className="p-6">
-      <h1 className="text-2xl font-bold mb-4">Spacing</h1>
+      <h1 className="text-2xl font-bold mb-4 font-heading">Spacing</h1>
       <p className="text-gray-600 mb-4">Consistent spacing system for creating balanced layouts.</p>
 
       <div className="space-y-4 mb-6">

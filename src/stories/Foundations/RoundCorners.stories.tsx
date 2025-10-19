@@ -17,7 +17,7 @@ type Story = StoryObj;
 export const Overview: Story = {
   render: () => (
     <div className="p-6">
-      <h1 className="text-2xl font-bold mb-4">Round Corners</h1>
+      <h1 className="text-2xl font-bold mb-4 font-heading">Round Corners</h1>
       <p className="text-gray-600 mb-4">
         Consistent border radius values for creating cohesive visual hierarchy.
       </p>

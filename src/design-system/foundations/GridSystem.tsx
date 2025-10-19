@@ -5,7 +5,7 @@ export const GridShowcase: React.FC = () => {
   return (
     <div className="space-y-8">
       <div>
-        <h3 className="text-lg font-semibold mb-4 text-neutral-900">12-Column Grid</h3>
+        <h3 className="text-lg font-semibold mb-4 text-neutral-900 font-sans">12-Column Grid</h3>
         <div className="grid grid-cols-12 gap-4">
           {Array.from({ length: 12 }, (_, i) => (
             <div
@@ -19,7 +19,7 @@ export const GridShowcase: React.FC = () => {
       </div>
 
       <div>
-        <h3 className="text-lg font-semibold mb-4 text-neutral-900">Responsive Columns</h3>
+        <h3 className="text-lg font-semibold mb-4 text-neutral-900 font-sans">Responsive Columns</h3>
         <div className="space-y-4">
           <div>
             <p className="text-sm text-neutral-600 mb-2">
@@ -56,7 +56,7 @@ export const GridShowcase: React.FC = () => {
       </div>
 
       <div>
-        <h3 className="text-lg font-semibold mb-4 text-neutral-900">Column Spans</h3>
+        <h3 className="text-lg font-semibold mb-4 text-neutral-900 font-sans">Column Spans</h3>
         <div className="grid grid-cols-12 gap-4">
           <div className="col-span-6 bg-warning-100 border border-warning-300 rounded p-4 text-center text-sm text-warning-700">
             col-span-6
@@ -93,7 +93,7 @@ export const FlexboxShowcase: React.FC = () => {
   return (
     <div className="space-y-8">
       <div>
-        <h3 className="text-lg font-semibold mb-4 text-neutral-900">Flex Direction</h3>
+        <h3 className="text-lg font-semibold mb-4 text-neutral-900 font-sans">Flex Direction</h3>
         <div className="space-y-4">
           <div>
             <p className="text-sm text-neutral-600 mb-2">flex-row (default)</p>
@@ -121,7 +121,7 @@ export const FlexboxShowcase: React.FC = () => {
       </div>
 
       <div>
-        <h3 className="text-lg font-semibold mb-4 text-neutral-900">Justify Content</h3>
+        <h3 className="text-lg font-semibold mb-4 text-neutral-900 font-sans">Justify Content</h3>
         <div className="space-y-4">
           <div>
             <p className="text-sm text-neutral-600 mb-2">justify-start</p>
@@ -159,7 +159,7 @@ export const FlexboxShowcase: React.FC = () => {
       </div>
 
       <div>
-        <h3 className="text-lg font-semibold mb-4 text-neutral-900">Align Items</h3>
+        <h3 className="text-lg font-semibold mb-4 text-neutral-900 font-sans">Align Items</h3>
         <div className="space-y-4">
           <div>
             <p className="text-sm text-neutral-600 mb-2">items-start</p>
@@ -240,7 +240,7 @@ export const ContainerShowcase: React.FC = () => {
   return (
     <div className="space-y-8">
       <div>
-        <h3 className="text-lg font-semibold mb-4 text-neutral-900">Container</h3>
+        <h3 className="text-lg font-semibold mb-4 text-neutral-900 font-sans">Container</h3>
         <div className="container bg-primary-50 border border-primary-200 rounded p-4">
           <p className="text-sm text-primary-700">
             This container is centered and has responsive padding. It adjusts its max-width based on
@@ -250,7 +250,7 @@ export const ContainerShowcase: React.FC = () => {
       </div>
 
       <div>
-        <h3 className="text-lg font-semibold mb-4 text-neutral-900">Max Width Scale</h3>
+        <h3 className="text-lg font-semibold mb-4 text-neutral-900 font-sans">Max Width Scale</h3>
         <div className="space-y-3">
           {maxWidths.map((width, index) => (
             <div key={width.name}>
@@ -274,7 +274,7 @@ export const LayoutPatterns: React.FC = () => {
   return (
     <div className="space-y-8">
       <div>
-        <h3 className="text-lg font-semibold mb-4 text-neutral-900">Sidebar Layout</h3>
+        <h3 className="text-lg font-semibold mb-4 text-neutral-900 font-sans">Sidebar Layout</h3>
         <div className="flex gap-4 h-48 border border-neutral-200 rounded overflow-hidden">
           <div className="w-64 bg-neutral-800 text-white p-4">
             <div className="text-sm font-medium mb-3">Sidebar</div>
@@ -291,7 +291,7 @@ export const LayoutPatterns: React.FC = () => {
       </div>
 
       <div>
-        <h3 className="text-lg font-semibold mb-4 text-neutral-900">Header-Content-Footer</h3>
+        <h3 className="text-lg font-semibold mb-4 text-neutral-900 font-sans">Header-Content-Footer</h3>
         <div className="h-64 border border-neutral-200 rounded overflow-hidden flex flex-col">
           <div className="bg-primary-600 text-white p-4">
             <div className="text-sm font-medium">Header</div>
@@ -306,7 +306,7 @@ export const LayoutPatterns: React.FC = () => {
       </div>
 
       <div>
-        <h3 className="text-lg font-semibold mb-4 text-neutral-900">Card Grid</h3>
+        <h3 className="text-lg font-semibold mb-4 text-neutral-900 font-sans">Card Grid</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {Array.from({ length: 6 }, (_, i) => (
             <div key={i} className="bg-white border border-neutral-200 rounded-lg p-4 shadow-sm">

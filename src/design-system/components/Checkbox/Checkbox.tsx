@@ -21,7 +21,8 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   // Use controlled checked if provided, otherwise use internal state
   const isChecked = controlledChecked !== undefined ? controlledChecked : internalChecked;
 
-  const handleClick = () => {
+  const handleClick = (e: React.MouseEvent) => {
+    e.preventDefault();
     if (disabled) return;
     
     const newChecked = !isChecked;
@@ -56,21 +57,35 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   return (
     <label
       className={cn(
-        "inline-flex items-center gap-2 font-sans text-base select-none",
+        "inline-flex items-center gap-2 font-sans text-base select-none group",
         disabled ? "cursor-not-allowed opacity-60" : "cursor-pointer",
         className
       )}
       onClick={handleClick}
     >
-      <i className={cn("text-xl transition-colors duration-200", getIconClasses())} />
-      <span className={cn("text-bw-text-secondary", disabled && "text-bw-text-disabled")}>{label}</span>
+      <i 
+        className={cn(
+          "text-xl transition-all duration-200", 
+          getIconClasses(),
+          !disabled && "group-hover:scale-110"
+        )} 
+      />
+      <span 
+        className={cn(
+          "text-bw-text-secondary transition-colors duration-200",
+          disabled && "text-bw-text-disabled",
+          !disabled && "group-hover:text-bw-text-primary"
+        )}
+      >
+        {label}
+      </span>
       {/* Hidden input for form compatibility */}
       <input
         type="checkbox"
         checked={isChecked}
         disabled={disabled}
         className="sr-only"
-        onChange={() => {}} // Prevent React warning
+        readOnly
         {...props}
       />
     </label>

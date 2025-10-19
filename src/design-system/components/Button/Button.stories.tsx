@@ -6,6 +6,7 @@ import { Button, type SizeVariants, type Variants } from "./Button";
 const meta: Meta<typeof Button> = {
   title: "Components/Button",
   component: Button,
+  tags: ["ready"],
   parameters: {
     layout: "centered",
     docs: {
@@ -210,6 +211,349 @@ const meta: Meta<typeof Button> = {
 export default meta;
 type Story = StoryObj<typeof Button>;
 
+// Overview page showcasing all button features
+export const Overview: Story = {
+  render: () => (
+    <div className="p-8 bg-white min-h-screen">
+      <div className="max-w-6xl mx-auto">
+        {/* Header */}
+        <div className="mb-12">
+          <h1 className="text-3xl font-bold mb-4">Button</h1>
+          <p className="text-base text-gray-700 max-w-4xl">
+            Buttons are interactive elements that trigger actions in response to user clicks or taps.
+            Our button system is designed for clarity, consistency, and accessibility across all touchpoints.
+            With support for multiple variants, sizes, states, and languages, the button component provides
+            a flexible foundation for building intuitive user interfaces.
+          </p>
+        </div>
+
+        {/* Core Variants */}
+        <section className="mb-12 border border-gray-200 rounded-lg p-8">
+          <h2 className="text-2xl font-bold mb-6 text-bw-text-primary font-sans">Core Variants</h2>
+          <p className="text-sm text-gray-700 mb-6">
+            Core button variants serve different purposes in the interface hierarchy. Primary buttons
+            indicate main actions, secondary buttons for alternative actions, and accent buttons
+            for promotional or highlighted calls-to-action.
+          </p>
+          <div className="space-y-6">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+              <div>
+                <Button variant="primary">Primary</Button>
+                <p className="text-xs text-gray-600 mt-2">Main actions</p>
+              </div>
+              <div>
+                <Button variant="secondary">Secondary</Button>
+                <p className="text-xs text-gray-600 mt-2">Alternative actions</p>
+              </div>
+              <div>
+                <Button variant="accent">Accent</Button>
+                <p className="text-xs text-gray-600 mt-2">Promotional CTAs</p>
+              </div>
+              <div>
+                <Button variant="outline">Outline</Button>
+                <p className="text-xs text-gray-600 mt-2">Subtle actions</p>
+              </div>
+              <div>
+                <Button variant="ghost">Ghost</Button>
+                <p className="text-xs text-gray-600 mt-2">Minimal emphasis</p>
+              </div>
+              <div>
+                <Button variant="text">Text</Button>
+                <p className="text-xs text-gray-600 mt-2">Link-style actions</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Semantic Variants */}
+        <section className="mb-12 border border-gray-200 rounded-lg p-8">
+          <h2 className="text-2xl font-bold mb-6 text-bw-text-primary font-sans">Semantic Variants</h2>
+          <p className="text-sm text-gray-700 mb-6">
+            Semantic button variants communicate meaning through color. Use these for status-specific
+            actions like approvals, warnings, deletions, and informational messages.
+          </p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div>
+              <Button variant="success" icon="fa-solid fa-check">Success</Button>
+              <p className="text-xs text-gray-600 mt-2">Approve, confirm</p>
+            </div>
+            <div>
+              <Button variant="warning" icon="fa-solid fa-exclamation">Warning</Button>
+              <p className="text-xs text-gray-600 mt-2">Caution, alert</p>
+            </div>
+            <div>
+              <Button variant="destructive" icon="fa-solid fa-times">Destructive</Button>
+              <p className="text-xs text-gray-600 mt-2">Delete, remove</p>
+            </div>
+            <div>
+              <Button variant="info" icon="fa-solid fa-info">Info</Button>
+              <p className="text-xs text-gray-600 mt-2">Details, help</p>
+            </div>
+          </div>
+        </section>
+
+        {/* Button Sizes */}
+        <section className="mb-12 border border-gray-200 rounded-lg p-8">
+          <h2 className="text-2xl font-bold mb-6 text-bw-text-primary font-sans">Button Sizes</h2>
+          <p className="text-sm text-gray-700 mb-6">
+            Five size variants ensure buttons work across different contexts. All sizes meet minimum
+            44px touch target requirements on mobile devices for accessibility.
+          </p>
+          <div className="space-y-4">
+            <div className="flex items-center gap-4">
+              <span className="text-sm font-medium w-32">Extra Small (xs)</span>
+              <Button size="xs">Extra Small</Button>
+            </div>
+            <div className="flex items-center gap-4">
+              <span className="text-sm font-medium w-32">Small (sm)</span>
+              <Button size="sm">Small</Button>
+            </div>
+            <div className="flex items-center gap-4">
+              <span className="text-sm font-medium w-32">Medium (md)</span>
+              <Button size="md">Medium</Button>
+            </div>
+            <div className="flex items-center gap-4">
+              <span className="text-sm font-medium w-32">Large (lg)</span>
+              <Button size="lg">Large</Button>
+            </div>
+            <div className="flex items-center gap-4">
+              <span className="text-sm font-medium w-32">Extra Large (xl)</span>
+              <Button size="xl">Extra Large</Button>
+            </div>
+          </div>
+        </section>
+
+        {/* Icons */}
+        <section className="mb-12 border border-gray-200 rounded-lg p-8">
+          <h2 className="text-2xl font-bold mb-6 text-bw-text-primary font-sans">Buttons with Icons</h2>
+          <p className="text-sm text-gray-700 mb-6">
+            Icons enhance button clarity and improve recognition. Icons can be positioned on the
+            left or right and automatically flip in RTL layouts. Icon size scales proportionally
+            with button size.
+          </p>
+          <div className="space-y-6">
+            <div>
+              <h3 className="text-sm font-semibold mb-3 text-gray-700">Icon Position</h3>
+              <div className="flex flex-wrap gap-4">
+                <Button icon="fa-solid fa-download" iconPosition="left">Download</Button>
+                <Button icon="fa-solid fa-upload" iconPosition="right" variant="secondary">Upload</Button>
+                <Button icon="fa-solid fa-cog" iconPosition="left" variant="outline">Settings</Button>
+              </div>
+            </div>
+            <div>
+              <h3 className="text-sm font-semibold mb-3 text-gray-700">Icon-Only Buttons</h3>
+              <div className="flex items-center gap-3">
+                <Button size="iconXs" icon="fa-solid fa-bell" variant="iconBtn" aria-label="Notifications" />
+                <Button size="iconSm" icon="fa-solid fa-bell" variant="iconBtn" aria-label="Notifications" />
+                <Button size="iconMd" icon="fa-solid fa-bell" variant="iconBtn" aria-label="Notifications" />
+                <Button size="iconLg" icon="fa-solid fa-bell" variant="iconBtn" aria-label="Notifications" />
+                <Button size="iconXl" icon="fa-solid fa-bell" variant="iconBtn" aria-label="Notifications" />
+              </div>
+              <p className="text-xs text-gray-600 mt-2">Always include aria-label for icon-only buttons</p>
+            </div>
+          </div>
+        </section>
+
+        {/* Button States */}
+        <section className="mb-12 border border-gray-200 rounded-lg p-8">
+          <h2 className="text-2xl font-bold mb-6 text-bw-text-primary font-sans">Button States</h2>
+          <p className="text-sm text-gray-700 mb-6">
+            Buttons communicate their current state through visual feedback. Loading states show
+            progress, disabled states prevent interaction, and active states indicate selection.
+          </p>
+          <div className="space-y-6">
+            <div>
+              <h3 className="text-sm font-semibold mb-3 text-gray-700">Loading State</h3>
+              <div className="flex flex-wrap gap-4">
+                <Button loading>Loading</Button>
+                <Button loading loadingText="Saving..." variant="accent">Save</Button>
+                <Button loading variant="outline">Processing</Button>
+              </div>
+            </div>
+            <div>
+              <h3 className="text-sm font-semibold mb-3 text-gray-700">Disabled State</h3>
+              <div className="flex flex-wrap gap-4">
+                <Button disabled>Disabled</Button>
+                <Button disabled variant="secondary">Disabled</Button>
+                <Button disabled variant="accent">Disabled</Button>
+              </div>
+            </div>
+            <div>
+              <h3 className="text-sm font-semibold mb-3 text-gray-700">Active State</h3>
+              <div className="flex flex-wrap gap-4">
+                <Button isActive>Active</Button>
+                <Button isActive variant="secondary">Active</Button>
+                <Button isActive variant="accent">Active</Button>
+              </div>
+            </div>
+            <div>
+              <h3 className="text-sm font-semibold mb-3 text-gray-700">Pin State</h3>
+              <div className="flex flex-wrap gap-4">
+                <Button variant="pin" icon="fa-solid fa-star" isPinned={false}>Pin</Button>
+                <Button variant="pin" icon="fa-solid fa-star" isPinned={true}>Pinned</Button>
+              </div>
+              <p className="text-xs text-gray-600 mt-2">Pin variant changes to accent color when pinned</p>
+            </div>
+          </div>
+        </section>
+
+        {/* RTL/Arabic Support */}
+        <section className="mb-12 border border-gray-200 rounded-lg p-8">
+          <h2 className="text-2xl font-bold mb-6 text-bw-text-primary font-sans">Arabic/RTL Support</h2>
+          <p className="text-sm text-gray-700 mb-6">
+            Buttons automatically adapt to Arabic language with IBM Plex Sans Arabic font and proper
+            RTL layout. Icons flip position and text aligns correctly for right-to-left reading.
+          </p>
+          <div className="space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="p-4 border border-gray-200 rounded bg-gray-50">
+                <h3 className="text-sm font-semibold mb-3 text-gray-700">English (LTR)</h3>
+                <div className="space-y-3">
+                  <Button variant="primary" icon="fa-solid fa-download" iconPosition="left">
+                    Download
+                  </Button>
+                  <Button variant="accent" icon="fa-solid fa-upload" iconPosition="right">
+                    Upload
+                  </Button>
+                </div>
+              </div>
+              <div className="p-4 border border-gray-200 rounded bg-gray-50">
+                <h3 className="text-sm font-semibold mb-3 text-gray-700">Arabic (RTL)</h3>
+                <div className="space-y-3">
+                  <Button
+                    variant="primary"
+                    icon="fa-solid fa-download"
+                    iconPosition="left"
+                    arabicText="تحميل"
+                    showArabicText={true}
+                  >
+                    Download
+                  </Button>
+                  <Button
+                    variant="accent"
+                    icon="fa-solid fa-upload"
+                    iconPosition="right"
+                    arabicText="رفع"
+                    showArabicText={true}
+                  >
+                    Upload
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Responsive Features */}
+        <section className="mb-12 border border-gray-200 rounded-lg p-8">
+          <h2 className="text-2xl font-bold mb-6 text-bw-text-primary font-sans">Responsive Features</h2>
+          <p className="text-sm text-gray-700 mb-6">
+            Buttons adapt to different screen sizes with mobile-optimized touch targets and
+            flexible width options. All buttons meet the 44px minimum touch target on mobile devices.
+          </p>
+          <div className="space-y-4">
+            <div>
+              <h3 className="text-sm font-semibold mb-3 text-gray-700">Full Width</h3>
+              <Button fullWidth variant="primary">Full Width Button</Button>
+            </div>
+            <div>
+              <h3 className="text-sm font-semibold mb-3 text-gray-700">Full Width on Mobile Only</h3>
+              <Button fullWidthOnMobile variant="secondary">Responsive Width</Button>
+              <p className="text-xs text-gray-600 mt-2">Full width on mobile, auto width on desktop</p>
+            </div>
+          </div>
+        </section>
+
+        {/* Real World Examples */}
+        <section className="mb-12 border border-gray-200 rounded-lg p-8">
+          <h2 className="text-2xl font-bold mb-6 text-bw-text-primary font-sans">Real World Examples</h2>
+          <p className="text-sm text-gray-700 mb-6">
+            Common button combinations for typical UI patterns and user flows.
+          </p>
+          <div className="space-y-8">
+            <div>
+              <h3 className="text-sm font-semibold mb-3 text-gray-700">Form Actions</h3>
+              <div className="flex gap-3">
+                <Button variant="primary">Save Changes</Button>
+                <Button variant="outline">Cancel</Button>
+                <Button variant="destructive">Delete</Button>
+              </div>
+            </div>
+            <div>
+              <h3 className="text-sm font-semibold mb-3 text-gray-700">Navigation</h3>
+              <div className="flex gap-3">
+                <Button variant="nav" icon="fa-solid fa-th">Menu</Button>
+                <Button variant="ghost" icon="fa-solid fa-user">Profile</Button>
+                <Button variant="ghost" icon="fa-solid fa-cog">Settings</Button>
+              </div>
+            </div>
+            <div>
+              <h3 className="text-sm font-semibold mb-3 text-gray-700">Status Actions</h3>
+              <div className="flex gap-3">
+                <Button variant="success" icon="fa-solid fa-check">Approve</Button>
+                <Button variant="warning" icon="fa-solid fa-exclamation">Review</Button>
+                <Button variant="info" icon="fa-solid fa-info">Details</Button>
+              </div>
+            </div>
+            <div>
+              <h3 className="text-sm font-semibold mb-3 text-gray-700">File Actions</h3>
+              <div className="flex gap-3">
+                <Button variant="accent" icon="fa-solid fa-download">Download</Button>
+                <Button variant="outline" icon="fa-solid fa-upload">Upload</Button>
+                <Button variant="ghost" icon="fa-solid fa-star">Favorite</Button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Accessibility */}
+        <section className="mb-12 border border-gray-200 rounded-lg p-8">
+          <h2 className="text-2xl font-bold mb-6 text-bw-text-primary font-sans">Accessibility</h2>
+          <p className="text-sm text-gray-700 mb-6">
+            All buttons are designed with accessibility in mind, featuring keyboard navigation,
+            screen reader support, clear focus indicators, and proper ARIA labels.
+          </p>
+          <div className="space-y-6">
+            <div>
+              <h3 className="text-sm font-semibold mb-3 text-gray-700">Keyboard Navigation</h3>
+              <p className="text-xs text-gray-600 mb-3">
+                Use Tab to navigate, Enter/Space to activate
+              </p>
+              <div className="flex gap-3">
+                <Button>First</Button>
+                <Button variant="secondary">Second</Button>
+                <Button variant="accent">Third</Button>
+              </div>
+            </div>
+            <div>
+              <h3 className="text-sm font-semibold mb-3 text-gray-700">Screen Reader Support</h3>
+              <p className="text-xs text-gray-600 mb-3">
+                Icon-only buttons include aria-labels for context
+              </p>
+              <div className="flex gap-3">
+                <Button size="iconMd" icon="fa-solid fa-bell" aria-label="Notifications" />
+                <Button size="iconMd" icon="fa-solid fa-cog" aria-label="Settings" />
+                <Button size="iconMd" icon="fa-solid fa-user" aria-label="User Profile" />
+              </div>
+            </div>
+            <div>
+              <h3 className="text-sm font-semibold mb-3 text-gray-700">Touch Targets</h3>
+              <p className="text-xs text-gray-600 mb-3">
+                Minimum 44px touch target on mobile devices (WCAG 2.1)
+              </p>
+              <div className="flex gap-3">
+                <Button size="sm">Small</Button>
+                <Button size="md">Medium</Button>
+                <Button size="lg">Large</Button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  ),
+};
+
 // Default button
 export const Default: Story = {
   args: {
@@ -338,8 +682,6 @@ export const IconShowcase: Story = {
 
 // State combinations showcase
 export const StateCombinations: Story = {
-  // Example: Work in progress badge
-  tags: ["wip"],
   render: () => {
     const [loading, setLoading] = React.useState(false);
     const [pinned, setPinned] = React.useState(false);

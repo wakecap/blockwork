@@ -12,39 +12,76 @@ import {
 
 const meta: Meta = {
   title: "Foundation/Typography",
+  tags: ["ready"],
   parameters: {
     docs: {
       description: {
         component:
-          "Typography foundation components that ensure consistent text styling across the design system. All components inherit from Blockwork color tokens.",
+          "Typography foundation components that ensure consistent text styling across the design system. Headings use Playfair Display, body text uses Figtree, and all components inherit from Blockwork color tokens.",
       },
     },
-    layout: "padded",
+    layout: "fullscreen",
   },
 };
 
 export default meta;
 type Story = StoryObj;
 
-export const AllTypography: Story = {
+export const Overview: Story = {
   render: () => (
-    <div className="space-y-12 max-w-4xl">
-      {/* Headings */}
-      <section>
-        <h2 className="text-2xl font-bold mb-6 text-bw-text-primary">Headings</h2>
-        <div className="space-y-4">
-          <Heading level="h1">Heading 1 - The quick brown fox</Heading>
-          <Heading level="h2">Heading 2 - The quick brown fox</Heading>
-          <Heading level="h3">Heading 3 - The quick brown fox</Heading>
-          <Heading level="h4">Heading 4 - The quick brown fox</Heading>
-          <Heading level="h5">Heading 5 - The quick brown fox</Heading>
-          <Heading level="h6">Heading 6 - The quick brown fox</Heading>
+    <div className="p-8 bg-white min-h-screen">
+      <div className="max-w-6xl mx-auto">
+        {/* Header */}
+        <div className="mb-12">
+          <h1 className="text-3xl font-bold mb-4">Typography</h1>
+          <p className="text-base text-gray-700 max-w-4xl">
+            Our typography system uses Playfair Display for elegant headings and Figtree for clean, readable body text. 
+            Like in other UI in Blockwork's interface, typography works by principle of <strong>accessibility before aesthetics</strong>. 
+            Therefore, the text should be readable and help the user understand what's important by well contrasted size and colors hierarchy.
+            All text components automatically inherit colors from the Blockwork color system.
+          </p>
+        </div>
+
+        {/* Headings */}
+        <section className="mb-12 border border-gray-200 rounded-lg p-8">
+        <h2 className="text-2xl font-bold mb-6 text-bw-text-primary font-sans">Headings</h2>
+        <Text color="secondary" size="sm" className="mb-6">
+          Headings use Playfair Display font with responsive sizing across mobile, tablet, and desktop.
+        </Text>
+        <div className="space-y-6">
+          <div>
+            <Heading level="h1">Heading 1 - The quick brown fox</Heading>
+            <Text color="secondary" size="sm">72px / 96px / 96px (mobile / tablet / desktop)</Text>
+          </div>
+          <div>
+            <Heading level="h2">Heading 2 - The quick brown fox</Heading>
+            <Text color="secondary" size="sm">48px / 60px / 72px</Text>
+          </div>
+          <div>
+            <Heading level="h3">Heading 3 - The quick brown fox</Heading>
+            <Text color="secondary" size="sm">36px / 48px / 60px</Text>
+          </div>
+          <div>
+            <Heading level="h4">Heading 4 - The quick brown fox</Heading>
+            <Text color="secondary" size="sm">30px / 36px / 48px</Text>
+          </div>
+          <div>
+            <Heading level="h5">Heading 5 - The quick brown fox</Heading>
+            <Text color="secondary" size="sm">24px / 30px / 36px</Text>
+          </div>
+          <div>
+            <Heading level="h6">Heading 6 - The quick brown fox</Heading>
+            <Text color="secondary" size="sm">18px / 24px / 30px</Text>
+          </div>
         </div>
       </section>
 
       {/* Text Sizes */}
-      <section>
-        <h2 className="text-2xl font-bold mb-6 text-bw-text-primary">Text Sizes</h2>
+      <section className="mb-12 border border-gray-200 rounded-lg p-8">
+        <h2 className="text-2xl font-bold mb-6 text-bw-text-primary font-sans">Text Sizes</h2>
+        <Text color="secondary" size="sm" className="mb-6">
+          Body text uses Figtree font with five size variants for different use cases.
+        </Text>
         <div className="space-y-3">
           <Text size="xs">Extra Small: The quick brown fox jumps over the lazy dog</Text>
           <Text size="sm">Small: The quick brown fox jumps over the lazy dog</Text>
@@ -55,22 +92,52 @@ export const AllTypography: Story = {
       </section>
 
       {/* Text Colors */}
-      <section>
-        <h2 className="text-2xl font-bold mb-6 text-bw-text-primary">Text Colors</h2>
-        <div className="space-y-2">
-          <Text color="primary">Primary text color</Text>
-          <Text color="secondary">Secondary text color</Text>
-          <Text color="disabled">Disabled text color</Text>
-          <Text color="link">Link text color</Text>
-          <Text color="positive">Positive/success text color</Text>
-          <Text color="negative">Negative/error text color</Text>
-          <Text color="warning">Warning text color</Text>
+      <section className="mb-12 border border-gray-200 rounded-lg p-8">
+        <h2 className="text-2xl font-bold mb-6 text-bw-text-primary font-sans">Text Colors</h2>
+        <Text color="secondary" size="sm" className="mb-6">
+          Text colors automatically adapt based on context, with options for different backgrounds and semantic states.
+        </Text>
+        <div className="grid grid-cols-2 gap-6">
+          <div className="bg-bw-bg-primary p-4 border border-bw-border-ui rounded">
+            <Text color="primary" weight="semibold" className="mb-3">On Light Backgrounds</Text>
+            <div className="space-y-2">
+              <Text color="primary">Primary text</Text>
+              <Text color="secondary">Secondary text</Text>
+              <Text color="disabled">Disabled text</Text>
+              <Text color="link">Link text</Text>
+            </div>
+          </div>
+
+          <div className="bg-bw-primary p-4 rounded">
+            <Text color="onPrimary" weight="semibold" className="mb-3">On Primary Background</Text>
+            <div className="space-y-2">
+              <Text color="onPrimary">Text on primary</Text>
+              <Text color="onPrimary" size="sm">Maintains proper contrast</Text>
+            </div>
+          </div>
+
+          <div className="bg-bw-inverted-background p-4 rounded">
+            <Text color="onInverted" weight="semibold" className="mb-3">On Inverted Background</Text>
+            <div className="space-y-2">
+              <Text color="onInverted">Text on inverted</Text>
+              <Text color="onInverted" size="sm">Adapts to dark backgrounds</Text>
+            </div>
+          </div>
+
+          <div className="bg-bw-bg-secondary p-4 rounded">
+            <Text color="primary" weight="semibold" className="mb-3">Semantic Colors</Text>
+            <div className="space-y-2">
+              <Text color="positive">Positive/success</Text>
+              <Text color="negative">Negative/error</Text>
+              <Text color="warning">Warning</Text>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Text Weights */}
-      <section>
-        <h2 className="text-2xl font-bold mb-6 text-bw-text-primary">Text Weights</h2>
+      <section className="mb-12 border border-gray-200 rounded-lg p-8">
+        <h2 className="text-2xl font-bold mb-6 text-bw-text-primary font-sans">Text Weights</h2>
         <div className="space-y-2">
           <Text weight="light">Light weight text</Text>
           <Text weight="normal">Normal weight text</Text>
@@ -81,8 +148,8 @@ export const AllTypography: Story = {
       </section>
 
       {/* Labels */}
-      <section>
-        <h2 className="text-2xl font-bold mb-6 text-bw-text-primary">Labels</h2>
+      <section className="mb-12 border border-gray-200 rounded-lg p-8">
+        <h2 className="text-2xl font-bold mb-6 text-bw-text-primary font-sans">Labels</h2>
         <div className="space-y-3">
           <div>
             <Label>Default Label</Label>
@@ -103,8 +170,8 @@ export const AllTypography: Story = {
       </section>
 
       {/* Links */}
-      <section>
-        <h2 className="text-2xl font-bold mb-6 text-bw-text-primary">Links</h2>
+      <section className="mb-12 border border-gray-200 rounded-lg p-8">
+        <h2 className="text-2xl font-bold mb-6 text-bw-text-primary font-sans">Links</h2>
         <div className="space-y-3">
           <div>
             <Link href="#">Default Link</Link>
@@ -128,8 +195,8 @@ export const AllTypography: Story = {
       </section>
 
       {/* Code */}
-      <section>
-        <h2 className="text-2xl font-bold mb-6 text-bw-text-primary">Code</h2>
+      <section className="mb-12 border border-gray-200 rounded-lg p-8">
+        <h2 className="text-2xl font-bold mb-6 text-bw-text-primary font-sans">Code</h2>
         <div className="space-y-4">
           <Text>
             This is <Code>inline code</Code> within a paragraph.
@@ -144,8 +211,8 @@ function greet(name: string) {
       </section>
 
       {/* Caption */}
-      <section>
-        <h2 className="text-2xl font-bold mb-6 text-bw-text-primary">Captions</h2>
+      <section className="mb-12 border border-gray-200 rounded-lg p-8">
+        <h2 className="text-2xl font-bold mb-6 text-bw-text-primary font-sans">Captions</h2>
         <div className="space-y-2">
           <div>
             <Caption>Default caption text</Caption>
@@ -160,19 +227,19 @@ function greet(name: string) {
       </section>
 
       {/* Blockquote */}
-      <section>
-        <h2 className="text-2xl font-bold mb-6 text-bw-text-primary">Blockquote</h2>
+      <section className="mb-12 border border-gray-200 rounded-lg p-8">
+        <h2 className="text-2xl font-bold mb-6 text-bw-text-primary font-sans">Blockquote</h2>
         <Blockquote>
           "The best way to predict the future is to invent it." - Alan Kay
         </Blockquote>
       </section>
 
       {/* Lists */}
-      <section>
-        <h2 className="text-2xl font-bold mb-6 text-bw-text-primary">Lists</h2>
+      <section className="mb-12 border border-gray-200 rounded-lg p-8">
+        <h2 className="text-2xl font-bold mb-6 text-bw-text-primary font-sans">Lists</h2>
         <div className="space-y-6">
           <div>
-            <h3 className="text-lg font-semibold mb-2 text-bw-text-primary">Unordered List</h3>
+            <h3 className="text-lg font-semibold mb-2 text-bw-text-primary font-sans">Unordered List</h3>
             <List
               items={[
                 "First item in the list",
@@ -182,7 +249,7 @@ function greet(name: string) {
             />
           </div>
           <div>
-            <h3 className="text-lg font-semibold mb-2 text-bw-text-primary">Ordered List</h3>
+            <h3 className="text-lg font-semibold mb-2 text-bw-text-primary font-sans">Ordered List</h3>
             <List
               variant="ordered"
               items={[
@@ -196,8 +263,8 @@ function greet(name: string) {
       </section>
 
       {/* Text Truncation */}
-      <section>
-        <h2 className="text-2xl font-bold mb-6 text-bw-text-primary">Text Truncation</h2>
+      <section className="mb-12 border border-gray-200 rounded-lg p-8">
+        <h2 className="text-2xl font-bold mb-6 text-bw-text-primary font-sans">Text Truncation</h2>
         <div className="space-y-4 max-w-md">
           <div>
             <Text truncate>
@@ -216,8 +283,8 @@ function greet(name: string) {
       </section>
 
       {/* Text Alignment */}
-      <section>
-        <h2 className="text-2xl font-bold mb-6 text-bw-text-primary">Text Alignment</h2>
+      <section className="mb-12 border border-gray-200 rounded-lg p-8">
+        <h2 className="text-2xl font-bold mb-6 text-bw-text-primary font-sans">Text Alignment</h2>
         <div className="space-y-4">
           <Text align="left">Left aligned text (default)</Text>
           <Text align="center">Center aligned text</Text>
@@ -230,17 +297,21 @@ function greet(name: string) {
       </section>
 
       {/* Real World Example */}
-      <section>
-        <h2 className="text-2xl font-bold mb-6 text-bw-text-primary">Real World Example</h2>
-        <article className="bg-bw-bg-primary border border-bw-border-ui rounded-lg p-6">
+      <section className="mb-12 border border-gray-200 rounded-lg p-8">
+        <h2 className="text-2xl font-bold mb-6 text-bw-text-primary font-sans">Real World Example</h2>
+        <Text color="secondary" size="sm" className="mb-6">
+          A comprehensive example showing how all typography components work together in context.
+        </Text>
+        <article className="bg-bw-bg-primary border border-bw-border-ui rounded-lg p-8">
           <Heading level="h3" className="mb-2">
-            Article Title Goes Here
+            Building Modern Design Systems
           </Heading>
-          <Caption color="secondary">Published on October 13, 2025</Caption>
+          <Caption color="secondary">Published on October 16, 2025 · 5 min read</Caption>
 
-          <Text className="mt-4 mb-4">
+          <Text className="mt-6 mb-4">
             This is an example of how typography components work together in a real-world scenario.
-            All text automatically inherits the correct colors from the Blockwork color system.
+            Notice how the Playfair Display headings provide elegant emphasis while Figtree body text ensures
+            excellent readability. All text automatically inherits the correct colors from the Blockwork color system.
           </Text>
 
           <Text className="mb-4">
@@ -248,7 +319,7 @@ function greet(name: string) {
             <Text as="span" weight="bold">
               bold text
             </Text>{" "}
-            seamlessly within paragraphs.
+            seamlessly within paragraphs. The typography system maintains consistent spacing and hierarchy throughout.
           </Text>
 
           <Blockquote>
@@ -256,102 +327,31 @@ function greet(name: string) {
             Jobs
           </Blockquote>
 
-          <Heading level="h4" className="mb-2">
+          <Heading level="h4" className="mb-3 mt-6">
             Key Features
           </Heading>
 
           <List
             items={[
+              "Elegant Playfair Display headings for visual impact",
+              "Clean Figtree body text for optimal readability",
               "Consistent color inheritance from Blockwork tokens",
-              "Responsive typography that scales appropriately",
+              "Responsive typography that scales across devices",
               "Support for Arabic/RTL text direction",
               "Accessible contrast ratios (WCAG AA compliant)",
             ]}
           />
 
-          <Text className="mt-4" color="secondary">
+          <Text className="mt-6" color="secondary">
             Learn more about our{" "}
             <Link href="#" variant="inline">
-              design system
+              design system foundations
             </Link>{" "}
-            and how to use these components effectively.
+            and how to use these components effectively in your projects.
           </Text>
         </article>
       </section>
-    </div>
-  ),
-};
-
-export const HeadingShowcase: Story = {
-  render: () => (
-    <div className="space-y-8">
-      <div>
-        <Heading level="h1">Heading Level 1</Heading>
-        <Text color="secondary">72px / 96px / 96px (mobile / tablet / desktop)</Text>
-      </div>
-      <div>
-        <Heading level="h2">Heading Level 2</Heading>
-        <Text color="secondary">48px / 60px / 72px</Text>
-      </div>
-      <div>
-        <Heading level="h3">Heading Level 3</Heading>
-        <Text color="secondary">36px / 48px / 60px</Text>
-      </div>
-      <div>
-        <Heading level="h4">Heading Level 4</Heading>
-        <Text color="secondary">30px / 36px / 48px</Text>
-      </div>
-      <div>
-        <Heading level="h5">Heading Level 5</Heading>
-        <Text color="secondary">24px / 30px / 36px</Text>
-      </div>
-      <div>
-        <Heading level="h6">Heading Level 6</Heading>
-        <Text color="secondary">18px / 24px / 30px</Text>
       </div>
     </div>
   ),
 };
-
-export const ColorShowcase: Story = {
-  render: () => (
-    <div className="space-y-6">
-      <div className="grid grid-cols-2 gap-4">
-        <div className="bg-bw-bg-primary p-4 border border-bw-border-ui rounded">
-          <Text color="primary">Primary text</Text>
-          <Text color="secondary" size="sm">
-            Secondary text
-          </Text>
-          <Text color="disabled" size="sm">
-            Disabled text
-          </Text>
-        </div>
-
-        <div className="bg-bw-primary p-4 rounded">
-          <Text color="onPrimary">Text on primary background</Text>
-          <Text color="onPrimary" size="sm">
-            Maintains proper contrast
-          </Text>
-        </div>
-
-        <div className="bg-bw-inverted-background p-4 rounded">
-          <Text color="onInverted">Text on inverted background</Text>
-          <Text color="onInverted" size="sm">
-            Adapts to dark backgrounds
-          </Text>
-        </div>
-
-        <div className="bg-bw-bg-secondary p-4 rounded">
-          <Text color="primary">Text on secondary background</Text>
-          <Text color="secondary" size="sm">
-            Still maintains hierarchy
-          </Text>
-        </div>
-      </div>
-    </div>
-  ),
-};
-
-
-
-

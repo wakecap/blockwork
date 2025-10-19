@@ -43,7 +43,7 @@ export const Overview: Story = {
   render: () => (
     <div className="space-y-8">
       <div className="text-center space-y-4">
-        <h1 className="text-4xl font-bold text-foreground">Migration Guide</h1>
+        <h1 className="text-4xl font-bold text-foreground font-heading">Migration Guide</h1>
         <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
           This guide will help you migrate from the old design system to the new shadcn/ui-based
           system with Tailwind CSS.
@@ -98,7 +98,7 @@ export const ButtonMigration: Story = {
   render: () => (
     <div className="space-y-8">
       <div>
-        <h2 className="text-3xl font-bold text-foreground mb-4">Button Component Migration</h2>
+        <h2 className="text-3xl font-bold text-foreground mb-4 font-sans">Button Component Migration</h2>
         <p className="text-muted-foreground mb-8">
           The Button component has been updated with new variants and improved styling.
         </p>
@@ -238,7 +238,7 @@ export const InputMigration: Story = {
   render: () => (
     <div className="space-y-8">
       <div>
-        <h2 className="text-3xl font-bold text-foreground mb-4">Input Component Migration</h2>
+        <h2 className="text-3xl font-bold text-foreground mb-4 font-sans">Input Component Migration</h2>
         <p className="text-muted-foreground mb-8">
           The Input component now uses shadcn/ui patterns with improved accessibility and RTL
           support.
@@ -326,7 +326,7 @@ export const InputMigration: Story = {
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-3">
-              <h4 className="font-semibold text-foreground">Styling Updates</h4>
+              <h4 className="font-semibold text-foreground font-sans">Styling Updates</h4>
               <ul className="space-y-1 text-sm text-muted-foreground">
                 <li>• Uses CSS variables for theming</li>
                 <li>• Improved focus states</li>
@@ -335,7 +335,7 @@ export const InputMigration: Story = {
               </ul>
             </div>
             <div className="space-y-3">
-              <h4 className="font-semibold text-foreground">RTL Improvements</h4>
+              <h4 className="font-semibold text-foreground font-sans">RTL Improvements</h4>
               <ul className="space-y-1 text-sm text-muted-foreground">
                 <li>• Automatic icon positioning</li>
                 <li>• Proper text alignment</li>
@@ -354,7 +354,7 @@ export const StylingMigration: Story = {
   render: () => (
     <div className="space-y-8">
       <div>
-        <h2 className="text-3xl font-bold text-foreground mb-4">Styling Migration</h2>
+        <h2 className="text-3xl font-bold text-foreground mb-4 font-sans">Styling Migration</h2>
         <p className="text-muted-foreground mb-8">
           The styling approach has changed from custom CSS to Tailwind CSS with CSS variables.
         </p>
@@ -424,7 +424,7 @@ className="flex h-10 w-full rounded-md border border-input bg-background px-3 py
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="space-y-2">
-              <h4 className="font-semibold text-foreground">Performance</h4>
+              <h4 className="font-semibold text-foreground font-sans">Performance</h4>
               <ul className="space-y-1 text-sm text-muted-foreground">
                 <li>• Smaller bundle size</li>
                 <li>• Better tree shaking</li>
@@ -432,7 +432,7 @@ className="flex h-10 w-full rounded-md border border-input bg-background px-3 py
               </ul>
             </div>
             <div className="space-y-2">
-              <h4 className="font-semibold text-foreground">Developer Experience</h4>
+              <h4 className="font-semibold text-foreground font-sans">Developer Experience</h4>
               <ul className="space-y-1 text-sm text-muted-foreground">
                 <li>• IntelliSense support</li>
                 <li>• Consistent API</li>
@@ -440,7 +440,7 @@ className="flex h-10 w-full rounded-md border border-input bg-background px-3 py
               </ul>
             </div>
             <div className="space-y-2">
-              <h4 className="font-semibold text-foreground">Maintainability</h4>
+              <h4 className="font-semibold text-foreground font-sans">Maintainability</h4>
               <ul className="space-y-1 text-sm text-muted-foreground">
                 <li>• Standardized patterns</li>
                 <li>• Better documentation</li>
@@ -458,7 +458,7 @@ export const NextSteps: Story = {
   render: () => (
     <div className="space-y-8">
       <div>
-        <h2 className="text-3xl font-bold text-foreground mb-4">Next Steps</h2>
+        <h2 className="text-3xl font-bold text-foreground mb-4 font-sans">Next Steps</h2>
         <p className="text-muted-foreground mb-8">
           Follow these steps to complete your migration to the new design system.
         </p>

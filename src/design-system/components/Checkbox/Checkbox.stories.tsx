@@ -24,26 +24,41 @@ export default meta;
 type Story = StoryObj<typeof Checkbox>;
 
 export const Default: Story = {
-  args: {
-    label: "Checkbox option",
-    checked: false,
-    disabled: false,
+  render: () => {
+    const [checked, setChecked] = useState(false);
+    return (
+      <Checkbox
+        label="Checkbox option"
+        checked={checked}
+        onChange={setChecked}
+      />
+    );
   },
 };
 
 export const Checked: Story = {
-  args: {
-    label: "Checked checkbox",
-    checked: true,
-    disabled: false,
+  render: () => {
+    const [checked, setChecked] = useState(true);
+    return (
+      <Checkbox
+        label="Checked checkbox"
+        checked={checked}
+        onChange={setChecked}
+      />
+    );
   },
 };
 
 export const Unchecked: Story = {
-  args: {
-    label: "Unchecked checkbox",
-    checked: false,
-    disabled: false,
+  render: () => {
+    const [checked, setChecked] = useState(false);
+    return (
+      <Checkbox
+        label="Unchecked checkbox"
+        checked={checked}
+        onChange={setChecked}
+      />
+    );
   },
 };
 
@@ -66,14 +81,23 @@ export const DisabledChecked: Story = {
 export const Interactive: Story = {
   render: () => {
     const [checked, setChecked] = useState(false);
+    const [clickCount, setClickCount] = useState(0);
+    
     return (
       <div className="space-y-4">
         <Checkbox
           label="Click me to toggle"
           checked={checked}
-          onChange={(newChecked) => setChecked(newChecked)}
+          onChange={(newChecked) => {
+            console.log('Checkbox changed to:', newChecked);
+            setChecked(newChecked);
+            setClickCount(prev => prev + 1);
+          }}
         />
-        <p className="text-sm text-gray-600">Current state: {checked ? "Checked" : "Unchecked"}</p>
+        <div className="p-4 bg-gray-50 rounded border border-gray-200">
+          <p className="text-sm font-semibold text-gray-700">Current state: <span className={checked ? "text-green-600" : "text-red-600"}>{checked ? "✓ Checked" : "✗ Unchecked"}</span></p>
+          <p className="text-xs text-gray-500 mt-1">Times clicked: {clickCount}</p>
+        </div>
       </div>
     );
   },
@@ -106,24 +130,39 @@ export const Group: Story = {
 };
 
 export const AllVariants: Story = {
-  render: () => (
-    <div className="space-y-6">
-      <div>
-        <h3 className="font-semibold text-gray-700 mb-3">Unchecked State</h3>
-        <Checkbox label="Unchecked checkbox (grey-500)" checked={false} />
+  render: () => {
+    const [unchecked, setUnchecked] = useState(false);
+    const [checked, setChecked] = useState(true);
+    
+    return (
+      <div className="space-y-6">
+        <div>
+          <h3 className="font-semibold text-gray-700 mb-3">Unchecked State (Click to toggle)</h3>
+          <Checkbox 
+            label="Unchecked checkbox (grey-500)" 
+            checked={unchecked} 
+            onChange={setUnchecked}
+          />
+          <p className="text-xs text-gray-500 mt-1">Status: {unchecked ? "Checked ✓" : "Unchecked"}</p>
+        </div>
+        <div>
+          <h3 className="font-semibold text-gray-700 mb-3">Checked State (Click to toggle)</h3>
+          <Checkbox 
+            label="Checked checkbox (grey-800)" 
+            checked={checked} 
+            onChange={setChecked}
+          />
+          <p className="text-xs text-gray-500 mt-1">Status: {checked ? "Checked ✓" : "Unchecked"}</p>
+        </div>
+        <div>
+          <h3 className="font-semibold text-gray-700 mb-3">Disabled State (Not clickable)</h3>
+          <Checkbox label="Disabled checkbox (grey-300)" checked={false} disabled={true} />
+        </div>
+        <div>
+          <h3 className="font-semibold text-gray-700 mb-3">Disabled Checked State (Not clickable)</h3>
+          <Checkbox label="Disabled checked checkbox (grey-300)" checked={true} disabled={true} />
+        </div>
       </div>
-      <div>
-        <h3 className="font-semibold text-gray-700 mb-3">Checked State</h3>
-        <Checkbox label="Checked checkbox (grey-800)" checked={true} />
-      </div>
-      <div>
-        <h3 className="font-semibold text-gray-700 mb-3">Disabled State</h3>
-        <Checkbox label="Disabled checkbox (grey-300)" disabled={true} />
-      </div>
-      <div>
-        <h3 className="font-semibold text-gray-700 mb-3">Disabled Checked State</h3>
-        <Checkbox label="Disabled checked checkbox (grey-300)" checked={true} disabled={true} />
-      </div>
-    </div>
-  ),
+    );
+  },
 };

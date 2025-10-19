@@ -93,7 +93,7 @@ export const IconShowcase: React.FC = () => {
     <div className="space-y-8">
       {iconCategories.map((category) => (
         <div key={category.title}>
-          <h3 className="text-lg font-semibold text-neutral-900 mb-4">{category.title}</h3>
+          <h3 className="text-lg font-semibold text-neutral-900 mb-4 font-sans">{category.title}</h3>
           <div className="grid grid-cols-6 gap-4">
             {category.icons.map((iconItem) => (
               <div

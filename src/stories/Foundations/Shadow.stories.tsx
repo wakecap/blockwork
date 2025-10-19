@@ -17,7 +17,7 @@ type Story = StoryObj;
 export const Overview: Story = {
   render: () => (
     <div className="p-6">
-      <h1 className="text-2xl font-bold mb-4">Shadow</h1>
+      <h1 className="text-2xl font-bold mb-4 font-heading">Shadow</h1>
       <p className="text-gray-600 mb-4">Shadow system for creating depth and visual hierarchy.</p>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">

@@ -3,6 +3,7 @@ import React from "react";
 
 const meta: Meta = {
   title: "Foundation/Colors",
+  tags: ["ready"],
   parameters: {
     docs: {
       description: {
@@ -32,7 +33,7 @@ const SemanticColorItem: React.FC<SemanticColorItemProps> = ({
   <div className="flex items-start gap-4 mb-4">
     <div className={`w-12 h-12 rounded ${colorClass} flex-shrink-0`} />
     <div>
-      <h4 className="font-semibold text-gray-900">{name}</h4>
+      <h4 className="font-semibold text-gray-900 font-sans">{name}</h4>
       <p className="text-sm text-gray-600">{description}</p>
     </div>
   </div>
@@ -66,7 +67,7 @@ export const ColorSystem: Story = {
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="mb-12">
-          <h1 className="text-3xl font-bold mb-4">Colors</h1>
+          <h1 className="text-3xl font-bold mb-4 font-heading">Colors</h1>
           <p className="text-base text-gray-700 max-w-4xl">
             Blockwork is very visual and our color system helps users identify
             status, see actions, locate help, and to indicate next steps. The
@@ -79,7 +80,7 @@ export const ColorSystem: Story = {
 
         {/* Semantic Colors */}
         <div className="mb-12 border border-gray-200 rounded-lg p-8">
-          <h2 className="text-2xl font-bold mb-6">Semantic colors</h2>
+          <h2 className="text-2xl font-bold mb-6 font-sans">Semantic colors</h2>
 
           {/* Primary Colors */}
           <SemanticColorItem
@@ -204,7 +205,7 @@ export const ColorSystem: Story = {
 
         {/* Background Colors */}
         <div className="mb-12 border border-gray-200 rounded-lg p-8">
-          <h2 className="text-2xl font-bold mb-6">Background colors</h2>
+          <h2 className="text-2xl font-bold mb-6 font-sans">Background colors</h2>
 
           <SemanticColorItem
             colorClass="bg-bw-bg-primary border border-gray-300"
@@ -245,7 +246,7 @@ export const ColorSystem: Story = {
 
         {/* Text Colors */}
         <div className="mb-12 border border-gray-200 rounded-lg p-8">
-          <h2 className="text-2xl font-bold mb-6">Text colors</h2>
+          <h2 className="text-2xl font-bold mb-6 font-sans">Text colors</h2>
 
           <SemanticColorItem
             colorClass="bg-bw-text-primary"
@@ -291,7 +292,7 @@ export const ColorSystem: Story = {
 
         {/* Border Colors */}
         <div className="mb-12 border border-gray-200 rounded-lg p-8">
-          <h2 className="text-2xl font-bold mb-6">Border colors</h2>
+          <h2 className="text-2xl font-bold mb-6 font-sans">Border colors</h2>
 
           <SemanticColorItem
             colorClass="bg-bw-border-ui"
@@ -307,7 +308,7 @@ export const ColorSystem: Story = {
 
         {/* Content Colors */}
         <div className="mb-12 border border-gray-200 rounded-lg p-8">
-          <h2 className="text-2xl font-bold mb-6">Content colors</h2>
+          <h2 className="text-2xl font-bold mb-6 font-sans">Content colors</h2>
           <p className="text-sm text-gray-700 mb-6">
             These colors are used only for color coding purposes like groups
             colors, statuses timeline bars etc.. this gives understanding and

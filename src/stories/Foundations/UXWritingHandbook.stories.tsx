@@ -17,7 +17,7 @@ type Story = StoryObj;
 export const Overview: Story = {
   render: () => (
     <div className="p-6">
-      <h1 className="text-2xl font-bold mb-4">UX Writing Handbook</h1>
+      <h1 className="text-2xl font-bold mb-4 font-heading">UX Writing Handbook</h1>
       <p className="text-gray-600 mb-4">
         Guidelines for writing clear, consistent, and user-friendly copy across the design system.
       </p>
