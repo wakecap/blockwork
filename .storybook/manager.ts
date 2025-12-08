@@ -71,6 +71,9 @@ addons.setConfig({
   enableShortcuts: true,
   showCanvas: true,
   showDocsPage: true,
+  sidebar: {
+    showRoots: false,
+  },
 });
 
 console.log("Blockwork theme loaded:", blockworkTheme);

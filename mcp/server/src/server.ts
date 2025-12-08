@@ -134,6 +134,12 @@ export function createMcpServer(): Server {
           description: "Overview of the Blockwork UI design system",
         },
         {
+          uri: "blockwork://design-system/getting-started",
+          mimeType: "text/plain",
+          name: "Getting Started Guide",
+          description: "Installation, setup, and usage instructions for Blockwork UI",
+        },
+        {
           uri: "blockwork://design-system/components",
           mimeType: "application/json",
           name: "Component List",
@@ -187,15 +193,82 @@ Features construction-focused UI components with comprehensive Arabic/RTL suppor
 - Vite for building
 - Radix UI primitives
 
-## Installation
+## Quick Start
+See the "Getting Started Guide" resource for detailed installation and setup instructions.
+
+## Production-Ready Components
+Currently available: **${Object.keys(COMPONENTS).length}** component(s) - ${Object.keys(COMPONENTS).join(", ")}
+
+More components will be added as they reach production quality.
+`,
+          },
+        ],
+      };
+    }
+
+    if (uri === "blockwork://design-system/getting-started") {
+      return {
+        contents: [
+          {
+            uri,
+            mimeType: "text/plain",
+            text: `# Getting Started with Blockwork UI
+
+Complete guide to installing and using Blockwork UI components in your React project.
+
+## 📦 Installation
+
+### Step 1: Configure npm for GitHub Packages
+
+Create or edit \`.npmrc\` in your project root:
+
+\`\`\`
+@wakecap:registry=https://npm.pkg.github.com
+//npm.pkg.github.com/:_authToken=YOUR_GITHUB_TOKEN
+\`\`\`
+
+Replace \`YOUR_GITHUB_TOKEN\` with your personal access token that has \`read:packages\` permission.
+
+### Step 2: Install the Package
+
 \`\`\`bash
 npm install @wakecap/blockwork-ui
 \`\`\`
 
-## Usage
+## 🎨 Import Styles
+
+Import the styles in your main entry file (e.g., \`main.tsx\` or \`App.tsx\`):
+
 \`\`\`tsx
-import { TopNavigator } from '@wakecap/blockwork-ui';
-import '@wakecap/blockwork-ui/styles.css';
+import "@wakecap/blockwork-ui/styles.css";
+\`\`\`
+
+**Important:** The styles.css file includes all Tailwind CSS classes and design tokens. Import it before using any components.
+
+## 📥 Import Components
+
+### Option 1: Main Package Entry (Simpler)
+
+\`\`\`tsx
+import { TopNavigator } from "@wakecap/blockwork-ui";
+\`\`\`
+
+### Option 2: Component-Specific Path (Better Tree-Shaking)
+
+\`\`\`tsx
+import { TopNavigator } from "@wakecap/blockwork-ui/components/TopNavigator";
+\`\`\`
+
+Both methods work - use Option 2 for better bundle optimization.
+
+## 🚀 Complete Usage Example
+
+\`\`\`tsx
+// Import styles (once in your app entry point)
+import "@wakecap/blockwork-ui/styles.css";
+
+// Import components
+import { TopNavigator } from "@wakecap/blockwork-ui";
 
 function App() {
   const menuItems = [
@@ -205,6 +278,7 @@ function App() {
 
   const avatarMenuItems = [
     { id: 'profile', label: 'Profile', icon: 'fa-solid fa-user' },
+    { id: 'settings', label: 'Settings', icon: 'fa-solid fa-cog' },
     { id: 'logout', label: 'Logout', icon: 'fa-solid fa-sign-out' },
   ];
 
@@ -212,15 +286,79 @@ function App() {
     <TopNavigator
       menu={menuItems}
       avatarMenu={avatarMenuItems}
+      onMenuItemClick={(item) => console.log('Menu clicked:', item)}
+      onAvatarMenuItemClick={(item) => console.log('Avatar menu clicked:', item)}
     />
+  );
+}
+
+export default App;
+\`\`\`
+
+## 🌍 RTL/Arabic Support
+
+### Enable Arabic Language Support
+
+Wrap your app with FontProvider:
+
+\`\`\`tsx
+import { FontProvider } from "@wakecap/blockwork-ui";
+
+function App() {
+  return (
+    <FontProvider>
+      {/* Your app content */}
+    </FontProvider>
   );
 }
 \`\`\`
 
-## Production-Ready Components
-Currently available: **${Object.keys(COMPONENTS).length}** component(s) - ${Object.keys(COMPONENTS).join(", ")}
+### Toggle Language Programmatically
 
-More components will be added as they reach production quality.
+\`\`\`tsx
+import { useFont } from "@wakecap/blockwork-ui";
+
+function LanguageSwitcher() {
+  const { language, setLanguage } = useFont();
+
+  return (
+    <button onClick={() => setLanguage(language === 'en' ? 'ar' : 'en')}>
+      Switch to {language === 'en' ? 'Arabic' : 'English'}
+    </button>
+  );
+}
+\`\`\`
+
+## 🎯 Available Components
+
+Currently available production-ready components:
+${Object.keys(COMPONENTS).map(name => `- **${name}**: ${COMPONENTS[name].description}`).join('\n')}
+
+## 📚 Next Steps
+
+1. **Browse Components**: Use the MCP tools to search and explore available components
+2. **Design Tokens**: Check out \`blockwork://design-system/tokens\` for colors, typography, spacing, etc.
+3. **Component Documentation**: Access detailed docs for each component via \`blockwork://components/{ComponentName}\`
+4. **Storybook**: Visit the live Storybook for interactive component examples
+
+## 🔧 TypeScript Support
+
+Blockwork UI is fully typed. Import types alongside components:
+
+\`\`\`tsx
+import { TopNavigator, type MenuItem } from "@wakecap/blockwork-ui";
+
+const items: MenuItem[] = [
+  { id: '1', label: 'Dashboard', icon: 'fa-solid fa-home' }
+];
+\`\`\`
+
+## 💡 Tips
+
+- **Tree-shaking**: Use component-specific imports for smaller bundles
+- **Styles**: Only import styles.css once in your app entry point
+- **RTL**: Components automatically adapt to RTL when language is set to Arabic
+- **Icons**: Components use Font Awesome icons - make sure to include Font Awesome in your project
 `,
           },
         ],

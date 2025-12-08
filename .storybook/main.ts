@@ -4,6 +4,7 @@ import autoprefixer from "autoprefixer";
 
 const config: StorybookConfig = {
   stories: [
+    "../src/design-system/foundations/DesignSystem.stories.tsx",
     "../src/design-system/components/TopNavigator/TopNavigator.stories.tsx",
     "../src/design-system/components/MegaDropdown/MegaDropdown.stories.tsx",
     "../src/design-system/components/PageLoading/PageLoading.stories.tsx",

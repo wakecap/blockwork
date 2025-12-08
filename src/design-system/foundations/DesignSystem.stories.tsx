@@ -65,7 +65,7 @@ export const Welcome: Story = {
   render: () => (
     <div className="space-y-8">
       <div className="text-center space-y-4">
-        <h1 className="text-4xl font-bold text-foreground">Welcome to WakeCap Design System</h1>
+        <h1 className="text-4xl font-bold text-foreground">Welcome to Blockwork Design System</h1>
         <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
           A comprehensive design system built with Tailwind CSS and shadcn/ui patterns. Features
           black as primary color (neutrals) and orange as accent, with full Arabic/RTL support.
@@ -117,6 +117,189 @@ export const Welcome: Story = {
           </CardContent>
         </Card>
       </div>
+    </div>
+  ),
+};
+
+export const GettingStarted: Story = {
+  render: () => (
+    <div className="space-y-8 max-w-4xl">
+      <div>
+        <h1 className="text-4xl font-bold text-foreground mb-4">Getting Started</h1>
+        <p className="text-xl text-muted-foreground">
+          Learn how to install and use Blockwork UI components in your React project.
+        </p>
+      </div>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>📦 Installation</CardTitle>
+          <CardDescription>Install the package from GitHub Packages</CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div>
+            <p className="text-sm text-muted-foreground mb-2">
+              First, configure npm to use GitHub Packages. Create or edit <code className="bg-muted px-1 py-0.5 rounded">.npmrc</code> in your project:
+            </p>
+            <pre className="bg-muted p-4 rounded-lg overflow-x-auto text-sm">
+              <code>{`@wakecap:registry=https://npm.pkg.github.com
+//npm.pkg.github.com/:_authToken=YOUR_GITHUB_TOKEN`}</code>
+            </pre>
+          </div>
+          <div>
+            <p className="text-sm text-muted-foreground mb-2">Then install the package:</p>
+            <pre className="bg-muted p-4 rounded-lg overflow-x-auto text-sm">
+              <code>npm install @wakecap/blockwork-ui</code>
+            </pre>
+          </div>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>🎨 Import Styles</CardTitle>
+          <CardDescription>Add the required CSS to your application</CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div>
+            <p className="text-sm text-muted-foreground mb-2">
+              Import the styles in your main entry file (e.g., <code className="bg-muted px-1 py-0.5 rounded">main.tsx</code> or <code className="bg-muted px-1 py-0.5 rounded">App.tsx</code>):
+            </p>
+            <pre className="bg-muted p-4 rounded-lg overflow-x-auto text-sm">
+              <code>{`import "@wakecap/blockwork-ui/styles.css";`}</code>
+            </pre>
+          </div>
+          <div className="bg-blue-50 dark:bg-blue-950 border border-blue-200 dark:border-blue-800 rounded-lg p-4">
+            <p className="text-sm text-blue-900 dark:text-blue-100">
+              <strong>💡 Note:</strong> The styles.css file includes all Tailwind CSS classes and design tokens. Make sure to import it before using any components.
+            </p>
+          </div>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>📥 Import Components</CardTitle>
+          <CardDescription>How to import and use components</CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div>
+            <p className="text-sm text-muted-foreground mb-2">
+              Import components from the main package entry:
+            </p>
+            <pre className="bg-muted p-4 rounded-lg overflow-x-auto text-sm">
+              <code>{`import { TopNavigator } from "@wakecap/blockwork-ui";`}</code>
+            </pre>
+          </div>
+          <div>
+            <p className="text-sm text-muted-foreground mb-2">
+              Or import from component-specific paths for better tree-shaking:
+            </p>
+            <pre className="bg-muted p-4 rounded-lg overflow-x-auto text-sm">
+              <code>{`import { TopNavigator } from "@wakecap/blockwork-ui/components/TopNavigator";`}</code>
+            </pre>
+          </div>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>🚀 Usage Example</CardTitle>
+          <CardDescription>Complete example with imports</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <pre className="bg-muted p-4 rounded-lg overflow-x-auto text-sm">
+            <code>{`// Import styles (once in your app entry point)
+import "@wakecap/blockwork-ui/styles.css";
+
+// Import components
+import { TopNavigator } from "@wakecap/blockwork-ui";
+
+function App() {
+  return (
+    <TopNavigator
+      logo={<img src="/logo.png" alt="Logo" />}
+      items={[
+        { label: "Dashboard", href: "/" },
+        { label: "Projects", href: "/projects" },
+      ]}
+    />
+  );
+}
+
+export default App;`}</code>
+          </pre>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>🌍 RTL Support</CardTitle>
+          <CardDescription>Enable Arabic/RTL support</CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div>
+            <p className="text-sm text-muted-foreground mb-2">
+              Wrap your app with FontProvider for Arabic language support:
+            </p>
+            <pre className="bg-muted p-4 rounded-lg overflow-x-auto text-sm">
+              <code>{`import { FontProvider } from "@wakecap/blockwork-ui";
+
+function App() {
+  return (
+    <FontProvider>
+      {/* Your app content */}
+    </FontProvider>
+  );
+}`}</code>
+            </pre>
+          </div>
+          <div>
+            <p className="text-sm text-muted-foreground mb-2">
+              Toggle language programmatically:
+            </p>
+            <pre className="bg-muted p-4 rounded-lg overflow-x-auto text-sm">
+              <code>{`import { useFont } from "@wakecap/blockwork-ui";
+
+function LanguageSwitcher() {
+  const { language, setLanguage } = useFont();
+
+  return (
+    <button onClick={() => setLanguage(language === 'en' ? 'ar' : 'en')}>
+      Switch to {language === 'en' ? 'Arabic' : 'English'}
+    </button>
+  );
+}`}</code>
+            </pre>
+          </div>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>📚 Next Steps</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <ul className="space-y-2 text-sm text-muted-foreground">
+            <li className="flex items-start gap-2">
+              <span className="text-primary">→</span>
+              <span>Browse available components in the sidebar</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-primary">→</span>
+              <span>Check out the design tokens and foundations</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-primary">→</span>
+              <span>View component props and examples in each story</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-primary">→</span>
+              <span>Explore the interactive controls panel below each component</span>
+            </li>
+          </ul>
+        </CardContent>
+      </Card>
     </div>
   ),
 };
