@@ -1,0 +1,146 @@
+import { Request, Response, NextFunction } from "express";
+import { logger } from "../utils/logger.js";
+
+/**
+ * Error types for MCP server
+ */
+export enum ErrorType {
+  VALIDATION_ERROR = "VALIDATION_ERROR",
+  AUTHENTICATION_ERROR = "AUTHENTICATION_ERROR",
+  AUTHORIZATION_ERROR = "AUTHORIZATION_ERROR",
+  NOT_FOUND = "NOT_FOUND",
+  RATE_LIMIT_ERROR = "RATE_LIMIT_ERROR",
+  INTERNAL_ERROR = "INTERNAL_ERROR",
+  BAD_REQUEST = "BAD_REQUEST",
+}
+
+/**
+ * Custom error class for MCP server errors
+ */
+export class McpError extends Error {
+  constructor(
+    public type: ErrorType,
+    public message: string,
+    public statusCode: number,
+    public details?: any,
+  ) {
+    super(message);
+    this.name = "McpError";
+  }
+}
+
+/**
+ * Map error types to HTTP status codes
+ */
+function getStatusCode(error: any): number {
+  if (error instanceof McpError) {
+    return error.statusCode;
+  }
+
+  if (error.status) {
+    return error.status;
+  }
+
+  if (error.statusCode) {
+    return error.statusCode;
+  }
+
+  // Default to 500 for unknown errors
+  return 500;
+}
+
+/**
+ * Map error types to JSON-RPC error codes
+ * Reference: https://www.jsonrpc.org/specification#error_object
+ */
+function getJsonRpcErrorCode(statusCode: number): number {
+  switch (statusCode) {
+    case 400:
+      return -32600; // Invalid Request
+    case 401:
+    case 403:
+      return -32001; // Unauthorized (custom code)
+    case 404:
+      return -32601; // Method not found
+    case 429:
+      return -32002; // Rate limit exceeded (custom code)
+    case 500:
+    default:
+      return -32603; // Internal error
+  }
+}
+
+/**
+ * Global error handler middleware
+ * Catches all errors and formats them as JSON responses
+ */
+export function errorHandler(err: any, req: Request, res: Response, next: NextFunction) {
+  const statusCode = getStatusCode(err);
+  const isProduction = process.env.NODE_ENV === "production";
+
+  // Log the error
+  const errorLog = {
+    type: err.type || "UNKNOWN_ERROR",
+    message: err.message,
+    statusCode,
+    path: req.path,
+    method: req.method,
+    ip: req.ip,
+    stack: !isProduction ? err.stack : undefined,
+    details: err.details,
+  };
+
+  if (statusCode >= 500) {
+    logger.error("Server error", errorLog);
+  } else {
+    logger.warn("Client error", errorLog);
+  }
+
+  // Format error response
+  const errorResponse: any = {
+    error: {
+      code: getJsonRpcErrorCode(statusCode),
+      message: err.message || "An error occurred",
+      type: err.type || ErrorType.INTERNAL_ERROR,
+    },
+  };
+
+  // Add details in development mode
+  if (!isProduction) {
+    errorResponse.error.details = err.details;
+    errorResponse.error.stack = err.stack;
+  }
+
+  // Send response
+  res.status(statusCode).json(errorResponse);
+}
+
+/**
+ * 404 Not Found handler
+ * Catches requests to non-existent routes
+ */
+export function notFoundHandler(req: Request, res: Response) {
+  logger.warn("Route not found", {
+    path: req.path,
+    method: req.method,
+    ip: req.ip,
+  });
+
+  res.status(404).json({
+    error: {
+      code: -32601,
+      message: `Route ${req.method} ${req.path} not found`,
+      type: ErrorType.NOT_FOUND,
+    },
+  });
+}
+
+/**
+ * Async handler wrapper to catch async errors
+ * Usage: router.get('/route', asyncHandler(async (req, res) => { ... }))
+ */
+export function asyncHandler(fn: Function) {
+  return (req: Request, res: Response, next: NextFunction) => {
+    Promise.resolve(fn(req, res, next)).catch(next);
+  };
+}

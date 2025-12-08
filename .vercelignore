@@ -1,0 +1,73 @@
+# Vercel Ignore - Files to exclude from deployment
+
+# UI library files (not needed for MCP server deployment)
+# We're deploying ONLY the MCP server API, not the UI library
+index.html
+vite.config.ts
+
+# UI library source files (not needed for MCP server deployment)
+# Exclude only the root src/ directory, not mcp/server/src/
+/src/
+
+# MCP server source files are NEEDED for build - don't ignore!
+# DO NOT exclude mcp/server/src/ - it's required for the build!
+
+# Keep MCP server dist
+!mcp/server/dist/
+
+# Tests and stories
+**/*.test.*
+**/*.spec.*
+**/*.stories.*
+**/__tests__/
+**/__mocks__/
+
+# Development files
+.storybook/
+.github/
+.vscode/
+.idea/
+
+# Documentation (optional - remove if you want docs deployed)
+*.md
+!README.md
+
+# Dependencies (Vercel installs these)
+node_modules/
+
+# Build artifacts (exclude root dist, but keep MCP server dist)
+/dist/
+# mcp/server/dist/ is needed for api/index.ts import
+
+# Environment files (set in Vercel dashboard)
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+logs/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+
+# Other configs
+.prettierrc
+.eslintrc*
+tsconfig.json
+!mcp/server/tsconfig.json
+vite.config.ts
+tailwind.config.js
+postcss.config.js
+
+# Railway and Docker (not needed for Vercel)
+railway.json
+Dockerfile*

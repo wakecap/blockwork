@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "blockwork-design-system": {
+      "command": "node",
+      "args": ["./mcp/server/dist/index.js"],
+      "env": {},
+      "description": "Blockwork UI Design System - Component library with React, TypeScript, and Tailwind CSS"
+    }
+  }
+}

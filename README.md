@@ -43,6 +43,27 @@ Each component includes:
 - Responsive design
 - **Arabic (RTL) support** with IBM Plex Sans Arabic font
 
+## 🤖 AI Agent Integration (MCP Server)
+
+This repository includes a Model Context Protocol (MCP) server that exposes production-ready components to AI agents like Claude.
+
+**Features**: Component discovery, source code access, usage examples, design tokens, full documentation
+
+**Available Components**: TopNavigator (more coming as they reach production quality)
+
+### Documentation
+- **[Getting Started](./mcp/docs/getting-started.md)** - Quick setup guide for all deployment modes
+- **[Deployment Options](./mcp/docs/deployment/README.md)** - Choose between Local STDIO, Railway, Vercel, or Docker
+- **[API Reference](./mcp/docs/api/README.md)** - Complete API documentation
+- **[Architecture](./mcp/docs/architecture.md)** - System design and how it works
+
+### Quick Start (Local)
+```bash
+npm run mcp:build && npm run mcp:start
+```
+
+See the [complete MCP documentation](./mcp/README.md) for details.
+
 ## 🌐 Arabic & RTL Support
 
 The design system provides comprehensive Arabic language support:

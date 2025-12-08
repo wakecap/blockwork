@@ -100,6 +100,9 @@ temp/
 .vscode/*
 !.vscode/extensions.json
 .idea
+
+# Keep Claude instructions
+!.claude/
 *.suo
 *.ntvs*
 *.njsproj
@@ -107,3 +110,8 @@ temp/
 *.sw?
 
 *storybook.log
+
+# MCP Server
+# mcp/server/dist/ - Committed for Vercel deployment (no build step needed)
+mcp/server/.env
+mcp/server/node_modules/
