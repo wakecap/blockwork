@@ -1,11 +1,15 @@
 import rateLimit from "express-rate-limit";
-import { Request } from "express";
+import { Request, Response, NextFunction } from "express";
 import { logger } from "../utils/logger.js";
+import { AuthenticatedRequest } from "./auth.js";
 
 // Configuration from environment variables
 const RATE_LIMIT_WINDOW_MS = parseInt(process.env.RATE_LIMIT_WINDOW_MS || "60000", 10); // 1 minute
 const RATE_LIMIT_MAX_REQUESTS = parseInt(process.env.RATE_LIMIT_MAX_REQUESTS || "100", 10);
-const RATE_LIMIT_AUTHENTICATED_MAX = parseInt(process.env.RATE_LIMIT_AUTHENTICATED_MAX || "500", 10);
+const RATE_LIMIT_AUTHENTICATED_MAX = parseInt(
+  process.env.RATE_LIMIT_AUTHENTICATED_MAX || "500",
+  10,
+);
 
 /**
  * Rate limiter for unauthenticated requests
@@ -22,9 +26,9 @@ export const globalRateLimiter = rateLimit({
   legacyHeaders: false, // Disable `X-RateLimit-*` headers
   skip: (req: Request) => {
     // Skip rate limiting for authenticated users (they have their own limiter)
-    return !!(req as any).isAuthenticated;
+    return !!(req as AuthenticatedRequest).isAuthenticated;
   },
-  handler: (req, res) => {
+  handler: (req: Request, res: Response) => {
     logger.warn("Rate limit exceeded (unauthenticated)", {
       ip: req.ip,
       url: req.url,
@@ -53,17 +57,17 @@ export const authenticatedRateLimiter = rateLimit({
   legacyHeaders: false,
   // Use API key for rate limiting instead of IP
   keyGenerator: (req: Request) => {
-    return (req as any).apiKeyPrefix || req.ip || "unknown";
+    return (req as AuthenticatedRequest).apiKeyPrefix || req.ip || "unknown";
   },
   skip: (req: Request) => {
     // Only apply to authenticated users
-    return !(req as any).isAuthenticated;
+    return !(req as AuthenticatedRequest).isAuthenticated;
   },
-  handler: (req, res) => {
+  handler: (req: Request, res: Response) => {
     logger.warn("Rate limit exceeded (authenticated)", {
       ip: req.ip,
       url: req.url,
-      apiKeyPrefix: (req as any).apiKeyPrefix,
+      apiKeyPrefix: (req as AuthenticatedRequest).apiKeyPrefix,
       limit: RATE_LIMIT_AUTHENTICATED_MAX,
     });
     res.status(429).json({
@@ -77,8 +81,8 @@ export const authenticatedRateLimiter = rateLimit({
  * Combined rate limiter that applies both global and authenticated limits
  * This middleware should be applied after optional authentication
  */
-export function combinedRateLimiter(req: any, res: any, next: any) {
-  if ((req as any).isAuthenticated) {
+export function combinedRateLimiter(req: Request, res: Response, next: NextFunction) {
+  if ((req as AuthenticatedRequest).isAuthenticated) {
     // Use authenticated rate limiter
     authenticatedRateLimiter(req, res, next);
   } else {

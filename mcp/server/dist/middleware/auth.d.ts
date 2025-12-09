@@ -1,5 +1,13 @@
 import { Request, Response, NextFunction } from "express";
 /**
+ * Extended Request interface with authentication properties
+ */
+export interface AuthenticatedRequest extends Request {
+    apiKey?: string;
+    apiKeyPrefix?: string;
+    isAuthenticated?: boolean;
+}
+/**
  * Authentication middleware for validating API keys
  * Expects Bearer token in Authorization header
  */

@@ -7,7 +7,7 @@ if (process.env.NODE_ENV !== "production") {
   try {
     const dotenv = await import("dotenv");
     dotenv.config({ path: "./mcp/server/.env" });
-  } catch (error) {
+  } catch {
     // dotenv not available or .env file not found, continue without it
   }
 }

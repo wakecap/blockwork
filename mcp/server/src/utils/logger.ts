@@ -1,4 +1,5 @@
 import winston from "winston";
+import { Request, Response, NextFunction } from "express";
 
 const logLevel = process.env.LOG_LEVEL || "info";
 const nodeEnv = process.env.NODE_ENV || "development";
@@ -37,7 +38,7 @@ export const logger = winston.createLogger({
 });
 
 // Request logger middleware
-export function requestLogger(req: any, res: any, next: any) {
+export function requestLogger(req: Request, res: Response, next: NextFunction) {
   const start = Date.now();
   const { method, url, headers } = req;
 

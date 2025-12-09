@@ -5,6 +5,6 @@
  * All routes (/health, /api/docs, /mcp) are handled by this function.
  */
 
-import app from '../mcp/server/dist/vercel-server.js';
+import app from "../mcp/server/dist/vercel-server.js";
 
 export default app;

@@ -22,7 +22,7 @@ export class McpError extends Error {
     public type: ErrorType,
     public message: string,
     public statusCode: number,
-    public details?: any,
+    public details?: unknown,
   ) {
     super(message);
     this.name = "McpError";
@@ -32,7 +32,7 @@ export class McpError extends Error {
 /**
  * Map error types to HTTP status codes
  */
-function getStatusCode(error: any): number {
+function getStatusCode(error: Error & { status?: number; statusCode?: number }): number {
   if (error instanceof McpError) {
     return error.statusCode;
   }
@@ -74,7 +74,13 @@ function getJsonRpcErrorCode(statusCode: number): number {
  * Global error handler middleware
  * Catches all errors and formats them as JSON responses
  */
-export function errorHandler(err: any, req: Request, res: Response, next: NextFunction) {
+export function errorHandler(
+  err: Error & { type?: ErrorType; details?: unknown },
+  req: Request,
+  res: Response,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  _next: NextFunction,
+) {
   const statusCode = getStatusCode(err);
   const isProduction = process.env.NODE_ENV === "production";
 
@@ -97,7 +103,15 @@ export function errorHandler(err: any, req: Request, res: Response, next: NextFu
   }
 
   // Format error response
-  const errorResponse: any = {
+  const errorResponse: {
+    error: {
+      code: number;
+      message: string;
+      type: ErrorType;
+      details?: unknown;
+      stack?: string;
+    };
+  } = {
     error: {
       code: getJsonRpcErrorCode(statusCode),
       message: err.message || "An error occurred",
@@ -139,7 +153,9 @@ export function notFoundHandler(req: Request, res: Response) {
  * Async handler wrapper to catch async errors
  * Usage: router.get('/route', asyncHandler(async (req, res) => { ... }))
  */
-export function asyncHandler(fn: Function) {
+export function asyncHandler(
+  fn: (req: Request, res: Response, next: NextFunction) => Promise<unknown> | unknown,
+) {
   return (req: Request, res: Response, next: NextFunction) => {
     Promise.resolve(fn(req, res, next)).catch(next);
   };

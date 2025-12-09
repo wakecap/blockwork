@@ -335,7 +335,9 @@ function LanguageSwitcher() {
 ## 🎯 Available Components
 
 Currently available production-ready components:
-${Object.keys(COMPONENTS).map(name => `- **${name}**: ${COMPONENTS[name].description}`).join('\n')}
+${Object.keys(COMPONENTS)
+                            .map((name) => `- **${name}**: ${COMPONENTS[name].description}`)
+                            .join("\n")}
 
 ## 📚 Next Steps
 
@@ -667,7 +669,7 @@ const projectsData = [
             else if (componentName === "Badge") {
                 example = `import { Badge } from '@wakecap/blockwork-ui';
 
-<Badge ${variant ? `variant="${variant}"` : ''}${size ? ` size="${size}"` : ''}>
+<Badge ${variant ? `variant="${variant}"` : ""}${size ? ` size="${size}"` : ""}>
   New
 </Badge>
 

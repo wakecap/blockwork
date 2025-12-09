@@ -8,14 +8,15 @@ import prettierConfig from "eslint-config-prettier";
 import storybook from "eslint-plugin-storybook";
 
 export default tseslint.config(
-  { 
+  {
     ignores: [
-      "dist", 
-      "build", 
-      "node_modules", 
-      ".storybook/static", 
+      "dist",
+      "build",
+      "node_modules",
+      ".storybook/static",
       "storybook-static",
       "coverage",
+      "mcp/server/dist/**",
       // Ignore all components except the ones in main.ts (TopNavigator, MegaDropdown, PageLoading, Avatar, Button, Badge, SearchInput, EmptyState)
       "src/design-system/components/!(TopNavigator|MegaDropdown|PageLoading|Avatar|Button|Badge|SearchInput|EmptyState)/**",
       // Ignore all stories except the ones in main.ts
@@ -23,7 +24,7 @@ export default tseslint.config(
       "src/design-system/foundations/**",
       "src/design-system/tokens/**",
       "src/design-system/utils/**"
-    ] 
+    ]
   },
   {
     extends: [js.configs.recommended, ...tseslint.configs.recommended],

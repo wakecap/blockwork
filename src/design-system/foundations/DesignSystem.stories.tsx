@@ -139,7 +139,8 @@ export const GettingStarted: Story = {
         <CardContent className="space-y-4">
           <div>
             <p className="text-sm text-muted-foreground mb-2">
-              First, configure npm to use GitHub Packages. Create or edit <code className="bg-muted px-1 py-0.5 rounded">.npmrc</code> in your project:
+              First, configure npm to use GitHub Packages. Create or edit{" "}
+              <code className="bg-muted px-1 py-0.5 rounded">.npmrc</code> in your project:
             </p>
             <pre className="bg-muted p-4 rounded-lg overflow-x-auto text-sm">
               <code>{`@wakecap:registry=https://npm.pkg.github.com
@@ -163,7 +164,9 @@ export const GettingStarted: Story = {
         <CardContent className="space-y-4">
           <div>
             <p className="text-sm text-muted-foreground mb-2">
-              Import the styles in your main entry file (e.g., <code className="bg-muted px-1 py-0.5 rounded">main.tsx</code> or <code className="bg-muted px-1 py-0.5 rounded">App.tsx</code>):
+              Import the styles in your main entry file (e.g.,{" "}
+              <code className="bg-muted px-1 py-0.5 rounded">main.tsx</code> or{" "}
+              <code className="bg-muted px-1 py-0.5 rounded">App.tsx</code>):
             </p>
             <pre className="bg-muted p-4 rounded-lg overflow-x-auto text-sm">
               <code>{`import "@wakecap/blockwork-ui/styles.css";`}</code>
@@ -171,7 +174,8 @@ export const GettingStarted: Story = {
           </div>
           <div className="bg-blue-50 dark:bg-blue-950 border border-blue-200 dark:border-blue-800 rounded-lg p-4">
             <p className="text-sm text-blue-900 dark:text-blue-100">
-              <strong>💡 Note:</strong> The styles.css file includes all Tailwind CSS classes and design tokens. Make sure to import it before using any components.
+              <strong>💡 Note:</strong> The styles.css file includes all Tailwind CSS classes and
+              design tokens. Make sure to import it before using any components.
             </p>
           </div>
         </CardContent>
@@ -255,9 +259,7 @@ function App() {
             </pre>
           </div>
           <div>
-            <p className="text-sm text-muted-foreground mb-2">
-              Toggle language programmatically:
-            </p>
+            <p className="text-sm text-muted-foreground mb-2">Toggle language programmatically:</p>
             <pre className="bg-muted p-4 rounded-lg overflow-x-auto text-sm">
               <code>{`import { useFont } from "@wakecap/blockwork-ui";
 

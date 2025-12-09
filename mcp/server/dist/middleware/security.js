@@ -109,9 +109,7 @@ export function sanitizeInput(req, res, next) {
         for (const key in req.query) {
             if (typeof req.query[key] === "string") {
                 // Remove potentially dangerous characters
-                req.query[key] = req.query[key]
-                    .replace(/[<>\"']/g, "")
-                    .trim();
+                req.query[key] = req.query[key].replace(/[<>"']/g, "").trim();
             }
         }
     }

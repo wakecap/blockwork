@@ -1,3 +1,4 @@
+import { Request, Response, NextFunction } from "express";
 /**
  * Rate limiter for unauthenticated requests
  * Default: 100 requests per minute per IP
@@ -13,5 +14,5 @@ export declare const authenticatedRateLimiter: import("express-rate-limit").Rate
  * Combined rate limiter that applies both global and authenticated limits
  * This middleware should be applied after optional authentication
  */
-export declare function combinedRateLimiter(req: any, res: any, next: any): void;
+export declare function combinedRateLimiter(req: Request, res: Response, next: NextFunction): void;
 //# sourceMappingURL=rateLimiter.d.ts.map

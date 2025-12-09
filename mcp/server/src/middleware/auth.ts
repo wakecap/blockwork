@@ -2,6 +2,15 @@ import { Request, Response, NextFunction } from "express";
 import { logger } from "../utils/logger.js";
 
 /**
+ * Extended Request interface with authentication properties
+ */
+export interface AuthenticatedRequest extends Request {
+  apiKey?: string;
+  apiKeyPrefix?: string;
+  isAuthenticated?: boolean;
+}
+
+/**
  * Authentication middleware for validating API keys
  * Expects Bearer token in Authorization header
  */
@@ -60,13 +69,13 @@ export function validateApiKey(req: Request, res: Response, next: NextFunction) 
   }
 
   // Success - attach API key info to request for later use
-  (req as any).apiKey = token;
-  (req as any).apiKeyPrefix = token.substring(0, 20);
+  (req as AuthenticatedRequest).apiKey = token;
+  (req as AuthenticatedRequest).apiKeyPrefix = token.substring(0, 20);
 
   logger.debug("API key validated successfully", {
     ip: req.ip,
     url: req.url,
-    keyPrefix: (req as any).apiKeyPrefix,
+    keyPrefix: (req as AuthenticatedRequest).apiKeyPrefix,
   });
 
   next();
@@ -84,9 +93,9 @@ export function optionalAuth(req: Request, res: Response, next: NextFunction) {
     const validKeys = process.env.API_KEYS?.split(",").map((key) => key.trim()) || [];
 
     if (validKeys.includes(token)) {
-      (req as any).apiKey = token;
-      (req as any).apiKeyPrefix = token.substring(0, 20);
-      (req as any).isAuthenticated = true;
+      (req as AuthenticatedRequest).apiKey = token;
+      (req as AuthenticatedRequest).apiKeyPrefix = token.substring(0, 20);
+      (req as AuthenticatedRequest).isAuthenticated = true;
     }
   }
 

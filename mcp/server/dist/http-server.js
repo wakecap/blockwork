@@ -102,9 +102,10 @@ async function startServer() {
             });
         }
         catch (error) {
+            const err = error;
             logger.error("Failed to process MCP request", {
-                error: error.message,
-                stack: error.stack,
+                error: err.message,
+                stack: err.stack,
                 method: req.method,
                 path: req.path,
             });

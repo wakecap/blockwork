@@ -120,9 +120,7 @@ export function sanitizeInput(req: Request, res: Response, next: NextFunction) {
     for (const key in req.query) {
       if (typeof req.query[key] === "string") {
         // Remove potentially dangerous characters
-        req.query[key] = (req.query[key] as string)
-          .replace(/[<>\"']/g, "")
-          .trim();
+        req.query[key] = (req.query[key] as string).replace(/[<>"']/g, "").trim();
       }
     }
   }
@@ -138,16 +136,16 @@ export function sanitizeInput(req: Request, res: Response, next: NextFunction) {
 /**
  * Recursively sanitize object properties
  */
-function sanitizeObject(obj: any): void {
+function sanitizeObject(obj: Record<string, unknown>): void {
   for (const key in obj) {
     if (typeof obj[key] === "string") {
       // Remove potentially dangerous characters but preserve MCP protocol content
       // Only sanitize if it looks like user input, not protocol data
       if (!key.includes("jsonrpc") && !key.includes("method")) {
-        obj[key] = obj[key].replace(/[<>]/g, "").trim();
+        obj[key] = (obj[key] as string).replace(/[<>]/g, "").trim();
       }
     } else if (typeof obj[key] === "object" && obj[key] !== null) {
-      sanitizeObject(obj[key]);
+      sanitizeObject(obj[key] as Record<string, unknown>);
     }
   }
 }

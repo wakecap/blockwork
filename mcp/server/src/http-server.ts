@@ -2,7 +2,7 @@ import express, { Request, Response } from "express";
 import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/streamableHttp.js";
 import { createMcpServer } from "./server.js";
 import { logger, requestLogger } from "./utils/logger.js";
-import { optionalAuth, validateApiKey } from "./middleware/auth.js";
+import { optionalAuth, validateApiKey, AuthenticatedRequest } from "./middleware/auth.js";
 import { combinedRateLimiter } from "./middleware/rateLimiter.js";
 import { securityMiddleware } from "./middleware/security.js";
 import { errorHandler, notFoundHandler, asyncHandler } from "./middleware/errorHandler.js";
@@ -120,12 +120,13 @@ async function startServer() {
 
       logger.debug("MCP request processed", {
         method: req.method,
-        apiKeyPrefix: (req as any).apiKeyPrefix,
+        apiKeyPrefix: (req as AuthenticatedRequest).apiKeyPrefix,
       });
-    } catch (error: any) {
+    } catch (error) {
+      const err = error as Error;
       logger.error("Failed to process MCP request", {
-        error: error.message,
-        stack: error.stack,
+        error: err.message,
+        stack: err.stack,
         method: req.method,
         path: req.path,
       });
