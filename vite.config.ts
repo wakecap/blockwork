@@ -29,6 +29,10 @@ export default defineConfig({
           __dirname,
           "src/design-system/components/TopNavigator/TopNavigator.tsx",
         ),
+        "design-system/components/Button": resolve(
+          __dirname,
+          "src/design-system/components/Button/Button.tsx",
+        ),
       },
       name: "BlockworkUI",
       fileName: (format, entryName) => {

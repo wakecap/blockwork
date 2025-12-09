@@ -127,6 +127,11 @@
       "types": "./dist/design-system/components/TopNavigator.d.ts",
       "import": "./dist/design-system/components/TopNavigator.js",
       "require": "./dist/design-system/components/TopNavigator.cjs"
+    },
+    "./components/Button": {
+      "types": "./dist/design-system/components/Button.d.ts",
+      "import": "./dist/design-system/components/Button.js",
+      "require": "./dist/design-system/components/Button.cjs"
     }
   },
   "typesVersions": {
@@ -136,6 +141,9 @@
       ],
       "./components/TopNavigator": [
         "./dist/design-system/components/TopNavigator.d.ts"
+      ],
+      "./components/Button": [
+        "./dist/design-system/components/Button.d.ts"
       ]
     }
   }

@@ -64,17 +64,55 @@ export const COMPONENTS: Record<string, ComponentMetadata> = {
     dependencies: ["MegaDropdown", "Button", "Avatar", "SearchInput", "EmptyState"],
   },
 
+  Button: {
+    name: "Button",
+    description:
+      "Versatile button component with 14 style variants, 11 sizes, icon support, loading states, and full RTL/Arabic support. Production-ready for forms and UI interactions.",
+    category: "Forms",
+    path: "src/design-system/components/Button/Button.tsx",
+    props: {
+      variant:
+        "'primary' | 'secondary' | 'accent' | 'outline' | 'ghost' | 'text' | 'success' | 'warning' | 'destructive' | 'info' | 'pin' | 'nav' | 'fab' | 'iconBtn' - Button style variant (default: 'primary')",
+      size: "'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'icon' | 'iconXs' | 'iconSm' | 'iconMd' | 'iconLg' | 'iconXl' - Button size (default: 'md')",
+      icon: "string (optional) - Font Awesome icon class (e.g., 'fa-solid fa-check')",
+      iconPosition:
+        "'left' | 'right' (optional) - Icon position relative to text (default: 'left', auto-flips in RTL)",
+      loading:
+        "boolean (optional) - Show loading spinner and disable interactions (default: false)",
+      loadingText: "string (optional) - Custom text to display during loading state",
+      arabicText: "string (optional) - Arabic translation for RTL support",
+      showArabicText:
+        "boolean (optional) - Display Arabic text and enable RTL layout with IBM Plex Sans Arabic font",
+      isPinned: "boolean (optional) - Pinned state for pin variant (default: false)",
+      isActive: "boolean (optional) - Active state with ring indicator (default: false)",
+      ripple: "boolean (optional) - Enable ripple effect on interaction (default: true)",
+      fullWidth: "boolean (optional) - Make button full width (default: false)",
+      fullWidthOnMobile: "boolean (optional) - Full width on mobile devices only (default: false)",
+      ariaLabel: "string (optional) - Accessibility label for screen readers",
+      ariaDescribedBy: "string (optional) - ID of element describing the button",
+      children: "React.ReactNode - Button text or content",
+      disabled: "boolean (optional) - Disable button and prevent interactions",
+      onClick: "(event: React.MouseEvent<HTMLButtonElement>) => void (optional) - Click handler",
+    },
+    features: [
+      "14 style variants: primary (black), secondary, accent (orange), outline, ghost, text, success, warning, destructive, info, pin, nav, fab, iconBtn",
+      "11 size options: 5 standard sizes (xs-xl) with responsive scaling, 6 icon-only sizes",
+      "Icon support with Font Awesome icons positioned left or right",
+      "Loading state with spinner animation and custom loading text",
+      "Full RTL/Arabic support with automatic layout direction and font switching",
+      "Pin state for favorites/bookmarks functionality",
+      "Ripple effect for enhanced visual feedback",
+      "Touch-friendly with 44px minimum touch targets on mobile",
+      "Responsive sizing that adapts between mobile and desktop",
+      "Full keyboard navigation and accessibility (ARIA labels, focus management)",
+      "Active state styling with ring indicators",
+      "Disabled state with visual feedback",
+      "Extends all HTML button attributes (type, form, name, value, etc.)",
+    ],
+    dependencies: [],
+  },
+
   // TODO: Add more components here as they become production-ready
-  // Example structure:
-  // ComponentName: {
-  //   name: "ComponentName",
-  //   description: "Component description",
-  //   category: "Category",
-  //   path: "src/design-system/components/ComponentName/ComponentName.tsx",
-  //   props: { ... },
-  //   features: [ ... ],
-  //   dependencies: [ ... ] (optional)
-  // },
 };
 
 // Design tokens from tailwind.config.js
@@ -332,7 +370,9 @@ function LanguageSwitcher() {
 ## 🎯 Available Components
 
 Currently available production-ready components:
-${Object.keys(COMPONENTS).map(name => `- **${name}**: ${COMPONENTS[name].description}`).join('\n')}
+${Object.keys(COMPONENTS)
+  .map((name) => `- **${name}**: ${COMPONENTS[name].description}`)
+  .join("\n")}
 
 ## 📚 Next Steps
 
@@ -521,7 +561,8 @@ import { ${component.name} } from '@wakecap/blockwork-ui';
             properties: {
               tokenType: {
                 type: "string",
-                description: "Type of token: colors, typography, spacing, shadows, borderRadius, animations, zIndex",
+                description:
+                  "Type of token: colors, typography, spacing, shadows, borderRadius, animations, zIndex",
               },
             },
             required: ["tokenType"],
@@ -606,7 +647,11 @@ import { ${component.name} } from '@wakecap/blockwork-ui';
     }
 
     if (name === "get_usage_example") {
-      const { componentName, variant, size } = args as { componentName: string; variant?: string; size?: string };
+      const { componentName, variant, size } = args as {
+        componentName: string;
+        variant?: string;
+        size?: string;
+      };
       const component = COMPONENTS[componentName as keyof typeof COMPONENTS];
 
       if (!component) {
@@ -684,7 +729,7 @@ const projectsData = [
       } else if (componentName === "Badge") {
         example = `import { Badge } from '@wakecap/blockwork-ui';
 
-<Badge ${variant ? `variant="${variant}"` : ''}${size ? ` size="${size}"` : ''}>
+<Badge ${variant ? `variant="${variant}"` : ""}${size ? ` size="${size}"` : ""}>
   New
 </Badge>
 
