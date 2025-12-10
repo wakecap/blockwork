@@ -132,6 +132,121 @@
       "types": "./dist/design-system/components/Button.d.ts",
       "import": "./dist/design-system/components/Button.js",
       "require": "./dist/design-system/components/Button.cjs"
+    },
+    "./components/Avatar": {
+      "types": "./dist/design-system/components/Avatar.d.ts",
+      "import": "./dist/design-system/components/Avatar.js",
+      "require": "./dist/design-system/components/Avatar.cjs"
+    },
+    "./components/Badge": {
+      "types": "./dist/design-system/components/Badge.d.ts",
+      "import": "./dist/design-system/components/Badge.js",
+      "require": "./dist/design-system/components/Badge.cjs"
+    },
+    "./components/EmptyState": {
+      "types": "./dist/design-system/components/EmptyState.d.ts",
+      "import": "./dist/design-system/components/EmptyState.js",
+      "require": "./dist/design-system/components/EmptyState.cjs"
+    },
+    "./components/PageLoading": {
+      "types": "./dist/design-system/components/PageLoading.d.ts",
+      "import": "./dist/design-system/components/PageLoading.js",
+      "require": "./dist/design-system/components/PageLoading.cjs"
+    },
+    "./components/Input": {
+      "types": "./dist/design-system/components/Input.d.ts",
+      "import": "./dist/design-system/components/Input.js",
+      "require": "./dist/design-system/components/Input.cjs"
+    },
+    "./components/PasswordInput": {
+      "types": "./dist/design-system/components/PasswordInput.d.ts",
+      "import": "./dist/design-system/components/PasswordInput.js",
+      "require": "./dist/design-system/components/PasswordInput.cjs"
+    },
+    "./components/SearchInput": {
+      "types": "./dist/design-system/components/SearchInput.d.ts",
+      "import": "./dist/design-system/components/SearchInput.js",
+      "require": "./dist/design-system/components/SearchInput.cjs"
+    },
+    "./components/TextArea": {
+      "types": "./dist/design-system/components/TextArea.d.ts",
+      "import": "./dist/design-system/components/TextArea.js",
+      "require": "./dist/design-system/components/TextArea.cjs"
+    },
+    "./components/OTPInput": {
+      "types": "./dist/design-system/components/OTPInput.d.ts",
+      "import": "./dist/design-system/components/OTPInput.js",
+      "require": "./dist/design-system/components/OTPInput.cjs"
+    },
+    "./components/Dropdown": {
+      "types": "./dist/design-system/components/Dropdown.d.ts",
+      "import": "./dist/design-system/components/Dropdown.js",
+      "require": "./dist/design-system/components/Dropdown.cjs"
+    },
+    "./components/Autocomplete": {
+      "types": "./dist/design-system/components/Autocomplete.d.ts",
+      "import": "./dist/design-system/components/Autocomplete.js",
+      "require": "./dist/design-system/components/Autocomplete.cjs"
+    },
+    "./components/MultiSelect": {
+      "types": "./dist/design-system/components/MultiSelect.d.ts",
+      "import": "./dist/design-system/components/MultiSelect.js",
+      "require": "./dist/design-system/components/MultiSelect.cjs"
+    },
+    "./components/Checkbox": {
+      "types": "./dist/design-system/components/Checkbox.d.ts",
+      "import": "./dist/design-system/components/Checkbox.js",
+      "require": "./dist/design-system/components/Checkbox.cjs"
+    },
+    "./components/Radio": {
+      "types": "./dist/design-system/components/Radio.d.ts",
+      "import": "./dist/design-system/components/Radio.js",
+      "require": "./dist/design-system/components/Radio.cjs"
+    },
+    "./components/Toggler": {
+      "types": "./dist/design-system/components/Toggler.d.ts",
+      "import": "./dist/design-system/components/Toggler.js",
+      "require": "./dist/design-system/components/Toggler.cjs"
+    },
+    "./components/Calendar": {
+      "types": "./dist/design-system/components/Calendar.d.ts",
+      "import": "./dist/design-system/components/Calendar.js",
+      "require": "./dist/design-system/components/Calendar.cjs"
+    },
+    "./components/ColorPicker": {
+      "types": "./dist/design-system/components/ColorPicker.d.ts",
+      "import": "./dist/design-system/components/ColorPicker.js",
+      "require": "./dist/design-system/components/ColorPicker.cjs"
+    },
+    "./components/Slider": {
+      "types": "./dist/design-system/components/Slider.d.ts",
+      "import": "./dist/design-system/components/Slider.js",
+      "require": "./dist/design-system/components/Slider.cjs"
+    },
+    "./components/RatingStars": {
+      "types": "./dist/design-system/components/RatingStars.d.ts",
+      "import": "./dist/design-system/components/RatingStars.js",
+      "require": "./dist/design-system/components/RatingStars.cjs"
+    },
+    "./components/FileUpload": {
+      "types": "./dist/design-system/components/FileUpload.d.ts",
+      "import": "./dist/design-system/components/FileUpload.js",
+      "require": "./dist/design-system/components/FileUpload.cjs"
+    },
+    "./components/SignatureInput": {
+      "types": "./dist/design-system/components/SignatureInput.d.ts",
+      "import": "./dist/design-system/components/SignatureInput.js",
+      "require": "./dist/design-system/components/SignatureInput.cjs"
+    },
+    "./components/RichTextEditor": {
+      "types": "./dist/design-system/components/RichTextEditor.d.ts",
+      "import": "./dist/design-system/components/RichTextEditor.js",
+      "require": "./dist/design-system/components/RichTextEditor.cjs"
+    },
+    "./components/FormLayout": {
+      "types": "./dist/design-system/components/FormLayout.d.ts",
+      "import": "./dist/design-system/components/FormLayout.js",
+      "require": "./dist/design-system/components/FormLayout.cjs"
     }
   },
   "typesVersions": {
@@ -144,6 +259,75 @@
       ],
       "./components/Button": [
         "./dist/design-system/components/Button.d.ts"
+      ],
+      "./components/Avatar": [
+        "./dist/design-system/components/Avatar.d.ts"
+      ],
+      "./components/Badge": [
+        "./dist/design-system/components/Badge.d.ts"
+      ],
+      "./components/EmptyState": [
+        "./dist/design-system/components/EmptyState.d.ts"
+      ],
+      "./components/PageLoading": [
+        "./dist/design-system/components/PageLoading.d.ts"
+      ],
+      "./components/Input": [
+        "./dist/design-system/components/Input.d.ts"
+      ],
+      "./components/PasswordInput": [
+        "./dist/design-system/components/PasswordInput.d.ts"
+      ],
+      "./components/SearchInput": [
+        "./dist/design-system/components/SearchInput.d.ts"
+      ],
+      "./components/TextArea": [
+        "./dist/design-system/components/TextArea.d.ts"
+      ],
+      "./components/OTPInput": [
+        "./dist/design-system/components/OTPInput.d.ts"
+      ],
+      "./components/Dropdown": [
+        "./dist/design-system/components/Dropdown.d.ts"
+      ],
+      "./components/Autocomplete": [
+        "./dist/design-system/components/Autocomplete.d.ts"
+      ],
+      "./components/MultiSelect": [
+        "./dist/design-system/components/MultiSelect.d.ts"
+      ],
+      "./components/Checkbox": [
+        "./dist/design-system/components/Checkbox.d.ts"
+      ],
+      "./components/Radio": [
+        "./dist/design-system/components/Radio.d.ts"
+      ],
+      "./components/Toggler": [
+        "./dist/design-system/components/Toggler.d.ts"
+      ],
+      "./components/Calendar": [
+        "./dist/design-system/components/Calendar.d.ts"
+      ],
+      "./components/ColorPicker": [
+        "./dist/design-system/components/ColorPicker.d.ts"
+      ],
+      "./components/Slider": [
+        "./dist/design-system/components/Slider.d.ts"
+      ],
+      "./components/RatingStars": [
+        "./dist/design-system/components/RatingStars.d.ts"
+      ],
+      "./components/FileUpload": [
+        "./dist/design-system/components/FileUpload.d.ts"
+      ],
+      "./components/SignatureInput": [
+        "./dist/design-system/components/SignatureInput.d.ts"
+      ],
+      "./components/RichTextEditor": [
+        "./dist/design-system/components/RichTextEditor.d.ts"
+      ],
+      "./components/FormLayout": [
+        "./dist/design-system/components/FormLayout.d.ts"
       ]
     }
   }

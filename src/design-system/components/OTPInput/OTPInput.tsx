@@ -322,7 +322,7 @@ export const useOTP = (length: number = 6) => {
     setIsComplete(newValue.length === length);
   };
 
-  const handleComplete = (completedValue: string) => {
+  const handleComplete = (_completedValue: string) => {
     setIsComplete(true);
     // You can add additional logic here, like auto-submit
   };

@@ -94,7 +94,7 @@ export const RichTextEditor: React.FC<RichTextEditorProps> = ({
           case "code":
             replacement = `\`${selectedText}\``;
             break;
-          case "link":
+          case "link": {
             const url = prompt("Enter URL:");
             if (url) {
               replacement = `[${selectedText}](${url})`;
@@ -102,6 +102,7 @@ export const RichTextEditor: React.FC<RichTextEditorProps> = ({
               return;
             }
             break;
+          }
         }
 
         const newValue =
@@ -119,7 +120,7 @@ export const RichTextEditor: React.FC<RichTextEditorProps> = ({
 
   const renderMarkdownPreview = (markdown: string) => {
     // Simple markdown to HTML conversion
-    let html = markdown
+    const html = markdown
       .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
       .replace(/\*(.*?)\*/g, "<em>$1</em>")
       .replace(/~~(.*?)~~/g, "<del>$1</del>")

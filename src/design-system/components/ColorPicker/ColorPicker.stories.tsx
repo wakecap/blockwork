@@ -5,7 +5,6 @@ import {
   SimpleColorPicker,
   AdvancedColorPicker,
   ThemeColorPicker,
-  useColorPicker,
 } from "./ColorPicker";
 
 const meta: Meta<typeof ColorPicker> = {

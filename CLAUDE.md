@@ -125,21 +125,22 @@ Three config files:
 
 ### Storybook
 
-Currently showcases **8 core components** (see `.storybook/main.ts`):
-- TopNavigator
-- MegaDropdown
-- PageLoading
-- Avatar
-- Button
-- Badge
-- SearchInput
-- EmptyState
+Currently showcases **26 components** (see `.storybook/main.ts`):
+
+**Navigation & UI (8)**:
+- TopNavigator, MegaDropdown, PageLoading, Avatar, Button, Badge, SearchInput, EmptyState
+
+**Form Elements (18)**:
+- Input Fields: Input, PasswordInput, SearchInput, TextArea, OTPInput
+- Selection Controls: Dropdown, Autocomplete, MultiSelect, Checkbox, Radio, Toggler
+- Specialized Inputs: Calendar, ColorPicker, Slider, RatingStars, FileUpload, SignatureInput, RichTextEditor
+- Form Layout: FormLayout
 
 **To add a new story**: Add the story path to the `stories` array in `.storybook/main.ts`
 
 ### ESLint Configuration
 
-The codebase uses **selective linting** - only the 8 core components listed in Storybook are linted. All other components in `src/design-system/components/` are ignored, as are `src/stories/`, `src/design-system/foundations/`, and utility folders.
+The codebase uses **selective linting** - only the 26 components listed in Storybook (8 core + 18 form elements) are linted. All other components in `src/design-system/components/` are ignored, as are `src/stories/`, `src/design-system/foundations/`, and utility folders.
 
 ## Claude Instructions
 

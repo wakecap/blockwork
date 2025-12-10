@@ -177,7 +177,7 @@ export const FormLayout: React.FC<FormLayoutProps> = ({
 
 // Pre-built form layouts
 export const UserProfileForm: React.FC<{
-  onSubmit?: (data: any) => void;
+  onSubmit?: (data: Record<string, unknown>) => void;
   className?: string;
 }> = ({ onSubmit, className = "" }) => {
   const [formData, setFormData] = React.useState({
@@ -337,7 +337,7 @@ export const UserProfileForm: React.FC<{
 };
 
 export const SettingsForm: React.FC<{
-  onSubmit?: (data: any) => void;
+  onSubmit?: (data: Record<string, unknown>) => void;
   className?: string;
 }> = ({ onSubmit, className = "" }) => {
   const [formData, setFormData] = React.useState({

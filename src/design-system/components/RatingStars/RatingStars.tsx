@@ -37,7 +37,7 @@ export const RatingStars: React.FC<RatingStarsProps> = ({
   const getStarIcon = (index: number) => {
     const currentValue = hoverValue || value;
     const isFilled = index < currentValue;
-    const isHalf = !isFilled && currentValue > index && currentValue < index + 1;
+    const _isHalf = !isFilled && currentValue > index && currentValue < index + 1;
 
     if (variant === "filled") {
       return "fa-solid fa-star";

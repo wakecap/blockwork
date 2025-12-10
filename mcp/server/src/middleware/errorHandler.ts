@@ -78,7 +78,7 @@ export function errorHandler(
   err: Error & { type?: ErrorType; details?: unknown },
   req: Request,
   res: Response,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+
   _next: NextFunction,
 ) {
   const statusCode = getStatusCode(err);

@@ -190,7 +190,7 @@ export const TwoFactorAuthentication: Story = {
     const [value, setValue] = React.useState("");
     const [isComplete, setIsComplete] = React.useState(false);
 
-    const handleComplete = (completedValue: string) => {
+    const handleComplete = (_completedValue: string) => {
       setIsComplete(true);
     };
 
@@ -260,7 +260,7 @@ export const BankingPIN: Story = {
     const [value, setValue] = React.useState("");
     const [isComplete, setIsComplete] = React.useState(false);
 
-    const handleComplete = (completedValue: string) => {
+    const handleComplete = (_completedValue: string) => {
       setIsComplete(true);
     };
 

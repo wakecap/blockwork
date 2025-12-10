@@ -70,8 +70,8 @@ export const SignatureInput: React.FC<SignatureInputProps> = ({
     if (!ctx) return;
 
     const rect = canvas.getBoundingClientRect();
-    const x = (e as any).clientX - rect.left;
-    const y = (e as any).clientY - rect.top;
+    const x = (e as React.MouseEvent<HTMLCanvasElement>).clientX - rect.left;
+    const y = (e as React.MouseEvent<HTMLCanvasElement>).clientY - rect.top;
 
     ctx.beginPath();
     ctx.moveTo(x, y);
@@ -91,8 +91,8 @@ export const SignatureInput: React.FC<SignatureInputProps> = ({
     if (!ctx) return;
 
     const rect = canvas.getBoundingClientRect();
-    const x = (e as any).clientX - rect.left;
-    const y = (e as any).clientY - rect.top;
+    const x = (e as React.MouseEvent<HTMLCanvasElement>).clientX - rect.left;
+    const y = (e as React.MouseEvent<HTMLCanvasElement>).clientY - rect.top;
 
     ctx.lineTo(x, y);
     ctx.stroke();

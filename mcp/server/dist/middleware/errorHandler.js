@@ -69,9 +69,7 @@ function getJsonRpcErrorCode(statusCode) {
  * Global error handler middleware
  * Catches all errors and formats them as JSON responses
  */
-export function errorHandler(err, req, res, 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-_next) {
+export function errorHandler(err, req, res, _next) {
     const statusCode = getStatusCode(err);
     const isProduction = process.env.NODE_ENV === "production";
     // Log the error

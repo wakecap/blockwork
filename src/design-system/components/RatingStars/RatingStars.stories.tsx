@@ -340,7 +340,6 @@ export const RatingComparison: Story = {
 export const InteractiveDemo: Story = {
   render: () => {
     const [rating, setRating] = React.useState(0);
-    const [hoverRating, setHoverRating] = React.useState(0);
 
     return (
       <div className="w-full max-w-md">

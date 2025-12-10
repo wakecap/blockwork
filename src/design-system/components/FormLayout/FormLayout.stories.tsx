@@ -340,7 +340,7 @@ export const WithSectionNumbers: Story = {
 
 export const UserProfileFormExample: Story = {
   render: () => {
-    const handleSubmit = (data: any) => {
+    const handleSubmit = (data: Record<string, unknown>) => {
       console.log("Form submitted:", data);
     };
 
@@ -355,7 +355,7 @@ export const UserProfileFormExample: Story = {
 
 export const SettingsFormExample: Story = {
   render: () => {
-    const handleSubmit = (data: any) => {
+    const handleSubmit = (data: Record<string, unknown>) => {
       console.log("Settings submitted:", data);
     };
 

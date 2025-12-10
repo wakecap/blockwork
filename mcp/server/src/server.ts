@@ -112,7 +112,680 @@ export const COMPONENTS: Record<string, ComponentMetadata> = {
     dependencies: [],
   },
 
-  // TODO: Add more components here as they become production-ready
+  // UI Components
+
+  Avatar: {
+    name: "Avatar",
+    description:
+      "User avatar component with multiple sizes, status indicators, fallback support, and click interactions. Production-ready for user profiles and navigation.",
+    category: "UI Components",
+    path: "src/design-system/components/Avatar/Avatar.tsx",
+    props: {
+      src: "string (optional) - Image source URL",
+      alt: "string (optional) - Alt text for image accessibility",
+      name: "string (optional) - User name (used for generating initials)",
+      initials: "string (optional) - Custom initials to display",
+      size: "'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'iconXs' | 'iconSm' | 'iconMd' | 'iconLg' | 'iconXl' (optional) - Avatar size (default: 'md')",
+      status: "'online' | 'offline' | 'away' | 'busy' (optional) - Status indicator",
+      statusPosition:
+        "'top-right' | 'top-left' | 'bottom-right' | 'bottom-left' (optional) - Position of status indicator (default: 'bottom-right')",
+      fallbackIcon: "React.ReactNode (optional) - Custom fallback icon when image fails",
+      className: "string (optional) - Additional CSS classes",
+      onClick: "() => void (optional) - Click handler",
+      showChevron: "boolean (optional) - Show dropdown chevron indicator (default: false)",
+    },
+    features: [
+      "10 size variants (xs, sm, md, lg, xl + iconXs, iconSm, iconMd, iconLg, iconXl)",
+      "Automatic initials generation from name prop",
+      "Status indicators with 4 states (online, offline, away, busy)",
+      "Configurable status position (4 corners)",
+      "Image error handling with fallback to initials or icon",
+      "Click interactions with optional chevron indicator",
+      "Circular design with proper aspect ratios",
+      "Accessible with proper ARIA attributes",
+    ],
+    dependencies: [],
+  },
+
+  Badge: {
+    name: "Badge",
+    description:
+      "Versatile badge component with 7 variants and 3 sizes for labels, status, and categorization. Production-ready for UI annotations.",
+    category: "UI Components",
+    path: "src/design-system/components/Badge/Badge.tsx",
+    props: {
+      variant:
+        "'default' | 'secondary' | 'destructive' | 'outline' | 'success' | 'warning' | 'info' (optional) - Badge style variant (default: 'default')",
+      size: "'sm' | 'md' | 'lg' (optional) - Badge size (default: 'sm')",
+      children: "React.ReactNode - Badge content (text, icons, etc.)",
+      className: "string (optional) - Additional CSS classes",
+    },
+    features: [
+      "7 style variants: default, secondary, destructive, outline, success, warning, info",
+      "3 size options: sm, md, lg",
+      "Rounded corners with unique bottom-left flat design",
+      "Hover state transitions",
+      "Focus ring for accessibility",
+      "Supports text and icon content",
+      "Class variance authority (CVA) for variant management",
+      "Extends all HTML div attributes",
+    ],
+    dependencies: [],
+  },
+
+  EmptyState: {
+    name: "EmptyState",
+    description:
+      "Empty state component for displaying helpful messages when no content is available. Production-ready with customizable icons, actions, and variants.",
+    category: "UI Components",
+    path: "src/design-system/components/EmptyState/EmptyState.tsx",
+    props: {
+      title: "string - Main heading text",
+      description: "string (optional) - Descriptive text explaining the empty state",
+      icon: "string (optional) - Font Awesome icon class (custom icon)",
+      variant:
+        "'default' | 'search' | 'files' | 'users' | 'error' (optional) - Preset variant with default icon (default: 'default')",
+      action: "React.ReactNode (optional) - Action button or custom element",
+      size: "'sm' | 'md' | 'lg' (optional) - Component size (default: 'md')",
+      className: "string (optional) - Additional CSS classes",
+    },
+    features: [
+      "5 preset variants with default icons (default, search, files, users, error)",
+      "Custom icon support via Font Awesome classes",
+      "3 size options with responsive scaling",
+      "Optional action button/element slot",
+      "Centered layout with icon, title, description, and action",
+      "Customizable spacing and typography",
+      "Accessible with proper semantic HTML",
+    ],
+    dependencies: [],
+  },
+
+  PageLoading: {
+    name: "PageLoading",
+    description:
+      "Full-screen loading component with WakeCap logo animation and customizable message. Production-ready for app initialization and route transitions.",
+    category: "UI Components",
+    path: "src/design-system/components/PageLoading/PageLoading.tsx",
+    props: {
+      visible: "boolean (optional) - Controls visibility of loading component (default: true)",
+      message: "string (optional) - Custom loading message (default: 'Loading...')",
+      animationDuration:
+        "number (optional) - Duration of fade animation in milliseconds (default: 2000)",
+      skeleton:
+        "boolean (optional) - Use skeleton loading instead of fade animation (default: false)",
+      logoVariant: "'symbol' | 'text' (optional) - Logo display variant (default: 'symbol')",
+    },
+    features: [
+      "Full-screen overlay with high z-index (9999)",
+      "WakeCap logo with fade animation",
+      "Two logo variants: geometric symbol or full text logo",
+      "Customizable animation duration",
+      "Optional skeleton loading mode",
+      "Customizable loading message",
+      "White background for clean appearance",
+      "Centered layout with proper spacing",
+    ],
+    dependencies: [],
+  },
+
+  // Input Fields
+
+  Input: {
+    name: "Input",
+    description:
+      "Standard text input field with label, icons, error/success states, and full Arabic/RTL support. Production-ready for all form input needs.",
+    category: "Input Fields",
+    path: "src/design-system/components/Input/Input.tsx",
+    props: {
+      label: "string (optional) - Label text displayed above input",
+      error: "string (optional) - Error message with red border and text",
+      success: "string (optional) - Success message with green border and text",
+      iconLeft: "string (optional) - Left icon class name (FontAwesome)",
+      iconRight: "string (optional) - Right icon class name (FontAwesome)",
+      arabicLabel: "string (optional) - Arabic translation of label",
+      arabicPlaceholder: "string (optional) - Arabic translation of placeholder",
+      arabicError: "string (optional) - Arabic translation of error",
+      arabicSuccess: "string (optional) - Arabic translation of success",
+      showArabicText: "boolean (optional) - Toggle to show Arabic text (default: false)",
+    },
+    features: [
+      "Error/success state styling with color indicators",
+      "Full Arabic/RTL support with separate Arabic props",
+      "Icon positioning (left/right)",
+      "Inherits all standard HTMLInputElement attributes",
+      "Label support with proper accessibility",
+    ],
+    dependencies: [],
+  },
+
+  PasswordInput: {
+    name: "PasswordInput",
+    description:
+      "Password input field with toggle visibility button, optional strength indicator, and error/success states. Production-ready for authentication forms.",
+    category: "Input Fields",
+    path: "src/design-system/components/PasswordInput/PasswordInput.tsx",
+    props: {
+      label: "string (optional) - Label text",
+      error: "string (optional) - Error message",
+      success: "string (optional) - Success message",
+      iconLeft: "string (optional) - Left icon class name",
+      showToggle: "boolean (optional) - Show/hide password toggle (default: true)",
+      strengthIndicator: "boolean (optional) - Display password strength meter (default: false)",
+    },
+    features: [
+      "Password visibility toggle with eye icon",
+      "Optional 6-level password strength indicator (Very Weak to Very Strong)",
+      "Color-coded strength bar (red to green)",
+      "Strength calculation checks: length, lowercase, uppercase, numbers, special chars",
+      "Internal state management for visibility",
+      "Inherits standard input attributes",
+    ],
+    dependencies: [],
+  },
+
+  SearchInput: {
+    name: "SearchInput",
+    description:
+      "Search-specific input field with magnifying glass icon, clear button, and Enter key search callback. Production-ready for search functionality.",
+    category: "Input Fields",
+    path: "src/design-system/components/SearchInput/SearchInput.tsx",
+    props: {
+      label: "string (optional) - Label text",
+      error: "string (optional) - Error message",
+      success: "string (optional) - Success message",
+      placeholder: "string (optional) - Placeholder text (default: 'Search...')",
+      onClear: "() => void (optional) - Callback when clear button clicked",
+      showClearButton: "boolean (optional) - Show/hide clear button (default: true)",
+      onSearch: "(value: string) => void (optional) - Callback on Enter key press",
+    },
+    features: [
+      "Search icon (magnifying glass) on left side",
+      "Clear button (X icon) appears when input has value",
+      "Enter key triggers onSearch callback",
+      "Dedicated onClear callback for clear action",
+      "Custom placeholder styling",
+      "Standard onChange also supported",
+    ],
+    dependencies: [],
+  },
+
+  TextArea: {
+    name: "TextArea",
+    description:
+      "Multi-line textarea input with character counter, icons, and error/success states. Production-ready for long-form text input.",
+    category: "Input Fields",
+    path: "src/design-system/components/TextArea/TextArea.tsx",
+    props: {
+      label: "string (optional) - Label text",
+      error: "string (optional) - Error message",
+      success: "string (optional) - Success message",
+      iconLeft: "string (optional) - Left icon class name",
+      iconRight: "string (optional) - Right icon class name (non-interactive)",
+      rows: "number (optional) - Number of rows (default: 4)",
+      maxLength: "number (optional) - Max character limit",
+      showCharacterCount: "boolean (optional) - Display character counter (default: false)",
+    },
+    features: [
+      "Character counter display with threshold warnings (90% = orange)",
+      "Counter shows current/maxLength format",
+      "No resize capability (resize-none)",
+      "Error/success state styling",
+      "Icon support (left and right)",
+      "Inherits all standard HTMLTextAreaElement attributes",
+    ],
+    dependencies: [],
+  },
+
+  OTPInput: {
+    name: "OTPInput",
+    description:
+      "One-time password input with individual digit fields, paste support, keyboard navigation, and password mode. Includes pre-built variants: PINInput, VerificationCode, PasswordOTP.",
+    category: "Input Fields",
+    path: "src/design-system/components/OTPInput/OTPInput.tsx",
+    props: {
+      value: "string (required) - Current OTP value",
+      onChange: "(value: string) => void (required) - Callback when value changes",
+      length: "number (optional) - Number of input fields (default: 6)",
+      type: "'text' | 'number' | 'password' (optional) - Input type (default: 'text')",
+      size: "'sm' | 'md' | 'lg' (optional) - Input size (default: 'md')",
+      variant: "'default' | 'outlined' | 'filled' (optional) - Style variant (default: 'default')",
+      autoFocus: "boolean (optional) - Auto-focus first input (default: false)",
+      disabled: "boolean (optional) - Disable all inputs (default: false)",
+      placeholder: "string (optional) - Placeholder per input (default: '0')",
+      showToggle: "boolean (optional) - Show password visibility toggle (default: false)",
+      onComplete: "(value: string) => void (optional) - Callback when all fields filled",
+    },
+    features: [
+      "Individual input fields for each OTP digit",
+      "Smart multi-character paste handling",
+      "Keyboard navigation (arrow keys, backspace)",
+      "Auto-focus to next field on single char input",
+      "Password mode with optional visibility toggle",
+      "Three size variants: sm (10x10), md (12x12), lg (14x14)",
+      "Three style variants: default, outlined, filled",
+      "Auto-complete detection and callback",
+      "Pre-built components: PINInput (4-digit), VerificationCode (6-char), PasswordOTP (6-char with toggle)",
+      "useOTP custom hook for state management",
+    ],
+    dependencies: [],
+  },
+
+  // Selection Controls
+
+  Dropdown: {
+    name: "Dropdown",
+    description:
+      "Native HTML select dropdown wrapper with Tailwind styling, label support, and icon positioning. Production-ready for selection inputs.",
+    category: "Selection",
+    path: "src/design-system/components/Dropdown/Dropdown.tsx",
+    props: {
+      label: "string (optional) - Field label displayed above dropdown",
+      options: "DropdownOption[] (required) - Array of {label, value} objects",
+      value: "string (required) - Currently selected value",
+      onChange:
+        "(e: React.ChangeEvent<HTMLSelectElement>) => void (required) - Change event handler",
+      iconLeft: "string (optional) - Icon class string for left side",
+      iconRight: "string (optional) - Icon class string for right side",
+      disabled: "boolean (optional) - Disabled state",
+    },
+    features: [
+      "Native HTML select element with enhanced styling",
+      "Label support with clean typography",
+      "Left and right icon positioning with proper spacing",
+      "Disabled state with opacity reduction",
+      "Focus ring styling with primary color",
+      "Extends all standard HTML select attributes",
+    ],
+    dependencies: [],
+  },
+
+  Autocomplete: {
+    name: "Autocomplete",
+    description:
+      "Text input with real-time filtering suggestions dropdown, keyboard navigation, and disabled option support. Production-ready for searchable selections.",
+    category: "Selection",
+    path: "src/design-system/components/Autocomplete/Autocomplete.tsx",
+    props: {
+      label: "string (optional) - Field label",
+      options: "AutocompleteOption[] (required) - Array of {label, value, disabled?} objects",
+      value: "string (optional) - Current input value",
+      onChange: "(value: string) => void (required) - Called with string value during typing",
+      onSelect: "(option: AutocompleteOption) => void (optional) - Called when option selected",
+      placeholder: "string (optional) - Input placeholder (default: 'Type to search...')",
+      disabled: "boolean (optional) - Disable state (default: false)",
+      error: "string (optional) - Error message displayed below",
+      loading: "boolean (optional) - Loading state indicator (default: false)",
+      minChars: "number (optional) - Min characters before filtering (default: 1)",
+      maxSuggestions: "number (optional) - Max suggestions to display (default: 10)",
+    },
+    features: [
+      "Real-time filtering of options as user types",
+      "Dropdown suggestions with keyboard navigation (arrow keys, Enter, Escape)",
+      "Click-outside detection to close dropdown",
+      "Highlighted suggestion on hover/keyboard navigation",
+      "Disabled option support in suggestions",
+      "Search and chevron icons",
+      "Loading state with 'Loading...' message",
+      "Min character threshold and max suggestions limit",
+      "Error message display",
+      "'No options found' messaging",
+    ],
+    dependencies: [],
+  },
+
+  MultiSelect: {
+    name: "MultiSelect",
+    description:
+      "Multi-select dropdown with checkbox indicators, removable tags/chips, optional search, and max selections limit. Production-ready for multi-selection needs.",
+    category: "Selection",
+    path: "src/design-system/components/MultiSelect/MultiSelect.tsx",
+    props: {
+      label: "string (optional) - Field label",
+      options: "MultiSelectOption[] (required) - Array of {label, value, disabled?} objects",
+      selectedValues: "string[] (required) - Array of currently selected values",
+      onChange: "(values: string[]) => void (required) - Called with new array of selected values",
+      placeholder: "string (optional) - Shown when nothing selected (default: 'Select options...')",
+      disabled: "boolean (optional) - Disable state (default: false)",
+      error: "string (optional) - Error message displayed below",
+      maxSelections: "number (optional) - Maximum number of selections allowed",
+      searchable: "boolean (optional) - Enable search input in dropdown (default: false)",
+    },
+    features: [
+      "Multi-select dropdown with checkbox indicators",
+      "Selected items displayed as removable tags/chips",
+      "Click-outside detection to close dropdown",
+      "Optional search/filter functionality",
+      "Max selections limit enforcement",
+      "Disabled options support",
+      "Selection counter display (X/maxSelections)",
+      "Individual item removal via chip X button",
+      "Color-coded selected items (primary-100 background)",
+    ],
+    dependencies: [],
+  },
+
+  Checkbox: {
+    name: "Checkbox",
+    description:
+      "Simple checkbox wrapper with label and optional icon support. Production-ready for boolean selections.",
+    category: "Selection",
+    path: "src/design-system/components/Checkbox/Checkbox.tsx",
+    props: {
+      label: "string (required) - Label text displayed next to checkbox",
+      icon: "string (optional) - Icon class string (FontAwesome style)",
+    },
+    features: [
+      "Wrapper label component for standard HTML checkbox",
+      "Inline layout with icon and label text",
+      "Disabled state support (opacity, cursor not-allowed)",
+      "Primary color for checked state",
+      "Neutral border color",
+      "Primary focus ring",
+      "Icon support with sizing (w-4 h-4)",
+      "Extends all standard HTML input attributes",
+    ],
+    dependencies: [],
+  },
+
+  Radio: {
+    name: "Radio",
+    description:
+      "Simple radio button wrapper with label and optional icon support. Production-ready for mutually exclusive selections.",
+    category: "Selection",
+    path: "src/design-system/components/Radio/Radio.tsx",
+    props: {
+      label: "string (required) - Label text displayed next to radio",
+      icon: "string (optional) - Icon class string (FontAwesome style)",
+    },
+    features: [
+      "Wrapper label component for standard HTML radio input",
+      "Inline layout with icon and label text",
+      "Disabled state support (opacity, cursor not-allowed)",
+      "Primary color for checked state",
+      "Neutral border color",
+      "Primary focus ring",
+      "Icon support with sizing (w-4 h-4)",
+      "Designed for use in radio groups (requires parent to manage name/value)",
+      "Extends all standard HTML input attributes",
+    ],
+    dependencies: [],
+  },
+
+  Toggler: {
+    name: "Toggler",
+    description:
+      "Custom switch/toggle component with smooth animations, icon support, and accessible design. Production-ready for on/off states.",
+    category: "Selection",
+    path: "src/design-system/components/Toggler/Toggler.tsx",
+    props: {
+      checked: "boolean (required) - Boolean state of the toggle",
+      onChange: "(checked: boolean) => void (required) - Callback receiving boolean value",
+      disabled: "boolean (optional) - Disable state",
+      label: "string (optional) - Label text displayed next to toggle",
+      icon: "string (optional) - Icon class string (FontAwesome style)",
+    },
+    features: [
+      "Custom styled toggle switch with animated knob slide",
+      "Smooth transition animation for knob movement",
+      "Primary color for checked state (bg-primary-600)",
+      "Neutral color for unchecked state (bg-neutral-300)",
+      "Hidden native checkbox for accessibility",
+      "White knob with shadow that translates on toggle",
+      "Icon support (w-4 h-4) displayed next to switch",
+      "Optional label support",
+      "Disabled state handling",
+    ],
+    dependencies: [],
+  },
+
+  // Specialized Inputs
+
+  Calendar: {
+    name: "Calendar",
+    description:
+      "Comprehensive calendar component with single/range/multi-month variants, date restrictions, predefined ranges, and locale support. Includes DatePicker and DateRangePicker.",
+    category: "Date & Time",
+    path: "src/design-system/components/Calendar/Calendar.tsx",
+    props: {
+      value: "Date (optional) - Selected date",
+      onChange: "(date: Date) => void (optional) - Date selection callback",
+      minDate: "Date (optional) - Minimum selectable date",
+      maxDate: "Date (optional) - Maximum selectable date",
+      disabledDates: "Date[] (optional) - Array of disabled dates",
+      highlightedDates: "Date[] (optional) - Array of highlighted dates",
+      variant: "'single' | 'range' | 'multi-month' (optional) - Calendar display variant",
+      rangeStart: "Date (optional) - Range start date",
+      rangeEnd: "Date (optional) - Range end date",
+      onRangeChange: "(start: Date, end: Date) => void (optional) - Range selection callback",
+      showToday: "boolean (optional) - Highlight today's date",
+      showWeekNumbers: "boolean (optional) - Display week numbers",
+      locale: "string (optional) - Date formatting locale (default: 'en-US')",
+      showClearButton: "boolean (optional) - Show clear button",
+      showSelectButton: "boolean (optional) - Show select button",
+      predefinedRanges: "Array<{label, value, getValue}> (optional) - Predefined date ranges",
+    },
+    features: [
+      "Three calendar variants: single date, date range, multi-month",
+      "Week number support",
+      "Customizable disabled and highlighted dates",
+      "Predefined date ranges with custom range support",
+      "Locale support for date formatting",
+      "Built-in DatePicker and DateRangePicker helper components",
+      "Clear and Select button controls",
+      "Min/max date restrictions",
+    ],
+    dependencies: ["Button"],
+  },
+
+  ColorPicker: {
+    name: "ColorPicker",
+    description:
+      "Color selection component with multiple formats (hex/RGB/HSL), preset colors, preview, and contrast calculation. Includes pre-built variants and custom hook.",
+    category: "Visual",
+    path: "src/design-system/components/ColorPicker/ColorPicker.tsx",
+    props: {
+      value: "string (required) - Current color value",
+      onChange: "(color: string) => void (required) - Color change callback",
+      format: "'hex' | 'rgb' | 'hsl' (optional) - Color format (default: 'hex')",
+      presetColors: "string[] (optional) - 18 default colors provided",
+      showPresets: "boolean (optional) - Display preset colors (default: true)",
+      showInput: "boolean (optional) - Show color input field (default: true)",
+      showPreview: "boolean (optional) - Show color preview (default: true)",
+      disabled: "boolean (optional) - Disable state (default: false)",
+    },
+    features: [
+      "Multiple color formats with conversion (hex, RGB, HSL)",
+      "Customizable preset colors",
+      "Color preview display",
+      "Contrast color calculation for text readability",
+      "Pre-built variants: SimpleColorPicker, AdvancedColorPicker, ThemeColorPicker",
+      "Custom hook useColorPicker for state management",
+      "No heavy external dependencies",
+    ],
+    dependencies: [],
+  },
+
+  Slider: {
+    name: "Slider",
+    description:
+      "Simple HTML5 range input wrapper with label and current value display. Production-ready for numeric value selection.",
+    category: "Numeric",
+    path: "src/design-system/components/Slider/Slider.tsx",
+    props: {
+      label: "string (optional) - Label text",
+      min: "number (optional) - Minimum value (default: 0)",
+      max: "number (optional) - Maximum value (default: 100)",
+      step: "number (optional) - Value increment step (default: 1)",
+      value: "number (required) - Current slider value",
+      onChange: "(e: React.ChangeEvent<HTMLInputElement>) => void (required) - Change handler",
+      disabled: "boolean (optional) - Disable state",
+    },
+    features: [
+      "Simple HTML5 range input wrapper",
+      "Optional label support",
+      "Current value display",
+      "Disabled state styling",
+      "Minimal dependencies",
+      "Lightweight implementation",
+      "Extends all standard HTML input range attributes",
+    ],
+    dependencies: [],
+  },
+
+  RatingStars: {
+    name: "RatingStars",
+    description:
+      "Star rating component with hover preview, multiple star counts (5/10), three variants, custom colors, and rating labels. Includes pre-built variants and custom hook.",
+    category: "Rating",
+    path: "src/design-system/components/RatingStars/RatingStars.tsx",
+    props: {
+      value: "number (required) - Current rating value",
+      onChange: "(rating: number) => void (optional) - Rating change callback",
+      maxStars: "number (optional) - Maximum stars (default: 5)",
+      size: "'sm' | 'md' | 'lg' (optional) - Star size (default: 'md')",
+      variant: "'default' | 'filled' | 'outlined' (optional) - Visual variant (default: 'default')",
+      color: "string (optional) - Custom star color (default: '#fbbf24' yellow-400)",
+      readOnly: "boolean (optional) - Read-only mode (default: false)",
+      showValue: "boolean (optional) - Show numeric value (default: false)",
+      showLabel: "boolean (optional) - Show rating label (default: false)",
+    },
+    features: [
+      "Hover preview before selection",
+      "Multiple star counts (5 or 10 stars)",
+      "Three visual variants (default, filled, outlined)",
+      "Custom color support",
+      "Rating labels: Poor, Fair, Good, Very Good, Excellent",
+      "Pre-built components: ProductRating, ReviewRating, CompactRating, TenStarRating",
+      "Custom hook useRating for state management",
+      "Uses FontAwesome stars",
+    ],
+    dependencies: [],
+  },
+
+  FileUpload: {
+    name: "FileUpload",
+    description:
+      "Drag-and-drop file upload with progress bars, file type icons, error handling, and retry capability. Includes pre-built variants for images/documents/videos.",
+    category: "File",
+    path: "src/design-system/components/FileUpload/FileUpload.tsx",
+    props: {
+      files:
+        "FileUploadFile[] (required) - Array of file objects with id/name/size/type/progress/status/error",
+      onFilesSelect: "(files: FileList) => void (required) - File selection callback",
+      onFileRemove: "(fileId: string) => void (required) - File removal callback",
+      onFileRetry: "(fileId: string) => void (optional) - File retry callback",
+      accept: "string (optional) - File type filter (default: '*/*')",
+      multiple: "boolean (optional) - Allow multiple files (default: false)",
+      maxFiles: "number (optional) - Max files allowed (default: 10)",
+      maxFileSize: "number (optional) - Max file size in bytes (default: 10MB)",
+      variant:
+        "'default' | 'compact' | 'detailed' (optional) - Layout variant (default: 'default')",
+      dragActive: "boolean (optional) - Drag active state (default: false)",
+    },
+    features: [
+      "Drag-and-drop file upload",
+      "File type icons (image, video, audio, file)",
+      "Progress bar display for uploading files",
+      "Error handling with retry capability",
+      "File size formatting",
+      "Pre-built specialized uploads: ImageUpload (5MB, multiple), DocumentUpload (10MB), VideoUpload (100MB, single)",
+      "Custom hook useFileUpload with simulated upload progress",
+      "Three layout variants",
+    ],
+    dependencies: [],
+  },
+
+  SignatureInput: {
+    name: "SignatureInput",
+    description:
+      "Canvas-based signature drawing with undo/redo, clear, download, and touch/mouse support. Includes pre-built variants for different sizes.",
+    category: "Document",
+    path: "src/design-system/components/SignatureInput/SignatureInput.tsx",
+    props: {
+      value: "string (optional) - Signature data URL",
+      onChange: "(signature: string) => void (optional) - Signature change callback",
+      width: "number (optional) - Canvas width (default: 400)",
+      height: "number (optional) - Canvas height (default: 200)",
+      penColor: "string (optional) - Pen color (default: '#000000')",
+      penWidth: "number (optional) - Pen width (default: 2)",
+      backgroundColor: "string (optional) - Background color (default: '#ffffff')",
+      placeholder: "string (optional) - Placeholder text (default: 'Sign here...')",
+      readOnly: "boolean (optional) - Read-only mode (default: false)",
+    },
+    features: [
+      "Canvas-based signature drawing",
+      "Undo/Redo functionality with history tracking",
+      "Clear button",
+      "Download as PNG",
+      "Customizable pen color and width",
+      "Touch and mouse support",
+      "Drawing state management",
+      "Pre-built variants: DocumentSignature (500x150), CompactSignature (300x100)",
+      "Toolbar with drawing controls",
+      "Data URL export for signatures",
+    ],
+    dependencies: [],
+  },
+
+  RichTextEditor: {
+    name: "RichTextEditor",
+    description:
+      "Rich text editor with WYSIWYG and Markdown modes, customizable toolbar, and preview. Includes pre-built variants for different use cases.",
+    category: "Text",
+    path: "src/design-system/components/RichTextEditor/RichTextEditor.tsx",
+    props: {
+      value: "string (required) - Current editor content",
+      onChange: "(value: string) => void (required) - Content change callback",
+      mode: "'wysiwyg' | 'markdown' (optional) - Editor mode (default: 'wysiwyg')",
+      placeholder: "string (optional) - Placeholder text (default: 'Start writing...')",
+      readOnly: "boolean (optional) - Read-only mode (default: false)",
+      toolbar:
+        "string[] (optional) - Toolbar items: bold, italic, underline, strikethrough, heading, list, orderedList, quote, code, link (default: all)",
+    },
+    features: [
+      "Two modes: WYSIWYG (contentEditable) and Markdown",
+      "Markdown preview mode with HTML rendering",
+      "Customizable toolbar with common formatting options",
+      "Built-in toolbar handlers with document.execCommand (WYSIWYG) or markdown syntax (Markdown)",
+      "Pre-built editors: WYSIWYGEditor, MarkdownEditor, SimpleEditor",
+      "Markdown to HTML conversion (basic regex-based)",
+      "ReadOnly support",
+      "Minimum height of 12rem (48px)",
+    ],
+    dependencies: [],
+  },
+
+  // Form Layout
+
+  FormLayout: {
+    name: "FormLayout",
+    description:
+      "Hierarchical form structure with groups, sections, and fields. Supports collapsible sections, multiple layouts, and validation display. Includes pre-built forms.",
+    category: "Layout",
+    path: "src/design-system/components/FormLayout/FormLayout.tsx",
+    props: {
+      groups: "FormGroup[] (required) - Array of form groups with sections and fields",
+      variant:
+        "'default' | 'compact' | 'spacious' (optional) - Spacing variant (default: 'default')",
+      layout:
+        "'vertical' | 'horizontal' | 'two-column' (optional) - Layout mode (default: 'vertical')",
+      showSectionNumbers: "boolean (optional) - Display section numbering (default: false)",
+    },
+    features: [
+      "Hierarchical form structure: Groups > Sections > Fields",
+      "Collapsible sections with expand/collapse state",
+      "Three spacing variants (default, compact, spacious)",
+      "Three layout modes (vertical, horizontal 1 col, two-column grid)",
+      "Three group styling variants (default, card, bordered)",
+      "Customizable section numbering",
+      "Required field indicators",
+      "Error and help text support",
+      "Pre-built forms: UserProfileForm (2 groups, 3 sections), SettingsForm (2 groups)",
+      "Flexible children prop for custom inputs",
+    ],
+    dependencies: [],
+  },
 };
 
 // Design tokens from tailwind.config.js

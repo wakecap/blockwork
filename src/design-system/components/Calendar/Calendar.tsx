@@ -38,8 +38,8 @@ export const Calendar: React.FC<CalendarProps> = ({
   rangeStart,
   rangeEnd,
   onRangeChange,
-  showToday = true,
-  showWeekNumbers = false,
+  showToday: _showToday = true,
+  showWeekNumbers: _showWeekNumbers = false,
   locale = "en-US",
   className = "",
   showClearButton = true,
@@ -170,7 +170,7 @@ export const Calendar: React.FC<CalendarProps> = ({
     }
   };
 
-  const goToToday = () => {
+  const _goToToday = () => {
     const today = new Date();
     setCurrentMonth(new Date(today.getFullYear(), today.getMonth(), 1));
     if (variant === "single") {
@@ -214,7 +214,7 @@ export const Calendar: React.FC<CalendarProps> = ({
   };
 
   const getDaysInMonth = (year: number, month: number): Date[] => {
-    const firstDay = new Date(year, month, 1);
+    const _firstDay = new Date(year, month, 1);
     const lastDay = new Date(year, month + 1, 0);
     const days: Date[] = [];
 
@@ -226,13 +226,13 @@ export const Calendar: React.FC<CalendarProps> = ({
     return days;
   };
 
-  const getWeekNumber = (date: Date): number => {
+  const _getWeekNumber = (date: Date): number => {
     const firstDayOfYear = new Date(date.getFullYear(), 0, 1);
     const pastDaysOfYear = (date.getTime() - firstDayOfYear.getTime()) / 86400000;
     return Math.ceil((pastDaysOfYear + firstDayOfYear.getDay() + 1) / 7);
   };
 
-  const renderMonth = (month: Date, isMultiMonth: boolean = false) => {
+  const renderMonth = (month: Date, _isMultiMonth: boolean = false) => {
     const isSelectedMonth =
       selectedMonth &&
       month.getFullYear() === selectedMonth.getFullYear() &&
@@ -489,7 +489,7 @@ export const DatePicker: React.FC<{
   value,
   onChange,
   placeholder = "Select date",
-  format = "MM/dd/yyyy",
+  format: _format = "MM/dd/yyyy",
   minDate,
   maxDate,
   disabled = false,

@@ -1,6 +1,6 @@
 import React from "react";
 
-interface PageLoadingProps {
+export interface PageLoadingProps {
   /** Whether the loading component is visible */
   visible?: boolean;
   /** Custom message to display below the logo */

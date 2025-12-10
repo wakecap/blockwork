@@ -6,7 +6,23 @@ Complete catalog of production-ready UI components exposed through the MCP serve
 
 The Blockwork MCP Server exposes **production-ready** components from the design system. Components are only added to the MCP server once they meet production quality standards.
 
-**Currently Available**: 1 component
+**Currently Available**: 24 components
+
+### Component Categories
+
+- **Navigation** (1): TopNavigator
+- **Forms** (1): Button
+- **UI Components** (4): Avatar, Badge, EmptyState, PageLoading
+- **Input Fields** (5): Input, PasswordInput, SearchInput, TextArea, OTPInput
+- **Selection Controls** (6): Dropdown, Autocomplete, MultiSelect, Checkbox, Radio, Toggler
+- **Date & Time** (1): Calendar
+- **Visual** (1): ColorPicker
+- **Numeric** (1): Slider
+- **Rating** (1): RatingStars
+- **File** (1): FileUpload
+- **Document** (1): SignatureInput
+- **Text** (1): RichTextEditor
+- **Layout** (1): FormLayout
 
 ## Production-Ready Components
 
@@ -116,6 +132,218 @@ function App() {
 - Simple single-page applications
 - No project context needed
 - Mobile-only applications (consider mobile-specific nav)
+
+---
+
+### Avatar
+
+**Category**: UI Components
+**Status**: ✅ Production Ready
+**Path**: `src/design-system/components/Avatar/Avatar.tsx`
+
+#### Description
+
+User avatar component with multiple sizes, status indicators, fallback support, and click interactions for user profiles and navigation.
+
+#### Features
+
+- ✅ 10 size variants (xs, sm, md, lg, xl + iconXs, iconSm, iconMd, iconLg, iconXl)
+- ✅ Automatic initials generation from name prop
+- ✅ Status indicators with 4 states (online, offline, away, busy)
+- ✅ Configurable status position (4 corners)
+- ✅ Image error handling with fallback to initials or icon
+- ✅ Click interactions with optional chevron indicator
+- ✅ Circular design with proper aspect ratios
+- ✅ Accessible with proper ARIA attributes
+
+#### Props
+
+| Prop | Type | Required | Description |
+|------|------|----------|-------------|
+| `src` | `string` | No | Image source URL |
+| `alt` | `string` | No | Alt text for image accessibility |
+| `name` | `string` | No | User name (used for generating initials) |
+| `initials` | `string` | No | Custom initials to display |
+| `size` | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| 'iconXs' \| 'iconSm' \| 'iconMd' \| 'iconLg' \| 'iconXl'` | No | Avatar size (default: 'md') |
+| `status` | `'online' \| 'offline' \| 'away' \| 'busy'` | No | Status indicator |
+| `statusPosition` | `'top-right' \| 'top-left' \| 'bottom-right' \| 'bottom-left'` | No | Position of status indicator (default: 'bottom-right') |
+| `fallbackIcon` | `React.ReactNode` | No | Custom fallback icon when image fails |
+| `className` | `string` | No | Additional CSS classes |
+| `onClick` | `() => void` | No | Click handler |
+| `showChevron` | `boolean` | No | Show dropdown chevron indicator (default: false) |
+
+#### Usage Example
+
+```tsx
+import { Avatar } from '@wakecap/blockwork-ui';
+
+function UserProfile() {
+  return (
+    <Avatar
+      src="https://example.com/avatar.jpg"
+      name="John Doe"
+      size="lg"
+      status="online"
+      statusPosition="bottom-right"
+      onClick={() => console.log('Avatar clicked')}
+    />
+  );
+}
+```
+
+---
+
+### Badge
+
+**Category**: UI Components
+**Status**: ✅ Production Ready
+**Path**: `src/design-system/components/Badge/Badge.tsx`
+
+#### Description
+
+Versatile badge component with 7 variants and 3 sizes for labels, status, and categorization.
+
+#### Features
+
+- ✅ 7 style variants: default, secondary, destructive, outline, success, warning, info
+- ✅ 3 size options: sm, md, lg
+- ✅ Rounded corners with unique bottom-left flat design
+- ✅ Hover state transitions
+- ✅ Focus ring for accessibility
+- ✅ Supports text and icon content
+- ✅ Class variance authority (CVA) for variant management
+- ✅ Extends all HTML div attributes
+
+#### Props
+
+| Prop | Type | Required | Description |
+|------|------|----------|-------------|
+| `variant` | `'default' \| 'secondary' \| 'destructive' \| 'outline' \| 'success' \| 'warning' \| 'info'` | No | Badge style variant (default: 'default') |
+| `size` | `'sm' \| 'md' \| 'lg'` | No | Badge size (default: 'sm') |
+| `children` | `React.ReactNode` | Yes | Badge content (text, icons, etc.) |
+| `className` | `string` | No | Additional CSS classes |
+
+#### Usage Example
+
+```tsx
+import { Badge } from '@wakecap/blockwork-ui';
+
+function StatusIndicator() {
+  return (
+    <div>
+      <Badge variant="success">Active</Badge>
+      <Badge variant="warning" size="md">Pending</Badge>
+      <Badge variant="destructive" size="lg">Critical</Badge>
+    </div>
+  );
+}
+```
+
+---
+
+### EmptyState
+
+**Category**: UI Components
+**Status**: ✅ Production Ready
+**Path**: `src/design-system/components/EmptyState/EmptyState.tsx`
+
+#### Description
+
+Empty state component for displaying helpful messages when no content is available, with customizable icons, actions, and variants.
+
+#### Features
+
+- ✅ 5 preset variants with default icons (default, search, files, users, error)
+- ✅ Custom icon support via Font Awesome classes
+- ✅ 3 size options with responsive scaling
+- ✅ Optional action button/element slot
+- ✅ Centered layout with icon, title, description, and action
+- ✅ Customizable spacing and typography
+- ✅ Accessible with proper semantic HTML
+
+#### Props
+
+| Prop | Type | Required | Description |
+|------|------|----------|-------------|
+| `title` | `string` | Yes | Main heading text |
+| `description` | `string` | No | Descriptive text explaining the empty state |
+| `icon` | `string` | No | Font Awesome icon class (custom icon) |
+| `variant` | `'default' \| 'search' \| 'files' \| 'users' \| 'error'` | No | Preset variant with default icon (default: 'default') |
+| `action` | `React.ReactNode` | No | Action button or custom element |
+| `size` | `'sm' \| 'md' \| 'lg'` | No | Component size (default: 'md') |
+| `className` | `string` | No | Additional CSS classes |
+
+#### Usage Example
+
+```tsx
+import { EmptyState, Button } from '@wakecap/blockwork-ui';
+
+function NoResults() {
+  return (
+    <EmptyState
+      variant="search"
+      title="No results found"
+      description="Try adjusting your search criteria"
+      action={<Button>Clear Filters</Button>}
+    />
+  );
+}
+```
+
+---
+
+### PageLoading
+
+**Category**: UI Components
+**Status**: ✅ Production Ready
+**Path**: `src/design-system/components/PageLoading/PageLoading.tsx`
+
+#### Description
+
+Full-screen loading component with WakeCap logo animation and customizable message for app initialization and route transitions.
+
+#### Features
+
+- ✅ Full-screen overlay with high z-index (9999)
+- ✅ WakeCap logo with fade animation
+- ✅ Two logo variants: geometric symbol or full text logo
+- ✅ Customizable animation duration
+- ✅ Optional skeleton loading mode
+- ✅ Customizable loading message
+- ✅ White background for clean appearance
+- ✅ Centered layout with proper spacing
+
+#### Props
+
+| Prop | Type | Required | Description |
+|------|------|----------|-------------|
+| `visible` | `boolean` | No | Controls visibility of loading component (default: true) |
+| `message` | `string` | No | Custom loading message (default: 'Loading...') |
+| `animationDuration` | `number` | No | Duration of fade animation in milliseconds (default: 2000) |
+| `skeleton` | `boolean` | No | Use skeleton loading instead of fade animation (default: false) |
+| `logoVariant` | `'symbol' \| 'text'` | No | Logo display variant (default: 'symbol') |
+
+#### Usage Example
+
+```tsx
+import { PageLoading } from '@wakecap/blockwork-ui';
+
+function App() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate app initialization
+    setTimeout(() => setIsLoading(false), 3000);
+  }, []);
+
+  return (
+    <>
+      <PageLoading visible={isLoading} message="Initializing application..." />
+      {/* Your app content */}
+    </>
+  );
+}
+```
 
 ---
 

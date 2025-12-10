@@ -17,8 +17,8 @@ export default tseslint.config(
       "storybook-static",
       "coverage",
       "mcp/server/dist/**",
-      // Ignore all components except the ones in main.ts (TopNavigator, MegaDropdown, PageLoading, Avatar, Button, Badge, SearchInput, EmptyState)
-      "src/design-system/components/!(TopNavigator|MegaDropdown|PageLoading|Avatar|Button|Badge|SearchInput|EmptyState)/**",
+      // Ignore all components except the ones in main.ts (26 components: 8 core + 18 form elements)
+      "src/design-system/components/!(TopNavigator|MegaDropdown|PageLoading|Avatar|Button|Badge|SearchInput|EmptyState|Input|PasswordInput|TextArea|OTPInput|Dropdown|Autocomplete|MultiSelect|Checkbox|Radio|Toggler|Calendar|ColorPicker|Slider|RatingStars|FileUpload|SignatureInput|RichTextEditor|FormLayout)/**",
       // Ignore all stories except the ones in main.ts
       "src/stories/**",
       "src/design-system/foundations/**",
@@ -43,6 +43,14 @@ export default tseslint.config(
       "react-refresh/only-export-components": ["warn", { allowConstantExport: true }],
       "prettier/prettier": "error",
       ...prettierConfig.rules,
+      "@typescript-eslint/no-unused-vars": [
+        "error",
+        {
+          argsIgnorePattern: "^_",
+          varsIgnorePattern: "^_",
+          caughtErrorsIgnorePattern: "^_",
+        },
+      ],
     },
   },
   ...storybook.configs["flat/recommended"],
